@@ -38,7 +38,7 @@ const SEO: React.FC<SEOProps> = ({
   const site = {
     name: 'GoldenDie - LKE Group GmbH',
     url: 'https://goldendie.de',
-    logo: 'https://goldendie.de/logo.png',
+    logo: 'https://goldendie.de/logo.svg',
     email: 'info@goldendie.de',
     phone: '+49...',
     companyName: 'LKE Group GmbH'

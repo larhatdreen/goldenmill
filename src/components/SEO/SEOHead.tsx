@@ -14,7 +14,7 @@ export const SEOHead: React.FC<SEOProps> = ({
   title = 'Golden Die - Industrial Equipment Parts',
   description = 'GOLDENDIE supplies technical spare parts for industrial equipment, including dies, shells, rollers for pellet mills, eccentric shafts, hammers, and more.',
   keywords = 'industrial equipment, spare parts, dies, shells, rollers, pellet mills',
-  image = '/logo.png',
+  image = '/logo.svg',
   article = false,
   noindex = false,
 }) => {
@@ -40,7 +40,7 @@ export const SEOHead: React.FC<SEOProps> = ({
       name: 'Golden Die',
       logo: {
         '@type': 'ImageObject',
-        url: `${siteUrl}/logo.png`,
+        url: `${siteUrl}/logo.svg`,
       },
     },
   };

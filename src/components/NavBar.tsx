@@ -65,7 +65,7 @@ export default function NavBar() {
       <nav className='absolute top-0 left-0 right-0 z-[999]'>
         <div className='w-full h-[80px] flex flex-row justify-between items-center px-[3%] py-[28px]'>
           <Link to={getURLWithLang('matrix', lang!)} className="flex-shrink-0">
-            <img alt='logo' className="w-full content-[url('/logo_mini.png')] tablet:content-[url('/logo.png')] " />
+            <img alt='logo' className="w-full content-[url('/logo_mini.svg')] tablet:content-[url('/logo.svg')] " />
           </Link>
 
           {/* Desktop Menu */}

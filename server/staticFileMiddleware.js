@@ -7,8 +7,8 @@ const staticFiles = [
   '/sitemap.xml',
   '/site.webmanifest',
   '/favicon.ico',
-  '/logo.png',
-  '/logo_mini.png',
+  '/logo.svg',
+  '/logo_mini.svg',
   '/icon.svg'
 ];
 

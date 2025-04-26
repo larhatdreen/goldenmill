@@ -1,4 +1,4 @@
-import logo from '../assets/UI/logo.png'
+import logo from '../assets/UI/logo.svg'
 import GeoPinIcon from './customIcons/GeoPinIcon'
 import MessageIcon from './customIcons/MessageIcon'
 import PhoneIcon from './customIcons/PhoneIcon'
