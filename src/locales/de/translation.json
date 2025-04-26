@@ -1,0 +1,526 @@
+{
+  "common": {
+    "home": "Startseite",
+    "yes": "Ja",
+    "no": "Nein",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "inDevelopment": "Funktion in Entwicklung"
+  },
+  "cookie": {
+    "title": "Cookie-Einstellungen",
+    "description": "Wir verwenden Cookies, um Ihr Browsing-Erlebnis zu verbessern und unseren Datenverkehr zu analysieren. Bitte wählen Sie Ihre Präferenzen.",
+    "acceptAll": "Alle akzeptieren",
+    "acceptSelected": "Ausgewählte akzeptieren",
+    "types": {
+      "necessary": "Notwendig (Erforderlich)",
+      "necessary_description": "Diese Cookies sind für die ordnungsgemäße Funktionsweise der Website unerlässlich.",
+      "analytics": "Analyse",
+      "analytics_description": "Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.",
+      "marketing": "Marketing",
+      "marketing_description": "Diese Cookies werden verwendet, um für Sie relevantere Werbung zu schalten.",
+      "functional": "Funktional",
+      "functional_description": "Diese Cookies ermöglichen erweiterte Funktionalität und Personalisierung der Website.",
+      "geolocation": "Standortbestimmung",
+      "geolocation_description": "Diese Cookies werden verwendet, um Ihren ungefähren Standort für einen besseren Service zu bestimmen.",
+      "device": {
+        "type": "Gerätetyp",
+        "os": "Betriebssystem",
+        "browser": "Browser"
+      },
+      "location": {
+        "city": "Stadt",
+        "country": "Land"
+      }
+    },
+    "simpleDescription": "Diese Website verwendet Cookies. Mit der Nutzung unserer Dienste erklären Sie sich damit einverstanden.",
+    "accept": "Akzeptieren",
+    "privacyNote": "Ihre Privatsphäre ist uns wichtig. Klicken Sie auf 'Akzeptieren' für ein besseres Erlebnis.",
+    "learnMore": "Mehr über Cookies erfahren"
+  },
+  "contact": {
+    "name": "Vollständiger Name",
+    "email": "E-Mail-Adresse",
+    "phone": "Telefonnummer (optional)",
+    "company": "Firmenname (optional)",
+    "message": "Ihre Nachricht",
+    "send": "Nachricht senden",
+    "sending": "Wird gesendet...",
+    "success": "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.",
+    "error": "Entschuldigung, beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "file": "PDF-Datei anhängen (optional, max. 5MB)",
+    "fileTypeError": "Nur PDF-Dateien sind erlaubt",
+    "fileSizeError": "Die Dateigröße darf 5MB nicht überschreiten"
+  },
+  "nav": {
+    "products": "Produkte",
+    "spareParts": "Ersatzteile"
+  },
+  "spareParts": {
+    "title": "Ersatzteile",
+    "description": "Eine breite Palette hochwertiger Ersatzteile für Pelletpressen und andere Industrieanlagen. Alle Teile werden mit modernster Technologie hergestellt und unterliegen strenger Qualitätskontrolle."
+  },
+  "products": {
+    "title": "Produkte",
+    "pageTitle": "PRODUKTE",
+    "onRequest": "AUF ANFRAGE",
+    "headers": {
+      "applications": "Anwendungsbereiche"
+    },
+    "filters": {
+      "granulation": "Granulierung",
+      "type": "Typ",
+      "productType": "Produkttyp",
+      "matrices": "Matrizen",
+      "shells": "Gehäuse",
+      "spareParts": "Ersatzteile",
+      "applicationsTitle": "Anwendungsbereiche",
+      "select": "Auswählen",
+      "reset": "Zurücksetzen",
+      "showFilters": "Filter anzeigen"
+    },
+    "applications": {
+      "pellets": "Pellets",
+      "sugar": "Zucker",
+      "feed": "Futtermittel",
+      "oil": "Ölverarbeitung",
+      "waste": "Abfallverarbeitung",
+      "meat": "Fleischverarbeitung"
+    },
+    "granulationTypes": {
+      "granulation": "Granulierung",
+      "extrusion": "Extrusion und Pressung",
+      "grinding": "Mahlen und Trennen",
+      "transport": "Transport und Dosierung",
+      "cooling": "Kühlung und Trocknung",
+      "storage": "Lagerung und Verpackung",
+      "electrical": "Elektrotechnik"
+    },
+    "types": {
+      "flat": "Flach",
+      "ring": "Ring",
+      "clamp": "Klemme"
+    },
+    "noProducts": "Keine Produkte gefunden",
+    "error": "Produkte konnten nicht geladen werden. Bitte versuchen Sie es später erneut.",
+    "search": "Katalog durchsuchen",
+    "category": "Kategorie",
+    "learnMore": "Mehr erfahren",
+    "contact": "Kontakt",
+    "all": "Alle",
+    "matrices": "Matrizen",
+    "shells": "Gehäuse",
+    "spareParts": "Ersatzteile",
+    "noResults": "Keine Ergebnisse für Ihre Suche gefunden",
+    "manufacturingHint": "Fertigungshinweis",
+    "manufacturingHintPlaceholder": "Geben Sie einen Hinweis für den Fertigungsbereich ein",
+    "technicalHint": "Technischer Hinweis",
+    "technicalHintPlaceholder": "Geben Sie einen Hinweis für die technische Spezifikation ein",
+    "sections": {
+      "manufacturing": "Fertigungspräzision",
+      "technical": "Technische Spezifikation"
+    },
+    "buttons": {
+      "details": "DETAILS"
+    },
+    "fields": {
+      "title": "Titel (Russisch)",
+      "titleEn": "Titel (Englisch)",
+      "titleDe": "Titel (Deutsch)",
+      "subtitle": "Untertitel (Russisch)",
+      "subtitleEn": "Untertitel (Englisch)",
+      "subtitleDe": "Untertitel (Deutsch)",
+      "description": "Beschreibung (Russisch)",
+      "descriptionEn": "Beschreibung (Englisch)",
+      "descriptionDe": "Beschreibung (Deutsch)",
+      "category": "Kategorie",
+      "application": "Anwendung",
+      "granulation": "Granulierung",
+      "type": "Typ",
+      "image": "Bild",
+      "changeImage": "Bild ändern",
+      "uploadImage": "Bild hochladen",
+      "changeLogo": "Logo ändern",
+      "uploadLogo": "Logo hochladen",
+      "mainImage": "Hauptbild",
+      "activeImage": "Logo",
+      "mainImageAlt": "Hauptbild-Vorschau",
+      "logoPreviewAlt": "Logo-Vorschau",
+      "categoryLabel": "Kategorie",
+      "applicationLabel": "Anwendungsbereich",
+      "equipmentTypeLabel": "Gerätetyp",
+      "productTypeLabel": "Produkttyp",
+      "activeProduct": "Aktives Produkt",
+      "price": "Preis",
+      "priceLabel": "Preis (leer lassen für 'AUF ANFRAGE')",
+      "priceHint": "Preis eingeben",
+      "priceLimit": "Maximaler Wert: 999.999.999",
+      "fileInfo": {
+        "allowedFormats": "Erlaubte Dateiformate: JPG, JPEG, PNG",
+        "maxSize": "Dateigröße darf 5MB nicht überschreiten",
+        "manufacturingImageDimensions": "Erforderliche Bildabmessungen: 700x700 Pixel",
+        "manufacturingImageMaxSize": "Maximale Dateigröße: 5MB"
+      },
+      "manufacturingTitle": "Titel der Fertigungspräzision",
+      "manufacturingTitleEn": "Titel der Fertigungspräzision (EN)",
+      "manufacturingTitleDe": "Titel der Fertigungspräzision (DE)",
+      "manufacturingSubtitle": "Untertitel der Fertigungspräzision",
+      "manufacturingSubtitleEn": "Untertitel der Fertigungspräzision (EN)",
+      "manufacturingSubtitleDe": "Untertitel der Fertigungspräzision (DE)",
+      "manufacturingDescription": "Beschreibung der Fertigungspräzision",
+      "manufacturingDescriptionEn": "Beschreibung der Fertigungspräzision (EN)",
+      "manufacturingDescriptionDe": "Beschreibung der Fertigungspräzision (DE)",
+      "manufacturingHint": "Hinweis zur Fertigungspräzision",
+      "technicalTitle": "Geben Sie den technischen Titel ein",
+      "technicalTitleEn": "Technischer Titel (EN)",
+      "technicalTitleDe": "Technischer Titel (DE)",
+      "technicalSubtitle": "Geben Sie den technischen Untertitel ein",
+      "technicalSubtitleEn": "Technischer Untertitel (EN)",
+      "technicalSubtitleDe": "Technischer Untertitel (DE)",
+      "technicalDescription": "Geben Sie die technische Beschreibung ein",
+      "technicalDescriptionEn": "Technische Beschreibung (EN)",
+      "technicalDescriptionDe": "Technische Beschreibung (DE)",
+      "technicalHint": "Geben Sie einen technischen Hinweis ein",
+      "backgroundCircle": "Hintergrundbild",
+      "backgroundCircleAlt": "Hintergrundbild für Präzisionsbereich",
+      "backgroundCircleUpload": "Hintergrundbild hochladen",
+      "backgroundCircleChange": "Hintergrundbild ändern",
+      "backgroundCircleError": "Fehler beim Hochladen des Hintergrundbildes",
+      "backgroundCircleDimensions": "Bildabmessungen müssen 700x700 Pixel betragen",
+      "backgroundCircleSize": "Dateigröße darf 5MB nicht überschreiten",
+      "titleLabel": "Titel",
+      "subtitleLabel": "Untertitel",
+      "descriptionLabel": "Beschreibung",
+      "applicationsLabel": "Anwendungen",
+      "placeholders": {
+        "manufacturingTitle": "Geben Sie den Titel für die Fertigungspräzision ein",
+        "manufacturingSubtitle": "Geben Sie den Untertitel für die Fertigungspräzision ein",
+        "manufacturingDescription": "Geben Sie die Beschreibung für die Fertigungspräzision ein",
+        "manufacturingHint": "Geben Sie einen Hinweis für die Fertigungspräzision ein",
+        "technicalTitle": "Geben Sie den technischen Titel ein",
+        "technicalSubtitle": "Geben Sie den technischen Untertitel ein",
+        "technicalDescription": "Geben Sie die technische Beschreibung ein",
+        "technicalHint": "Geben Sie einen technischen Hinweis ein"
+      }
+    }
+  },
+  "admin": {
+    "loginTitle": "ADMINISTRATIONSBEREICH",
+    "panelTitle": "ADMINISTRATIONSBEREICH",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "loginButton": "Anmelden",
+    "greeting": "Willkommen",
+    "rememberPassword": "Passwort speichern",
+    "rememberPasswordHint": "Empfohlen für private Geräte",
+    "errors": {
+      "invalidCredentials": "Ungültige Anmeldedaten"
+    },
+    "sections": {
+      "products": "Produkte",
+      "users": "Benutzer",
+      "logs": "Protokolle",
+      "manufacturing": "Fertigungspräzision",
+      "technical": "Technische Spezifikation"
+    },
+    "roles": {
+      "administrator": "Administrator",
+      "manager": "Manager"
+    },
+    "actions": {
+      "add": "Hinzufügen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "save": "Speichern",
+      "cancel": "Abbrechen",
+      "logout": "Abmelden"
+    },
+    "confirmDelete": {
+      "title": "Löschen bestätigen",
+      "message": "Sind Sie sicher, dass Sie dieses Element löschen möchten?"
+    },
+    "products": {
+      "title": "PRODUKTVERWALTUNG",
+      "addProduct": "PRODUKT HINZUFÜGEN",
+      "editProduct": "PRODUKT BEARBEITEN",
+      "tableHeaders": {
+        "id": "ID",
+        "title": "Titel",
+        "description": "Beschreibung",
+        "image": "Bild",
+        "actions": "Aktionen"
+      },
+      "tabs": {
+        "catalog": "Katalog",
+        "manufacturing": "Fertigungspräzision",
+        "technical": "Technische Spezifikation"
+      },
+      "sections": {
+        "localization": "Lokalisierung",
+        "images": "Bilder",
+        "additionalImages": "Zusätzliche Bilder",
+        "manufacturing": "Fertigungspräzision",
+        "technical": "Technische Spezifikation",
+        "manufacturingSection": "Fertigungspräzisionsbereich"
+      },
+      "addManufacturingSection": "Fertigungsbereich hinzufügen",
+      "removeManufacturingSection": "Fertigungsbereich entfernen",
+      "fields": {
+        "title": "Titel (RU)",
+        "titleEn": "Titel (EN)",
+        "titleDe": "Titel (DE)",
+        "subtitle": "Untertitel (RU)",
+        "subtitleEn": "Untertitel (EN)",
+        "subtitleDe": "Untertitel (DE)",
+        "description": "Beschreibung (RU)",
+        "descriptionEn": "Beschreibung (EN)",
+        "descriptionDe": "Beschreibung (DE)",
+        "category": "Kategorie",
+        "application": "Anwendung",
+        "granulation": "Granulierung",
+        "type": "Typ",
+        "image": "Bild",
+        "changeImage": "Bild ändern",
+        "uploadImage": "Bild hochladen",
+        "changeLogo": "Logo ändern",
+        "uploadLogo": "Logo hochladen",
+        "mainImage": "Hauptbild",
+        "activeImage": "Logo",
+        "mainImageAlt": "Hauptbild-Vorschau",
+        "logoPreviewAlt": "Logo-Vorschau",
+        "categoryLabel": "Kategorie",
+        "applicationLabel": "Anwendungsbereich",
+        "equipmentTypeLabel": "Gerätetyp",
+        "productTypeLabel": "Produkttyp",
+        "activeProduct": "Aktives Produkt",
+        "price": "Preis",
+        "priceLabel": "Preis (leer lassen für 'AUF ANFRAGE')",
+        "priceHint": "Preis eingeben",
+        "priceLimit": "Maximaler Wert: 999.999.999",
+        "fileInfo": {
+          "allowedFormats": "Erlaubte Dateiformate: JPG, JPEG, PNG",
+          "maxSize": "Dateigröße darf 5MB nicht überschreiten",
+          "dimensions": "Erforderliche Bildabmessungen: 700x700 Pixel",
+          "mainImageDimensions": "Hauptbild-Abmessungen: 700x700 Pixel",
+          "mainImageMaxSize": "Maximale Dateigröße: 5MB",
+          "logoDimensions": "Logo-Abmessungen: 132x132 Pixel",
+          "logoMaxSize": "Maximale Dateigröße: 2MB",
+          "backgroundCircleMaxSize": "Maximale Dateigröße: 5MB"
+        },
+        "placeholders": {
+          "manufacturingTitle": "Geben Sie den Fertigungstitel ein",
+          "manufacturingSubtitle": "Geben Sie den Fertigungsuntertitel ein",
+          "manufacturingDescription": "Geben Sie die Fertigungsbeschreibung ein",
+          "manufacturingHint": "Geben Sie einen Fertigungshinweis ein",
+          "technicalTitle": "Geben Sie den technischen Titel ein",
+          "technicalSubtitle": "Geben Sie den technischen Untertitel ein",
+          "technicalDescription": "Geben Sie die technische Beschreibung ein",
+          "technicalHint": "Geben Sie einen technischen Hinweis ein"
+        },
+        "granulationLabel": "Granulierungstyp",
+        "typeLabel": "Typ"
+      },
+      "notification": {
+        "delete": "Produkt erfolgreich gelöscht",
+        "deleteError": "Fehler beim Löschen des Produkts",
+        "save": "Produkt erfolgreich gespeichert",
+        "saveError": "Fehler beim Speichern des Produkts",
+        "fileSizeError": "Dateigröße darf 5MB nicht überschreiten",
+        "fileTypeError": "Erlaubte Dateiformate: JPG, JPEG, PNG",
+        "imageDimensionsError": "Bildabmessungen müssen genau 700x700 Pixel betragen",
+        "imageLoadError": "Fehler beim Laden des Bildes. Bitte versuchen Sie es erneut",
+        "logoDimensionsError": "Logo-Abmessungen müssen genau 48x48 Pixel betragen",
+        "logoFileSizeError": "Logo-Dateigröße darf 2MB nicht überschreiten"
+      }
+    },
+    "users": {
+      "title": "BENUTZERVERWALTUNG",
+      "addUser": "Benutzer hinzufügen",
+      "editUser": "Benutzer bearbeiten",
+      "fields": {
+        "id": "ID",
+        "username": "Benutzername",
+        "email": "E-Mail",
+        "role": "Rolle",
+        "password": "Passwort",
+        "actions": "Aktionen",
+        "lastLogin": "Letzte Anmeldung"
+      },
+      "validation": {
+        "usernameRequired": "Benutzername ist erforderlich",
+        "emailRequired": "E-Mail ist erforderlich",
+        "emailInvalid": "Ungültiges E-Mail-Format",
+        "passwordRequired": "Passwort ist erforderlich",
+        "passwordLength": "Passwort muss mindestens 6 Zeichen lang sein"
+      },
+      "notification": {
+        "createSuccess": "Benutzer erfolgreich erstellt",
+        "updateSuccess": "Benutzer erfolgreich aktualisiert",
+        "deleteSuccess": "Benutzer erfolgreich gelöscht",
+        "saveError": "Fehler beim Speichern des Benutzers",
+        "deleteError": "Fehler beim Löschen des Benutzers"
+      }
+    },
+    "logs": {
+      "title": "SYSTEMPROTOKOLLE",
+      "search": "Nach Nachricht suchen...",
+      "filter": {
+        "type": "Typ",
+        "all": "Alle Typen",
+        "onlyInfo": "Nur Information",
+        "onlyWarning": "Nur Warnungen",
+        "onlyError": "Nur Fehler",
+        "onlyCookie": "Nur Cookie"
+      },
+      "fields": {
+        "timestamp": "Zeit",
+        "type": "Typ",
+        "message": "Nachricht",
+        "user": "Benutzer",
+        "ip": "IP-Adresse",
+        "details": "Details"
+      },
+      "types": {
+        "info": "INFORMATION",
+        "warning": "WARNUNG",
+        "error": "FEHLER",
+        "cookie": "COOKIE"
+      },
+      "error": {
+        "fetch": "Protokolle konnten nicht geladen werden",
+        "deleteError": "Fehler beim Löschen des Protokolls"
+      },
+      "entries": "Einträge",
+      "details": {
+        "title": "Detaillierte Informationen",
+        "labels": {
+          "timestamp": "Zeit",
+          "type": "Typ",
+          "message": "Nachricht",
+          "user": "Benutzer",
+          "ip": "IP-Adresse",
+          "cookieSettings": "Cookie-Einstellungen",
+          "deviceInfo": "Geräteinformationen",
+          "locationInfo": "Standortinformationen",
+          "device": {
+            "type": "Gerätetyp",
+            "os": "Betriebssystem",
+            "browser": "Browser"
+          },
+          "location": {
+            "city": "Stadt",
+            "country": "Land"
+          }
+        },
+        "noData": "Keine Daten",
+        "close": "Schließen",
+        "cookieAction": {
+          "accept": "hat die Verwendung akzeptiert",
+          "reject": "hat die Verwendung abgelehnt"
+        }
+      },
+      "delete": {
+        "title": "Löschen bestätigen",
+        "message": "Sind Sie sicher, dass Sie dieses Protokoll löschen möchten?",
+        "cancel": "Abbrechen",
+        "confirm": "Löschen"
+      },
+      "notification": {
+        "deleteSuccess": "Protokoll erfolgreich gelöscht",
+        "deleteError": "Fehler beim Löschen des Protokolls"
+      }
+    }
+  },
+  "buttons": {
+    "details": "DETAILS"
+  },
+  "seo": {
+    "home": {
+      "title": "GoldenDie - Industrieausrüstung und Ersatzteile",
+      "description": "Hochwertige Industrieausrüstung, Ersatzteile und Lösungen für Pelletpressen und Industrieanlagen. Expertenfertigung mit moderner Technologie.",
+      "keywords": "Industrieausrüstung, Ersatzteile, Pelletpressen, Fertigung, Industrielösungen"
+    },
+    "matrix": {
+      "title": "Pelletpressenmatrizen | GoldenDie",
+      "description": "Professionelle Matrizen für verschiedene Arten von Pelletpressen. Höchste Fertigungsqualität, präzise Geometrie, lange Lebensdauer.",
+      "keywords": "Pelletpressenmatrizen, Industriematrizen, Pelletpressenteile"
+    },
+    "shell": {
+      "title": "Industriegehäuse | GoldenDie",
+      "description": "Herstellung hochwertiger Industriegehäuse. Individueller Ansatz, präzise Fertigung, zuverlässiger Betrieb.",
+      "keywords": "Industriegehäuse, Gehäuseherstellung, Anlagenteile"
+    },
+    "about": {
+      "title": "Über GoldenDie",
+      "description": "GoldenDie - führender Hersteller von Industrieanlagen und Ersatzteilen. Erfahren Sie mehr über unsere Geschichte, Mission und Qualitätsanspruch.",
+      "keywords": "über goldendie, Firmengeschichte, Mission, Anlagenfertigung"
+    },
+    "contacts": {
+      "title": "Kontakt | GoldenDie",
+      "description": "Kontaktieren Sie GoldenDie für Anlagen- und Ersatzteilbestellungen. Professionelle Beratung, individueller Ansatz für jeden Kunden.",
+      "keywords": "Kontakt goldendie, Anlagenbestellung, Beratung"
+    },
+    "serviceInformation": {
+      "title": "Serviceinformationen | GoldenDie",
+      "description": "Wichtige Informationen über Service und Wartung von GoldenDie-Anlagen. Empfehlungen für Betrieb und technische Wartung.",
+      "keywords": "Serviceinformationen, Anlagenwartung, technischer Support"
+    },
+    "privacyPolicy": {
+      "title": "Datenschutzerklärung | GoldenDie",
+      "description": "GoldenDie Datenschutzerklärung. Informationen über die Verarbeitung personenbezogener Daten und den Schutz der Privatsphäre der Nutzer.",
+      "keywords": "Datenschutzerklärung, Datenschutz, personenbezogene Daten"
+    },
+    "product": {
+      "title": "{{productName}} | Industrieausrüstung",
+      "description": "{{productDescription}}. Hochwertige Industrieausrüstung von GoldenDie. Kategorie: {{category}}",
+      "keywords": "{{productName}}, Industrieausrüstung, {{category}}, Fertigung, Ersatzteile"
+    },
+    "spareParts": {
+      "title": "Ersatzteile | GoldenDie - Hochwertige Industrieausrüstung",
+      "description": "Entdecken Sie unser umfangreiches Sortiment an hochwertigen Ersatzteilen für Industrieanlagen. Maßgefertigte Lösungen für Pelletpressen und mehr.",
+      "keywords": "Ersatzteile, Industrieausrüstung, Pelletpressen, Matrizen, Gehäuse, Industrieanlagen, Granulierung, GoldenDie"
+    },
+    "defaultTitle": "GoldenDie - Industrieanlagen und Ersatzteile",
+    "defaultDescription": "Hochwertige Industrieanlagen, Ersatzteile und Lösungen für Pelletpressen und Industrieanlagen. Experten-Fertigung mit modernster Technologie.",
+    "defaultKeywords": "Industrieanlagen, Ersatzteile, Pelletpressen, Fertigung, Industrielösungen"
+  },
+  "emailContent": {
+    "subject": "Neue Anfrage von der Website",
+    "contactRequest": "Kontaktanfrage",
+    "contactInformation": "Kontaktinformationen",
+    "name": "Name",
+    "phone": "Telefon",
+    "country": "Land",
+    "companyName": "Firmenname",
+    "comment": "Kommentar",
+    "equipmentRequest": "Anfrage zu Geräteinformationen",
+    "productInfo": "Produktinformationen",
+    "productId": "Produkt-ID",
+    "productName": "Produktname",
+    "productCategory": "Produktkategorie",
+    "type": "Gerätetyp",
+    "matrix": "Matrix",
+    "shell": "Gehäuse",
+    "info": {
+      "title": "Informationen",
+      "innerDiameter": "Innendurchmesser",
+      "outerDiameter": "Außendurchmesser",
+      "overallWidth": "Gesamtbreite",
+      "workingWidth": "Arbeitsbreite",
+      "drillingDiameter": "Bohrdurchmesser"
+    },
+    "about": {
+      "title": "Über das Gerät",
+      "manufacturer": "Hersteller",
+      "model": "Modell",
+      "serialNumber": "Seriennummer",
+      "manufactureYear": "Herstellungsjahr",
+      "commentary": "Zusätzliche Kommentare"
+    },
+    "email": {
+      "title": "Kontaktinformationen",
+      "address": "E-Mail-Adresse"
+    },
+    "noData": "Keine Daten"
+  }
+} 

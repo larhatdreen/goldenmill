@@ -1,0 +1,39 @@
+{
+  "subject": "Neue Anfrage von der Website",
+  "contactRequest": "Kontaktanfrage",
+  "contactInformation": "Kontaktinformationen",
+  "name": "Name",
+  "phone": "Telefon",
+  "country": "Land",
+  "companyName": "Firmenname",
+  "comment": "Kommentar",
+  "equipmentRequest": "Anfrage zu Geräteinformationen",
+  "productInfo": "Produktinformationen",
+  "productId": "Produkt-ID",
+  "productName": "Produktname",
+  "productCategory": "Produktkategorie",
+  "type": "Gerätetyp",
+  "matrix": "Matrix",
+  "shell": "Gehäuse",
+  "info": {
+    "title": "Informationen",
+    "innerDiameter": "Innendurchmesser",
+    "outerDiameter": "Außendurchmesser",
+    "overallWidth": "Gesamtbreite",
+    "workingWidth": "Arbeitsbreite",
+    "drillingDiameter": "Bohrdurchmesser"
+  },
+  "about": {
+    "title": "Über das Gerät",
+    "manufacturer": "Hersteller",
+    "model": "Modell",
+    "serialNumber": "Seriennummer",
+    "manufactureYear": "Herstellungsjahr",
+    "commentary": "Zusätzliche Kommentare"
+  },
+  "email": {
+    "title": "Kontaktinformationen",
+    "address": "E-Mail-Adresse"
+  },
+  "noData": "Keine Daten"
+} 

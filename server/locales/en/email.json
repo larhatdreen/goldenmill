@@ -1,0 +1,39 @@
+{
+  "subject": "New request from website",
+  "contactRequest": "Contact Request",
+  "contactInformation": "Contact Information",
+  "name": "Name",
+  "phone": "Phone",
+  "country": "Country",
+  "companyName": "Company Name",
+  "comment": "Comment",
+  "equipmentRequest": "Equipment Information Request",
+  "productInfo": "Product Information",
+  "productId": "Product ID",
+  "productName": "Product Name",
+  "productCategory": "Product Category",
+  "type": "Equipment Type",
+  "matrix": "Matrix",
+  "shell": "Shell",
+  "info": {
+    "title": "Information",
+    "innerDiameter": "Inner Diameter",
+    "outerDiameter": "Outer Diameter",
+    "overallWidth": "Overall Width",
+    "workingWidth": "Working Width",
+    "drillingDiameter": "Drilling Diameter"
+  },
+  "about": {
+    "title": "About Equipment",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "serialNumber": "Serial Number",
+    "manufactureYear": "Year of Manufacture",
+    "commentary": "Additional Comments"
+  },
+  "email": {
+    "title": "Contact Information",
+    "address": "Email Address"
+  },
+  "noData": "No data"
+} 

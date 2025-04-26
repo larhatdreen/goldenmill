@@ -1,0 +1,110 @@
+/* eslint-disable */
+/* postcss-css-variables: true */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('./fonts/ofont.ru_Bebas Neue.ttf') format('truetype');
+  font-weight: book;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LabGrotesque';
+  src: url('./fonts/LabGrotesque-Light.eot');
+  src: local('Lab Grotesque Light'), local('LabGrotesque-Light'),
+    url('./fonts/LabGrotesque-Light.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/LabGrotesque-Light.woff2') format('woff2'), url('./fonts/LabGrotesque-Light.woff') format('woff'),
+    url('./fonts/LabGrotesque-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LabGrotesqueBold';
+  src: url('./fonts/LabGrotesque-Bold.eot');
+  src: local('Lab Grotesque Bold'), local('LabGrotesque-Bold'),
+    url('./fonts/LabGrotesque-Bold.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/LabGrotesque-Bold.woff2') format('woff2'), url('./fonts/LabGrotesque-Bold.woff') format('woff'),
+    url('./fonts/LabGrotesque-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AdventProLight';
+  src: local('Advent Pro'), url('./fonts/AdventPro-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AdventProRegular';
+  src: local('Advent Pro'), url('./fonts/AdventPro-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BebasNeueRegular';
+  src: local('BebasNeueRegular'), url('./fonts/BebasNeue-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BebasNeueLight';
+  src: local('BebasNeueLight'), url('fonts/BebasNeue-Light.ttf') format('truetype');
+}
+
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+body {
+  background-color: #1a1b1c;
+  /*background-color: #ffffff;*/
+  /*overflow-x: hidden;*/
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/*Hide input number spin button*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/*хром, сафари*/
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-button {
+  display: none;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #82653e;
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-track {
+  width: 1px;
+  background-color: transparent;
+  border: 3px solid #18191b;
+}
+
+/* Removing empty rules */
+/* *::-webkit-scrollbar-track-piece {} */
+/* *::-webkit-scrollbar-corner {} */
+/* *::-webkit-resizer {} */

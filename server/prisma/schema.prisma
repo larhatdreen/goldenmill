@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(uuid())
+  username String  @unique
+  password String
+  email    String
+  role     String
+  lastLogin DateTime
+}
+
+model Product {
+  id            String   @id @default(cuid())
+  title         Json
+  subtitle      Json?
+  description   Json
+  imageUrl      String?
+  activeImageUrl String?
+  category      String
+  application   String[] @default([])
+  granulation   String[] @default([])
+  type          String[] @default([])
+  price         String?
+  
+  // New format for manufacturing sections
+  manufacturingSections Json?
+  sectionImages        String[] @default([])
+  
+  // Manufacturing section (deprecated)
+  manufacturingTitle       Json?
+  manufacturingSubtitle    Json?
+  manufacturingDescription Json?
+  manufacturingHint       Json?
+  
+  // Technical section
+  technicalTitle          Json?
+  technicalSubtitle       Json?
+  technicalDescription    Json?
+  technicalHint          Json?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Log {
+  id        String   @id @default(uuid())
+  timestamp DateTime @default(now())
+  type      String
+  message   String
+  user      String
+  ip        String
+  metadata  Json?
+}

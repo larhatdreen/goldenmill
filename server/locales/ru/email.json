@@ -1,0 +1,39 @@
+{
+  "subject": "Новая заявка с сайта",
+  "contactRequest": "Запрос на связь",
+  "contactInformation": "Контактная информация",
+  "name": "Имя",
+  "phone": "Телефон",
+  "country": "Страна",
+  "companyName": "Название компании",
+  "comment": "Комментарий",
+  "equipmentRequest": "Запрос информации об оборудовании",
+  "productInfo": "Информация о продукте",
+  "productId": "ID продукта",
+  "productName": "Название продукта",
+  "productCategory": "Категория продукта",
+  "type": "Тип оборудования",
+  "matrix": "Матрица",
+  "shell": "Обечайка",
+  "info": {
+    "title": "Информация",
+    "innerDiameter": "Внутренний диаметр",
+    "outerDiameter": "Внешний диаметр",
+    "overallWidth": "Общая ширина",
+    "workingWidth": "Рабочая ширина",
+    "drillingDiameter": "Диаметр отверстий"
+  },
+  "about": {
+    "title": "Об оборудовании",
+    "manufacturer": "Производитель",
+    "model": "Модель",
+    "serialNumber": "Серийный номер",
+    "manufactureYear": "Год производства",
+    "commentary": "Дополнительные комментарии"
+  },
+  "email": {
+    "title": "Контактная информация",
+    "address": "Электронная почта"
+  },
+  "noData": "Нет данных"
+} 

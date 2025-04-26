@@ -1,0 +1,569 @@
+{
+  "common": {
+    "home": "Home",
+    "yes": "Yes",
+    "no": "No",
+    "save": "Save",
+    "cancel": "Cancel",
+    "inDevelopment": "Function in development"
+  },
+  "cookie": {
+    "title": "Cookie Settings",
+    "description": "We use cookies to enhance your browsing experience and analyze our traffic. Please choose your preferences below.",
+    "acceptAll": "Accept All",
+    "acceptSelected": "Accept Selected",
+    "types": {
+      "necessary": "Necessary (Required)",
+      "necessary_description": "These cookies are essential for the website to function properly.",
+      "analytics": "Analytics",
+      "analytics_description": "These cookies help us understand how visitors interact with our website.",
+      "marketing": "Marketing",
+      "marketing_description": "These cookies are used to deliver advertisements more relevant to you and your interests.",
+      "functional": "Functional",
+      "functional_description": "These cookies enable the website to provide enhanced functionality and personalization.",
+      "geolocation": "Geolocation",
+      "geolocation_description": "These cookies are used to determine your approximate location for better service delivery.",
+      "device": {
+        "type": "Device Type",
+        "os": "Operating System",
+        "browser": "Browser"
+      },
+      "location": {
+        "city": "City",
+        "country": "Country"
+      }
+    },
+    "simpleDescription": "We use cookies to enhance your browsing experience. By continuing to use our site, you agree to our use of cookies.",
+    "accept": "Accept",
+    "privacyNote": "Your privacy is important to us. Click 'Accept' to enhance your experience.",
+    "learnMore": "Learn more about cookies"
+  },
+  "contact": {
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number (optional)",
+    "company": "Company Name (optional)",
+    "message": "Your Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Thank you! Your message has been sent successfully.",
+    "error": "Sorry, there was an error sending your message. Please try again.",
+    "file": "Attach PDF File (optional, max 5MB)",
+    "fileTypeError": "Only PDF files are allowed",
+    "fileSizeError": "File size must not exceed 5MB"
+  },
+  "nav": {
+    "products": "Products",
+    "spareParts": "Spare Parts"
+  },
+  "spareParts": {
+    "title": "Spare Parts",
+    "description": "A wide range of high-quality spare parts for pellet mills and other industrial equipment. All parts are manufactured using modern technologies and undergo strict quality control."
+  },
+  "products": {
+    "title": "Products",
+    "pageTitle": "PRODUCTS",
+    "onRequest": "ON REQUEST",
+    "headers": {
+      "applications": "Applications"
+    },
+    "filters": {
+      "granulation": "Granulation",
+      "type": "Type",
+      "productType": "Product Type",
+      "matrices": "Matrices",
+      "shells": "Shells",
+      "spareParts": "Spare Parts",
+      "applicationsTitle": "Applications",
+      "select": "Select",
+      "reset": "Reset",
+      "showFilters": "Show Filters"
+    },
+    "applications": {
+      "pellets": "Pellets",
+      "sugar": "Sugar",
+      "feed": "Feed",
+      "oil": "Oil Processing",
+      "waste": "Waste Processing",
+      "meat": "Meat Processing"
+    },
+    "granulationTypes": {
+      "granulation": "Granulation",
+      "extrusion": "Extrusion and Pressing",
+      "grinding": "Grinding and Separation",
+      "transport": "Transport and Dosing",
+      "cooling": "Cooling and Drying",
+      "storage": "Storage and Packaging",
+      "electrical": "Electrical"
+    },
+    "types": {
+      "flat": "Flat",
+      "ring": "Ring",
+      "clamp": "Clamp"
+    },
+    "noProducts": "No products found",
+    "error": "Failed to load products. Please try again later.",
+    "search": "Search catalog",
+    "category": "Category",
+    "learnMore": "Learn More",
+    "contact": "Contact",
+    "all": "All",
+    "matrices": "Matrices",
+    "shells": "Shells",
+    "spareParts": "Spare Parts",
+    "noResults": "No results found for your search",
+    "manufacturingHint": "Manufacturing Hint",
+    "manufacturingHintPlaceholder": "Enter hint for manufacturing section",
+    "technicalHint": "Technical Hint",
+    "technicalHintPlaceholder": "Enter hint for technical specification",
+    "sections": {
+      "manufacturing": "Manufacturing Precision",
+      "technical": "Technical Specification",
+      "manufacturingSection": "Manufacturing Precision Section"
+    },
+    "addManufacturingSection": "Add Manufacturing Section",
+    "removeManufacturingSection": "Remove Manufacturing Section",
+    "fields": {
+      "title": "Title (RU)",
+      "titleEn": "Title (EN)",
+      "titleDe": "Title (DE)",
+      "subtitle": "Subtitle (RU)",
+      "subtitleEn": "Subtitle (EN)",
+      "subtitleDe": "Subtitle (DE)",
+      "description": "Description (RU)",
+      "descriptionEn": "Description (EN)",
+      "descriptionDe": "Description (DE)",
+      "category": "Category",
+      "application": "Application",
+      "granulation": "Granulation",
+      "type": "Type",
+      "image": "Image",
+      "changeImage": "Change Image",
+      "uploadImage": "Upload Image",
+      "changeLogo": "Change Logo",
+      "uploadLogo": "Upload Logo",
+      "categoryLabel": "Category",
+      "applicationLabel": "Application Area",
+      "equipmentTypeLabel": "Equipment Type",
+      "productTypeLabel": "Product Type",
+      "activeProduct": "Active Product",
+      "mainImage": "Main Image",
+      "activeImage": "Logo",
+      "mainImageAlt": "Main image preview",
+      "logoPreviewAlt": "Logo preview",
+      "price": "Price",
+      "priceLabel": "Price (leave empty for 'ON REQUEST')",
+      "priceHint": "Enter price",
+      "priceLimit": "Maximum value: 999,999,999",
+      "fileInfo": {
+        "allowedFormats": "Allowed file formats: JPG, JPEG, PNG",
+        "maxSize": "File size should not exceed 5MB",
+        "dimensions": "Required image dimensions: 700x700 pixels",
+        "mainImageDimensions": "Main image dimensions: 700x700 pixels",
+        "mainImageMaxSize": "Maximum file size: 5MB",
+        "logoDimensions": "Logo dimensions: 132x132 pixels",
+        "logoMaxSize": "Maximum file size: 2MB",
+        "backgroundCircleMaxSize": "Maximum file size: 5MB",
+        "manufacturingImageDimensions": "Required image dimensions: 700x700 pixels",
+        "manufacturingImageMaxSize": "Maximum file size: 5MB"
+      },
+      "manufacturingTitle": "Manufacturing Precision Title",
+      "manufacturingTitleEn": "Manufacturing Precision Title (EN)",
+      "manufacturingTitleDe": "Manufacturing Precision Title (DE)",
+      "manufacturingSubtitle": "Manufacturing Precision Subtitle",
+      "manufacturingSubtitleEn": "Manufacturing Precision Subtitle (EN)",
+      "manufacturingSubtitleDe": "Manufacturing Precision Subtitle (DE)",
+      "manufacturingDescription": "Manufacturing Precision Description",
+      "manufacturingDescriptionEn": "Manufacturing Precision Description (EN)",
+      "manufacturingDescriptionDe": "Manufacturing Precision Description (DE)",
+      "manufacturingHint": "Manufacturing Precision Hint",
+      "technicalTitle": "Technical Title",
+      "technicalTitleEn": "Technical Title (EN)",
+      "technicalTitleDe": "Technical Title (DE)",
+      "technicalSubtitle": "Technical Subtitle",
+      "technicalSubtitleEn": "Technical Subtitle (EN)",
+      "technicalSubtitleDe": "Technical Subtitle (DE)",
+      "technicalDescription": "Technical Description",
+      "technicalDescriptionEn": "Technical Description (EN)",
+      "technicalDescriptionDe": "Technical Description (DE)",
+      "technicalHint": "Technical Hint",
+      "backgroundCircle": "Background Image",
+      "backgroundCircleAlt": "Background image for precision section",
+      "backgroundCircleUpload": "Upload background image",
+      "backgroundCircleChange": "Change background image",
+      "backgroundCircleError": "Error uploading background image",
+      "backgroundCircleDimensions": "Background image dimensions must be 700x700 pixels",
+      "backgroundCircleSize": "File size must not exceed 5MB",
+      "titleLabel": "Title",
+      "subtitleLabel": "Subtitle",
+      "descriptionLabel": "Description",
+      "applicationsLabel": "Applications",
+      "placeholders": {
+        "manufacturingTitle": "Enter manufacturing precision title",
+        "manufacturingSubtitle": "Enter manufacturing precision subtitle",
+        "manufacturingDescription": "Enter manufacturing precision description",
+        "manufacturingHint": "Enter manufacturing precision hint",
+        "technicalTitle": "Enter technical title",
+        "technicalSubtitle": "Enter technical subtitle",
+        "technicalDescription": "Enter technical description",
+        "technicalHint": "Enter technical hint"
+      },
+      "granulationLabel": "Granulation Type",
+      "typeLabel": "Type"
+    },
+    "buttons": {
+      "details": "DETAILS"
+    }
+  },
+  "admin": {
+    "loginTitle": "ADMIN PANEL LOGIN",
+    "panelTitle": "ADMIN PANEL",
+    "username": "Username",
+    "password": "Password",
+    "loginButton": "Login",
+    "greeting": "Hello",
+    "rememberPassword": "Remember Password",
+    "rememberPasswordHint": "Recommended for personal devices",
+    "errors": {
+      "invalidCredentials": "Invalid credentials"
+    },
+    "sections": {
+      "products": "Products",
+      "users": "Users",
+      "logs": "Logs"
+    },
+    "roles": {
+      "administrator": "Administrator",
+      "manager": "Manager"
+    },
+    "actions": {
+      "add": "Add",
+      "edit": "Edit",
+      "delete": "Delete",
+      "save": "Save",
+      "cancel": "Cancel",
+      "logout": "Logout"
+    },
+    "confirmDelete": {
+      "title": "Confirm Deletion",
+      "message": "Are you sure you want to delete this item?"
+    },
+    "products": {
+      "title": "PRODUCT MANAGEMENT",
+      "addProduct": "ADD PRODUCT",
+      "editProduct": "EDIT PRODUCT",
+      "tableHeaders": {
+        "id": "ID",
+        "title": "Title",
+        "description": "Description",
+        "image": "Image",
+        "actions": "Actions"
+      },
+      "tabs": {
+        "catalog": "Catalog",
+        "manufacturing": "Manufacturing Precision",
+        "technical": "Technical Specification"
+      },
+      "sections": {
+        "localization": "Localization",
+        "images": "Images",
+        "additionalImages": "Additional Images",
+        "manufacturing": "Manufacturing Precision",
+        "technical": "Technical Specification",
+        "manufacturingSection": "Manufacturing Precision Section"
+      },
+      "addManufacturingSection": "Add Manufacturing Section",
+      "removeManufacturingSection": "Remove Manufacturing Section",
+      "fields": {
+        "title": "Title (RU)",
+        "titleEn": "Title (EN)",
+        "titleDe": "Title (DE)",
+        "subtitle": "Subtitle (RU)",
+        "subtitleEn": "Subtitle (EN)",
+        "subtitleDe": "Subtitle (DE)",
+        "description": "Description (RU)",
+        "descriptionEn": "Description (EN)",
+        "descriptionDe": "Description (DE)",
+        "category": "Category",
+        "application": "Application",
+        "granulation": "Granulation",
+        "type": "Type",
+        "image": "Image",
+        "changeImage": "Change Image",
+        "uploadImage": "Upload Image",
+        "changeLogo": "Change Logo",
+        "uploadLogo": "Upload Logo",
+        "categoryLabel": "Category",
+        "applicationLabel": "Application Area",
+        "equipmentTypeLabel": "Equipment Type",
+        "productTypeLabel": "Product Type",
+        "activeProduct": "Active Product",
+        "mainImage": "Main Image",
+        "activeImage": "Logo",
+        "mainImageAlt": "Main image preview",
+        "logoPreviewAlt": "Logo preview",
+        "price": "Price",
+        "priceLabel": "Price (leave empty for 'ON REQUEST')",
+        "priceHint": "Enter price",
+        "priceLimit": "Maximum value: 999,999,999",
+        "fileInfo": {
+          "allowedFormats": "Allowed file formats: JPG, JPEG, PNG",
+          "maxSize": "File size should not exceed 5MB",
+          "dimensions": "Required image dimensions: 700x700 pixels",
+          "mainImageDimensions": "Main image dimensions: 700x700 pixels",
+          "mainImageMaxSize": "Maximum file size: 5MB",
+          "logoDimensions": "Logo dimensions: 132x132 pixels",
+          "logoMaxSize": "Maximum file size: 2MB",
+          "backgroundCircleMaxSize": "Maximum file size: 5MB",
+          "manufacturingImageDimensions": "Required image dimensions: 700x700 pixels",
+          "manufacturingImageMaxSize": "Maximum file size: 5MB"
+        },
+        "manufacturingTitle": "Manufacturing Title",
+        "manufacturingTitleEn": "Manufacturing Title (EN)",
+        "manufacturingTitleDe": "Manufacturing Title (DE)",
+        "manufacturingSubtitle": "Manufacturing Subtitle",
+        "manufacturingSubtitleEn": "Manufacturing Subtitle (EN)",
+        "manufacturingSubtitleDe": "Manufacturing Subtitle (DE)",
+        "manufacturingDescription": "Manufacturing Description",
+        "manufacturingDescriptionEn": "Manufacturing Description (EN)",
+        "manufacturingDescriptionDe": "Manufacturing Description (DE)",
+        "manufacturingHint": "Manufacturing Hint",
+        "technicalTitle": "Technical Title",
+        "technicalTitleEn": "Technical Title (EN)",
+        "technicalTitleDe": "Technical Title (DE)",
+        "technicalSubtitle": "Technical Subtitle",
+        "technicalSubtitleEn": "Technical Subtitle (EN)",
+        "technicalSubtitleDe": "Technical Subtitle (DE)",
+        "technicalDescription": "Technical Description",
+        "technicalDescriptionEn": "Technical Description (EN)",
+        "technicalDescriptionDe": "Technical Description (DE)",
+        "technicalHint": "Technical Hint",
+        "backgroundCircle": "Background Circle",
+        "backgroundCircleAlt": "Background circle image",
+        "titleLabel": "Title",
+        "subtitleLabel": "Subtitle",
+        "descriptionLabel": "Description",
+        "applicationsLabel": "Applications",
+        "placeholders": {
+          "manufacturingTitle": "Enter manufacturing title",
+          "manufacturingSubtitle": "Enter manufacturing subtitle",
+          "manufacturingDescription": "Enter manufacturing description",
+          "manufacturingHint": "Enter manufacturing hint",
+          "technicalTitle": "Enter technical title",
+          "technicalSubtitle": "Enter technical subtitle",
+          "technicalDescription": "Enter technical description",
+          "technicalHint": "Enter technical hint"
+        },
+        "granulationLabel": "Granulation Type",
+        "typeLabel": "Type"
+      },
+      "notification": {
+        "delete": "Product successfully deleted",
+        "deleteError": "Error deleting product",
+        "save": "Product successfully saved",
+        "saveError": "Error saving product",
+        "fileSizeError": "File size should not exceed 5MB",
+        "fileTypeError": "Allowed file formats: JPG, JPEG, PNG",
+        "imageDimensionsError": "Image dimensions must be exactly 700x700 pixels",
+        "imageLoadError": "Error loading image. Please try again",
+        "logoDimensionsError": "Logo dimensions must be exactly 48x48 pixels",
+        "logoFileSizeError": "Logo file size must not exceed 2MB"
+      }
+    },
+    "users": {
+      "title": "USER MANAGEMENT",
+      "addUser": "Add User",
+      "editUser": "Edit User",
+      "fields": {
+        "id": "ID",
+        "username": "Username",
+        "email": "Email",
+        "role": "Role",
+        "password": "Password",
+        "actions": "Actions",
+        "lastLogin": "Last Login"
+      },
+      "validation": {
+        "usernameRequired": "Username is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email format",
+        "passwordRequired": "Password is required",
+        "passwordLength": "Password must be at least 6 characters"
+      },
+      "notification": {
+        "createSuccess": "User created successfully",
+        "updateSuccess": "User updated successfully",
+        "deleteSuccess": "User deleted successfully",
+        "saveError": "Failed to save user",
+        "deleteError": "Failed to delete user"
+      }
+    },
+    "logs": {
+      "title": "SYSTEM LOGS",
+      "search": "Search by message...",
+      "filter": {
+        "type": "Type",
+        "all": "All types",
+        "onlyInfo": "Information only",
+        "onlyWarning": "Warnings only",
+        "onlyError": "Errors only",
+        "onlyCookie": "Cookie only"
+      },
+      "fields": {
+        "timestamp": "Time",
+        "type": "Type",
+        "message": "Message",
+        "user": "User",
+        "ip": "IP",
+        "details": "Details"
+      },
+      "types": {
+        "info": "INFORMATION",
+        "warning": "WARNING",
+        "error": "ERROR",
+        "cookie": "COOKIE"
+      },
+      "error": {
+        "fetch": "Failed to load logs",
+        "deleteError": "Error while deleting log"
+      },
+      "entries": "entries",
+      "details": {
+        "title": "Detailed Information",
+        "labels": {
+          "timestamp": "Time",
+          "type": "Type",
+          "message": "Message",
+          "user": "User",
+          "ip": "IP Address",
+          "cookieSettings": "Cookie Settings",
+          "deviceInfo": "Device Information",
+          "locationInfo": "Location Information",
+          "device": {
+            "type": "Device Type",
+            "os": "Operating System",
+            "browser": "Browser"
+          },
+          "location": {
+            "city": "City",
+            "country": "Country"
+          }
+        },
+        "noData": "No data",
+        "close": "Close",
+        "cookieAction": {
+          "accept": "accepted the use of",
+          "reject": "rejected the use of"
+        }
+      },
+      "delete": {
+        "title": "Delete Confirmation",
+        "message": "Are you sure you want to delete this log?",
+        "cancel": "Cancel",
+        "confirm": "Delete"
+      },
+      "notification": {
+        "deleteSuccess": "Log successfully deleted",
+        "deleteError": "Error deleting log"
+      },
+      "cookieMessage": {
+        "user": "User",
+        "cookieSettings": "Cookie Settings",
+        "deviceInfo": "Device Information",
+        "locationInfo": "Location"
+      }
+    }
+  },
+  "buttons": {
+    "details": "DETAILS"
+  },
+  "seo": {
+    "home": {
+      "title": "GoldenDie - Industrial Equipment and Spare Parts",
+      "description": "High-quality industrial equipment, spare parts, and solutions for pellet mills and industrial facilities. Expert manufacturing with modern technology.",
+      "keywords": "industrial equipment, spare parts, pellet mills, manufacturing, industrial solutions"
+    },
+    "matrix": {
+      "title": "Pellet Mill Matrices | GoldenDie",
+      "description": "Professional matrices for various types of pellet mills. High manufacturing quality, precise geometry, long service life.",
+      "keywords": "pellet mill matrices, industrial matrices, pellet mill parts"
+    },
+    "shell": {
+      "title": "Industrial Shells | GoldenDie",
+      "description": "Manufacturing of high-quality industrial shells. Individual approach, precise manufacturing, reliable operation.",
+      "keywords": "industrial shells, shell manufacturing, equipment parts"
+    },
+    "about": {
+      "title": "About GoldenDie",
+      "description": "GoldenDie - leading manufacturer of industrial equipment and spare parts. Learn about our history, mission, and commitment to quality.",
+      "keywords": "about goldendie, company history, mission, equipment manufacturing"
+    },
+    "contacts": {
+      "title": "Contact Us | GoldenDie",
+      "description": "Contact GoldenDie for equipment and spare parts orders. Professional consultation, individual approach to each client.",
+      "keywords": "contact goldendie, order equipment, consultation"
+    },
+    "serviceInformation": {
+      "title": "Service Information | GoldenDie",
+      "description": "Important information about GoldenDie equipment service and maintenance. Recommendations for operation and technical maintenance.",
+      "keywords": "service information, equipment maintenance, technical support"
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy | GoldenDie",
+      "description": "GoldenDie Privacy Policy. Information about personal data processing and user privacy protection.",
+      "keywords": "privacy policy, data protection, personal data"
+    },
+    "product": {
+      "title": "{{productName}} | Industrial Equipment",
+      "description": "{{productDescription}}. High-quality industrial equipment by GoldenDie. Category: {{category}}",
+      "keywords": "{{productName}}, industrial equipment, {{category}}, manufacturing, spare parts"
+    },
+    "spare-parts": {
+      "title": "Spare Parts | GoldenDie - High-Quality Industrial Equipment",
+      "description": "Explore our extensive range of high-quality spare parts for industrial equipment. Custom solutions for pellet mills and more.",
+      "keywords": "spare parts, industrial equipment, pellet mills, dies, shells, industrial facilities, granulation, GoldenDie"
+    },
+    "defaultTitle": "GoldenDie - Industrial Equipment and Spare Parts",
+    "defaultDescription": "High-quality industrial equipment, spare parts, and solutions for pellet mills and industrial facilities. Expert manufacturing with modern technology.",
+    "defaultKeywords": "industrial equipment, spare parts, pellet mills, manufacturing, industrial solutions"
+  },
+  "emailContent": {
+    "subject": "New request from website",
+    "contactRequest": "Contact Request",
+    "contactInformation": "Contact Information",
+    "name": "Name",
+    "phone": "Phone",
+    "country": "Country",
+    "companyName": "Company Name",
+    "comment": "Comment",
+    "equipmentRequest": "Equipment Information Request",
+    "productInfo": "Product Information",
+    "productId": "Product ID",
+    "productName": "Product Name",
+    "productCategory": "Product Category",
+    "type": "Equipment Type",
+    "matrix": "Matrix",
+    "shell": "Shell",
+    "info": {
+      "title": "Information",
+      "innerDiameter": "Inner Diameter",
+      "outerDiameter": "Outer Diameter",
+      "overallWidth": "Overall Width",
+      "workingWidth": "Working Width",
+      "drillingDiameter": "Drilling Diameter"
+    },
+    "about": {
+      "title": "About Equipment",
+      "manufacturer": "Manufacturer",
+      "model": "Model",
+      "serialNumber": "Serial Number",
+      "manufactureYear": "Year of Manufacture",
+      "commentary": "Additional Comments"
+    },
+    "email": {
+      "title": "Contact Information",
+      "address": "Email Address"
+    },
+    "noData": "No data"
+  }
+} 

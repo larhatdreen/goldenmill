@@ -1,0 +1,325 @@
+{
+  "helmet": {
+    "title": "GOLDENDIE ist eine Marke der Firma LKT Group GmbH, die technische Ersatzteile für industrielle Anlagen vertreibt, insbesondere Matrizen, Hülsen und Koller für Pellet-Pressen aller Art, Exzenterwellen sowie Hammer, Wellen und Siebe für Hammermühlen und Siebanlagen",
+    "description": "GOLDENDIE der Firma LKT Group GmbH, die technische Ersatzteile für industrielle Anlagen vertreibt, insbesondere Matrizen, Hülsen und Koller für Pellet-Pressen aller Art, Exzenterwellen sowie Hammer, Wellen und Siebe für Hammermühlen und Siebanlagen, Produktion, Herstellung von Ersatzteilen und technischen Komponenten nach Kundenzeichnungen"
+  },
+  "seo": {
+    "defaultTitle": "GoldenDie - LKE Group GmbH | Premium Matrizen und Kollerhülsen für Pelletpressen",
+    "defaultDescription": "Herstellung und Lieferung von hochwertigen Matrizen, Kollerhülsen und Ersatzteilen für Pelletpressen von LKE Group GmbH. Überlegene Härte, individuelle Abmessungen, weltweite Lieferung. Über 15 Jahre Erfahrung in der Herstellung von Industrieanlagen.",
+    "defaultKeywords": "LKE Group GmbH, GoldenDie, Matrizen, Kollerhülsen, Pelletpressen, Ersatzteile, Produktion, Industrieanlagen, individuelle Fertigung, hohe Qualität, weltweite Lieferung, Pelletproduktion, Granulierung, Extrusion",
+    "matrix": {
+      "title": "Premium Matrizen für Pelletpressen | LKE Group GmbH | GoldenDie",
+      "description": "Hochwertige Matrizen für Pelletpressen aller Art von LKE Group GmbH. Individuelle Fertigung nach Kundenzeichnungen, überlegene Härte und Verschleißfestigkeit, bis zu 10% weniger Verschleiß im Vergleich zu Wettbewerbern. Flachmatrizen, Ringmatrizen und Klemmmatrizen verfügbar.",
+      "keywords": "Matrizen für Pelletpressen, LKE Group GmbH, GoldenDie, Matrizenherstellung, Industrieanlagen, Ersatzteile, Flachmatrize, Ringmatrize, Klemmmatrize, individuelle Fertigung, hohe Härte, Verschleißfestigkeit, Pelletproduktion, Granulierung"
+    },
+    "shell": {
+      "title": "Premium Kollerhülsen für Pelletpressen | LKE Group GmbH | GoldenDie",
+      "description": "Hochwertige Kollerhülsen für Pelletpressen von LKE Group GmbH. Verschiedene Oberflächentypen (gelocht, geriffelt, Fischgräte), individuelle Abmessungen, überlegene Verschleißfestigkeit. Bis zu 7% weniger Verschleiß im Vergleich zu Wettbewerbern. Für Flachmatrizen, Ringmatrizen und Klemmmatrizen.",
+      "keywords": "Kollerhülsen für Pelletpressen, LKE Group GmbH, GoldenDie, Koller für Pellet-Pressen, Industrieanlagen, Ersatzteile, gelochte Oberfläche, geriffelte Oberfläche, Fischgräten-Oberfläche, individuelle Abmessungen, hohe Härte, Verschleißfestigkeit, Pelletproduktion"
+    },
+    "spare-parts": {
+      "title": "Premium Ersatzteile für Pelletpressen | LKE Group GmbH | GoldenDie",
+      "description": "Hochwertige Ersatzteile für Pelletpressen und Hammermühlen von LKE Group GmbH. Exzenterwellen, Hämmer, Wellen, Siebe und andere Komponenten. Individuelle Fertigung nach Kundenspezifikationen. Für Granulierung, Extrusion, Mahlen, Transport, Kühlung, Lagerung und elektrische Systeme.",
+      "keywords": "Ersatzteile für Pelletpressen, LKE Group GmbH, GoldenDie, Hammermühlen, Siebanlagen, Industrieanlagen, Exzenterwellen, Hämmer, Siebe, individuelle Fertigung, hohe Qualität, Granulierung, Extrusion, Mahlen, Transport, Kühlung, Lagerung, elektrische Systeme"
+    },
+    "about": {
+      "title": "Über LKE Group GmbH | GoldenDie | Premium Industrieanlagenhersteller",
+      "description": "LKE Group GmbH - Hersteller von hochwertigen Matrizen, Kollerhülsen und Ersatzteilen für Pelletpressen. Über 15 Jahre Erfahrung, eigene Produktion, CE-zertifizierte Anlagen, internationale Lieferungen. Individuelle Fertigung nach Kundenspezifikationen.",
+      "keywords": "LKE Group GmbH, GoldenDie, über uns, Matrizenherstellung, Kollerhülsen für Pelletpressen, Ersatzteile, Industrieanlagenhersteller, CE-zertifiziert, individuelle Fertigung, internationale Lieferungen, hohe Qualität, Pelletproduktion"
+    },
+    "contacts": {
+      "title": "Kontakt LKE Group GmbH | GoldenDie | Premium Industrieanlagenhersteller",
+      "description": "Kontaktieren Sie LKE Group GmbH für die Bestellung von hochwertigen Matrizen, Kollerhülsen und Ersatzteilen für Pelletpressen. Fachkundige Beratung, detaillierte Kostenberechnung, individuelle Lösungen. Weltweite Lieferung von Premium-Komponenten für Industrieanlagen.",
+      "keywords": "Kontakt LKE Group GmbH, GoldenDie, Matrizenbestellung, Kollerhülsen für Pelletpressen, Ersatzteile, Herstellerkontakt, Industrieanlagen, fachkundige Beratung, Kostenberechnung, individuelle Lösungen, weltweite Lieferung, Premium-Qualität"
+    },
+    "product": {
+      "title": "{{productName}} | LKE Group GmbH | GoldenDie",
+      "description": "{{productName}} von LKE Group GmbH. {{productDescription}} Hochwertige Fertigung, individuelle Abmessungen, überlegene Verschleißfestigkeit. Für Pelletpressen und Industrieanlagen.",
+      "keywords": "{{productName}}, LKE Group GmbH, GoldenDie, Matrizen, Kollerhülsen, Ersatzteile, Pelletpressen, Industrieanlagen, hohe Qualität, individuelle Fertigung, Verschleißfestigkeit, Pelletproduktion, Granulierung, Extrusion"
+    }
+  },
+  "dieMatrix": "Matrize",
+  "rollerShell": "Kollerhülse",
+  "navBar": {
+    "main": "Hauptseite",
+    "products": "Produkte",
+    "about": "Über uns",
+    "contacts": "Kontakt",
+    "menu": "Menü"
+  },
+  "productBlock": {
+    "innerDiameter": "Innendurchmesser",
+    "outerDiameter": "Außendurchmesser",
+    "overallWidth": "Gesamtbreite",
+    "workingWidth": "Arbeitsbreite",
+    "drillingDiameter": "Lochdurchmesser",
+    "surfaceType": "Oberflächentyp"
+  },
+  "titleBlock": {
+    "enterData": "Daten eingeben",
+    "needHelp": "Benötigen Sie Hilfe bei den Maßen?",
+    "productName": "",
+    "productDescription": "FÜR JEDE ART VON PELLET-PRESSE",
+    "countPrice": "Preis anfragen"
+  },
+  "inputSizesBlock": {
+    "innerDiameter": "Innendurchmesser, mm",
+    "outerDiameter": "Außendurchmesser, mm",
+    "overallWidth": "Gesamtbreite, mm",
+    "workingWidth": "Arbeitsbreite, mm",
+    "drillingDiameter": "Lochdurchmesser, mm",
+    "surfaceType": "Oberflächentyp",
+    "surfaceTypes": {
+      "default": "Nicht ausgewählt",
+      "perforated": "Gelocht",
+      "ribbedClosed": "Geriffelt (geschlossen)",
+      "ribbedOpen": "Geriffelt (offen)",
+      "slantGrooved": "Schräg-Geriffelt",
+      "fishBone": "Fischgräte",
+      "arc": "Gewölbt"
+    },
+    "errors": {
+      "emptyFieldError": "Füllen Sie das Feld aus"
+    }
+  },
+  "inputInfoBlock": {
+    "title": {
+      "info": "Informationen",
+      "about": "zur Maschine"
+    },
+    "noEquipmentData": "Es liegen keine Angaben zur Ausstattung vor, bzw. es fällt mir schwer genau zu antworten",
+    "manufacturer": "Hersteller",
+    "model": "Modell",
+    "serialNumber": "Seriennummer",
+    "manufactureYear": "Baujahr",
+    "commentary": "Ihre Nachricht",
+    "email": "E-Mail",
+    "upload": "Datei anhängen",
+    "ready": "absenden",
+    "success": {
+      "first": "Ihre Anfrage",
+      "second": "wurde versendet"
+    },
+    "errors": {
+      "emptyFieldError": "Füllen Sie das Feld aus",
+      "wrongFormat": "Falsches Format"
+    }
+  },
+  "inputHelpBlock": {
+    "title": {
+      "first": "HINTERLASSEN SIE IHRE DATEN",
+      "second": "um einen Manager zu kontaktieren"
+    },
+    "name": "Ihr Name",
+    "email": "E-Mail",
+    "phone": "Tel. Nummer",
+    "country": "Land",
+    "companyName": "Name des Unternehmens",
+    "commentary": "Ihr Kommentar",
+    "ready": "absenden",
+    "success": {
+      "first": "Ihre Anfrage",
+      "second": "wurde versendet"
+    },
+    "errors": {
+      "emptyFieldError": "Füllen Sie das Feld aus",
+      "wrongFormat": "Falsches Format"
+    }
+  },
+  "matrixTypes": {
+    "flatDie": "Flachmatrize",
+    "ringDie": "Ringmatrize",
+    "twinTrack": "Klemmmatrize"
+  },
+  "rollerShellTypes": {
+    "forFlatDie": "Für Flachmatrize",
+    "forRingDie": "Für Ringmatrize",
+    "forTwinTrack": "Für Twin-Track"
+  },
+  "diagrams": {
+    "dieMatrix": {
+      "highHardness": {
+        "title": {
+          "first": "HOHER",
+          "second": "HÄRTE",
+          "third": "WERT"
+        },
+        "description": "BEI ARBEITSTEMPERATURT",
+        "descriptionBg": "HÄRTE",
+        "diagramName": "ABHÄNGIGKEITSDIAGRAMM",
+        "diagramX": "Arbeitstemperatur (°С)"
+      },
+      "comparisons": {
+        "title": {
+          "first": "VERGLEICH MIT",
+          "second": "WETTBEWERBERN"
+        },
+        "description": {
+          "first": "BIS ZU 10 % WENIGER VERSCHLEISS",
+          "second": "DER OBERFLÄCHE"
+        },
+        "descriptionBg": "VORTEIL",
+        "diagramName": "SCHNITTANSICHT EINER MATRIZE",
+        "diagramArrow": "Bis zu 10 % weniger Verschleiß",
+        "diagramDesignation": "Konkurrenz"
+      },
+      "technicalData": {
+        "title": "TECHNISCHE",
+        "description": "DATEN",
+        "descriptionBg": "SPEZIFIKATION",
+        "diagramName": "ABHÄNGIGKEITSDIAGRAMM",
+        "column": {
+          "first": {
+            "drilling": "Bohrung",
+            "metal": "Metal",
+            "hardening": "Härtung"
+          },
+          "second": {
+            "holes": "Lochmaß",
+            "counterSink": "Ansenkung",
+            "counterDrill": "Gegenbohrung",
+            "alloyType": "Legierungstyp",
+            "vacuum": "Vakuum"
+          },
+          "third": {
+            "holesValue": "1,8 - 25 mm",
+            "counterSinkValue": "15° - 60°",
+            "counterDrillValue": "Konisch / Zylindrisch / 1-, 2-, 3-stufig",
+            "alloyTypeValue": "Chrom-Stahl",
+            "vacuumValue": "52-55 HRC"
+          }
+        }
+      }
+    },
+    "rollerShell": {
+      "surfaceTypes": {
+        "title": {
+          "first": "TYP DER",
+          "second": "OBERFLÄCHE"
+        },
+        "description": "AUSWAHL",
+        "descriptionBg": "OBERFLÄCHE",
+        "surfaceTypes": {
+          "perforated": "Gelocht",
+          "ribbedClosed": "Geriffelt (geschlossen)",
+          "ribbedOpen": "Geriffelt (offen)",
+          "slantGrooved": "Schräg-Geriffelt",
+          "fishBone": "Fischgräte",
+          "arc": "Gewölbt"
+        }
+      },
+      "comparisons": {
+        "title": {
+          "first": "VERGLEICH MIT",
+          "second": "WETTBEWERBERN"
+        },
+        "description": {
+          "first": "BIS ZU 7% WENIGER VERSCHLEISS",
+          "second": "DER OBERFLÄCHE"
+        },
+        "descriptionBg": "VORTEIL",
+        "diagramName": "SCHNITTANSICHT EINER KOLLERHÜLSE",
+        "diagramArrow": "Bis zu 7 % weniger Verschleiß",
+        "diagramDesignation": "Konkurrenz"
+      },
+      "technicalData": {
+        "title": "TECHNISCHE",
+        "description": "DATEN",
+        "descriptionBg": "SPEZIFIKATION",
+        "diagramName": "ABHÄNGIGKEITSDIAGRAMM",
+        "column": {
+          "first": {
+            "surface": "Oberfläche",
+            "metal": "Metall",
+            "hardening": "Härtung"
+          },
+          "second": {
+            "perforation": "Bohrung",
+            "corrugation": "Riffelung",
+            "gradient": "Gradient",
+            "alloyType": "Legierungstyp",
+            "induction": "Induktion"
+          },
+          "third": {
+            "perforationValue": "6/7,5 oder 8/12 mm",
+            "corrugationValue": "M1 - M10",
+            "gradientValue": "0 - 40°",
+            "alloyTypeValue": "100Cr6/20MnCr5",
+            "inductionValue": "58-62 HRC"
+          }
+        }
+      }
+    }
+  },
+  "about": {
+    "about": {
+      "title": "FIRMENSPROFIL",
+      "description": "ÜBER UNS",
+      "descriptionBg": "Über das Unternehmen",
+      "text": "«GOLDEN DIE» ist eine Marke der Firma LKT Group GmbH, die technische Ersatzteile für industrielle Anlagen vertreibt, insbesondere Matrizen, Hülsen und Koller für Pellet-Pressen aller Art, Exzenterwellen sowie Hammer, Wellen und Siebe für Hammermühlen und Siebanlagen. Die Produktion unterstützt alle Ersatzteile in kleinen und großen Mengen gemäß den Zeichnungen, die in der Datenbank der Firma LKT Group GmbH vorhanden sind, sowie exklusiv gemäß den Zeichnungen, die von den Kunden des Unternehmens bereitgestellt werden.\n\nJede unter der Marke «GOLDEN DIE» hergestellte Einheit durchläuft eine Verarbeitung auf CE-zertifizierten Maschinen, was die Qualität und die Konformität der Verarbeitung des Produkts garantiert."
+    },
+    "history": {
+      "title": "FIRMENGESCHICHTE",
+      "description": "ZEITSTRAHL",
+      "descriptionBg": "Geschichte",
+      "timeLine": {
+        "ready": "Erledigt",
+        "awaiting": "Geplant",
+        "lktGroup": "Company's division LKT WERKE",
+        "goldenDie": "Marken Implementierung GOLDENDIE",
+        "goldenMill": "Marken Implementierung GOLDENMILL"
+      }
+    }
+  },
+  "contacts": {
+    "title": "KONTAKT",
+    "description": "INFORMATION",
+    "descriptionBg": "Firmendetails",
+    "descriptionBg1": "Kontakt",
+    "requisites": {
+      "title": "Firmendetails",
+      "companyName": "LKT Group GmbH",
+      "vat": "VAT Nr.: DE369065377",
+      "bank": "COMMERZBANK AG",
+      "swift": "SWIFT: COBADEFFXXX",
+      "konto": "IBAN: DE79300400000858235500"
+    },
+    "geo": {
+      "title": "Hauptbürostandort",
+      "address": "Lindenstraße 48-52, 40233 Düsseldorf, Deutschland"
+    },
+    "email": {
+      "title": "E-mail",
+      "email": "info@goldendie.de"
+    },
+    "phone": {
+      "title": "Telefon",
+      "phone": "+49 (0) 211 9891272"
+    },
+    "mapAddress": "Adresse auf der Karte <b>Lindenstraße 48-52, 40233 Düsseldorf, Deutschland</b>"
+  },
+  "footer": {
+    "requisites": {
+      "title": "Firmendetails",
+      "companyName": "LKT Group GmbH",
+      "vat": "VAT Nr.: DE369065377",
+      "bank": "COMMERZBANK AG",
+      "swift": "SWIFT: COBADEFFXXX",
+      "konto": "IBAN: DE79300400000858235500"
+    },
+    "contacts": {
+      "title": "Kontakt",
+      "geo": "Lindenstraße 48-52, 40233 Düsseldorf, Deutschland",
+      "email": "info@goldendie.de",
+      "phone": "+49 (0) 211 9891272"
+    },
+    "social": {
+      "title": "Soziale Netztwerke"
+    }
+  },
+  "subFooter": {
+    "copyright": "2023. Urheberrecht – alle Rechte vorbehalten",
+    "serviceInfo": "Impressum",
+    "privacyPolicy": "Datenschutzerklärung"
+  }
+}

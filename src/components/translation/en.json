@@ -1,0 +1,325 @@
+{
+  "helmet": {
+    "title": "GOLDENDIE is a brand of LKT Group GmbH that supplies technical spare parts for industrial equipment, including dies, shells, rollers for pellet mills of any type, eccentric shafts, as well as hammers, shafts, and screens for hammer mills and separators",
+    "description": "GOLDENDIE LKT Group GmbH, technical spare parts for industrial equipment, including dies, shells, rollers for pellet mills of any type, eccentric shafts, as well as hammers, shafts, and screens for hammer mills and separators, production, manufacturing of spare parts and engineering components according to customer drawings"
+  },
+  "seo": {
+    "defaultTitle": "GoldenDie - LKE Group GmbH | Premium Dies and Roller Shells for Pellet Mills",
+    "defaultDescription": "Manufacturing and supply of high-quality dies, roller shells, and spare parts for pellet mills from LKE Group GmbH. Superior hardness, custom dimensions, worldwide delivery. Over 15 years of experience in industrial equipment manufacturing.",
+    "defaultKeywords": "LKE Group GmbH, GoldenDie, dies, roller shells, pellet mills, spare parts, manufacturing, industrial equipment, custom manufacturing, high quality, worldwide delivery, pellet production, granulation, extrusion",
+    "matrix": {
+      "title": "Premium Dies for Pellet Mills | LKE Group GmbH | GoldenDie",
+      "description": "High-quality dies for pellet mills of any type from LKE Group GmbH. Custom manufacturing according to customer drawings, superior hardness and wear resistance, up to 10% less wear compared to competitors. Flat dies, ring dies, and twin-track dies available.",
+      "keywords": "dies for pellet mills, LKE Group GmbH, GoldenDie, die manufacturing, industrial equipment, spare parts, flat die, ring die, twin-track die, custom manufacturing, high hardness, wear resistance, pellet production, granulation"
+    },
+    "shell": {
+      "title": "Premium Roller Shells for Pellet Mills | LKE Group GmbH | GoldenDie",
+      "description": "High-quality roller shells for pellet mills from LKE Group GmbH. Various surface types (perforated, corrugated, fishbone), custom dimensions, superior wear resistance. Up to 7% less wear compared to competitors. For flat dies, ring dies, and twin-track dies.",
+      "keywords": "roller shells for pellet mills, LKE Group GmbH, GoldenDie, rollers for pellet mills, industrial equipment, spare parts, perforated surface, corrugated surface, fishbone surface, custom dimensions, high hardness, wear resistance, pellet production"
+    },
+    "spare-parts": {
+      "title": "Premium Spare Parts for Pellet Mills | LKE Group GmbH | GoldenDie",
+      "description": "High-quality spare parts for pellet mills and hammer mills from LKE Group GmbH. Eccentric shafts, hammers, shafts, screens, and other components. Custom manufacturing according to customer specifications. For granulation, extrusion, grinding, transport, cooling, storage, and electrical systems.",
+      "keywords": "spare parts for pellet mills, LKE Group GmbH, GoldenDie, hammer mills, separators, industrial equipment, eccentric shafts, hammers, screens, custom manufacturing, high quality, granulation, extrusion, grinding, transport, cooling, storage, electrical systems"
+    },
+    "about": {
+      "title": "About LKE Group GmbH | GoldenDie | Premium Industrial Equipment Manufacturer",
+      "description": "LKE Group GmbH - manufacturer of high-quality dies, roller shells, and spare parts for pellet mills. Over 15 years of experience, in-house production, CE-certified equipment, international deliveries. Custom manufacturing according to customer specifications.",
+      "keywords": "LKE Group GmbH, GoldenDie, about company, die manufacturing, roller shells for pellet mills, spare parts, industrial equipment manufacturer, CE-certified, custom manufacturing, international deliveries, high quality, pellet production"
+    },
+    "contacts": {
+      "title": "Contact LKE Group GmbH | GoldenDie | Premium Industrial Equipment Manufacturer",
+      "description": "Contact LKE Group GmbH for ordering high-quality dies, roller shells, and spare parts for pellet mills. Expert consultations, detailed cost calculations, individual solutions. Worldwide delivery of premium industrial equipment components.",
+      "keywords": "contact LKE Group GmbH, GoldenDie, die ordering, roller shells for pellet mills, spare parts, contact manufacturer, industrial equipment, expert consultations, cost calculations, individual solutions, worldwide delivery, premium quality"
+    },
+    "product": {
+      "title": "{{productName}} | LKE Group GmbH | GoldenDie",
+      "description": "{{productName}} from LKE Group GmbH. {{productDescription}} High-quality manufacturing, custom dimensions, superior wear resistance. For pellet mills and industrial equipment.",
+      "keywords": "{{productName}}, LKE Group GmbH, GoldenDie, dies, roller shells, spare parts, pellet mills, industrial equipment, high quality, custom manufacturing, wear resistance, pellet production, granulation, extrusion"
+    }
+  },
+  "dieMatrix": "DIE / MATRIX",
+  "rollerShell": "ROLLER SHELL",
+  "navBar": {
+    "main": "Main Page",
+    "products": "Products",
+    "about": "About Company",
+    "contacts": "Contact",
+    "menu": "Menu"
+  },
+  "productBlock": {
+    "innerDiameter": "Inner diameter",
+    "outerDiameter": "Outer diameter",
+    "overallWidth": "Total width",
+    "workingWidth": "Working width",
+    "drillingDiameter": "Hole diameter",
+    "surfaceType": "Surface type"
+  },
+  "titleBlock": {
+    "enterData": "Enter specs",
+    "needHelp": "Need help with measurements?",
+    "productName": "",
+    "productDescription": "FOR ANY TYPE OF PELLET-MILL",
+    "countPrice": "GET QUOTE"
+  },
+  "inputSizesBlock": {
+    "innerDiameter": "Inner diameter, mm",
+    "outerDiameter": "Outer diameter, mm",
+    "overallWidth": "Total width, mm",
+    "workingWidth": "Working width, mm",
+    "drillingDiameter": "Hole diameter, mm",
+    "surfaceType": "Surface type",
+    "surfaceTypes": {
+      "default": "Не выбрано",
+      "perforated": "Перфорированная",
+      "ribbedClosed": "Рифленая (закрытая)",
+      "ribbedOpen": "Рифленая (открытая)",
+      "slantGrooved": "Косо-рифленая",
+      "fishBone": "Рыбья кость",
+      "arc": "Дуга"
+    },
+    "errors": {
+      "emptyFieldError": "This field is blank"
+    }
+  },
+  "inputInfoBlock": {
+    "title": {
+      "info": "EQUIPMENT",
+      "about": "INFORMATION"
+    },
+    "noEquipmentData": "No equipment information or difficulty in answering accurately",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "serialNumber": "Serial number",
+    "manufactureYear": "Year of manufacture",
+    "commentary": "Message",
+    "email": "E-Mail",
+    "upload": "Attach fiel",
+    "ready": "Done",
+    "success": {
+      "first": "Your request for a quote",
+      "second": "HAS BEEN SUCCESSFULLY SENT"
+    },
+    "errors": {
+      "emptyFieldError": "This field is blank",
+      "wrongFormat": "Incorrect entry"
+    }
+  },
+  "inputHelpBlock": {
+    "title": {
+      "first": "PLEASE LEAVE DETAILS",
+      "second": "for contacting a manager"
+    },
+    "name": "Name",
+    "email": "E-Mail",
+    "phone": "Tel.",
+    "country": "Country",
+    "companyName": "Company Name",
+    "commentary": "Your Comment",
+    "ready": "Done",
+    "success": {
+      "first": "Your request",
+      "second": "HAS BEEN SENT"
+    },
+    "errors": {
+      "emptyFieldError": "This field is blank",
+      "wrongFormat": "Incorrect entry"
+    }
+  },
+  "matrixTypes": {
+    "flatDie": "Flat die",
+    "ringDie": "Ring die",
+    "twinTrack": "Twin-Track"
+  },
+  "rollerShellTypes": {
+    "forFlatDie": "For flat die",
+    "forRingDie": "For ring die",
+    "forTwinTrack": "For Twin-Track"
+  },
+  "diagrams": {
+    "dieMatrix": {
+      "highHardness": {
+        "title": {
+          "first": "HIGH",
+          "second": "HARDNESS",
+          "third": "VALUE"
+        },
+        "description": "AT WORKING TEMPERATURE  ",
+        "descriptionBg": "HARDNESS",
+        "diagramName": "DEPENDENCY DIAGRAM",
+        "diagramX": "Working temperature (°С)"
+      },
+      "comparisons": {
+        "title": {
+          "first": "COMPARISONS WITH",
+          "second": "COMPETITORS"
+        },
+        "description": {
+          "first": "UP TO 10% LESS WEAR",
+          "second": "OF SURFACE"
+        },
+        "descriptionBg": "ADVANTAGE",
+        "diagramName": "SECTIONAL VIEW OF A DIE",
+        "diagramArrow": "Up to 10% less wear",
+        "diagramDesignation": "Competitors"
+      },
+      "technicalData": {
+        "title": "TECHNICAL",
+        "description": "DATA",
+        "descriptionBg": "DATA",
+        "diagramName": "TABLE OF CHARACTERISTICS",
+        "column": {
+          "first": {
+            "drilling": "Drilling",
+            "metal": "Metal",
+            "hardening": "Hardening"
+          },
+          "second": {
+            "holes": "Holes",
+            "counterSink": "Countersink",
+            "counterDrill": "Counter-drill",
+            "alloyType": "Alloy type",
+            "vacuum": "Vacuum"
+          },
+          "third": {
+            "holesValue": "1,8 - 25 mm",
+            "counterSinkValue": "15° - 60°",
+            "counterDrillValue": "Conical / Cylindrical /    1-, 2-, 3-step",
+            "alloyTypeValue": "Chrome steel",
+            "vacuumValue": "52-55 HRC"
+          }
+        }
+      }
+    },
+    "rollerShell": {
+      "surfaceTypes": {
+        "title": {
+          "first": "TYPES OF",
+          "second": "SURFACE"
+        },
+        "description": "YOUR CHOICE",
+        "descriptionBg": "SURFACE",
+        "surfaceTypes": {
+          "perforated": "Dimpled",
+          "ribbedClosed": "Corrugated (closed)",
+          "ribbedOpen": "Corrugated (open)",
+          "slantGrooved": "Helical corrugated",
+          "fishBone": "Fishbone",
+          "arc": "Curved"
+        }
+      },
+      "comparisons": {
+        "title": {
+          "first": "COMPARISONS WITH",
+          "second": "COMPETITORS"
+        },
+        "description": {
+          "first": "UP TO 7% LESS WEAR",
+          "second": "OF SURFACE"
+        },
+        "descriptionBg": "ADVANTAGE",
+        "diagramName": "SECTIONAL VIEW OF A ROLLER SHELL",
+        "diagramArrow": "Up to 7% less wear",
+        "diagramDesignation": "Competitors"
+      },
+      "technicalData": {
+        "title": "TECHNICAL",
+        "description": "DATA",
+        "descriptionBg": "DATA",
+        "diagramName": "TABLE OF CHARACTERISTICS",
+        "column": {
+          "first": {
+            "surface": "Surface",
+            "metal": "Metal",
+            "hardening": "Hardening"
+          },
+          "second": {
+            "perforation": "Perforation",
+            "corrugation": "Corrugation",
+            "gradient": "Gradient",
+            "alloyType": "Alloy type",
+            "induction": "Induction"
+          },
+          "third": {
+            "perforationValue": "6/7,5 - 8/12 mm",
+            "corrugationValue": "M1 - M10",
+            "gradientValue": "0 - 40°",
+            "alloyTypeValue": "100Cr6/20MnCr5",
+            "inductionValue": "58-62 HRC"
+          }
+        }
+      }
+    }
+  },
+  "about": {
+    "about": {
+      "title": "COMPANY PROFILE",
+      "description": "ABOUT US",
+      "descriptionBg": "COMPANY PROFILE",
+      "text": "GOLDENDIE is a brand of LKT Group GmbH that supplies technical spare parts for industrial equipment, including dies, shells, rollers for pellet mills of any type, eccentric shafts, as well as hammers, shafts, and screens for hammer mills and separators.\n\nThe production supports any spare parts in small and large volumes based on the drawings available in the LKT Group GmbH database, as well as exclusively based on drawings provided by the customers.\n\nEvery unit produced under the GOLDENDIE brand is processed using CE-certified equipment, ensuring the quality and compliance of the product's workmanship."
+    },
+    "history": {
+      "title": "COMPANY HISTORY",
+      "description": "History",
+      "descriptionBg": "History",
+      "timeLine": {
+        "ready": "COMPLETED",
+        "awaiting": "PLANNED",
+        "lktGroup": "Company's division LKT WERKE",
+        "goldenDie": "Brand implementation GOLDENDIE",
+        "goldenMill": "Brand implementation GOLDENMILL"
+      }
+    }
+  },
+  "contacts": {
+    "title": "CONTACT",
+    "description": "INFO",
+    "descriptionBg": "Company details",
+    "descriptionBg1": "CONTACT",
+    "requisites": {
+      "title": "Company details",
+      "companyName": "LKT Group GmbH",
+      "vat": "VAT Nr.: DE369065377",
+      "bank": "COMMERZBANK AG",
+      "swift": "SWIFT: COBADEFFXXX",
+      "konto": "IBAN: DE79300400000858235500"
+    },
+    "geo": {
+      "title": "Main office location",
+      "address": "Lindenstraße 48-52, 40233 Düsseldorf, Germany"
+    },
+    "email": {
+      "title": "E-mail",
+      "email": "info@goldendie.de"
+    },
+    "phone": {
+      "title": "Tel.",
+      "phone": "+49 (0) 211 9891272"
+    },
+    "mapAddress": "ADDRESS ON THE MAP: <b>Lindenstraße 48-52, 40233 Düsseldorf, Germany</b>"
+  },
+  "footer": {
+    "requisites": {
+      "title": "Company details",
+      "companyName": "LKT Group GmbH",
+      "vat": "VAT Nr.: DE369065377",
+      "bank": "COMMERZBANK AG",
+      "swift": "SWIFT: COBADEFFXXX",
+      "konto": "IBAN: DE79300400000858235500"
+    },
+    "contacts": {
+      "title": "Contact",
+      "geo": "Lindenstraße 48-52, 40233 Düsseldorf, Germany",
+      "email": "info@goldendie.de",
+      "phone": "+49 (0) 211 9891272"
+    },
+    "social": {
+      "title": "Social media"
+    }
+  },
+  "subFooter": {
+    "copyright": "2023. Copyright - all rights reserved",
+    "serviceInfo": "Imprint",
+    "privacyPolicy": "Privacy policy"
+  }
+}

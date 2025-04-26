@@ -1,0 +1,182 @@
+import MainSection from './components/MainSection.tsx'
+import Section1 from './components/Section1.tsx'
+import Section2 from './components/Section2.tsx'
+import Section3 from './components/Section3.tsx'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import About from './components/About.tsx'
+import Contacts from './components/Contacts.tsx'
+import PageNotFound from './pages/PageNotFound.tsx'
+import PrivacyPolicy from './components/PrivacyPolicy.tsx'
+import CookiePolicy from './components/CookiePolicy.tsx'
+import Section1Shell from './components/Section1Shell.tsx'
+import Section2Shell from './components/Section2Shell.tsx'
+import Section3Shell from './components/Section3Shell.tsx'
+import ServiceInformation from './components/ServiceInformation.tsx'
+import { Wrapper } from './components/Wrapper.tsx'
+import { NavigateProvider } from './components/NavigateProvider.tsx'
+import { HelmetWrapper } from './components/helmet-wrapper/helmet-wrapper.tsx'
+import { Suspense } from 'react'
+import { CookieConsentBanner } from './components/CookieConsent/CookieConsentBanner'
+import SpareParts from './components/SpareParts'
+import AdminPanel from './components/admin/AdminPanel'
+import ProductLanding from './components/ProductLanding'
+import { isStaticFile } from './staticFileHandler'
+import SEO from './components/SEO'
+
+function App() {
+  const location = useLocation();
+  const defaultLanguage = 'de';
+
+  // Проверяем, является ли текущий URL статическим файлом
+  if (isStaticFile(location.pathname)) {
+    return null; // Не рендерим приложение для статических файлов
+  }
+
+  // Функция для определения языка из URL
+  const getLanguageFromPath = () => {
+    const pathParts = location.pathname.split('/');
+    if (pathParts[1] && ['en', 'de', 'ru'].includes(pathParts[1])) {
+      return pathParts[1];
+    }
+    return defaultLanguage;
+  };
+
+  // Функция для перенаправления на правильный языковой маршрут
+  const getRedirectPath = () => {
+    const currentLang = getLanguageFromPath();
+    return `/${currentLang}/matrix`;
+  };
+
+  return (
+    <>
+      <SEO />
+      <div className='min-h-screen flex flex-col items-center'>
+        <HelmetWrapper />
+        <Suspense fallback='loading'>
+          <Routes>
+            {/* Редирект с корневого пути на языковой маршрут */}
+            <Route
+              path='/'
+              element={<Navigate to={getRedirectPath()} replace />}
+            />
+
+            {/* Редирект с языкового пути на matrix */}
+            <Route
+              path=':lang'
+              element={
+                <NavigateProvider>
+                  <Navigate to={getRedirectPath()} replace />
+                </NavigateProvider>
+              }
+            />
+
+            {/* Языковые маршруты */}
+            <Route path=':lang'>
+              <Route
+                path='matrix'
+                element={
+                  <Wrapper>
+                    <MainSection type='Matrix' />
+                    <Section1 />
+                    <Section2 />
+                    <Section3 />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path='shell'
+                element={
+                  <Wrapper>
+                    <MainSection type='Shell' />
+                    <Section1Shell />
+                    <Section2Shell />
+                    <Section3Shell />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path='about'
+                element={
+                  <Wrapper>
+                    <About />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path='contacts'
+                element={
+                  <Wrapper>
+                    <Contacts />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path='serviceinformation'
+                element={
+                  <Wrapper>
+                    <ServiceInformation />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path='privacypolicy'
+                element={
+                  <Wrapper>
+                    <PrivacyPolicy />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path='cookie-policy'
+                element={
+                  <Wrapper>
+                    <CookiePolicy />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path='spare-parts'
+                element={
+                  <Wrapper>
+                    <SpareParts />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path='product/:id'
+                element={
+                  <Wrapper>
+                    <ProductLanding />
+                  </Wrapper>
+                }
+              />
+              <Route
+                path='admin'
+                element={<AdminPanel />}
+              />
+            </Route>
+
+            {/* Админ маршруты - вне языковых маршрутов */}
+            <Route path='admin'>
+              <Route path='login' element={<AdminPanel />} />
+              <Route index element={<AdminPanel />} />
+            </Route>
+
+            {/* 404 для неизвестных маршрутов */}
+            <Route
+              path='*'
+              element={
+                <Wrapper>
+                  <PageNotFound />
+                </Wrapper>
+              }
+            />
+          </Routes>
+        </Suspense>
+        <CookieConsentBanner />
+      </div>
+    </>
+  );
+}
+
+export default App;

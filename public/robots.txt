@@ -1,0 +1,39 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://goldendie.de/sitemap.xml
+
+# Prevent crawling of admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Prevent indexing of search results and temporary pages
+Disallow: /*?q=*
+Disallow: /tmp/
+Disallow: /temp/
+
+# Allow static assets
+Allow: /images/
+Allow: /pdf/
+Allow: /fonts/
+
+# Crawl-delay for better server performance
+Crawl-delay: 10
+
+# Host directive for preferred domain version
+Host: https://goldendie.de
+
+# Additional rules for specific bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 5
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 5
+
+# Clean parameters
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term 
