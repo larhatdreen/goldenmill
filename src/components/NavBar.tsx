@@ -7,7 +7,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { useTranslation } from 'react-i18next'
 import { getURLWithLang } from '../functions/get-url-with-lang.js'
 import { ParamsType } from './NavigateProvider.js'
-// import ThemeToggle from './ThemeToggle'
+import ThemeToggle from './ThemeToggle'
 import { Snackbar, Alert } from '@mui/material'
 
 export default function NavBar() {
@@ -46,9 +46,9 @@ export default function NavBar() {
     }
   }
 
-  // const handleThemeChange = () => {
-  //   setSnackbarOpen(true)
-  // }
+  const handleThemeChange = () => {
+    setSnackbarOpen(true)
+  }
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false)
@@ -87,7 +87,7 @@ export default function NavBar() {
               </li>
             </Link>
             <div className="flex items-center gap-4 ml-6">
-              {/* <ThemeToggle onToggle={handleThemeChange} /> */}
+              <ThemeToggle onToggle={handleThemeChange} />
               <LanguageDropdown />
             </div>
           </ul>
@@ -95,7 +95,7 @@ export default function NavBar() {
           {/* Mobile Menu Button */}
           <div className='md:hidden flex items-center gap-4'>
             <div className="flex items-center gap-4">
-              {/* <ThemeToggle onToggle={handleThemeChange} /> */}
+              <ThemeToggle onToggle={handleThemeChange} />
               <div className="flex items-center gap-2">
                 {languages.map(language => (
                   <button

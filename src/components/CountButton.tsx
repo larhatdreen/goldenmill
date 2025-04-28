@@ -19,7 +19,7 @@ function CountButton({ ...props }: CountButtonProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       {...props}
-      style={{ backgroundImage: `url(${props.src})` }}
+      style={{ backgroundImage: `url(${props.src})`, cursor: 'pointer' }}
     >
       {filled ? t('products.buttons.details') : props.defaultValue}
       <div

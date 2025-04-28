@@ -173,7 +173,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
             <div className='flex flex-col tablet:flex-row gap-4 ml-0 laptop:ml-[8%]'>
               <div
                 className='font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px]
-                              text-navSelect flex flex-row items-center hover:text-gold_'
+                              text-navSelect flex flex-row items-center hover:text-gold_ cursor-pointer'
                 onClick={handleButtonClick}
               >
                 <PlusIcon className='w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] laptop:w-[40px] laptop:h-[40px] mr-2' />

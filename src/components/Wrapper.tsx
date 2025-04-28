@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Bg } from './Bg'
+// import { Bg } from './Bg'
 import NavBar from './NavBar'
 import Footer from './Footer'
 import { useLanguageFromUrl } from '../hooks/useLanguageFromUrl'
@@ -14,7 +14,7 @@ export const Wrapper = ({ children }: WrapperProps) => {
 
   return (
     <>
-      <Bg />
+      {/* <Bg /> */}
       <NavBar />
       {children}
       <Footer />
