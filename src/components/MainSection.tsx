@@ -1,6 +1,6 @@
-import PlusIcon from './customIcons/PlusIcon.js'
-import QuestionIcon from './customIcons/QuestionIcon.js'
-import CountButton from './CountButton.js'
+import PlusIcon from "./customIcons/PlusIcon.js";
+import QuestionIcon from "./customIcons/QuestionIcon.js";
+import CountButton from "./CountButton.js";
 import {
   FormControl,
   FormHelperText,
@@ -10,559 +10,658 @@ import {
   Select,
   SelectChangeEvent,
   ThemeProvider,
-} from '@mui/material'
-import newTheme from './Text.js'
-import { ChangeEvent, lazy, Suspense, useState } from 'react'
-import FlatMatrix from './customIcons/FlatMatrix.js'
-import RingMatrix from './customIcons/RingMatrix.js'
-import TwinTrackMatrix from './customIcons/TwinTrackMatrix.js'
-import Modal from './Modal.js'
-import button from '../assets/UI/Btn.svg'
-import { onPointerEnterCircle, onPointerLeaveCircle } from '../functions/Functions.js'
-import FlatShell from './customIcons/FlatShell.js'
-import RingShell from './customIcons/RingShell.js'
-import TwinTrackShell from './customIcons/TwinTrackShell.js'
-import TwinTrackShell2 from './customIcons/TwinTrackShell2.js'
-import ModalInfo from './ModalInfo.js'
-import { useTranslation } from 'react-i18next'
+} from "@mui/material";
+import newTheme from "./Text.js";
+import { ChangeEvent, lazy, Suspense, useState } from "react";
+import FlatMatrix from "./customIcons/FlatMatrix.js";
+import RingMatrix from "./customIcons/RingMatrix.js";
+import TwinTrackMatrix from "./customIcons/TwinTrackMatrix.js";
+import Modal from "./Modal.js";
+import button from "../assets/UI/Btn.svg";
+import {
+  onPointerEnterCircle,
+  onPointerLeaveCircle,
+} from "../functions/Functions.js";
+import FlatShell from "./customIcons/FlatShell.js";
+import RingShell from "./customIcons/RingShell.js";
+import TwinTrackShell from "./customIcons/TwinTrackShell.js";
+import TwinTrackShell2 from "./customIcons/TwinTrackShell2.js";
+import ModalInfo from "./ModalInfo.js";
+import { useTranslation } from "react-i18next";
 
 // lazy load
-const Shell1 = lazy(() => import('./Shell1.js'))
-const Shell2 = lazy(() => import('./Shell2.js'))
-const Shell3_1 = lazy(() => import('./Shell3_1.js'))
-const Shell3_2 = lazy(() => import('./Shell3_2.js'))
+const Shell1 = lazy(() => import("./Shell1.js"));
+const Shell2 = lazy(() => import("./Shell2.js"));
+const Shell3_1 = lazy(() => import("./Shell3_1.js"));
+const Shell3_2 = lazy(() => import("./Shell3_2.js"));
 
-const Matrix1 = lazy(() => import('./Matrix1.js'))
-const Matrix2 = lazy(() => import('./Matrix2.js'))
-const Matrix3 = lazy(() => import('./Matrix3.js'))
+const Matrix1 = lazy(() => import("./Matrix1.js"));
+const Matrix2 = lazy(() => import("./Matrix2.js"));
+const Matrix3 = lazy(() => import("./Matrix3.js"));
 
 export interface IMainData {
-  innerDiameter: string
-  outerDiameter: string
-  overallWidth: string
-  workingWidth: string
-  drillingDiameter: string
+  innerDiameter: string;
+  outerDiameter: string;
+  overallWidth: string;
+  workingWidth: string;
+  drillingDiameter: string;
 }
 
-function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
-  const [open, setOpen] = useState(false)
-  const [countWindow, setCountWindow] = useState(false)
+function MainSection({ type }: { type: "Matrix" | "Shell" }) {
+  const [open, setOpen] = useState(false);
+  const [countWindow, setCountWindow] = useState(false);
   const [inputText, setInputText] = useState<IMainData>({
-    innerDiameter: '',
-    outerDiameter: '',
-    overallWidth: '',
-    workingWidth: '',
-    drillingDiameter: '',
-  })
+    innerDiameter: "",
+    outerDiameter: "",
+    overallWidth: "",
+    workingWidth: "",
+    drillingDiameter: "",
+  });
   const [errorText, setErrorText] = useState<IMainData>({
-    innerDiameter: '',
-    outerDiameter: '',
-    overallWidth: '',
-    workingWidth: '',
-    drillingDiameter: '',
-  })
-  const [matrix, setMatrix] = useState(1)
-  const [shell, setShell] = useState(1)
-  const [modalInfo, setModalInfo] = useState(false)
+    innerDiameter: "",
+    outerDiameter: "",
+    overallWidth: "",
+    workingWidth: "",
+    drillingDiameter: "",
+  });
+  const [matrix, setMatrix] = useState(1);
+  const [shell, setShell] = useState(1);
+  const [modalInfo, setModalInfo] = useState(false);
   const [data, setData] = useState<IMainData>({
-    innerDiameter: '',
-    outerDiameter: '',
-    overallWidth: '',
-    workingWidth: '',
-    drillingDiameter: '',
-  })
+    innerDiameter: "",
+    outerDiameter: "",
+    overallWidth: "",
+    workingWidth: "",
+    drillingDiameter: "",
+  });
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
-  const handleOpenModalInfo = () => setModalInfo(true)
-  const handleCloseModalInfo = () => setModalInfo(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  const handleOpenModalInfo = () => setModalInfo(true);
+  const handleCloseModalInfo = () => setModalInfo(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   function inputErrorHandler() {
-    if (!countWindow) return
+    if (!countWindow) return;
 
-    let errorsCount = 0
+    let errorsCount = 0;
 
-    Object.keys(inputText).forEach(key => {
-      if (inputText[key as keyof typeof inputText] === '') {
-        setErrorText(prevErrorText => ({
+    Object.keys(inputText).forEach((key) => {
+      if (inputText[key as keyof typeof inputText] === "") {
+        setErrorText((prevErrorText) => ({
           ...prevErrorText,
-          [key]: t('inputSizesBlock.errors.emptyFieldError'),
-        }))
-        errorsCount++
+          [key]: t("inputSizesBlock.errors.emptyFieldError"),
+        }));
+        errorsCount++;
       }
-    })
+    });
 
     if (errorsCount === 0) {
-      setData(inputText)
+      setData(inputText);
       setTimeout(() => {
-        handleButtonClick()
-      }, 200)
-      handleOpenModalInfo()
+        handleButtonClick();
+      }, 200);
+      handleOpenModalInfo();
     }
   }
 
-  function inputHandler(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    const inputId = e.target.id as keyof typeof inputText
-    setInputText(prevInputText => ({ ...prevInputText, [inputId]: e.target.value }))
-    setErrorText(prevErrorText => ({ ...prevErrorText, [inputId]: '' }))
+  function inputHandler(
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const inputId = e.target.id as keyof typeof inputText;
+    setInputText((prevInputText) => ({
+      ...prevInputText,
+      [inputId]: e.target.value,
+    }));
+    setErrorText((prevErrorText) => ({ ...prevErrorText, [inputId]: "" }));
   }
 
   function handleButtonClick() {
     setInputText({
-      innerDiameter: '',
-      outerDiameter: '',
-      overallWidth: '',
-      workingWidth: '',
-      drillingDiameter: '',
-    })
+      innerDiameter: "",
+      outerDiameter: "",
+      overallWidth: "",
+      workingWidth: "",
+      drillingDiameter: "",
+    });
     setErrorText({
-      innerDiameter: '',
-      outerDiameter: '',
-      overallWidth: '',
-      workingWidth: '',
-      drillingDiameter: '',
-    })
-    setCountWindow(prevCountWindow => !prevCountWindow)
+      innerDiameter: "",
+      outerDiameter: "",
+      overallWidth: "",
+      workingWidth: "",
+      drillingDiameter: "",
+    });
+    setCountWindow((prevCountWindow) => !prevCountWindow);
   }
 
   function selectMatrix() {
-    if (type === 'Matrix') {
+    if (type === "Matrix") {
       switch (matrix) {
         case 1:
-          return <Matrix1 handleOpen={() => setCountWindow(true)} />
+          return <Matrix1 handleOpen={() => setCountWindow(true)} />;
         case 2:
-          return <Matrix2 handleOpen={() => setCountWindow(true)} />
+          return <Matrix2 handleOpen={() => setCountWindow(true)} />;
         case 3:
-          return <Matrix3 handleOpen={() => setCountWindow(true)} />
+          return <Matrix3 handleOpen={() => setCountWindow(true)} />;
 
         default:
-          return <Matrix1 handleOpen={() => setCountWindow(true)} />
+          return <Matrix1 handleOpen={() => setCountWindow(true)} />;
       }
-    } else if (type === 'Shell') {
+    } else if (type === "Shell") {
       switch (shell) {
         case 1:
-          return <Shell1 handleOpen={() => setCountWindow(true)} />
+          return <Shell1 handleOpen={() => setCountWindow(true)} />;
         case 2:
-          return <Shell2 handleOpen={() => setCountWindow(true)} />
+          return <Shell2 handleOpen={() => setCountWindow(true)} />;
         case 3:
-          return <Shell3_1 handleOpen={() => setCountWindow(true)} />
+          return <Shell3_1 handleOpen={() => setCountWindow(true)} />;
         case 4:
-          return <Shell3_2 handleOpen={() => setCountWindow(true)} />
+          return <Shell3_2 handleOpen={() => setCountWindow(true)} />;
 
         default:
-          return <Matrix1 handleOpen={() => setCountWindow(true)} />
+          return <Matrix1 handleOpen={() => setCountWindow(true)} />;
       }
     }
   }
 
   return (
-    <section className='w-full max-w-[1920px] select-none'>
-      <ModalInfo open={modalInfo} handleClose={handleCloseModalInfo} data={data} type={type} />
+    <section className="w-full max-w-[1920px] select-none">
+      <ModalInfo
+        open={modalInfo}
+        handleClose={handleCloseModalInfo}
+        data={data}
+        type={type}
+      />
 
       <div
-        className='grid grid-rows-1 laptop:grid-cols-[0%_50%_auto] desktopLg:grid-cols-[5%_45%_auto]
-            desktopFHD:grid-cols-[6%_44%_auto] px-4 sm:px-6 md:px-8'
+        className="grid grid-rows-1 laptop:grid-cols-[0%_50%_auto] desktopLg:grid-cols-[5%_45%_auto]
+            desktopFHD:grid-cols-[6%_44%_auto] px-4 sm:px-6 md:px-8"
       >
-        <div className='firstHelpColumn' />
-        <Suspense fallback='loading'>{selectMatrix()}</Suspense>
+        <div className="firstHelpColumn" />
+        <Suspense fallback="loading">{selectMatrix()}</Suspense>
 
-        <div className='flex flex-col justify-between mt-6 laptop:mt-12 order-first laptop:order-2 min-h-[420px] laptop:min-h-[520px]'>
+        <div className="flex flex-col justify-between mt-6 laptop:mt-12 order-first laptop:order-2 min-h-[420px] laptop:min-h-[520px]">
           <div>
-            <div className='flex flex-col tablet:flex-row gap-4 ml-0 laptop:ml-[8%]'>
+            <div className="flex flex-col tablet:flex-row gap-4 ml-0 laptop:ml-[8%]">
               <div
-                className='font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px]
-                              text-navSelect flex flex-row items-center hover:text-gold_ cursor-pointer'
-                onClick={handleButtonClick}
-              >
-                <PlusIcon className='w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] laptop:w-[40px] laptop:h-[40px] mr-2' />
-                {t('titleBlock.enterData')}
-              </div>
-              <div
-                className='font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px] text-navSelect flex flex-row items-center hover:text-blue_'
+                className="font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px] text-[#D5CDBD] flex flex-row items-center hover:text-[#82653F] group"
                 onMouseUp={handleOpen}
               >
-                <QuestionIcon className='w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] laptop:w-[40px] laptop:h-[40px] mt-[8px] mr-2' />
-                {t('titleBlock.needHelp')}
+                <QuestionIcon className="w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] laptop:w-[40px] laptop:h-[40px] mt-[8px] mr-2 fill-[#82653F] stroke-[#82653F]" />
+                {t("titleBlock.needHelp")}
 
                 <Modal open={open} handleClose={handleClose} />
               </div>
             </div>
 
             {!countWindow && (
-              <div className='flex justify-between items-start flex-col mt-4 laptop:mt-16 ml-0 laptop:ml-[8%]'>
-                <div className='font-bebasLight text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[147px] laptop:text-[177px] text-[#554F45] leading-none'>
-                  {type === 'Matrix' ? t('dieMatrix') : t('rollerShell')}
-                </div>
-                <div className='font-adventpro text-[24px] sm:text-[28px] laptop:text-[32px] text-navSelect uppercase mt-2 laptop:mt-0'>
-                  {t('titleBlock.productDescription')}
-                </div>
-                <CountButton
-                  className='relative z-[1] w-full sm:w-[282px] mt-8 laptop:mt-[61px] aspect-[282/58] font-bebas text-white
-                                    text-[18px] sm:text-[20px] laptop:text-[22px] flex items-center justify-center bg-contain
-                                    bg-no-repeat'
-                  src={button}
-                  onClick={() => {
-                    inputErrorHandler()
-                    setCountWindow(true)
-                  }}
-                  defaultValue={t('titleBlock.countPrice')}
-                />
-              </div>
-            )}
-
-            {countWindow && (
-              <div
-                className='ml-0 laptop:ml-[4.8%] w-full sm:w-[320px] h-[400px] mobileLg:w-[440px] mobileLg:h-[400px] tablet:w-[561px] desktopMd:w-[597px]
-                            tablet:h-[468px] z-[0] bg-[#ffffff08] rounded-[10px] backdrop-blur-[19px]
-                             backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(19px)_brightness(100%)]'
-              >
-                <ThemeProvider theme={newTheme}>
-                  <div className='w-full h-full px-[5%] pt-[50px] pb-[60px] flex flex-col justify-between'>
-                    <div className='flex flex-row justify-between gap-x-[10%]'>
-                      <FormControl error={errorText.innerDiameter !== ''} variant='standard' className='z-10 w-full'>
-                        <InputLabel htmlFor='innerDiameter'>{t('inputSizesBlock.innerDiameter')}</InputLabel>
-                        <Input
-                          className='text-[10px]'
-                          type='number'
-                          id='innerDiameter'
-                          aria-describedby='component-error-text'
-                          onChange={e => inputHandler(e)}
-                          onFocus={() => onPointerEnterCircle('circle1')}
-                          onBlur={() => onPointerLeaveCircle('circle1')}
-                          autoComplete='off'
-                        />
-                        {errorText.innerDiameter && (
-                          <FormHelperText id='component-error-text'>{errorText.innerDiameter}</FormHelperText>
-                        )}
-                      </FormControl>
-                      <FormControl error={errorText.outerDiameter !== ''} variant='standard' className='z-10 w-full'>
-                        <InputLabel htmlFor='outerDiameter'>{t('inputSizesBlock.outerDiameter')}</InputLabel>
-                        <Input
-                          type='number'
-                          id='outerDiameter'
-                          aria-describedby='component-error-text'
-                          onChange={e => inputHandler(e)}
-                          onFocus={() => onPointerEnterCircle('circle2')}
-                          onBlur={() => onPointerLeaveCircle('circle2')}
-                        />
-                        {errorText.outerDiameter && (
-                          <FormHelperText id='component-error-text'>{errorText.outerDiameter}</FormHelperText>
-                        )}
-                      </FormControl>
-                    </div>
-
-                    <div className='flex flex-row justify-between gap-x-[10%]'>
-                      <FormControl error={errorText.overallWidth !== ''} variant='standard' className='z-10 w-full'>
-                        <InputLabel htmlFor='overallWidth'>{t('inputSizesBlock.overallWidth')}</InputLabel>
-                        <Input
-                          type='number'
-                          id='overallWidth'
-                          aria-describedby='component-error-text'
-                          onChange={e => inputHandler(e)}
-                          onFocus={() => onPointerEnterCircle('circle3')}
-                          onBlur={() => onPointerLeaveCircle('circle3')}
-                        />
-                        {errorText.overallWidth && (
-                          <FormHelperText id='component-error-text'>{errorText.overallWidth}</FormHelperText>
-                        )}
-                      </FormControl>
-                      <FormControl error={errorText.workingWidth !== ''} variant='standard' className='z-10 w-full'>
-                        <InputLabel htmlFor='workingWidth'>{t('inputSizesBlock.workingWidth')}</InputLabel>
-                        <Input
-                          type='number'
-                          id='workingWidth'
-                          aria-describedby='component-error-text'
-                          onChange={e => inputHandler(e)}
-                          onFocus={() => onPointerEnterCircle('circle4')}
-                          onBlur={() => onPointerLeaveCircle('circle4')}
-                        />
-                        {errorText.workingWidth && (
-                          <FormHelperText id='component-error-text'>{errorText.workingWidth}</FormHelperText>
-                        )}
-                      </FormControl>
-                    </div>
-
-                    <div className='flex flex-row justify-between w-[45%]'>
-                      {type === 'Matrix' && (
-                        <FormControl
-                          error={errorText.drillingDiameter !== ''}
-                          variant='standard'
-                          className='z-10 w-full'
-                        >
-                          <InputLabel htmlFor='drillingDiameter'>{t('inputSizesBlock.drillingDiameter')}</InputLabel>
-                          <Input
-                            type='number'
-                            id='drillingDiameter'
-                            aria-describedby='component-error-text'
-                            onChange={e => inputHandler(e)}
-                            onFocus={() => onPointerEnterCircle('circle5')}
-                            onBlur={() => onPointerLeaveCircle('circle5')}
-                          />
-                          {errorText.drillingDiameter && (
-                            <FormHelperText id='component-error-text'>{errorText.drillingDiameter}</FormHelperText>
-                          )}
-                        </FormControl>
-                      )}
-                      {type === 'Shell' && (
-                        <FormControl
-                          error={errorText.drillingDiameter !== ''}
-                          variant='standard'
-                          className='z-10 w-full'
-                        >
-                          <InputLabel htmlFor='drillingDiameter'>{t('inputSizesBlock.surfaceType')}</InputLabel>
-                          <Select
-                            id='drillingDiameter'
-                            defaultValue=''
-                            onChange={(e: SelectChangeEvent) => {
-                              setInputText(prevInputText => ({
-                                ...prevInputText,
-                                drillingDiameter: e.target.value,
-                              }))
-                              setErrorText(prevErrorText => ({
-                                ...prevErrorText,
-                                drillingDiameter: '',
-                              }))
-                            }}
-                            onFocus={() => onPointerEnterCircle('circle5')}
-                            onBlur={() => onPointerLeaveCircle('circle5')}
-                          >
-                            <MenuItem value=''>
-                              <em className='text-footerBottomText'>{t('inputSizesBlock.surfaceTypes.default')}</em>
-                            </MenuItem>
-                            <MenuItem value='1'>{t('inputSizesBlock.surfaceTypes.perforated')}</MenuItem>
-                            <MenuItem value='2'>{t('inputSizesBlock.surfaceTypes.ribbedClosed')}</MenuItem>
-                            <MenuItem value='3'>{t('inputSizesBlock.surfaceTypes.ribbedOpen')}</MenuItem>
-                            <MenuItem value='4'>{t('inputSizesBlock.surfaceTypes.slantGrooved')}</MenuItem>
-                            <MenuItem value='5'>{t('inputSizesBlock.surfaceTypes.fishBone')}</MenuItem>
-                            <MenuItem value='6'>{t('inputSizesBlock.surfaceTypes.arc')}</MenuItem>
-                          </Select>
-                          {errorText.drillingDiameter && (
-                            <FormHelperText id='component-error-text'>{errorText.drillingDiameter}</FormHelperText>
-                          )}
-                        </FormControl>
-                      )}
-                    </div>
-                    <CountButton
-                      className='relative mt-[5%] z-[1] w-[282px] aspect-[282/58] font-bebas text-white
-                                                       text-[22px] flex items-center justify-center bg-contain bg-no-repeat'
-                      src={button}
-                      onClick={() => {
-                        inputErrorHandler()
-                        setCountWindow(true)
-                      }}
-                      defaultValue={t('titleBlock.countPrice')}
-                    />
+              <div className="flex justify-between items-start flex-col mt-4 laptop:mt-16 ml-0 laptop:ml-[8%]">
+                <div className="flex flex-col">
+                  <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[143px] laptop:text-[143px] text-[#82653F] uppercase leading-none">
+                    {type === "Matrix" ? t("dieMatrix") : t("rollerShell")}
                   </div>
-                </ThemeProvider>
-              </div>
-            )}
+                  <div className="font-bebasLight text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[106px] laptop:text-[106px] text-[#767676] uppercase leading-none">
+                    {t("granulator")}
+                  </div>
+                </div>
+                  <div className='font-adventpro text-[20px] sm:text-[28px] laptop:text-[32px] text-[#D5CDBD] uppercase font-normal mt-2 laptop:mt-0 whitespace-pre-line'>
+                    {t('titleBlock.productDescription')}
+                  </div>
+                  <CountButton
+                    className="relative z-[1] w-full sm:w-[282px] mt-8 laptop:mt-[36px] aspect-[282/58] font-bebas text-white
+                                      text-[18px] sm:text-[20px] laptop:text-[22px] flex items-center justify-center bg-contain
+                                      bg-no-repeat"
+                    src={button}
+                    onClick={() => {
+                      inputErrorHandler();
+                      setCountWindow(true);
+                    }}
+                    defaultValue={t("titleBlock.countPrice")}
+                  />
+                </div>
+              )}
+
+              {countWindow && (
+                <div
+                  className="ml-0 laptop:ml-[4.8%] w-full sm:w-[320px] h-[400px] mobileLg:w-[440px] mobileLg:h-[400px] tablet:w-[561px] desktopMd:w-[597px]
+                              tablet:h-[468px] z-[0] bg-[#ffffff08] rounded-[10px] backdrop-blur-[19px]
+                               backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(19px)_brightness(100%)]"
+                >
+                  <ThemeProvider theme={newTheme}>
+                    <div className="w-full h-full px-[5%] pt-[50px] pb-[60px] flex flex-col justify-between">
+                      <div className="flex flex-row justify-between gap-x-[10%]">
+                        <FormControl
+                          error={errorText.innerDiameter !== ""}
+                          variant="standard"
+                          className="z-10 w-full"
+                        >
+                          <InputLabel htmlFor="innerDiameter">
+                            {t("inputSizesBlock.innerDiameter")}
+                          </InputLabel>
+                          <Input
+                            className="text-[10px]"
+                            type="number"
+                            id="innerDiameter"
+                            aria-describedby="component-error-text"
+                            onChange={(e) => inputHandler(e)}
+                            onFocus={() => onPointerEnterCircle("circle1")}
+                            onBlur={() => onPointerLeaveCircle("circle1")}
+                            autoComplete="off"
+                          />
+                          {errorText.innerDiameter && (
+                            <FormHelperText id="component-error-text">
+                              {errorText.innerDiameter}
+                            </FormHelperText>
+                          )}
+                        </FormControl>
+                        <FormControl
+                          error={errorText.outerDiameter !== ""}
+                          variant="standard"
+                          className="z-10 w-full"
+                        >
+                          <InputLabel htmlFor="outerDiameter">
+                            {t("inputSizesBlock.outerDiameter")}
+                          </InputLabel>
+                          <Input
+                            type="number"
+                            id="outerDiameter"
+                            aria-describedby="component-error-text"
+                            onChange={(e) => inputHandler(e)}
+                            onFocus={() => onPointerEnterCircle("circle2")}
+                            onBlur={() => onPointerLeaveCircle("circle2")}
+                          />
+                          {errorText.outerDiameter && (
+                            <FormHelperText id="component-error-text">
+                              {errorText.outerDiameter}
+                            </FormHelperText>
+                          )}
+                        </FormControl>
+                      </div>
+
+                      <div className="flex flex-row justify-between gap-x-[10%]">
+                        <FormControl
+                          error={errorText.overallWidth !== ""}
+                          variant="standard"
+                          className="z-10 w-full"
+                        >
+                          <InputLabel htmlFor="overallWidth">
+                            {t("inputSizesBlock.overallWidth")}
+                          </InputLabel>
+                          <Input
+                            type="number"
+                            id="overallWidth"
+                            aria-describedby="component-error-text"
+                            onChange={(e) => inputHandler(e)}
+                            onFocus={() => onPointerEnterCircle("circle3")}
+                            onBlur={() => onPointerLeaveCircle("circle3")}
+                          />
+                          {errorText.overallWidth && (
+                            <FormHelperText id="component-error-text">
+                              {errorText.overallWidth}
+                            </FormHelperText>
+                          )}
+                        </FormControl>
+                        <FormControl
+                          error={errorText.workingWidth !== ""}
+                          variant="standard"
+                          className="z-10 w-full"
+                        >
+                          <InputLabel htmlFor="workingWidth">
+                            {t("inputSizesBlock.workingWidth")}
+                          </InputLabel>
+                          <Input
+                            type="number"
+                            id="workingWidth"
+                            aria-describedby="component-error-text"
+                            onChange={(e) => inputHandler(e)}
+                            onFocus={() => onPointerEnterCircle("circle4")}
+                            onBlur={() => onPointerLeaveCircle("circle4")}
+                          />
+                          {errorText.workingWidth && (
+                            <FormHelperText id="component-error-text">
+                              {errorText.workingWidth}
+                            </FormHelperText>
+                          )}
+                        </FormControl>
+                      </div>
+
+                      <div className="flex flex-row justify-between w-[45%]">
+                        {type === "Matrix" && (
+                          <FormControl
+                            error={errorText.drillingDiameter !== ""}
+                            variant="standard"
+                            className="z-10 w-full"
+                          >
+                            <InputLabel htmlFor="drillingDiameter">
+                              {t("inputSizesBlock.drillingDiameter")}
+                            </InputLabel>
+                            <Input
+                              type="number"
+                              id="drillingDiameter"
+                              aria-describedby="component-error-text"
+                              onChange={(e) => inputHandler(e)}
+                              onFocus={() => onPointerEnterCircle("circle5")}
+                              onBlur={() => onPointerLeaveCircle("circle5")}
+                            />
+                            {errorText.drillingDiameter && (
+                              <FormHelperText id="component-error-text">
+                                {errorText.drillingDiameter}
+                              </FormHelperText>
+                            )}
+                          </FormControl>
+                        )}
+                        {type === "Shell" && (
+                          <FormControl
+                            error={errorText.drillingDiameter !== ""}
+                            variant="standard"
+                            className="z-10 w-full"
+                          >
+                            <InputLabel htmlFor="drillingDiameter">
+                              {t("inputSizesBlock.surfaceType")}
+                            </InputLabel>
+                            <Select
+                              id="drillingDiameter"
+                              defaultValue=""
+                              onChange={(e: SelectChangeEvent) => {
+                                setInputText((prevInputText) => ({
+                                  ...prevInputText,
+                                  drillingDiameter: e.target.value,
+                                }));
+                                setErrorText((prevErrorText) => ({
+                                  ...prevErrorText,
+                                  drillingDiameter: "",
+                                }));
+                              }}
+                              onFocus={() => onPointerEnterCircle("circle5")}
+                              onBlur={() => onPointerLeaveCircle("circle5")}
+                            >
+                              <MenuItem value="">
+                                <em className="text-footerBottomText">
+                                  {t("inputSizesBlock.surfaceTypes.default")}
+                                </em>
+                              </MenuItem>
+                              <MenuItem value="1">
+                                {t("inputSizesBlock.surfaceTypes.perforated")}
+                              </MenuItem>
+                              <MenuItem value="2">
+                                {t("inputSizesBlock.surfaceTypes.ribbedClosed")}
+                              </MenuItem>
+                              <MenuItem value="3">
+                                {t("inputSizesBlock.surfaceTypes.ribbedOpen")}
+                              </MenuItem>
+                              <MenuItem value="4">
+                                {t("inputSizesBlock.surfaceTypes.slantGrooved")}
+                              </MenuItem>
+                              <MenuItem value="5">
+                                {t("inputSizesBlock.surfaceTypes.fishBone")}
+                              </MenuItem>
+                              <MenuItem value="6">
+                                {t("inputSizesBlock.surfaceTypes.arc")}
+                              </MenuItem>
+                            </Select>
+                            {errorText.drillingDiameter && (
+                              <FormHelperText id="component-error-text">
+                                {errorText.drillingDiameter}
+                              </FormHelperText>
+                            )}
+                          </FormControl>
+                        )}
+                      </div>
+                      <CountButton
+                        className="relative mt-[5%] z-[1] w-[282px] aspect-[282/58] font-bebas text-white
+                                                         text-[22px] flex items-center justify-center bg-contain bg-no-repeat"
+                        src={button}
+                        onClick={() => {
+                          inputErrorHandler();
+                          setCountWindow(true);
+                        }}
+                        defaultValue={t("titleBlock.countPrice")}
+                      />
+                    </div>
+                  </ThemeProvider>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
       {/*Select Product Carousel*/}
-      <div className='w-full flex justify-center px-2 mobileMd:px-4 '>
-        <div className='w-[10%] hidden laptop:block' />
+      <div className="w-full flex justify-center px-2 mobileMd:px-4 ">
+        <div className="w-[10%] hidden laptop:block" />
         <div
-          className='flex flex-wrap justify-center laptop:justify-between mt-6 laptop:mt-0 pt-5 gap-x-8 sm:gap-x-12 laptop:gap-x-16 gap-y-6 px-4 sm:px-6 laptop:px-6
-                relative top-0 laptop:top-5 desktopFHD:-top-10'
+          className="flex flex-wrap justify-center laptop:justify-between mt-6 laptop:mt-0 pt-5 gap-x-8 sm:gap-x-12 laptop:gap-x-16 gap-y-6 px-4 sm:px-6 laptop:px-6
+                relative top-0 laptop:top-5 desktopFHD:-top-10"
         >
-          {type === 'Matrix' && (
+          {type === "Matrix" && (
             <>
               <div
-                className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]'
+                className="relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]"
                 onClick={() => {
-                  setMatrix(1)
-                  setCountWindow(false)
+                  setMatrix(1);
+                  setCountWindow(false);
                 }}
               >
                 <div
-                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
-                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
+                  className="absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
+                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap"
                 >
-                  {t('matrixTypes.flatDie')}
+                  {t("matrixTypes.flatDie")}
                 </div>
                 <div
-                  className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
-                            md:text-[17px] lg:text-[20px]'
+                  className="absolute -left-[12%] top-[50%] -translate-y-[50%] font-labrotesque text-white text-[14px]
+                            md:text-[17px] lg:text-[20px]"
                 >
                   1
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${matrix === 1 ? '#ffffff08' : 'transparent'}] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${
+                          matrix === 1 ? "#ffffff08" : "transparent"
+                        }] hover:bg-[#544B3C50]`}
                 >
-                  <FlatMatrix className='rotate-180 w-[90%]' stroke={matrix === 1 ? '#D5CDBD' : '#605C54'} />
+                  <FlatMatrix
+                    className="rotate-180 w-[90%]"
+                    stroke={matrix === 1 ? "#D5CDBD" : "#605C54"}
+                  />
                 </div>
               </div>
 
               <div
-                className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]'
+                className="relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]"
                 onClick={() => {
-                  setMatrix(2)
-                  setCountWindow(false)
+                  setMatrix(2);
+                  setCountWindow(false);
                 }}
               >
                 <div
-                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
-                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
+                  className="absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
+                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap"
                 >
-                  {t('matrixTypes.ringDie')}
+                  {t("matrixTypes.ringDie")}
                 </div>
                 <div
-                  className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
-                            md:text-[17px] lg:text-[20px]'
+                  className="absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
+                            md:text-[17px] lg:text-[20px]"
                 >
                   2
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${matrix === 2 ? '#ffffff08' : 'transparent'}] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${
+                          matrix === 2 ? "#ffffff08" : "transparent"
+                        }] hover:bg-[#544B3C50]`}
                 >
-                  <RingMatrix className='h-[90%]' stroke={matrix === 2 ? '#D5CDBD' : '#605C54'} />
+                  <RingMatrix
+                    className="h-[90%]"
+                    stroke={matrix === 2 ? "#D5CDBD" : "#605C54"}
+                  />
                 </div>
               </div>
 
               <div
-                className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]'
+                className="relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]"
                 onClick={() => {
-                  setMatrix(3)
-                  setCountWindow(false)
+                  setMatrix(3);
+                  setCountWindow(false);
                 }}
               >
                 <div
-                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
-                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
+                  className="absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
+                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap"
                 >
-                  {t('matrixTypes.twinTrack')}
+                  {t("matrixTypes.twinTrack")}
                 </div>
                 <div
-                  className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
-                            md:text-[17px] lg:text-[20px]'
+                  className="absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
+                            md:text-[17px] lg:text-[20px]"
                 >
                   3
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${matrix === 3 ? '#ffffff08' : 'transparent'}] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${
+                          matrix === 3 ? "#ffffff08" : "transparent"
+                        }] hover:bg-[#544B3C50]`}
                 >
-                  <TwinTrackMatrix className='rotate-180 h-[90%]' stroke={matrix === 3 ? '#D5CDBD' : '#605C54'} />
+                  <TwinTrackMatrix
+                    className="rotate-180 h-[90%]"
+                    stroke={matrix === 3 ? "#D5CDBD" : "#605C54"}
+                  />
                 </div>
               </div>
             </>
           )}
 
-          {type === 'Shell' && (
+          {type === "Shell" && (
             <>
               <div
-                className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]'
+                className="relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]"
                 onClick={() => {
-                  setShell(1)
-                  setCountWindow(false)
+                  setShell(1);
+                  setCountWindow(false);
                 }}
               >
                 <div
-                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
-                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
+                  className="absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
+                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap"
                 >
-                  {t('rollerShellTypes.forFlatDie')}
+                  {t("rollerShellTypes.forFlatDie")}
                 </div>
 
                 <div
-                  className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
-                            md:text-[17px] lg:text-[20px]'
+                  className="absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
+                            md:text-[17px] lg:text-[20px]"
                 >
                   1
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${shell === 1 ? '#ffffff08' : 'transparent'}] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${
+                          shell === 1 ? "#ffffff08" : "transparent"
+                        }] hover:bg-[#544B3C50]`}
                 >
-                  <FlatShell className='h-[90%]' stroke={shell === 1 ? '#D5CDBD' : '#605C54'} />
+                  <FlatShell
+                    className="h-[90%]"
+                    stroke={shell === 1 ? "#D5CDBD" : "#605C54"}
+                  />
                 </div>
               </div>
 
               <div
-                className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]'
+                className="relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]"
                 onClick={() => {
-                  setShell(2)
-                  setCountWindow(false)
+                  setShell(2);
+                  setCountWindow(false);
                 }}
               >
                 <div
-                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
-                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
+                  className="absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
+                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap"
                 >
-                  {t('rollerShellTypes.forRingDie')}
+                  {t("rollerShellTypes.forRingDie")}
                 </div>
 
                 <div
-                  className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
-                            md:text-[17px] lg:text-[20px]'
+                  className="absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
+                            md:text-[17px] lg:text-[20px]"
                 >
                   2
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${shell === 2 ? '#ffffff08' : 'transparent'}] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${
+                          shell === 2 ? "#ffffff08" : "transparent"
+                        }] hover:bg-[#544B3C50]`}
                 >
-                  <RingShell className='h-[90%]' stroke={shell === 2 ? '#D5CDBD' : '#605C54'} />
+                  <RingShell
+                    className="h-[90%]"
+                    stroke={shell === 2 ? "#D5CDBD" : "#605C54"}
+                  />
                 </div>
               </div>
 
               <div
-                className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]'
+                className="relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]"
                 onClick={() => {
-                  setShell(3)
-                  setCountWindow(false)
+                  setShell(3);
+                  setCountWindow(false);
                 }}
               >
                 <div
-                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
-                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
+                  className="absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
+                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap"
                 >
-                  {t('rollerShellTypes.forTwinTrack')}
+                  {t("rollerShellTypes.forTwinTrack")}
                 </div>
 
                 <div
-                  className='absolute -left-[16%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
-                            md:text-[17px] lg:text-[20px]'
+                  className="absolute -left-[16%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
+                            md:text-[17px] lg:text-[20px]"
                 >
                   3.1
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${shell === 3 ? '#ffffff08' : 'transparent'}] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${
+                          shell === 3 ? "#ffffff08" : "transparent"
+                        }] hover:bg-[#544B3C50]`}
                 >
-                  <TwinTrackShell className='h-[90%]' stroke={shell === 3 ? '#D5CDBD' : '#605C54'} />
+                  <TwinTrackShell
+                    className="h-[90%]"
+                    stroke={shell === 3 ? "#D5CDBD" : "#605C54"}
+                  />
                 </div>
               </div>
 
               <div
-                className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]'
+                className="relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px]"
                 onClick={() => {
-                  setShell(4)
-                  setCountWindow(false)
+                  setShell(4);
+                  setCountWindow(false);
                 }}
               >
                 <div
-                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
-                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
+                  className="absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
+                            text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap"
                 ></div>
 
                 <div
-                  className='absolute -left-[16%] lg:-left-[22%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
-                            md:text-[17px] lg:text-[20px]'
+                  className="absolute -left-[16%] lg:-left-[22%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
+                            md:text-[17px] lg:text-[20px]"
                 >
                   3.2
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${shell === 4 ? '#ffffff08' : 'transparent'}] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${
+                          shell === 4 ? "#ffffff08" : "transparent"
+                        }] hover:bg-[#544B3C50]`}
                 >
-                  <TwinTrackShell2 className='h-[90%]' stroke={shell === 4 ? '#D5CDBD' : '#605C54'} />
+                  <TwinTrackShell2
+                    className="h-[90%]"
+                    stroke={shell === 4 ? "#D5CDBD" : "#605C54"}
+                  />
                 </div>
               </div>
             </>
@@ -570,7 +669,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default MainSection
+export default MainSection;

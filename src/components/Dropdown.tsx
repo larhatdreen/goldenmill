@@ -67,7 +67,7 @@ const DropdownMenu = ({ close, open }: { close: boolean; open: (state: boolean) 
       <div
         className={`products relative shrink-0 z-10 pl-3 pr-0 rounded-t-lg cursor-pointer 
                 ease-out duration-500 ${isOpen ? ' animate-duration-500' : ''} 
-                ${isProductsActive() ? 'text-navSelect' : 'text-navUnselect hover:text-navSelect'}`}
+                ${isProductsActive() ? 'text-navSelect' : 'hover:text-navSelect'}`}
         onClick={() => {
           toggleMenu()
           open(isOpen)

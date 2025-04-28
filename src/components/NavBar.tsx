@@ -69,7 +69,7 @@ export default function NavBar() {
           </Link>
 
           {/* Desktop Menu */}
-          <ul className='hidden md:flex md:flex-row text-xl text-navUnselect cursor-pointer shrink-0 gap-x-6 items-center'>
+          <ul className='hidden md:flex md:flex-row text-xl text-navUnselect cursor-pointer shrink-0 gap-x-6 items-center font-labgrotesque'>
             <Link to={getURLWithLang('matrix', lang!)}>
               <li className={`ease-out duration-300 ${isActive('matrix') ? 'text-navSelect' : 'hover:text-navSelect'}`}>
                 {t('navBar.main')}
@@ -86,7 +86,7 @@ export default function NavBar() {
                 {t('navBar.contacts')}
               </li>
             </Link>
-            <div className="flex items-center gap-4 ml-6">
+            <div className="flex items-center gap-4 ml-6 md:ml-[15px] lg:ml-[30px] xl:ml-[125px]">
               <ThemeToggle onToggle={handleThemeChange} />
               <LanguageDropdown />
             </div>
@@ -122,7 +122,7 @@ export default function NavBar() {
             menuIsOpen ? 'block' : 'hidden'
           } md:hidden fixed top-[80px] left-0 right-0 bg-[#1A1A1A] backdrop-blur-md border-b border-[#D5CDBD]/10`}
         >
-          <ul className='flex flex-col text-xl text-navUnselect p-6 space-y-4 bg-[#1A1A1A]'>
+          <ul className='flex flex-col text-xl text-navUnselect p-6 space-y-4 bg-[#1A1A1A] font-labgrotesque'>
             <Link to={getURLWithLang('/', lang!)}>
               <li
                 className={`py-3 ease-out duration-300 ${isActive('matrix') ? 'text-navSelect' : 'hover:text-navSelect'}`}
