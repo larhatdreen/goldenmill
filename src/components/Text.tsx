@@ -16,6 +16,7 @@ const newTheme = createTheme({
       styleOverrides: {
         root: {
           color: 'white',
+          fontFamily: 'AdventProRegular',
         },
         underline: {
           '&:before': {
