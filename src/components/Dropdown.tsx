@@ -16,7 +16,7 @@ const DropdownMenu = ({ close, open }: { close: boolean; open: (state: boolean) 
 
   // Helper function to check if products section is active
   const isProductsActive = () => {
-    return location.pathname.includes('/matrix') || 
+    return location.pathname.includes('/granulator') || 
            location.pathname.includes('/shell') || 
            location.pathname.includes('/spare-parts') ||
            location.pathname === `/${lang}`;
@@ -25,7 +25,7 @@ const DropdownMenu = ({ close, open }: { close: boolean; open: (state: boolean) 
   // Helper function to check if specific product type is active
   const isProductTypeActive = (type: string) => {
     if (type === t('dieMatrix')) {
-      return location.pathname.includes('/matrix') || location.pathname === `/${lang}`;
+      return location.pathname.includes('/granulator') || location.pathname === `/${lang}`;
     }
     if (type === t('rollerShell')) {
       return location.pathname.includes('/shell');
@@ -84,7 +84,7 @@ const DropdownMenu = ({ close, open }: { close: boolean; open: (state: boolean) 
           {options.map(option => (
             <Link
               to={option === t('dieMatrix') 
-                ? getURLWithLang('matrix', lang!) 
+                ? getURLWithLang('granulator', lang!) 
                 : option === t('rollerShell')
                 ? getURLWithLang('shell', lang!)
                 : getURLWithLang('spare-parts', lang!)}

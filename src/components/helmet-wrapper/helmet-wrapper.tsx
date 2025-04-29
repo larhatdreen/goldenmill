@@ -10,7 +10,7 @@ export const HelmetWrapper = () => {
     let description = 'Default description';
 
     // Определяем заголовок на основе пути
-    if (path.includes('/matrix')) {
+    if (path.includes('/granulator')) {
       title = 'Golden Die | Matrix';
       description = 'Matrix page description';
     } else if (path.includes('/shell')) {

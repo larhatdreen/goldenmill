@@ -1,4 +1,3 @@
-import PlusIcon from './customIcons/PlusIcon.js';
 import QuestionIcon from './customIcons/QuestionIcon.js';
 import CountButton from './CountButton.js';
 import {
@@ -18,7 +17,7 @@ import RingMatrix from './customIcons/RingMatrix.js';
 import TwinTrackMatrix from './customIcons/TwinTrackMatrix.js';
 import Modal from './Modal.js';
 import button from '../assets/UI/Btn.svg';
-import { onPointerEnterCircle, onPointerLeaveCircle } from '../functions/Functions.js';
+// import { onPointerEnterCircle, onPointerLeaveCircle } from '../functions/Functions.js';
 import FlatShell from './customIcons/FlatShell.js';
 import RingShell from './customIcons/RingShell.js';
 import TwinTrackShell from './customIcons/TwinTrackShell.js';
@@ -134,14 +133,14 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
     if (type === 'Matrix') {
       switch (matrix) {
         case 1:
-          return <Matrix1 handleOpen={() => setCountWindow(true)} />;
+          return <Matrix1 />;
         case 2:
-          return <Matrix2 handleOpen={() => setCountWindow(true)} />;
+          return <Matrix2 />;
         case 3:
-          return <Matrix3 handleOpen={() => setCountWindow(true)} />;
+          return <Matrix3 />;
 
         default:
-          return <Matrix1 handleOpen={() => setCountWindow(true)} />;
+          return <Matrix1 />;
       }
     } else if (type === 'Shell') {
       switch (shell) {
@@ -155,7 +154,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
           return <Shell3_2 handleOpen={() => setCountWindow(true)} />;
 
         default:
-          return <Matrix1 handleOpen={() => setCountWindow(true)} />;
+          return <Shell1 handleOpen={() => setCountWindow(true)} />;
       }
     }
   }
@@ -191,7 +190,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                   <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[143px] laptop:text-[143px] text-[#82653F] uppercase leading-none">
                     {type === 'Matrix' ? t('dieMatrix') : t('rollerShell')}
                   </div>
-                  <div className='font-bebasLight text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[106px] laptop:text-[106px] text-[#767676] uppercase leading-none'>
+                  <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[106px] laptop:text-[106px] text-[#767676] uppercase leading-none">
                     {t('granulator')}
                   </div>
                 </div>
@@ -235,8 +234,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                           id='innerDiameter'
                           aria-describedby='component-error-text'
                           onChange={(e) => inputHandler(e)}
-                          onFocus={() => onPointerEnterCircle('circle1')}
-                          onBlur={() => onPointerLeaveCircle('circle1')}
+                          // onFocus={() => onPointerEnterCircle('circle1')}
+                          // onBlur={() => onPointerLeaveCircle('circle1')}
                           autoComplete='off'
                         />
                         {errorText.innerDiameter && (
@@ -258,8 +257,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                           id='outerDiameter'
                           aria-describedby='component-error-text'
                           onChange={(e) => inputHandler(e)}
-                          onFocus={() => onPointerEnterCircle('circle2')}
-                          onBlur={() => onPointerLeaveCircle('circle2')}
+                          // onFocus={() => onPointerEnterCircle('circle2')}
+                          // onBlur={() => onPointerLeaveCircle('circle2')}
                         />
                         {errorText.outerDiameter && (
                           <FormHelperText id='component-error-text'>
@@ -283,8 +282,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                           id='overallWidth'
                           aria-describedby='component-error-text'
                           onChange={(e) => inputHandler(e)}
-                          onFocus={() => onPointerEnterCircle('circle3')}
-                          onBlur={() => onPointerLeaveCircle('circle3')}
+                          // onFocus={() => onPointerEnterCircle('circle3')}
+                          // onBlur={() => onPointerLeaveCircle('circle3')}
                         />
                         {errorText.overallWidth && (
                           <FormHelperText id='component-error-text'>
@@ -305,8 +304,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                           id='workingWidth'
                           aria-describedby='component-error-text'
                           onChange={(e) => inputHandler(e)}
-                          onFocus={() => onPointerEnterCircle('circle4')}
-                          onBlur={() => onPointerLeaveCircle('circle4')}
+                          // onFocus={() => onPointerEnterCircle('circle4')}
+                          // onBlur={() => onPointerLeaveCircle('circle4')}
                         />
                         {errorText.workingWidth && (
                           <FormHelperText id='component-error-text'>
@@ -331,8 +330,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                             id='drillingDiameter'
                             aria-describedby='component-error-text'
                             onChange={(e) => inputHandler(e)}
-                            onFocus={() => onPointerEnterCircle('circle5')}
-                            onBlur={() => onPointerLeaveCircle('circle5')}
+                            // onFocus={() => onPointerEnterCircle('circle5')}
+                            // onBlur={() => onPointerLeaveCircle('circle5')}
                           />
                           {errorText.drillingDiameter && (
                             <FormHelperText id='component-error-text'>
@@ -363,8 +362,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                                 drillingDiameter: '',
                               }));
                             }}
-                            onFocus={() => onPointerEnterCircle('circle5')}
-                            onBlur={() => onPointerLeaveCircle('circle5')}
+                            // onFocus={() => onPointerEnterCircle('circle5')}
+                            // onBlur={() => onPointerLeaveCircle('circle5')}
                           >
                             <MenuItem value=''>
                               <em className='text-footerBottomText'>
@@ -449,7 +448,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                         }] hover:bg-[#544B3C50]`}
                 >
                   <FlatMatrix
-                    className='rotate-180 w-[90%]'
+                    className='h-[90%]'
                     stroke={matrix === 1 ? '#D5CDBD' : '#605C54'}
                   />
                 </div>
@@ -510,7 +509,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                         }] hover:bg-[#544B3C50]`}
                 >
                   <TwinTrackMatrix
-                    className='rotate-180 h-[90%]'
+                    className='h-[90%]'
                     stroke={matrix === 3 ? '#D5CDBD' : '#605C54'}
                   />
                 </div>

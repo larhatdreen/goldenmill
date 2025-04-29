@@ -22,16 +22,16 @@
 
     <!-- Matrix -->
     <url>
-        <loc>https://goldendie.de/en/matrix</loc>
+        <loc>https://goldendie.de/en/granulator</loc>
         <lastmod>2024-03-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/matrix"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/matrix"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/matrix"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/granulator"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/granulator"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/granulator"/>
         <image:image>
             <image:loc>https://goldendie.de/images/matrix.jpg</image:loc>
-            <image:title>Die Matrix - LKE Group GmbH</image:title>
+            <image:title>Dies - LKE Group GmbH</image:title>
             <image:caption>High-quality dies for pellet mills with superior hardness and wear resistance</image:caption>
         </image:image>
     </url>

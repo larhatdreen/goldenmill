@@ -44,7 +44,9 @@ function App() {
   // Функция для перенаправления на правильный языковой маршрут
   const getRedirectPath = () => {
     const currentLang = getLanguageFromPath();
-    return `/${currentLang}/matrix`;
+    // Если язык не определен, используем дефолтный язык
+    const lang = currentLang || defaultLanguage;
+    return `/${lang}/granulator`;
   };
 
   return (
@@ -60,7 +62,7 @@ function App() {
               element={<Navigate to={getRedirectPath()} replace />}
             />
 
-            {/* Редирект с языкового пути на matrix */}
+            {/* Редирект с языкового пути на granulator */}
             <Route
               path=':lang'
               element={
@@ -73,7 +75,7 @@ function App() {
             {/* Языковые маршруты */}
             <Route path=':lang'>
               <Route
-                path='matrix'
+                path='granulator'
                 element={
                   <Wrapper>
                     <MainSection type='Matrix' />

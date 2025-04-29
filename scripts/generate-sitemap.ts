@@ -1,40 +1,41 @@
 import { writeFileSync } from 'fs';
 import { resolve } from 'path';
 
-const staticPages = [
-  '',
-  '/matrix',
+const routes = [
+  '/granulator',
   '/shell',
   '/about',
   '/contacts',
   '/serviceinformation',
   '/privacypolicy',
+  '/cookie-policy',
+  '/spare-parts'
 ];
 
 const languages = ['en', 'de', 'ru'];
 
 // Add priority mapping for different types of pages
-const pagePriorities: { [key: string]: number } = {
-  '': 1.0,           // Home page
-  '/matrix': 0.9,    // Product category pages
-  '/shell': 0.9,
-  '/about': 0.8,     // Important static pages
-  '/contacts': 0.8,
-  '/serviceinformation': 0.7,
-  '/privacypolicy': 0.6,
-  'product': 0.9     // Individual product pages
+const priorities: { [key: string]: number } = {
+  '/granulator': 0.9,    // Product category pages
+  '/shell': 0.9,         // Product category pages
+  '/about': 0.7,         // About page
+  '/contacts': 0.7,      // Contact page
+  '/serviceinformation': 0.7, // Service information page
+  '/privacypolicy': 0.5, // Legal pages
+  '/cookie-policy': 0.5, // Legal pages
+  '/spare-parts': 0.8    // Product pages
 };
 
 // Add change frequency mapping for different types of pages
-const pageChangeFreq: { [key: string]: string } = {
-  '': 'daily',           // Home page changes frequently
-  '/matrix': 'weekly',   // Product pages change weekly
-  '/shell': 'weekly',
-  '/about': 'monthly',   // Static pages change less frequently
-  '/contacts': 'monthly',
-  '/serviceinformation': 'monthly',
-  '/privacypolicy': 'monthly',
-  'product': 'weekly'    // Individual product pages
+const changefreqs: { [key: string]: string } = {
+  '/granulator': 'weekly',   // Product pages change weekly
+  '/shell': 'weekly',        // Product pages change weekly
+  '/about': 'monthly',       // Static content
+  '/contacts': 'monthly',    // Static content
+  '/serviceinformation': 'monthly', // Static content
+  '/privacypolicy': 'yearly', // Legal pages rarely change
+  '/cookie-policy': 'yearly', // Legal pages rarely change
+  '/spare-parts': 'weekly'   // Product pages change weekly
 };
 
 async function generateSitemap() {
@@ -48,21 +49,21 @@ async function generateSitemap() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  ${staticPages
-    .map(page => 
+  ${routes
+    .map(route => 
       languages.map(lang => `
     <url>
-      <loc>${siteUrl}/${lang}${page}</loc>
+      <loc>${siteUrl}/${lang}${route}</loc>
       <lastmod>${new Date().toISOString()}</lastmod>
-      <changefreq>${pageChangeFreq[page] || 'weekly'}</changefreq>
-      <priority>${pagePriorities[page] || 0.8}</priority>
+      <changefreq>${changefreqs[route] || 'weekly'}</changefreq>
+      <priority>${priorities[route] || 0.8}</priority>
       ${languages
         .map(
           alterLang => `
       <xhtml:link 
         rel="alternate" 
         hreflang="${alterLang}" 
-        href="${siteUrl}/${alterLang}${page}"/>`
+        href="${siteUrl}/${alterLang}${route}"/>`
         )
         .join('')}
     </url>`
@@ -75,8 +76,8 @@ async function generateSitemap() {
     <url>
       <loc>${siteUrl}/${lang}/product/${productId}</loc>
       <lastmod>${new Date().toISOString()}</lastmod>
-      <changefreq>${pageChangeFreq['product']}</changefreq>
-      <priority>${pagePriorities['product']}</priority>
+      <changefreq>${changefreqs['product']}</changefreq>
+      <priority>${priorities['product']}</priority>
       ${languages
         .map(
           alterLang => `

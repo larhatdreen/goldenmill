@@ -30,10 +30,10 @@
 
     <!-- Dies/Matrix -->
     <url>
-        <loc>https://goldendie.de/matrix</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/matrix"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/matrix"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/matrix"/>
+        <loc>https://goldendie.de/granulator</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/granulator"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/granulator"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/granulator"/>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
         <mobile:mobile/>

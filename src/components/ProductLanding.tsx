@@ -404,7 +404,7 @@ const ProductLanding: React.FC = () => {
   }
 
   if (error || !product) {
-    return <Navigate to={`/${currentLanguage}/matrix`} replace />;
+    return <Navigate to={`/${currentLanguage}/granulator`} replace />;
   }
 
   console.log('Rendering with productData:', product);
