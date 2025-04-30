@@ -37,27 +37,27 @@ export default function About() {
           <div className='absolute left-[200px] top-[810px] w-[271px] h-[271px] bg-[#2E3032] rounded-full flex justify-center items-center'>
             <LogoIcon />
           </div>
-          <span className='absolute w-[258px] left-[208px] top-[116px] font-bebas text-[17px] text-[#3F4042] tracking-widest text-center'>
+          <span className="absolute w-[258px] left-[208px] top-[116px] font-['Bebas_Neue'] text-[17px] text-[#3F4042] tracking-widest text-center">
             {t('about.about.descriptionBg')}
           </span>
-          <span className='absolute w-[258px] left-[208px] top-[654px] font-bebas text-[17px] text-[#3F4042] tracking-widest text-center'>
+          <span className="absolute w-[258px] left-[208px] top-[654px] font-['Bebas_Neue'] text-[17px] text-[#3F4042] tracking-widest text-center">
             {t('about.history.descriptionBg')}
           </span>
-          <div className='absolute left-[200px] top-[200px] flex flex-col items-start'>
-            <div className='flex items-center gap-x-4'>
-              <div className='w-[24px] h-[63px] bg-[#544B3C]' />
-              <span className='relative left-[10px] font-bebas text-[60px] md:text-[70px] lg:text-[80px] text-[#D5CDBD]'>
+          <div className='absolute left-[200px] top-[235px] flex flex-col items-start'>
+            <div className='flex items-start'>
+              <div className='w-[24px] h-[63px] bg-[#82643F]' />
+              <span className="relative left-[12px] font-['Bebas_Neue'] text-[60px] md:text-[70px] lg:text-[80px] text-[#D5CDBD] leading-[100%]">
                 {t('about.about.title')}
               </span>
             </div>
-            <span className='relative left-[30px] md:text-[24px] lg:text-[26px] font-adventpro text-[29px] text-[#D5CDBD] uppercase'>
+            <span className="relative left-[42px] md:text-[24px] lg:text-[26px] font-[AdventProLight] text-[29px] text-[#D5CDBD] uppercase">
               {t('about.about.description')}
             </span>
           </div>
-          <div className='absolute left-[200px] top-[800px] flex flex-col items-start'>
-            <div className='flex items-center gap-x-4'>
-              <div className='w-[24px] h-[63px] bg-[#544B3C]' />
-              <span className='relative font-bebas text-[60px] md:text-[70px] lg:text-[80px] text-[#D5CDBD] whitespace-nowrap'>
+          <div className='absolute left-[200px] top-[835px] flex flex-col items-start'>
+            <div className='flex items-start'>
+              <div className='w-[24px] h-[63px] bg-[#82643F]' />
+              <span className="relative left-[12px] font-['Bebas_Neue'] text-[60px] md:text-[70px] lg:text-[80px] text-[#D5CDBD] whitespace-nowrap leading-[100%]">
                 {t('about.history.title')}
               </span>
             </div>
