@@ -10,7 +10,7 @@ const Navigation = () => {
   const productItems = [
     {
       label: t('nav.matrix'),
-      path: '/matrix',
+      path: '/granulator',
     },
     {
       label: t('nav.shell'),

@@ -12,10 +12,10 @@ Allow: /*/product/
 Allow: /de/product/
 Allow: /en/product/
 Allow: /ru/product/
-Allow: /matrix/
+Allow: /granulator/
 Allow: /shell/
 Allow: /spare-parts/
-Allow: /*/matrix/
+Allow: /*/granulator/
 Allow: /*/shell/
 Allow: /*/spare-parts/
 Allow: /images/products/

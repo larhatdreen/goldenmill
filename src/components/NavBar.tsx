@@ -56,7 +56,7 @@ export default function NavBar() {
 
   // Helper function to check if a path is active
   const isActive = (path: string) => {
-    if (path === 'matrix' && location.pathname === `/${lang}`) return true;
+    if (path === 'granulator' && location.pathname === `/${lang}`) return true;
     return location.pathname.includes(`/${lang}/${path}`);
   };
 
@@ -64,14 +64,14 @@ export default function NavBar() {
     <>
       <nav className='absolute top-0 left-0 right-0 z-[999]'>
         <div className='w-full h-[80px] flex flex-row justify-between items-center px-[3%] py-[28px]'>
-          <Link to={getURLWithLang('matrix', lang!)} className="flex-shrink-0">
+          <Link to={getURLWithLang('granulator', lang!)} className="flex-shrink-0">
             <img alt='logo' className="w-full content-[url('/logo_mini.svg')] tablet:content-[url('/logo.svg')] " />
           </Link>
 
           {/* Desktop Menu */}
-          <ul className='hidden md:flex md:flex-row text-xl text-navUnselect cursor-pointer shrink-0 gap-x-6 items-center'>
-            <Link to={getURLWithLang('matrix', lang!)}>
-              <li className={`ease-out duration-300 ${isActive('matrix') ? 'text-navSelect' : 'hover:text-navSelect'}`}>
+          <ul className='hidden md:flex md:flex-row text-xl text-navUnselect cursor-pointer shrink-0 gap-x-6 items-center font-labgrotesque'>
+            <Link to={getURLWithLang('granulator', lang!)}>
+              <li className={`ease-out duration-300 ${isActive('granulator') ? 'text-navSelect' : 'hover:text-navSelect'}`}>
                 {t('navBar.main')}
               </li>
             </Link>
@@ -86,7 +86,7 @@ export default function NavBar() {
                 {t('navBar.contacts')}
               </li>
             </Link>
-            <div className="flex items-center gap-4 ml-6">
+            <div className="flex items-center gap-4 ml-6 md:ml-[15px] lg:ml-[30px] xl:ml-[125px]">
               <ThemeToggle onToggle={handleThemeChange} />
               <LanguageDropdown />
             </div>
@@ -122,10 +122,10 @@ export default function NavBar() {
             menuIsOpen ? 'block' : 'hidden'
           } md:hidden fixed top-[80px] left-0 right-0 bg-[#1A1A1A] backdrop-blur-md border-b border-[#D5CDBD]/10`}
         >
-          <ul className='flex flex-col text-xl text-navUnselect p-6 space-y-4 bg-[#1A1A1A]'>
+          <ul className='flex flex-col text-xl text-navUnselect p-6 space-y-4 bg-[#1A1A1A] font-labgrotesque'>
             <Link to={getURLWithLang('/', lang!)}>
               <li
-                className={`py-3 ease-out duration-300 ${isActive('matrix') ? 'text-navSelect' : 'hover:text-navSelect'}`}
+                className={`py-3 ease-out duration-300 ${isActive('granulator') ? 'text-navSelect' : 'hover:text-navSelect'}`}
                 onClick={() => setMenuIsOpen(false)}
               >
                 {t('navBar.main')}
@@ -138,9 +138,9 @@ export default function NavBar() {
               </summary>
               <article className='px-4 pb-4'>
                 <ul className='flex flex-col gap-3 pl-2'>
-                  <Link to={getURLWithLang('matrix', lang!)}>
+                  <Link to={getURLWithLang('granulator', lang!)}>
                     <li
-                      className={`py-2 transition-colors ${isActive('matrix') ? 'text-navSelect' : 'hover:text-navSelect'}`}
+                      className={`py-2 transition-colors ${isActive('granulator') ? 'text-navSelect' : 'hover:text-navSelect'}`}
                       onClick={() => setMenuIsOpen(false)}
                     >
                       {t('dieMatrix')}

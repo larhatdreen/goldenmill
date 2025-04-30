@@ -389,7 +389,7 @@ const MobileProductLanding: React.FC = () => {
   }
 
   if (error || !product) {
-    return <Navigate to={`/${currentLanguage}/matrix`} replace />;
+    return <Navigate to={`/${currentLanguage}/granulator`} replace />;
   }
 
   return (

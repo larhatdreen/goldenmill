@@ -42,9 +42,9 @@
   "background_color": "#202020",
   "display": "standalone",
   "start_url": {
-    "en": "/en/",
-    "de": "/de/",
-    "ru": "/ru/"
+    "en": "/en/granulator",
+    "de": "/de/granulator",
+    "ru": "/ru/granulator"
   },
   "scope": "/",
   "lang": ["en", "de", "ru"],
@@ -88,14 +88,14 @@
     },
     {
       "name": {
-        "en": "Dies/Matrix",
+        "en": "Dies/Granulator",
         "de": "Matrizen",
         "ru": "Матрицы"
       },
       "url": {
-        "en": "/en/matrix",
-        "de": "/de/matrix",
-        "ru": "/ru/matrix"
+        "en": "/en/granulator",
+        "de": "/de/granulator",
+        "ru": "/ru/granulator"
       },
       "description": {
         "en": "High-quality dies for pellet mills from LKE Group GmbH",

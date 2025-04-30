@@ -38,12 +38,13 @@
       "keywords": "{{productName}}, LKE Group GmbH, GoldenDie, матрицы, обечайки, запасные части, грануляторы, промышленное оборудование, высокое качество, индивидуальное изготовление, износостойкость, производство гранул, грануляция, экструзия"
     }
   },
-  "dieMatrix": "Матрица",
+  "dieMatrix": "Пресс",
+  "granulator": "Гранулятор",
   "rollerShell": "Обечайка",
   "navBar": {
-    "main": "Главная",
-    "products": "Продукты",
-    "about": "О нас",
+    "main": "Главная страница",
+    "products": "Продукция",
+    "about": "О компании",
     "contacts": "Контакты",
     "menu": "Меню"
   },
@@ -56,11 +57,13 @@
     "surfaceType": "Тип поверхности"
   },
   "titleBlock": {
-    "enterData": "Ввести данные",
-    "needHelp": "Нужна помощь с размерами?",
-    "productName": "",
-    "productDescription": "Для любого вида гранулятора",
-    "countPrice": "Рассчитать стоимость"
+    "needHelp": "Нужна помощь с подбором оборудования?",
+    "productName": {
+      "first": "ПРЕСС",
+      "second": "ГРАНУЛЯТОР"
+    },
+    "productDescription": "Для гранулирования биомассы, rdf, \nкомбикормов и пищевой продукции",
+    "countPrice": "Запросить стоимость"
   },
   "inputSizesBlock": {
     "innerDiameter": "Внутренний диаметр, мм",
@@ -127,9 +130,9 @@
     }
   },
   "matrixTypes": {
-    "flatDie": "Плоская матрица",
-    "ringDie": "Кольцевая матрица",
-    "twinTrack": "Зажимная матрица"
+    "flatDie": "GM420 — GM520",
+    "ringDie": "GM650",
+    "twinTrack": "GM850"
   },
   "rollerShellTypes": {
     "forFlatDie": "Под плоский тип",

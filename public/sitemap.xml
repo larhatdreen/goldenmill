@@ -19,15 +19,15 @@
         <mobile:mobile/>
     </url>
 
-    <!-- Матрицы -->
+    <!-- Грануляторы -->
     <url>
-        <loc>https://goldendie.de/matrix</loc>
+        <loc>https://goldendie.de/granulator</loc>
         <lastmod>2024-03-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/matrix"/>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/matrix"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/matrix"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/granulator"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/granulator"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/granulator"/>
         <image:image>
             <image:loc>https://goldendie.de/images/matrix.jpg</image:loc>
             <image:title>Die Matrix</image:title>
