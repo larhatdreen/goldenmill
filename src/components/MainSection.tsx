@@ -174,7 +174,9 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
           <div>
             <div className='flex flex-col tablet:flex-row gap-4 ml-0 laptop:ml-[8%]'>
               <div
-                className='font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px] text-[#D5CDBD] flex flex-row items-center hover:text-[#82653F] group'
+                className={`font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px] text-[#D5CDBD] flex flex-row items-center hover:text-[#82653F] group ${
+                  !open ? 'cursor-pointer' : ''
+                }`}
                 onMouseUp={handleOpen}
               >
                 <QuestionIcon className='w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] laptop:w-[40px] laptop:h-[40px] mt-[8px] mr-2 fill-[#82653F] stroke-[#82653F]' />
@@ -447,10 +449,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                           matrix === 1 ? '#ffffff08' : 'transparent'
                         }] hover:bg-[#544B3C50]`}
                 >
-                  <FlatMatrix
-                    className='h-[90%]'
-                    stroke={matrix === 1 ? '#D5CDBD' : '#605C54'}
-                  />
+                  <FlatMatrix className='h-[90%]' stroke={matrix === 1 ? '#D5CDBD' : '#605C54'} />
                 </div>
               </div>
 

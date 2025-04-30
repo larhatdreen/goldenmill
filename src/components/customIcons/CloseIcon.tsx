@@ -3,15 +3,13 @@ import React from 'react'
 interface CloseIconProps extends React.SVGProps<SVGSVGElement> {
   className: string
 }
-function CloseIcon({ ...props }: CloseIconProps) {
+function CloseIcon({ className = '', ...props }: CloseIconProps) {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='17' height='18' viewBox='0 0 17 18' fill='none' {...props}>
+    <svg xmlns='http://www.w3.org/2000/svg' width='17' height='18' viewBox='0 0 17 18' fill='none' className={`cursor-pointer fill-[#C7C6C1] ${className}`} {...props}>
       <path
-        className={props.className}
         fillRule='evenodd'
         clipRule='evenodd'
         d='M16.3462 4.54695C16.8107 4.07699 16.8104 3.31472 16.3468 2.84567L14.6277 1.10634C14.1636 0.636715 13.4091 0.638667 12.9462 1.10695L9.18834 4.90906C8.72384 5.37902 7.96907 5.37735 7.50623 4.90906L3.74834 1.10695C3.28384 0.636988 2.53044 0.63729 2.06684 1.10634L0.347736 2.84567C-0.116432 3.3153 -0.114502 4.07867 0.348339 4.54695L4.10623 8.34906C4.57073 8.81902 4.56907 9.58267 4.10623 10.051L0.348339 13.8531C-0.116161 14.323 -0.115863 15.0853 0.347736 15.5543L2.06684 17.2937C2.531 17.7633 3.2855 17.7613 3.74834 17.2931L7.50623 13.491C7.97073 13.021 8.7255 13.0227 9.18834 13.491L12.9462 17.2931C13.4107 17.763 14.1641 17.7627 14.6277 17.2937L16.3468 15.5543C16.811 15.0847 16.8091 14.3213 16.3462 13.8531L12.5883 10.051C12.1238 9.58099 12.1255 8.81735 12.5883 8.34906L16.3462 4.54695Z'
-        fill='#C7C6C1'
       />
     </svg>
   )

@@ -1,7 +1,7 @@
-import * as React from 'react'
-import Modal from '@mui/material/Modal'
-import { ChangeEvent, Fragment, useState } from 'react'
-import CloseIcon from './customIcons/CloseIcon.tsx'
+import * as React from 'react';
+import Modal from '@mui/material/Modal';
+import { ChangeEvent, Fragment, useState } from 'react';
+import CloseIcon from './customIcons/CloseIcon.tsx';
 import {
   Button,
   Checkbox,
@@ -13,18 +13,19 @@ import {
   InputLabel,
   styled,
   ThemeProvider,
-} from '@mui/material'
-import newTheme from './Text.tsx'
-import CountButton from './CountButton.tsx'
-import button from '../assets/UI/BtnBig.svg'
-import PlaneIcon from './customIcons/PlaneIcon.tsx'
-import UploadIcon from './customIcons/UploadIcon.tsx'
-import UploadDecorSvg from './customIcons/UploadDecorSvg.tsx'
-import { IMainData } from './MainSection.tsx'
-import { useTranslation } from 'react-i18next'
-import { Link, useParams } from 'react-router-dom'
-import { getURLWithLang } from '../functions/get-url-with-lang.ts'
-import { ParamsType } from './NavigateProvider.tsx'
+} from '@mui/material';
+import newTheme from './Text.tsx';
+import CountButton from './CountButton.tsx';
+import button from '../assets/UI/BtnBig.svg';
+import PlaneIcon from './customIcons/PlaneIcon.tsx';
+import UploadIcon from './customIcons/UploadIcon.tsx';
+import UploadDecorSvg from './customIcons/UploadDecorSvg.tsx';
+import { IMainData } from './MainSection.tsx';
+import { useTranslation } from 'react-i18next';
+import { Link, useParams } from 'react-router-dom';
+import { getURLWithLang } from '../functions/get-url-with-lang.ts';
+import { ParamsType } from './NavigateProvider.tsx';
+import { LanguagesEnum } from './translation/i18n';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
@@ -34,13 +35,13 @@ export default function ModalInfo({
   data,
   type,
 }: {
-  open: boolean
-  handleClose: () => void
-  data: IMainData
-  type: string
+  open: boolean;
+  handleClose: () => void;
+  data: IMainData;
+  type: string;
 }) {
-  const { lang } = useParams<ParamsType>()
-  const [send, setSend] = useState(false)
+  const { lang } = useParams<ParamsType>();
+  const [send, setSend] = useState(false);
   const [inputText, setInputText] = useState({
     manufacturer: '',
     model: '',
@@ -49,7 +50,7 @@ export default function ModalInfo({
     commentary: '',
     email: '',
     upload: null as File | null,
-  })
+  });
   const [errorText, setErrorText] = useState({
     manufacturer: '',
     model: '',
@@ -58,11 +59,11 @@ export default function ModalInfo({
     commentary: '',
     email: '',
     upload: '',
-  })
-  const [checked, setChecked] = useState(false)
-  const [bottomChecked, setBottomChecked] = useState(false)
-  const [bottomCheckedError, setBottomCheckedError] = useState(false)
-  const { t, i18n } = useTranslation()
+  });
+  const [checked, setChecked] = useState(false);
+  const [bottomChecked, setBottomChecked] = useState(false);
+  const [bottomCheckedError, setBottomCheckedError] = useState(false);
+  const { t, i18n } = useTranslation();
 
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -74,130 +75,132 @@ export default function ModalInfo({
     left: 0,
     whiteSpace: 'nowrap',
     width: 1,
-  })
+  });
 
   function handleChange(event: React.SyntheticEvent<Element, Event>) {
-    setErrorText(prevState => ({
+    setErrorText((prevState) => ({
       ...prevState,
       manufacturer: '',
       model: '',
       serialNumber: '',
       manufactureYear: '',
       commentary: '',
-    }))
-    const x = event as React.ChangeEvent<HTMLInputElement>
-    setChecked(x.target.checked)
+    }));
+    const x = event as React.ChangeEvent<HTMLInputElement>;
+    setChecked(x.target.checked);
   }
 
   function handleBottomChange(event: React.SyntheticEvent<Element, Event>) {
-    setBottomCheckedError(false)
-    const x = event as React.ChangeEvent<HTMLInputElement>
-    setBottomChecked(x.target.checked)
+    setBottomCheckedError(false);
+    const x = event as React.ChangeEvent<HTMLInputElement>;
+    setBottomChecked(x.target.checked);
   }
 
   function inputErrorHandler() {
-    const emailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,5})+$/
-    let errorsCount = 0
+    const emailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,5})+$/;
+    let errorsCount = 0;
 
     if (!checked) {
       if (inputText.manufacturer === '') {
-        setErrorText(prevErrorText => ({
+        setErrorText((prevErrorText) => ({
           ...prevErrorText,
           manufacturer: t('inputInfoBlock.errors.emptyFieldError'),
-        }))
-        errorsCount++
+        }));
+        errorsCount++;
       }
       if (inputText.model === '') {
-        setErrorText(prevErrorText => ({
+        setErrorText((prevErrorText) => ({
           ...prevErrorText,
           model: t('inputInfoBlock.errors.emptyFieldError'),
-        }))
-        errorsCount++
+        }));
+        errorsCount++;
       }
       if (inputText.serialNumber === '') {
-        setErrorText(prevErrorText => ({
+        setErrorText((prevErrorText) => ({
           ...prevErrorText,
           serialNumber: t('inputInfoBlock.errors.emptyFieldError'),
-        }))
-        errorsCount++
+        }));
+        errorsCount++;
       }
       if (inputText.manufactureYear === '') {
-        setErrorText(prevErrorText => ({
+        setErrorText((prevErrorText) => ({
           ...prevErrorText,
           manufactureYear: t('inputInfoBlock.errors.emptyFieldError'),
-        }))
-        errorsCount++
+        }));
+        errorsCount++;
       } else if (inputText.manufactureYear.length < 4) {
-        setErrorText(prevErrorText => ({
+        setErrorText((prevErrorText) => ({
           ...prevErrorText,
           manufactureYear: t('inputInfoBlock.errors.wrongFormat'),
-        }))
-        errorsCount++
+        }));
+        errorsCount++;
       }
       if (inputText.commentary === '') {
-        setErrorText(prevErrorText => ({
+        setErrorText((prevErrorText) => ({
           ...prevErrorText,
           commentary: t('inputInfoBlock.errors.emptyFieldError'),
-        }))
-        errorsCount++
+        }));
+        errorsCount++;
       }
 
       if (inputText.email === '') {
-        setErrorText(prevErrorText => ({
+        setErrorText((prevErrorText) => ({
           ...prevErrorText,
           email: t('inputInfoBlock.errors.emptyFieldError'),
-        }))
-        errorsCount++
+        }));
+        errorsCount++;
       } else if (!inputText.email.match(emailFormat)) {
-        setErrorText(prevErrorText => ({
+        setErrorText((prevErrorText) => ({
           ...prevErrorText,
           email: t('inputInfoBlock.errors.emptyFieldError'),
-        }))
-        errorsCount++
+        }));
+        errorsCount++;
       }
     } else {
       if (inputText.email === '') {
-        setErrorText(prevErrorText => ({
+        setErrorText((prevErrorText) => ({
           ...prevErrorText,
           email: t('inputInfoBlock.errors.emptyFieldError'),
-        }))
-        errorsCount++
+        }));
+        errorsCount++;
       } else if (!inputText.email.match(emailFormat)) {
-        setErrorText(prevErrorText => ({
+        setErrorText((prevErrorText) => ({
           ...prevErrorText,
           email: t('inputInfoBlock.errors.wrongFormat'),
-        }))
-        errorsCount++
+        }));
+        errorsCount++;
       }
     }
     if (!bottomChecked) {
-      errorsCount++
+      errorsCount++;
     }
 
-    setBottomCheckedError(!bottomChecked)
+    setBottomCheckedError(!bottomChecked);
 
     if (!checked && errorsCount === 0) {
-      setSend(true)
-      sendToEmail()
+      setSend(true);
+      sendToEmail();
     } else if (checked && errorsCount === 0) {
-      setSend(true)
-      sendToEmail()
+      setSend(true);
+      sendToEmail();
     }
   }
 
   async function sendToEmail() {
     try {
       const formData = new FormData();
-      
+
       if (inputText.upload) {
         formData.append('upload', inputText.upload, inputText.upload.name);
       }
-      
+
       formData.append('email', inputText.email);
       formData.append('name', inputText.email);
-      
+
       const messageText = `
-        ${t('emailContent.type')}: ${type === 'Shell' ? t('emailContent.shell') : t('emailContent.matrix')}
+        ${t('emailContent.type')}: ${
+        type === 'Shell' ? t('emailContent.shell') : t('emailContent.matrix')
+      }
         ${t('emailContent.innerDiameter')}: ${data.innerDiameter}
         ${t('emailContent.outerDiameter')}: ${data.outerDiameter}
         ${t('emailContent.overallWidth')}: ${data.overallWidth}
@@ -206,10 +209,12 @@ export default function ModalInfo({
         ${t('emailContent.manufacturer')}: ${inputText.manufacturer || t('emailContent.noData')}
         ${t('emailContent.model')}: ${inputText.model || t('emailContent.noData')}
         ${t('emailContent.serialNumber')}: ${inputText.serialNumber || t('emailContent.noData')}
-        ${t('emailContent.manufactureYear')}: ${inputText.manufactureYear || t('emailContent.noData')}
+        ${t('emailContent.manufactureYear')}: ${
+        inputText.manufactureYear || t('emailContent.noData')
+      }
         ${t('emailContent.commentary')}: ${inputText.commentary || t('emailContent.noData')}
       `;
-      
+
       formData.append('message', messageText);
 
       const emailHtml = `
@@ -291,7 +296,9 @@ export default function ModalInfo({
                 <div class="section-title">${t('emailContent.about')}</div>
                 <div class="field">
                   <span class="label">${t('emailContent.type')}:</span>
-                  <span class="value">${type === 'Shell' ? t('emailContent.shell') : t('emailContent.matrix')}</span>
+                  <span class="value">${
+                    type === 'Shell' ? t('emailContent.shell') : t('emailContent.matrix')
+                  }</span>
                 </div>
               </div>
               <div class="section">
@@ -333,7 +340,9 @@ export default function ModalInfo({
                 </div>
                 <div class="field">
                   <span class="label">${t('emailContent.manufactureYear')}:</span>
-                  <span class="value">${inputText.manufactureYear || t('emailContent.noData')}</span>
+                  <span class="value">${
+                    inputText.manufactureYear || t('emailContent.noData')
+                  }</span>
                 </div>
                 <div class="field">
                   <span class="label">${t('emailContent.commentary')}:</span>
@@ -358,19 +367,19 @@ export default function ModalInfo({
         method: 'POST',
         headers: {
           'X-Form-Type': 'equipment',
-          'Accept-Language': i18n.language
+          'Accept-Language': i18n.language,
         },
         body: formData,
       });
 
       let result;
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.indexOf("application/json") !== -1) {
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.indexOf('application/json') !== -1) {
         result = await response.json();
       } else {
         throw new Error('Server returned non-JSON response');
       }
-      
+
       if (!result.success) {
         throw new Error(result.message || 'Failed to send email');
       }
@@ -378,35 +387,41 @@ export default function ModalInfo({
       setSend(true);
     } catch (error) {
       console.error('Error sending email:', error);
-      setErrorText(prev => ({
+      setErrorText((prev) => ({
         ...prev,
-        email: error instanceof Error ? error.message : 'Failed to send email'
+        email: error instanceof Error ? error.message : 'Failed to send email',
       }));
     }
   }
 
   function inputHandler(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    const inputId = e.target.id as keyof typeof inputText
-    const onlyLettersOrDigitsOrSymbolsOrEmpty = /^.{0}$|^[A-Za-z0-9]+$/
-    const onlyLettersOrDigitsOrEmpty = /^.{0}$|^[A-Za-z0-9]+$/
-    const onlyDigitsOrEmpty = /^.{0}$|^(\d+)$/
+    const inputId = e.target.id as keyof typeof inputText;
+    const onlyLettersOrDigitsOrSymbolsOrEmpty = /^.{0}$|^[A-Za-z0-9]+$/;
+    const onlyLettersOrDigitsOrEmpty = /^.{0}$|^[A-Za-z0-9]+$/;
+    const onlyDigitsOrEmpty = /^.{0}$|^(\d+)$/;
 
     if (inputId === 'manufacturer' || inputId === 'model') {
       if (e.target.value.match(onlyLettersOrDigitsOrSymbolsOrEmpty)) {
-        setInputText(prevInputText => ({ ...prevInputText, [inputId]: e.target.value.toUpperCase() }))
+        setInputText((prevInputText) => ({
+          ...prevInputText,
+          [inputId]: e.target.value.toUpperCase(),
+        }));
       }
     } else if (inputId === 'serialNumber') {
       if (e.target.value.match(onlyLettersOrDigitsOrEmpty)) {
-        setInputText(prevInputText => ({ ...prevInputText, [inputId]: e.target.value.toUpperCase() }))
+        setInputText((prevInputText) => ({
+          ...prevInputText,
+          [inputId]: e.target.value.toUpperCase(),
+        }));
       }
     } else if (inputId === 'manufactureYear') {
       if (e.target.value.toString().length <= 4 && e.target.value.match(onlyDigitsOrEmpty)) {
-        setInputText(prevInputText => ({ ...prevInputText, [inputId]: e.target.value }))
+        setInputText((prevInputText) => ({ ...prevInputText, [inputId]: e.target.value }));
       }
     } else {
-      setInputText(prevInputText => ({ ...prevInputText, [inputId]: e.target.value }))
+      setInputText((prevInputText) => ({ ...prevInputText, [inputId]: e.target.value }));
     }
-    setErrorText(prevErrorText => ({ ...prevErrorText, [inputId]: '' }))
+    setErrorText((prevErrorText) => ({ ...prevErrorText, [inputId]: '' }));
   }
 
   function handleButtonClick() {
@@ -418,7 +433,7 @@ export default function ModalInfo({
       commentary: '',
       email: '',
       upload: null,
-    })
+    });
     setErrorText({
       manufacturer: '',
       model: '',
@@ -427,18 +442,18 @@ export default function ModalInfo({
       commentary: '',
       email: '',
       upload: '',
-    })
-    setChecked(false)
-    setBottomChecked(false)
-    setBottomCheckedError(false)
+    });
+    setChecked(false);
+    setBottomChecked(false);
+    setBottomCheckedError(false);
   }
 
   function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (file) {
-      setInputText(prevState => ({
+      setInputText((prevState) => ({
         ...prevState,
-        upload: file
+        upload: file,
       }));
     }
   }
@@ -447,9 +462,9 @@ export default function ModalInfo({
     <Modal
       open={open}
       onClose={() => {
-        handleClose()
-        setSend(false)
-        handleButtonClick()
+        handleClose();
+        setSend(false);
+        handleButtonClick();
       }}
       aria-labelledby='modal-modal-title'
       aria-describedby='modal-modal-description'
@@ -462,9 +477,9 @@ export default function ModalInfo({
           <CloseIcon
             className='absolute top-[20px] right-[20px] hover:fill-gold_'
             onClick={() => {
-              handleClose()
-              setSend(false)
-              handleButtonClick()
+              handleClose();
+              setSend(false);
+              handleButtonClick();
             }}
           />
 
@@ -480,22 +495,22 @@ export default function ModalInfo({
         </div>
         {!send && (
           <div
-            className='absolute w-[90%] max-w-[1285px] h-auto bg-[#27282b] top-1/2 left-1/2
-                        -translate-x-1/2 -translate-y-1/2 outline-0 rounded-xl flex flex-col items-center
-                        py-[5%] px-[2%] md:px-[5%]'
+            className='absolute w-[90%] max-w-[1300px] h-auto lg:h-[629px] bg-[#27282b] top-1/2 left-1/2
+                        -translate-x-1/2 -translate-y-1/2 outline-0 rounded-xl flex flex-col items-end
+                        pt-[53px] pb-[3%] px-[20px] sm:px-[30px] md:px-[40px] lg:px-[58px] xl:px-[76px] justify-end'
           >
             <ThemeProvider theme={newTheme}>
               <CloseIcon
                 className='absolute top-[20px] right-[20px] hover:fill-gold_'
                 onClick={() => {
-                  handleClose()
-                  handleButtonClick()
+                  handleClose();
+                  handleButtonClick();
                 }}
               />
 
-              <div className="w-full grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-start">
+              <div className='w-full grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-start'>
                 {/* Левая колонка */}
-                <div className="flex flex-col items-start pr-0 md:pr-6 lg:pr-10 xl:pr-[50px]">
+                <div className='flex flex-col items-start pr-0 md:pr-6 lg:pr-10 xl:pr-[25px] -mt-8'>
                   <div>
                     {/* Мобильные: одна строка, десктоп: две строки */}
                     <div className='block md:hidden font-labgrotesquebold text-gold_ text-[20px] lg:text-[24px] uppercase'>
@@ -533,34 +548,61 @@ export default function ModalInfo({
                   */}
                 </div>
                 {/* Центральная колонка: форма */}
-                <div className="flex justify-center">
-                  <div className="w-full max-w-[640px] flex flex-col gap-y-6">
-                    <div className='grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6'>
-                      <FormControl error={errorText.manufacturer !== ''} variant='standard' className='z-10 w-full'>
-                        <InputLabel htmlFor='manufacturer'>{t('inputInfoBlock.manufacturer')}</InputLabel>
+                <div className='flex justify-center w-full'>
+                  <div className='w-full max-w-[505px] flex flex-col gap-y-6'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8'>
+                      <FormControl
+                        error={errorText.manufacturer !== ''}
+                        variant='standard'
+                        className='z-10 w-full'
+                      >
+                        <InputLabel htmlFor='manufacturer'>
+                          {t('inputInfoBlock.manufacturer')}
+                        </InputLabel>
                         <Input
                           id='manufacturer'
                           autoComplete='off'
                           value={inputText.manufacturer}
-                          onChange={e => inputHandler(e)}
+                          onChange={(e) => inputHandler(e)}
                         />
                         {errorText.manufacturer && (
-                          <FormHelperText id='component-error-text'>{errorText.manufacturer}</FormHelperText>
+                          <FormHelperText id='component-error-text'>
+                            {errorText.manufacturer}
+                          </FormHelperText>
                         )}
                       </FormControl>
-                      <FormControl error={errorText.model !== ''} variant='standard' className='z-10 w-full'>
+                      <FormControl
+                        error={errorText.model !== ''}
+                        variant='standard'
+                        className='z-10 w-full'
+                      >
                         <InputLabel htmlFor='model'>{t('inputInfoBlock.model')}</InputLabel>
-                        <Input id='model' autoComplete='off' value={inputText.model} onChange={e => inputHandler(e)} />
-                        {errorText.model && <FormHelperText id='component-error-text'>{errorText.model}</FormHelperText>}
+                        <Input
+                          id='model'
+                          autoComplete='off'
+                          value={inputText.model}
+                          onChange={(e) => inputHandler(e)}
+                        />
+                        {errorText.model && (
+                          <FormHelperText id='component-error-text'>
+                            {errorText.model}
+                          </FormHelperText>
+                        )}
                       </FormControl>
-                      <FormControl className='z-10 w-full' error={errorText.serialNumber !== ''} variant='standard'>
-                        <InputLabel htmlFor='serialNumber'>{t('inputInfoBlock.serialNumber')}</InputLabel>
+                      <FormControl
+                        className='z-10 w-full'
+                        error={errorText.serialNumber !== ''}
+                        variant='standard'
+                      >
+                        <InputLabel htmlFor='serialNumber'>
+                          {t('inputInfoBlock.serialNumber')}
+                        </InputLabel>
                         <Input
                           id='serialNumber'
                           aria-describedby='component-error-text'
                           autoComplete='off'
                           value={inputText.serialNumber}
-                          onChange={e => inputHandler(e)}
+                          onChange={(e) => inputHandler(e)}
                         />
                         {errorText.serialNumber && (
                           <FormHelperText error id='component-error-text'>
@@ -568,14 +610,20 @@ export default function ModalInfo({
                           </FormHelperText>
                         )}
                       </FormControl>
-                      <FormControl className='z-10 w-full' error={errorText.manufactureYear !== ''} variant='standard'>
-                        <InputLabel htmlFor='manufactureYear'>{t('inputInfoBlock.manufactureYear')}</InputLabel>
+                      <FormControl
+                        className='z-10 w-full'
+                        error={errorText.manufactureYear !== ''}
+                        variant='standard'
+                      >
+                        <InputLabel htmlFor='manufactureYear'>
+                          {t('inputInfoBlock.manufactureYear')}
+                        </InputLabel>
                         <Input
                           id='manufactureYear'
                           aria-describedby='component-error-text'
                           autoComplete='off'
                           value={inputText.manufactureYear}
-                          onChange={e => inputHandler(e)}
+                          onChange={(e) => inputHandler(e)}
                         />
                         {errorText.manufactureYear && (
                           <FormHelperText error id='component-error-text'>
@@ -583,15 +631,21 @@ export default function ModalInfo({
                           </FormHelperText>
                         )}
                       </FormControl>
-                      <FormControl className='z-10 w-full' error={errorText.commentary !== ''} variant='standard'>
-                        <InputLabel htmlFor='commentary'>{t('inputInfoBlock.commentary')}</InputLabel>
+                      <FormControl
+                        className='z-10 w-full'
+                        error={errorText.commentary !== ''}
+                        variant='standard'
+                      >
+                        <InputLabel htmlFor='commentary'>
+                          {t('inputInfoBlock.commentary')}
+                        </InputLabel>
                         <Input
                           multiline
                           id='commentary'
                           aria-describedby='component-error-text'
                           autoComplete='off'
                           maxRows='3'
-                          onChange={e => inputHandler(e)}
+                          onChange={(e) => inputHandler(e)}
                         />
                         {errorText.commentary && (
                           <FormHelperText error id='component-error-text'>
@@ -599,16 +653,24 @@ export default function ModalInfo({
                           </FormHelperText>
                         )}
                       </FormControl>
-                      <FormControl error={errorText.email !== ''} variant='standard' className='z-10 w-full'>
+                      <FormControl
+                        error={errorText.email !== ''}
+                        variant='standard'
+                        className='z-10 w-full'
+                      >
                         <InputLabel htmlFor='email'>{t('inputInfoBlock.email')}</InputLabel>
                         <Input
                           type='email'
                           id='email'
                           aria-describedby='component-error-text'
-                          onChange={e => inputHandler(e)}
+                          onChange={(e) => inputHandler(e)}
                           autoComplete='off'
                         />
-                        {errorText.email && <FormHelperText id='component-error-text'>{errorText.email}</FormHelperText>}
+                        {errorText.email && (
+                          <FormHelperText id='component-error-text'>
+                            {errorText.email}
+                          </FormHelperText>
+                        )}
                       </FormControl>
                       <FormControl className='z-10 w-full md:col-span-2'>
                         <Button
@@ -616,7 +678,6 @@ export default function ModalInfo({
                           startIcon={null}
                           sx={{
                             justifyContent: 'flex-start',
-                            color: '#4A4A4A',
                             ':hover': { backgroundColor: '#82653E30' },
                             fontFamily: 'AdventProRegular',
                             fontSize: 15,
@@ -629,20 +690,27 @@ export default function ModalInfo({
                             textTransform: 'none',
                             width: '100%',
                             padding: 0,
+                            '& .MuiTouchRipple-child': {
+                              backgroundColor: '#666',
+                            },
                           }}
                         >
                           <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-6 h-full'>
                             {/* Левая часть: круг и декор */}
-                            <div className='flex flex-col items-center justify-center w-full h-full'>
-                              <UploadIcon />
-                              <UploadDecorSvg className='w-full' />
+                            <div className='flex flex-col items-center justify-center w-full h-full relative px-1 py-1 md:px-2 md:py-2'>
+                              <UploadIcon className='relative z-10' />
+                              <UploadDecorSvg className='w-full absolute bottom-0' />
                             </div>
                             {/* Правая часть: текст */}
-                            <div className='flex flex-col justify-between w-full h-full'>
+                            <div className='flex flex-col justify-center items-center w-full h-full'>
                               {!inputText.upload ? (
-                                <span className='text-sm md:text-base lg:text-lg flex flex-col justify-between h-full p-0 m-0'>
-                                  <span className='p-0 m-0'>{t('inputInfoBlock.upload')}</span>
-                                  <span className='p-0 m-0'>PDF, Word, Excel, CSV, JPG, PNG</span>
+                                <span className='text-sm md:text-base lg:text-lg flex flex-row md:flex-col justify-between p-0 m-0'>
+                                  <span className='p-0 m-0' style={{ color: '#666666' }}>
+                                    {t('inputInfoBlock.upload')}
+                                  </span>
+                                  <span className='p-0 m-0' style={{ color: '#666666' }}>
+                                    PDF, Word, Excel, CSV, JPG, PNG
+                                  </span>
                                 </span>
                               ) : (
                                 <span className='text-sm md:text-base lg:text-lg h-full flex items-center p-0 m-0'>
@@ -660,63 +728,70 @@ export default function ModalInfo({
                       </FormControl>
                     </div>
                     {/* Чекбокс и кнопка на всю ширину */}
-                    <div className='flex flex-col gap-4 mt-4'>
-                      <FormGroup>
-                        <FormControlLabel
-                          checked={bottomChecked}
-                          onChange={e => handleBottomChange(e)}
-                          id='check'
-                          required
-                          control={<Checkbox id='checkb' />}
-                          sx={{
-                            '& .MuiTypography-root': { color: bottomCheckedError ? '#d32f2f' : '#4A4A4A' },
-                            '& .MuiFormControlLabel-asterisk': { display: 'none' },
-                          }}
-                          label={
-                            <div className='flex flex-row gap-2'>
-                              {lang === 'ru' && (
-                                <>
-                                  <Link to={getURLWithLang('privacypolicy', lang)}>
-                                    <u>Соглашение</u>
-                                  </Link>
-                                  на обработку персональных данных
-                                </>
-                              )}
-                              {lang === 'de' && (
-                                <>
-                                  Ich habe die
-                                  <Link to={getURLWithLang('privacypolicy', lang)}>
-                                    <u>Datenschutzerklärung</u>
-                                  </Link>
-                                  gelesen und stimme dieser zu
-                                </>
-                              )}
-                              {lang === 'en' && (
-                                <>
-                                  I have read and agree to the
-                                  <Link to={getURLWithLang('privacypolicy', lang)}>
-                                    <u>Privacy Policy</u>
-                                  </Link>
-                                </>
-                              )}
-                            </div>
-                          }
-                        />
-                      </FormGroup>
+                    <div className='flex flex-col mt-4'>
+                      <FormControl error={bottomCheckedError}>
+                        <FormGroup>
+                          <FormControlLabel
+                            checked={bottomChecked}
+                            onChange={(e) => handleBottomChange(e)}
+                            id='check'
+                            required
+                            control={<Checkbox id='checkb' />}
+                            sx={{
+                              '& .MuiTypography-root': {
+                                color: bottomCheckedError ? '#d32f2f' : '#666666',
+                              },
+                              '& .MuiFormControlLabel-asterisk': { display: 'none' },
+                            }}
+                            label={
+                              <div className='flex flex-row gap-2'>
+                                {lang === 'ru' && (
+                                  <>
+                                    <Link to={getURLWithLang('privacypolicy', lang)}>
+                                      <u>Соглашение</u>
+                                    </Link>
+                                    на обработку персональных данных
+                                  </>
+                                )}
+                                {lang === 'de' && (
+                                  <>
+                                    Ich habe die
+                                    <Link to={getURLWithLang('privacypolicy', lang)}>
+                                      <u>Datenschutzerklärung</u>
+                                    </Link>
+                                    gelesen und stimme dieser zu
+                                  </>
+                                )}
+                                {lang === 'en' && (
+                                  <>
+                                    I have read and agree to the
+                                    <Link to={getURLWithLang('privacypolicy', lang)}>
+                                      <u>Privacy Policy</u>
+                                    </Link>
+                                  </>
+                                )}
+                              </div>
+                            }
+                          />
+                        </FormGroup>
+                      </FormControl>
                       <CountButton
                         src={button}
                         className='relative z-[1] w-full aspect-[507/59] font-bebas text-white text-[16px] md:text-[18px] lg:text-[22px]
-                                             flex items-center justify-center bg-contain bg-no-repeat'
+                                             flex items-center justify-center bg-contain bg-no-repeat mt-10'
                         defaultValue={t('inputInfoBlock.ready')}
                         onClick={() => {
-                          inputErrorHandler()
+                          inputErrorHandler();
                         }}
                       />
                     </div>
                   </div>
                 </div>
                 {/* Правая колонка (невидимый клон левого контента для симметрии) */}
-                <div className="hidden md:flex flex-col items-start px-4 invisible" aria-hidden="true">
+                <div
+                  className='hidden md:flex flex-col items-start px-4 invisible'
+                  aria-hidden='true'
+                >
                   <div>
                     <div className='font-labgrotesquebold text-gold_ text-[20px] lg:text-[24px] uppercase'>
                       {t('inputInfoBlock.title.info')}
@@ -732,6 +807,5 @@ export default function ModalInfo({
         )}
       </Fragment>
     </Modal>
-  )
+  );
 }
-

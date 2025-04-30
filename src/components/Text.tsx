@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles';
 
 const newTheme = createTheme({
   components: {
@@ -11,6 +11,45 @@ const newTheme = createTheme({
       defaultProps: {
         variant: 'standard',
       },
+      styleOverrides: {
+        root: {
+          '&:hover:not(.Mui-error)': {
+            '& .MuiInputLabel-root': {
+              color: '#82653E',
+              transition: 'color 1s ease',
+            },
+            '& .MuiInput-underline:before': {
+              borderColor: '#82653E',
+              transition: 'color 1s ease',
+            },
+            '&:hover:not(.Mui-error)': {
+              '& .MuiSvgIcon-root:not(.MuiCheckbox-root svg)': {
+                color: '#82653E',
+                transition: 'color 1s ease',
+              },
+            },
+          },
+          '&.Mui-error': {
+            '& .MuiInputLabel-root': {
+              color: '#d32f2f !important',
+            },
+            '& .MuiInput-underline:before': {
+              borderColor: '#d32f2f !important',
+            },
+          },
+        },
+      },
+    },
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          '& .MuiTouchRipple-root': {
+            '& .MuiTouchRipple-child': {
+              backgroundColor: '#666666',
+            },
+          },
+        },
+      },
     },
     MuiInput: {
       styleOverrides: {
@@ -20,17 +59,24 @@ const newTheme = createTheme({
         },
         underline: {
           '&:before': {
-            borderColor: '#3A3A3A',
+            borderColor: '#666666',
           },
           '&:after': {
             borderColor: '#82653E',
           },
-          '&:hover:before': {
-            borderBottom: '2px solid #3A3A3A !important',
+          '&.Mui-error:before': {
+            borderColor: '#d32f2f',
+          },
+          '&:hover:not(.Mui-error):before': {
+            borderColor: '#82653E',
+          },
+          '&.Mui-error:hover:before': {
+            borderColor: '#d32f2f !important',
           },
         },
       },
     },
+
     MuiPaper: {
       styleOverrides: {
         root: {
@@ -43,11 +89,15 @@ const newTheme = createTheme({
             backgroundColor: '#82653E',
             border: '4px solid #18191B',
           },
-          '& .MuiButtonBase-root': { borderBottom: '1px solid #434343', height: 'auto' },
+          '& .MuiButtonBase-root': {
+            borderBottom: '1px solid #434343',
+            height: 'auto',
+            backgroundColor: '#666666',
+          },
           '& .MuiListItemText-root': { width: '100px' },
-          '& .MuiTypography-body1': { fontSize: '18px', color: 'white' },
+          '& .MuiTypography-body1': { fontSize: '18px', color: '#666666' },
           '& .MuiTypography-body2': { color: '#82653E' },
-          '& .MuiList-root': { color: 'white' },
+          '& .MuiList-root': { color: '#666666' },
           '& .MuiMenuItem-root': { fontFamily: 'AdventProRegular' },
         },
       },
@@ -55,7 +105,7 @@ const newTheme = createTheme({
     MuiAutocomplete: {
       styleOverrides: {
         clearIndicator: { color: '#82653E' },
-        popupIndicator: { color: '#82653E' },
+        popupIndicator: { color: '#666666' },
         paper: {
           backgroundColor: '#18191B',
           color: 'white',
@@ -68,10 +118,13 @@ const newTheme = createTheme({
             fontSize: '20px',
           },
         },
-        option: { borderBottom: '1px solid #434343', '&:hover': { backgroundColor: 'rgba(130,101,62,0.Section3)' } },
+        option: {
+          borderBottom: '1px solid #434343',
+          '&:hover': { backgroundColor: 'rgba(130,101,62,0.Section3)' },
+        },
         listbox: {
           '&::-webkit-scrollbar': { width: '10px' },
-          '&::-webkit-scrollbar-thumb': { backgroundColor: '#82653E', borderRadius: '10px' },
+          '&::-webkit-scrollbar-thumb': { backgroundColor: '#666666', borderRadius: '10px' },
           '&::-webkit-scrollbar-track': {
             width: '1px',
             backgroundColor: '#82653E',
@@ -83,7 +136,7 @@ const newTheme = createTheme({
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          color: '#434343',
+          color: '#666666',
           fontSize: '13px',
           '@media (min-width:480px)': {
             fontSize: '16px',
@@ -96,7 +149,10 @@ const newTheme = createTheme({
           },
           fontFamily: 'AdventProRegular',
           top: '-10px',
-          '&.Mui-focused': {
+          '&.Mui-error': {
+            color: '#d32f2f !important',
+          },
+          '&.Mui-focused:not(.Mui-error)': {
             color: '#82653E',
             fontWeight: 'bold',
           },
@@ -106,28 +162,36 @@ const newTheme = createTheme({
     MuiCheckbox: {
       styleOverrides: {
         root: {
-          color: '#4A4A4A',
+          color: '#666666',
+          transition: 'all 0.5s ease',
           '&.Mui-checked': {
             color: '#82653E',
+            '&:hover': {
+              color: '#FFFFFF',
+            },
           },
-          // paddingTop: 5
         },
       },
     },
     MuiFormControlLabel: {
       styleOverrides: {
-        // asterisk: {display: "none"},
         root: {
-          fontSize: '18px',
-          fontFamily: 'AdventProRegular',
-          color: '#4A4A4A',
-          // alignItems: "flex-start"
+          color: '#666666',
+          '&:hover': {
+            '& .MuiTypography-root': {
+              color: '#FFFFFF',
+            },
+            '& .MuiCheckbox-root': {
+              color: '#FFFFFF',
+            },
+          },
         },
       },
     },
     MuiTypography: {
       styleOverrides: {
         root: {
+          whiteSpace: 'nowrap',
           fontSize: '12px',
           '@media (min-width:768px)': {
             fontSize: '18px',
@@ -136,7 +200,7 @@ const newTheme = createTheme({
             fontSize: '20px',
           },
           fontFamily: 'AdventProRegular',
-          color: '#4A4A4A',
+          color: '#666666',
         },
       },
     },
@@ -151,6 +215,7 @@ const newTheme = createTheme({
       styleOverrides: {
         root: {
           fontSize: '9px',
+          color: '#666666',
           '@media (min-width:768px)': {
             fontSize: '10px',
           },
@@ -161,6 +226,6 @@ const newTheme = createTheme({
       },
     },
   },
-})
+});
 
-export default newTheme
+export default newTheme;

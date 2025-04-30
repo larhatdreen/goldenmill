@@ -395,7 +395,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
   return (
     <div 
       ref={modalRef}
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 min-w-[400px]"
       style={{ backdropFilter: 'blur(5px)' }}
     >
       <form 
@@ -409,7 +409,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
           <CloseIcon />
         </button>
         <div
-          className='absolute w-[90%] md:w-[640px] h-[224px] bg-[#18191B] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+          className='absolute w-[90%] md:w-[640px] h-[224px] bg-[#27282B] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
                     outline-0 rounded-xl flex flex-row items-center justify-center'
         >
           <PlaneIcon />
@@ -424,7 +424,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
         </div>
         {!send && (
           <div
-            className='absolute w-[90%] md:w-[640px] bg-[#18191B] top-1/2 left-1/2
+            className='absolute w-[90%] md:w-[640px] bg-[#27282B] top-1/2 left-1/2
                         -translate-x-1/2 -translate-y-1/2 outline-0 rounded-xl flex flex-col items-center'
           >
             <div className='mt-10 flex flex-col items-center'>
