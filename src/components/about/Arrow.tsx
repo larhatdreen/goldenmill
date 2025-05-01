@@ -5,7 +5,7 @@ function Arrow() {
         className='absolute left-[200px] top-[123px]'
         xmlns='http://www.w3.org/2000/svg'
         width='2'
-        height='1126'
+        height='700'
         viewBox='0 0 2 1126'
         fill='none'
       >
@@ -41,7 +41,7 @@ function Arrow() {
         className='absolute left-[470px] top-[128px]'
         xmlns='http://www.w3.org/2000/svg'
         width='2'
-        height='824'
+        height='700'
         viewBox='0 0 2 824'
         fill='none'
       >
