@@ -527,7 +527,7 @@ export default function ModalInfo({
                       </div>
                     </div>
                   </div>
-                  <FormGroup className='mt-6 mb-6'>
+                  {/* <FormGroup className='mt-6 mb-6'>
                     <FormControl error={checkedError}>
                       <FormControlLabel
                         checked={checked}
@@ -547,7 +547,7 @@ export default function ModalInfo({
                         }
                       />
                     </FormControl>
-                  </FormGroup>
+                  </FormGroup> */}
                 </div>
                 {/* Центральная колонка: форма */}
                 <div className='flex justify-center w-full'>
