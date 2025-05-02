@@ -15,7 +15,7 @@ import {
 } from '@mui/material'
 import CountButton from './CountButton.tsx'
 import button from '../assets/UI/Btn.svg'
-import CloseIcon from '@mui/icons-material/Close'
+import CloseIcon from './customIcons/CloseIcon.tsx'
 import React, { ChangeEvent, useState, useRef, useEffect } from 'react'
 import PlaneIcon from './customIcons/PlaneIcon.tsx'
 import type { ICountryData } from 'countries-list'
@@ -66,6 +66,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
   const countries: ICountryData[] = getCountryDataList()
   const modalRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
+  const successRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -109,6 +110,38 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
       setCheckedError(false)
     }
   }, [open])
+
+  useEffect(() => {
+    if (!send) return;
+    const handleClickOutside = (event: MouseEvent) => {
+      if (successRef.current && !successRef.current.contains(event.target as Node)) {
+        handleClose();
+        setSend(false);
+        setInputText({
+          name: '',
+          helpEmail: '',
+          phone: '',
+          country: '',
+          companyName: '',
+          commentary: '',
+        });
+        setErrorText({
+          name: '',
+          helpEmail: '',
+          phone: '',
+          country: '',
+          companyName: '',
+          commentary: '',
+        });
+        setChecked(false);
+        setCheckedError(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [send, handleClose]);
 
   function handleChange(event: React.SyntheticEvent<Element, Event>) {
     const x = event as React.ChangeEvent<HTMLInputElement>
@@ -398,22 +431,38 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 min-w-[400px]"
       style={{ backdropFilter: 'blur(5px)' }}
     >
-      <form 
-        ref={formRef}
-        className="bg-[#202020] rounded-lg p-8 max-w-md w-full mx-4 relative"
-      >
-        <button
-          onClick={handleClose}
-          className="absolute top-4 right-4 text-[#A19F9B] hover:text-[#D5CDBD] transition-colors"
-        >
-          <CloseIcon />
-        </button>
+      {send ? (
         <div
-          className='absolute w-[90%] md:w-[640px] h-[224px] bg-[#27282B] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                    outline-0 rounded-xl flex flex-row items-center justify-center'
+          ref={successRef}
+          className='relative w-[90%] max-w-[640px] h-[224px] bg-[#27282B] rounded-xl flex flex-row items-center justify-center'
         >
+          <CloseIcon
+            className='absolute top-[20px] right-[20px] hover:fill-gold_ cursor-pointer'
+            onClick={() => {
+              handleClose();
+              setSend(false);
+              setInputText({
+                name: '',
+                helpEmail: '',
+                phone: '',
+                country: '',
+                companyName: '',
+                commentary: '',
+              });
+              setErrorText({
+                name: '',
+                helpEmail: '',
+                phone: '',
+                country: '',
+                companyName: '',
+                commentary: '',
+              });
+              setChecked(false);
+              setCheckedError(false);
+            }}
+          />
           <PlaneIcon />
-          <div className='flex flex-col items-start'>
+          <div className='flex flex-col items-start ml-6'>
             <div className='font-labgrotesque text-footerBottomText text-[22px]'>
               {t('inputHelpBlock.success.first')}
             </div>
@@ -422,16 +471,43 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
             </div>
           </div>
         </div>
-        {!send && (
-          <div
-            className='absolute w-[90%] md:w-[640px] bg-[#27282B] top-1/2 left-1/2
-                        -translate-x-1/2 -translate-y-1/2 outline-0 rounded-xl flex flex-col items-center'
+      ) : (
+        <div
+          className='relative w-[90%] max-w-[640px] bg-[#27282B] rounded-xl px-4 md:px-8 pt-10 pb-8'
+        >
+          <CloseIcon
+            className='absolute top-[20px] right-[20px] hover:fill-gold_ cursor-pointer'
+            onClick={() => {
+              handleClose();
+              setInputText({
+                name: '',
+                helpEmail: '',
+                phone: '',
+                country: '',
+                companyName: '',
+                commentary: '',
+              });
+              setErrorText({
+                name: '',
+                helpEmail: '',
+                phone: '',
+                country: '',
+                companyName: '',
+                commentary: '',
+              });
+              setChecked(false);
+              setCheckedError(false);
+            }}
+          />
+          <form 
+            ref={formRef}
+            className="w-full relative"
           >
-            <div className='mt-10 flex flex-col items-center'>
-              <div className='font-labgrotesquebold text-gold_ text-[18px] md:text-[24px] uppercase text-center'>
+            <div className="w-full text-center mb-6">
+              <div className='font-labgrotesquebold text-gold_ text-[18px] md:text-[24px] uppercase'>
                 {t('inputHelpBlock.title.first')}
               </div>
-              <div className='font-labgrotesque text-footerBottomText text-[16px] md:text-[22px] text-center'>
+              <div className='font-labgrotesque text-footerBottomText text-[16px] md:text-[22px]'>
                 {t('inputHelpBlock.title.second')}
               </div>
             </div>
@@ -439,7 +515,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
             <ThemeProvider theme={newTheme}>
               <div className='w-full h-[300px] px-[10%] pt-6 pb-6  flex flex-col justify-between'>
                 <div className='flex flex-row justify-between  gap-x-6'>
-                  <FormControl className='z-10 flex-1'>
+                  <FormControl className='z-10 flex-1' error={errorText.name !== ''}>
                     <InputLabel htmlFor='name'>{t('inputHelpBlock.name')}</InputLabel>
                     <Input
                       id='name'
@@ -454,7 +530,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                     )}
                   </FormControl>
 
-                  <FormControl className='z-10 flex-1'>
+                  <FormControl className='z-10 flex-1' error={errorText.helpEmail !== ''}>
                     <InputLabel htmlFor='helpEmail'>{t('inputHelpBlock.email')}</InputLabel>
                     <Input
                       id='helpEmail'
@@ -477,6 +553,20 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                       component={TextField}
                       label={t('inputHelpBlock.phone')}
                       placeholder=''
+                      value={inputText.phone}
+                      inputProps={{
+                        sx: {
+                          '& .MuiInputLabel-root': {
+                            color: errorText.phone ? '#d32f2f !important' : '#666666',
+                          },
+                          '& .MuiInput-underline:before': {
+                            borderColor: errorText.phone ? '#d32f2f !important' : '#666666',
+                          },
+                          '& .MuiInput-underline:after': {
+                            borderColor: errorText.phone ? '#d32f2f !important' : '#82653E',
+                          },
+                        }
+                      }}
                     />
                     {errorText.phone && (
                       <FormHelperText error id='component-error-text'>
@@ -485,7 +575,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                     )}
                   </FormControl>
 
-                  <FormControl className='flex-1'>
+                  <FormControl className='flex-1' error={errorText.country !== ''}>
                     <Autocomplete
                       id='country'
                       onSelect={e => inputAutocompleteHandler(e)}
@@ -493,30 +583,39 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                       autoHighlight
                       isOptionEqualToValue={(option, value) => option.name === value.name}
                       getOptionLabel={option => option.name}
-                      renderOption={(props, option) => {                        const { key, ...otherProps } = props;
-                        return (
-                          <Box 
-                            component='li' 
-                            key={option.iso2}
-                            sx={{ '& > img': { mr: 2, flexShrink: 0 } }} 
-                            {...otherProps}
-                          >
-                            <img
-                              loading='lazy'
-                              width='20'
-                              srcSet={`https://flagcdn.com/w40/${option.iso2.toLowerCase()}.png 2x`}
-                              src={`https://flagcdn.com/w20/${option.iso2.toLowerCase()}.png`}
-                              alt=''
-                            />
-                            {option.name}
-                          </Box>
-                        );
-                      }}
+                      renderOption={(props, option) => (
+                        <Box 
+                          component='li' 
+                          sx={{ '& > img': { mr: 2, flexShrink: 0 } }} 
+                          {...props}
+                        >
+                          <img
+                            loading='lazy'
+                            width='20'
+                            srcSet={`https://flagcdn.com/w40/${option.iso2.toLowerCase()}.png 2x`}
+                            src={`https://flagcdn.com/w20/${option.iso2.toLowerCase()}.png`}
+                            alt=''
+                            style={{
+                              filter: errorText.country ? 'grayscale(1) brightness(0.6) sepia(1) hue-rotate(-50deg) saturate(8) brightness(1.2)' : 'none',
+                            }}
+                          />
+                          {option.name}
+                        </Box>
+                      )}
                       renderInput={params => (
                         <TextField
                           {...params}
                           label={t('inputHelpBlock.country')}
+                          error={errorText.country !== ''}
                           inputProps={{ ...params.inputProps, autoComplete: 'new-password' }}
+                          sx={{
+                            '& .MuiAutocomplete-popupIndicator': {
+                              color: errorText.country ? '#d32f2f' : '#666666',
+                              '&:hover': {
+                                color: errorText.country ? '#d32f2f' : '#82653E',
+                              },
+                            },
+                          }}
                         />
                       )}
                     />
@@ -528,7 +627,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                   </FormControl>
                 </div>
                 <div className='flex flex-row justify-between  gap-x-6'>
-                  <FormControl className='z-10 flex-1'>
+                  <FormControl className='z-10 flex-1' error={errorText.companyName !== ''}>
                     <InputLabel htmlFor='companyName'>{t('inputHelpBlock.companyName')}</InputLabel>
                     <Input
                       id='companyName'
@@ -543,7 +642,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                     )}
                   </FormControl>
 
-                  <FormControl className='z-10 flex-1'>
+                  <FormControl className='z-10 flex-1' error={errorText.commentary !== ''}>
                     <InputLabel htmlFor='commentary'>{t('inputHelpBlock.commentary')}</InputLabel>
                     <Input
                       multiline
@@ -562,74 +661,67 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                 </div>
               </div>
 
-              <FormGroup className='mt-3 mb-3'>
-                <FormControlLabel
-                  checked={checked}
-                  onChange={e => handleChange(e)}
-                  id='check'
-                  required
-                  control={<Checkbox id='checkb' />}
-                  sx={{
-                    '& .MuiTypography-root': {
-                      color: checkedError ? '#d32f2f' : '#4A4A4A',
-                    },
-                    '& .MuiFormControlLabel-asterisk': { display: 'none' },
-                  }}
-                  label={
-                    <div className='flex flex-row gap-2'>
-                      {lang === 'ru' && (
-                        <>
-                          <Link to={getURLWithLang('privacypolicy', lang)}>
-                            <u>Соглашение</u>
-                          </Link>
-                          на обработку персональных данных
-                        </>
-                      )}
-                      {lang === 'de' && (
-                        <>
-                          Ich habe die
-                          <Link to={getURLWithLang('privacypolicy', lang)}>
-                            <u>Datenschutzerklärung</u>
-                          </Link>
-                          gelesen und stimme dieser zu
-                        </>
-                      )}
-                      {lang === 'en' && (
-                        <>
-                          I have read and agree to the
-                          <Link to={getURLWithLang('privacypolicy', lang)}>
-                            <u>Privacy Policy</u>
-                          </Link>
-                        </>
-                      )}
-                    </div>
-                  }
-                />
-              </FormGroup>
-            </ThemeProvider>
-
-            <Tooltip 
-              title={t('inputHelpBlock.moreInfo')} 
-              placement="top"
-              arrow
-              enterDelay={200}
-              leaveDelay={200}
-            >
-              <div>
+              <div className="flex flex-col items-center w-full mt-4">
+                <FormGroup className="mb-3">
+                  <FormControl error={checkedError}>
+                    <FormControlLabel
+                      checked={checked}
+                      onChange={e => handleChange(e)}
+                      id='check'
+                      required
+                      control={<Checkbox id='checkb' />}
+                      sx={{
+                        '& .MuiTypography-root': {
+                          color: !checked && checkedError ? '#d32f2f' : '#666666',
+                        },
+                        '& .MuiFormControlLabel-asterisk': { display: 'none' },
+                      }}
+                      label={
+                        <div className='flex flex-row gap-2'>
+                          {lang === 'ru' && (
+                            <>
+                              <Link to={getURLWithLang('privacypolicy', lang)}>
+                                <u>Соглашение</u>
+                              </Link>
+                              на обработку персональных данных
+                            </>
+                          )}
+                          {lang === 'de' && (
+                            <>
+                              Ich habe die
+                              <Link to={getURLWithLang('privacypolicy', lang)}>
+                                <u>Datenschutzerklärung</u>
+                              </Link>
+                              gelesen und stimme dieser zu
+                            </>
+                          )}
+                          {lang === 'en' && (
+                            <>
+                              I have read and agree to the
+                              <Link to={getURLWithLang('privacypolicy', lang)}>
+                                <u>Privacy Policy</u>
+                              </Link>
+                            </>
+                          )}
+                        </div>
+                      }
+                    />
+                  </FormControl>
+                </FormGroup>
                 <CountButton
                   src={button}
-                  className='relative z-[1] w-[284px] h-[58px] font-bebas text-white text-[16px] md:text-[18px] lg:text-[22px]
-                              flex items-center justify-center bg-no-repeat bg-contain mb-10'
+                  className='relative z-[1] w-full max-w-[284px] h-[58px] font-bebas text-white text-[16px] md:text-[18px] lg:text-[22px]
+                                flex items-center justify-center bg-no-repeat bg-contain mb-2'
                   defaultValue={t('inputHelpBlock.ready')}
                   onClick={() => {
                     inputErrorHandler()
                   }}
                 />
               </div>
-            </Tooltip>
-          </div>
-        )}
-      </form>
+            </ThemeProvider>
+          </form>
+        </div>
+      )}
     </div>
   )
 }

@@ -63,6 +63,7 @@ export default function ModalInfo({
   const [checked, setChecked] = useState(false);
   const [bottomChecked, setBottomChecked] = useState(false);
   const [bottomCheckedError, setBottomCheckedError] = useState(false);
+  const [checkedError, setCheckedError] = useState(false);
   const { t, i18n } = useTranslation();
 
   const VisuallyHiddenInput = styled('input')({
@@ -88,6 +89,7 @@ export default function ModalInfo({
     }));
     const x = event as React.ChangeEvent<HTMLInputElement>;
     setChecked(x.target.checked);
+    setCheckedError(false);
   }
 
   function handleBottomChange(event: React.SyntheticEvent<Element, Event>) {
@@ -497,7 +499,7 @@ export default function ModalInfo({
           <div
             className='absolute w-[90%] max-w-[1300px] h-auto lg:h-[629px] bg-[#27282b] top-1/2 left-1/2
                         -translate-x-1/2 -translate-y-1/2 outline-0 rounded-xl flex flex-col items-end
-                        pt-[53px] pb-[3%] px-[20px] sm:px-[30px] md:px-[40px] lg:px-[58px] xl:px-[76px] justify-end'
+                        pt-[53px] pb-[3%] px-[20px] sm:px-[30px] md:px-[40px] lg:px-[58px] xl:px-[76px] justify-end min-h-[120px] '
           >
             <ThemeProvider theme={newTheme}>
               <CloseIcon
@@ -508,7 +510,7 @@ export default function ModalInfo({
                 }}
               />
 
-              <div className='w-full grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-start'>
+              <div className='w-full grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-start min-h-[120px]'>
                 {/* Левая колонка */}
                 <div className='flex flex-col items-start pr-0 md:pr-6 lg:pr-10 xl:pr-[25px] -mt-8'>
                   <div>
@@ -525,27 +527,27 @@ export default function ModalInfo({
                       </div>
                     </div>
                   </div>
-                  {/*
                   <FormGroup className='mt-6 mb-6'>
-                    <FormControlLabel
-                      checked={checked}
-                      onChange={e => handleChange(e)}
-                      id='check'
-                      required
-                      control={<Checkbox />}
-                      sx={{
-                        alignItems: 'flex-start',
-                        '& .MuiFormControlLabel-asterisk': { display: 'none' },
-                        '& .MuiCheckbox-root': { paddingTop: '5px' },
-                      }}
-                      label={
-                        <div className='font-adventpro text-[18px] lg:text-[22px]'>
-                          {t('inputInfoBlock.noEquipmentData')}
-                        </div>
-                      }
-                    />
+                    <FormControl error={checkedError}>
+                      <FormControlLabel
+                        checked={checked}
+                        onChange={e => handleChange(e)}
+                        id='check'
+                        required
+                        control={<Checkbox />}
+                        sx={{
+                          alignItems: 'flex-start',
+                          '& .MuiFormControlLabel-asterisk': { display: 'none' },
+                          '& .MuiCheckbox-root': { paddingTop: '5px' },
+                        }}
+                        label={
+                          <div className='font-adventpro text-[18px] lg:text-[22px]'>
+                            {t('inputInfoBlock.noEquipmentData')}
+                          </div>
+                        }
+                      />
+                    </FormControl>
                   </FormGroup>
-                  */}
                 </div>
                 {/* Центральная колонка: форма */}
                 <div className='flex justify-center w-full'>

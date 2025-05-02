@@ -64,14 +64,14 @@ const newTheme = createTheme({
           '&:after': {
             borderColor: '#82653E',
           },
-          '&.Mui-error:before': {
-            borderColor: '#d32f2f',
+          '&.Mui-error:before, &.Mui-error:hover:before': {
+            borderColor: '#d32f2f !important',
+          },
+          '&.Mui-error:after': {
+            borderColor: '#d32f2f !important',
           },
           '&:hover:not(.Mui-error):before': {
             borderColor: '#82653E',
-          },
-          '&.Mui-error:hover:before': {
-            borderColor: '#d32f2f !important',
           },
         },
       },
@@ -105,7 +105,19 @@ const newTheme = createTheme({
     MuiAutocomplete: {
       styleOverrides: {
         clearIndicator: { color: '#82653E' },
-        popupIndicator: { color: '#666666' },
+        popupIndicator: {
+          color: '#666666',
+          transition: 'color 0.3s',
+          '&.Mui-error': {
+            color: '#d32f2f !important',
+          },
+          '&:hover': {
+            color: '#82653E',
+            '&.Mui-error': {
+              color: '#d32f2f !important',
+            },
+          },
+        },
         paper: {
           backgroundColor: '#18191B',
           color: 'white',
@@ -170,21 +182,35 @@ const newTheme = createTheme({
               color: '#FFFFFF',
             },
           },
+          '&.Mui-error': {
+            color: '#d32f2f',
+            '&:hover': {
+              color: '#FFFFFF',
+            },
+          },
         },
       },
     },
     MuiFormControlLabel: {
       styleOverrides: {
         root: {
-          color: '#666666',
-          '&:hover': {
-            '& .MuiTypography-root': {
-              color: '#FFFFFF',
-            },
-            '& .MuiCheckbox-root': {
-              color: '#FFFFFF',
-            },
+          '& .MuiTypography-root': {
+            color: '#666666',
+            transition: 'color 0.2s',
           },
+          '&:hover .MuiTypography-root.Mui-error': {
+            color: '#d32f2f !important',
+          },
+          '&:hover .MuiTypography-root:not(.Mui-error)': {
+            color: '#FFFFFF',
+          },
+          '& .MuiTypography-root.Mui-error': {
+            color: '#d32f2f !important',
+          },
+          '&:hover .MuiCheckbox-root': {
+            color: '#FFFFFF',
+          },
+          '& .MuiFormControlLabel-asterisk': { display: 'none' },
         },
       },
     },
