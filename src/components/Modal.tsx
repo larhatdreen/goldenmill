@@ -1,4 +1,4 @@
-import newTheme from './Text.tsx'
+import newTheme from './Text.tsx';
 import {
   Autocomplete,
   Box,
@@ -12,19 +12,19 @@ import {
   TextField,
   ThemeProvider,
   Tooltip,
-} from '@mui/material'
-import CountButton from './CountButton.tsx'
-import button from '../assets/UI/Btn.svg'
-import CloseIcon from './customIcons/CloseIcon.tsx'
-import React, { ChangeEvent, useState, useRef, useEffect } from 'react'
-import PlaneIcon from './customIcons/PlaneIcon.tsx'
-import type { ICountryData } from 'countries-list'
-import { getCountryDataList } from 'countries-list'
-import ReactPhoneInput from 'react-phone-input-material-ui'
-import { useTranslation } from 'react-i18next'
-import { Link, useParams } from 'react-router-dom'
-import { getURLWithLang } from '../functions/get-url-with-lang.ts'
-import { ParamsType } from './NavigateProvider.tsx'
+} from '@mui/material';
+import CountButton from './CountButton.tsx';
+import button from '../assets/UI/Btn.svg';
+import CloseIcon from './customIcons/CloseIcon.tsx';
+import React, { ChangeEvent, useState, useRef, useEffect } from 'react';
+import PlaneIcon from './customIcons/PlaneIcon.tsx';
+import type { ICountryData } from 'countries-list';
+import { getCountryDataList } from 'countries-list';
+import ReactPhoneInput from 'react-phone-input-material-ui';
+import { useTranslation } from 'react-i18next';
+import { Link, useParams } from 'react-router-dom';
+import { getURLWithLang } from '../functions/get-url-with-lang.ts';
+import { ParamsType } from './NavigateProvider.tsx';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
@@ -41,8 +41,8 @@ interface ModalProps {
 }
 
 export default function BasicModal({ open, handleClose, productInfo }: ModalProps) {
-  const [send, setSend] = useState(false)
-  const { lang } = useParams<ParamsType>()
+  const [send, setSend] = useState(false);
+  const { lang } = useParams<ParamsType>();
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language as 'ru' | 'en' | 'de';
   const [inputText, setInputText] = useState({
@@ -52,7 +52,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
     country: '',
     companyName: '',
     commentary: '',
-  })
+  });
   const [errorText, setErrorText] = useState({
     name: '',
     helpEmail: '',
@@ -60,36 +60,38 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
     country: '',
     companyName: '',
     commentary: '',
-  })
-  const [checked, setChecked] = useState(false)
-  const [checkedError, setCheckedError] = useState(false)
-  const countries: ICountryData[] = getCountryDataList()
-  const modalRef = useRef<HTMLDivElement>(null)
-  const formRef = useRef<HTMLFormElement>(null)
+  });
+  const [checked, setChecked] = useState(false);
+  const [checkedError, setCheckedError] = useState(false);
+  const countries: ICountryData[] = getCountryDataList();
+  const modalRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (modalRef.current && 
-          formRef.current && 
-          !formRef.current.contains(event.target as Node) &&
-          modalRef.current.contains(event.target as Node)) {
-        handleClose()
+      if (
+        modalRef.current &&
+        formRef.current &&
+        !formRef.current.contains(event.target as Node) &&
+        modalRef.current.contains(event.target as Node)
+      ) {
+        handleClose();
       }
-    }
+    };
 
     if (open) {
-      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [open, handleClose])
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [open, handleClose]);
 
   useEffect(() => {
     if (!open) {
-      setSend(false)
+      setSend(false);
       setInputText({
         name: '',
         helpEmail: '',
@@ -97,7 +99,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
         country: '',
         companyName: '',
         commentary: '',
-      })
+      });
       setErrorText({
         name: '',
         helpEmail: '',
@@ -105,11 +107,11 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
         country: '',
         companyName: '',
         commentary: '',
-      })
-      setChecked(false)
-      setCheckedError(false)
+      });
+      setChecked(false);
+      setCheckedError(false);
     }
-  }, [open])
+  }, [open]);
 
   useEffect(() => {
     if (!send) return;
@@ -144,17 +146,17 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
   }, [send, handleClose]);
 
   function handleChange(event: React.SyntheticEvent<Element, Event>) {
-    const x = event as React.ChangeEvent<HTMLInputElement>
-    setChecked(x.target.checked)
+    const x = event as React.ChangeEvent<HTMLInputElement>;
+    setChecked(x.target.checked);
   }
 
   async function sendToEmail() {
     try {
       const formData = new FormData();
-      
+
       formData.append('name', inputText.name);
       formData.append('email', inputText.helpEmail);
-      
+
       // Добавляем информацию о товаре в сообщение, если она есть
       const messageText = `
         ${t('emailContent.name')}: ${inputText.name}
@@ -163,14 +165,18 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
         ${t('emailContent.country')}: ${inputText.country}
         ${t('emailContent.companyName')}: ${inputText.companyName}
         ${t('emailContent.comment')}: ${inputText.commentary}
-        ${productInfo ? `
+        ${
+          productInfo
+            ? `
         \n${t('emailContent.productInfo')}:
         ${t('emailContent.productId')}: ${productInfo.id}
         ${t('emailContent.productName')}: ${productInfo.title}
         ${t('emailContent.productCategory')}: ${t(`products.${productInfo.category}`)}
-        ` : ''}
+        `
+            : ''
+        }
       `;
-      
+
       formData.append('message', messageText);
 
       const emailHtml = `
@@ -275,7 +281,9 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                   <span class="value">${inputText.commentary}</span>
                 </div>
               </div>
-              ${productInfo ? `
+              ${
+                productInfo
+                  ? `
               <div class="section">
                 <div class="section-title">${t('emailContent.productInfo')}</div>
                 <div class="field">
@@ -291,7 +299,9 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                   <span class="value">${t(`products.${productInfo.category}`)}</span>
                 </div>
               </div>
-              ` : ''}
+              `
+                  : ''
+              }
             </div>
             <div class="footer">
               <p>© ${new Date().getFullYear()} Meta Labs</p>
@@ -305,12 +315,12 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
       formData.append('subject', t('emailContent.contactRequest', { lng: currentLanguage }));
 
       console.log('Sending form data:', Object.fromEntries(formData.entries()));
-      
+
       const response = await fetch(`${API_URL}/send-email`, {
         method: 'POST',
         headers: {
           'X-Form-Type': 'contact',
-          'Accept': 'application/json'
+          Accept: 'application/json',
         },
         body: formData,
       });
@@ -319,85 +329,85 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
       console.log('Response headers:', Object.fromEntries(response.headers.entries()));
 
       let result;
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.indexOf("application/json") !== -1) {
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.indexOf('application/json') !== -1) {
         result = await response.json();
       } else {
         throw new Error('Server returned non-JSON response');
       }
-      
+
       if (!result.success) {
         throw new Error(result.message || 'Failed to send email');
       }
 
       setSend(true);
     } catch (error) {
-      setErrorText(prev => ({
+      setErrorText((prev) => ({
         ...prev,
-        helpEmail: error instanceof Error ? error.message : 'Failed to send email'
+        helpEmail: error instanceof Error ? error.message : 'Failed to send email',
       }));
     }
   }
 
   function inputErrorHandler() {
-    const emailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,5})+$/
-    let errorsCount = 0
+    const emailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,5})+$/;
+    let errorsCount = 0;
     if (inputText.name === '') {
-      setErrorText(prevErrorText => ({
+      setErrorText((prevErrorText) => ({
         ...prevErrorText,
         name: t('inputHelpBlock.errors.emptyFieldError'),
-      }))
-      errorsCount++
+      }));
+      errorsCount++;
     }
     if (inputText.helpEmail === '') {
-      setErrorText(prevErrorText => ({
+      setErrorText((prevErrorText) => ({
         ...prevErrorText,
         helpEmail: t('inputHelpBlock.errors.emptyFieldError'),
-      }))
-      errorsCount++
+      }));
+      errorsCount++;
     } else if (!inputText.helpEmail.match(emailFormat)) {
-      setErrorText(prevErrorText => ({
+      setErrorText((prevErrorText) => ({
         ...prevErrorText,
         helpEmail: t('inputHelpBlock.errors.wrongFormat'),
-      }))
-      errorsCount++
+      }));
+      errorsCount++;
     }
     if (inputText.phone === '') {
-      setErrorText(prevErrorText => ({
+      setErrorText((prevErrorText) => ({
         ...prevErrorText,
         phone: t('inputHelpBlock.errors.emptyFieldError'),
-      }))
-      errorsCount++
+      }));
+      errorsCount++;
     } else if (inputText.phone.length <= 5) {
-      setErrorText(prevErrorText => ({
+      setErrorText((prevErrorText) => ({
         ...prevErrorText,
         phone: t('inputHelpBlock.errors.wrongFormat'),
-      }))
-      errorsCount++
+      }));
+      errorsCount++;
     }
     if (inputText.country === '') {
-      setErrorText(prevErrorText => ({
+      setErrorText((prevErrorText) => ({
         ...prevErrorText,
         country: t('inputHelpBlock.errors.emptyFieldError'),
-      }))
-      errorsCount++
+      }));
+      errorsCount++;
     }
     if (inputText.companyName === '') {
-      setErrorText(prevErrorText => ({
+      setErrorText((prevErrorText) => ({
         ...prevErrorText,
         companyName: t('inputHelpBlock.errors.emptyFieldError'),
-      }))
-      errorsCount++
+      }));
+      errorsCount++;
     }
     if (inputText.commentary === '') {
-      setErrorText(prevErrorText => ({
+      setErrorText((prevErrorText) => ({
         ...prevErrorText,
         commentary: t('inputHelpBlock.errors.emptyFieldError'),
-      }))
-      errorsCount++
+      }));
+      errorsCount++;
     }
 
-    setCheckedError(!checked)
+    setCheckedError(!checked);
     if (errorsCount === 0 && checked) {
       sendToEmail();
       setSend(true);
@@ -405,30 +415,30 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
   }
 
   function inputHandler(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    const inputId = e.target.id as keyof typeof inputText
-    setInputText(prevInputText => ({ ...prevInputText, [inputId]: e.target.value }))
-    setErrorText(prevErrorText => ({ ...prevErrorText, [inputId]: '' }))
+    const inputId = e.target.id as keyof typeof inputText;
+    setInputText((prevInputText) => ({ ...prevInputText, [inputId]: e.target.value }));
+    setErrorText((prevErrorText) => ({ ...prevErrorText, [inputId]: '' }));
   }
 
   function inputAutocompleteHandler(e: React.SyntheticEvent<HTMLDivElement, Event>) {
-    const x = e as React.ChangeEvent<HTMLInputElement>
-    setInputText(prevInputText => ({ ...prevInputText, country: x.target.value }))
-    setErrorText(prevErrorText => ({ ...prevErrorText, country: '' }))
+    const x = e as React.ChangeEvent<HTMLInputElement>;
+    setInputText((prevInputText) => ({ ...prevInputText, country: x.target.value }));
+    setErrorText((prevErrorText) => ({ ...prevErrorText, country: '' }));
   }
 
   function phoneHandler(e: string) {
     if (e !== '') {
-      setErrorText(prevState => ({ ...prevState, phone: '' }))
+      setErrorText((prevState) => ({ ...prevState, phone: '' }));
     }
-    setInputText({ ...inputText, phone: e })
+    setInputText({ ...inputText, phone: e });
   }
 
-  if (!open) return null
+  if (!open) return null;
 
   return (
-    <div 
+    <div
       ref={modalRef}
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 min-w-[400px]"
+      className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 min-w-[400px]'
       style={{ backdropFilter: 'blur(5px)' }}
     >
       {send ? (
@@ -472,9 +482,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
           </div>
         </div>
       ) : (
-        <div
-          className='relative w-[90%] max-w-[640px] bg-[#27282B] rounded-xl px-4 md:px-8 pt-10 pb-8'
-        >
+        <div className='relative w-[90%] max-w-[640px] bg-[#27282B] rounded-xl px-4 md:px-8 pt-10 pb-8'>
           <CloseIcon
             className='absolute top-[20px] right-[20px] hover:fill-gold_ cursor-pointer'
             onClick={() => {
@@ -499,11 +507,8 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
               setCheckedError(false);
             }}
           />
-          <form 
-            ref={formRef}
-            className="w-full relative"
-          >
-            <div className="w-full text-center mb-6">
+          <form ref={formRef} className='w-full relative'>
+            <div className='w-full text-center mb-6'>
               <div className='font-labgrotesquebold text-gold_ text-[18px] md:text-[24px] uppercase'>
                 {t('inputHelpBlock.title.first')}
               </div>
@@ -521,7 +526,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                       id='name'
                       aria-describedby='component-error-text'
                       autoComplete='off'
-                      onChange={e => inputHandler(e)}
+                      onChange={(e) => inputHandler(e)}
                     />
                     {errorText.name && (
                       <FormHelperText error id='component-error-text'>
@@ -536,7 +541,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                       id='helpEmail'
                       aria-describedby='component-error-text'
                       autoComplete='off'
-                      onChange={e => inputHandler(e)}
+                      onChange={(e) => inputHandler(e)}
                     />
                     {errorText.helpEmail && (
                       <FormHelperText error id='component-error-text'>
@@ -549,7 +554,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                 <div className='flex flex-row justify-between  gap-x-6'>
                   <FormControl className='z-10 flex-1'>
                     <ReactPhoneInput
-                      onChange={e => phoneHandler(e)}
+                      onChange={(e) => phoneHandler(e)}
                       component={TextField}
                       label={t('inputHelpBlock.phone')}
                       placeholder=''
@@ -565,7 +570,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                           '& .MuiInput-underline:after': {
                             borderColor: errorText.phone ? '#d32f2f !important' : '#82653E',
                           },
-                        }
+                        },
                       }}
                     />
                     {errorText.phone && (
@@ -578,17 +583,13 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                   <FormControl className='flex-1' error={errorText.country !== ''}>
                     <Autocomplete
                       id='country'
-                      onSelect={e => inputAutocompleteHandler(e)}
+                      onSelect={(e) => inputAutocompleteHandler(e)}
                       options={countries}
                       autoHighlight
                       isOptionEqualToValue={(option, value) => option.name === value.name}
-                      getOptionLabel={option => option.name}
+                      getOptionLabel={(option) => option.name}
                       renderOption={(props, option) => (
-                        <Box 
-                          component='li' 
-                          sx={{ '& > img': { mr: 2, flexShrink: 0 } }} 
-                          {...props}
-                        >
+                        <Box component='li' sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                           <img
                             loading='lazy'
                             width='20'
@@ -596,13 +597,15 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                             src={`https://flagcdn.com/w20/${option.iso2.toLowerCase()}.png`}
                             alt=''
                             style={{
-                              filter: errorText.country ? 'grayscale(1) brightness(0.6) sepia(1) hue-rotate(-50deg) saturate(8) brightness(1.2)' : 'none',
+                              filter: errorText.country
+                                ? 'grayscale(1) brightness(0.6) sepia(1) hue-rotate(-50deg) saturate(8) brightness(1.2)'
+                                : 'none',
                             }}
                           />
                           {option.name}
                         </Box>
                       )}
-                      renderInput={params => (
+                      renderInput={(params) => (
                         <TextField
                           {...params}
                           label={t('inputHelpBlock.country')}
@@ -633,7 +636,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                       id='companyName'
                       aria-describedby='component-error-text'
                       autoComplete='off'
-                      onChange={e => inputHandler(e)}
+                      onChange={(e) => inputHandler(e)}
                     />
                     {errorText.companyName && (
                       <FormHelperText error id='component-error-text'>
@@ -650,7 +653,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                       aria-describedby='component-error-text'
                       autoComplete='off'
                       maxRows='3'
-                      onChange={e => inputHandler(e)}
+                      onChange={(e) => inputHandler(e)}
                     />
                     {errorText.commentary && (
                       <FormHelperText error id='component-error-text'>
@@ -661,12 +664,12 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                 </div>
               </div>
 
-              <div className="flex flex-col items-center w-full mt-4">
-                <FormGroup className="mb-3">
+              <div className='flex flex-col items-center w-full mt-4'>
+                <FormGroup className='mb-3'>
                   <FormControl error={checkedError}>
                     <FormControlLabel
                       checked={checked}
-                      onChange={e => handleChange(e)}
+                      onChange={(e) => handleChange(e)}
                       id='check'
                       required
                       control={<Checkbox id='checkb' />}
@@ -714,7 +717,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                                 flex items-center justify-center bg-no-repeat bg-contain mb-2'
                   defaultValue={t('inputHelpBlock.ready')}
                   onClick={() => {
-                    inputErrorHandler()
+                    inputErrorHandler();
                   }}
                 />
               </div>
@@ -723,5 +726,5 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
         </div>
       )}
     </div>
-  )
+  );
 }
