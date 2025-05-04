@@ -438,7 +438,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
   return (
     <div
       ref={modalRef}
-      className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 min-w-[400px]'
+      className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center min-h-screen z-[1000]'
       style={{ backdropFilter: 'blur(5px)' }}
     >
       {send ? (
@@ -447,7 +447,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
           className='relative w-[90%] max-w-[640px] h-[224px] bg-[#27282B] rounded-xl flex flex-row items-center justify-center'
         >
           <CloseIcon
-            className='absolute top-[20px] right-[20px] hover:fill-gold_ cursor-pointer'
+            className='absolute top-[20px] right-[20px] hover:fill-gold_ cursor-pointer z-1'
             onClick={() => {
               handleClose();
               setSend(false);
@@ -482,11 +482,12 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
           </div>
         </div>
       ) : (
-        <div className='relative w-[90%] max-w-[640px] bg-[#27282B] rounded-xl px-4 md:px-8 pt-10 pb-8'>
-          <CloseIcon
-            className='absolute top-[20px] right-[20px] hover:fill-gold_ cursor-pointer'
+        <div className='relative w-[96vw] max-w-[98vw] mx-auto bg-[#27282B] rounded-xl px-4 md:px-8 pt-10 pb-8 box-border modal-mobile md:w-[90%] md:max-w-[640px]'>
+          <div
+            className="absolute top-0 right-0 w-[48px] h-[48px] flex items-center justify-center z-50 sm:top-[20px] sm:right-[20px] sm:w-auto sm:h-auto"
             onClick={() => {
               handleClose();
+              setSend(false);
               setInputText({
                 name: '',
                 helpEmail: '',
@@ -506,7 +507,9 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
               setChecked(false);
               setCheckedError(false);
             }}
-          />
+          >
+            <CloseIcon className="hover:fill-gold_ cursor-pointer" />
+          </div>
           <form ref={formRef} className='w-full relative'>
             <div className='w-full text-center mb-6'>
               <div className='font-labgrotesquebold text-gold_ text-[18px] md:text-[24px] uppercase'>

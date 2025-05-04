@@ -8,8 +8,7 @@ import history_en from '../assets/UI/history_en.png';
 import SEO from './SEO';
 import { useSEO } from '../hooks/useSEO';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store';
+import { useTheme } from '../hooks/useTheme';
 import { text } from 'express';
 
 export default function About() {
@@ -17,20 +16,26 @@ export default function About() {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
   const seoData = useSEO('about');
-  const isDark = useSelector((state: RootState) => state.theme.shadowTheme);
+  const theme = useTheme();
+  const isDark = theme.name === 'dark';
 
-  const textColor = isDark ? '#ACACAC' : '#535353';
-  const fillСolor = isDark ? '#3f4042' : '#c0bfbd';
-  const bgColor = isDark ? '#292A2C' : '#F8F8F9';
-  const decorativeColor = isDark ? '#2E3032' : '#F2F2F2';
-  const titleColor = isDark ? '#D5CDBD' : '#82653F';
-  const subTitleColor = isDark ? '#D5CDBD' : '#2A3242';
-  const particleColor = isDark ? '#82643F' : '#ABB4C3';
-  const svgFillArrow = isDark ? '#3F4042' : '#C0BFBD';
-
-  const darkLogoColor = isDark ? '#2D2D2D' : '#E8E8E8';
-  const lightLogoColor = isDark ? '#343637' : '#F6F6F6';
-
+  // Определяем переменные для стилизации TimeLine
+  const timelineStyles = {
+      smallCircle: isDark ? '#82643F' : '#7D9BC0',
+      bigCircle: isDark ? '#2E3032' : '#D1CFCD',
+      wand: isDark ? '#82643F' : '#7D9BC0',
+      mainDirectFill: isDark ? '#212325' : '#DEDCDA',
+      mainSides: isDark ? '#383838' : '#C7C7C7',
+      mainArrowOnLine: isDark ? '#82643F' : '',
+      textYear: isDark ? '#82643F' : '#7D9BC0',
+      textOnLine: isDark ? '#737373' : '',
+      textUnderLogo: isDark ? '#969284' : '#696D7B',
+      logosDecorativeUpArrow: isDark ? '#4390BD' : '#4391BB',
+      logosDecorativeDownArrow: '#1D5781',
+      lkt: '#235C82',
+      die: '#605C54',
+      mill: '#82653F',
+    };
   return (
     <>
       <SEO title={seoData.title} description={seoData.description} keywords={seoData.keywords} />
@@ -39,66 +44,72 @@ export default function About() {
         style={{
           display: !isLG ? 'flex' : '',
           flexDirection: !isLG ? 'column' : 'row',
-          backgroundColor: bgColor,
+          backgroundColor: theme.colors.background,
         }}
       >
         <div className={`${!isLG ? 'hidden' : ''} w-full h-[1100px]`}>
-          <Arrow fillColor={svgFillArrow} />
+          <Arrow fillColor={theme.colors._svg.fill} />
           <div
             className='absolute left-[200px] top-[225px] w-[271px] h-[271px] rounded-full flex justify-center items-center'
-            style={{ backgroundColor: decorativeColor }}
+            style={{ backgroundColor: theme.colors.decorative }}
           >
             <LogoIcon
-              mainColor={darkLogoColor}
-              secondaryColor={lightLogoColor}
-              crossColor={isDark ? lightLogoColor : darkLogoColor}
+              mainColor={theme.colors._svg.darkColor}
+              secondaryColor={theme.colors._svg.lightColor}
+              crossColor={theme.colors._svg.crossColor}
             />
           </div>
           <div
             className='absolute left-[200px] top-[810px] w-[271px] h-[271px] rounded-full flex justify-center items-center'
-            style={{ backgroundColor: decorativeColor }}
+            style={{ backgroundColor: theme.colors.decorative }}
           >
             <LogoIcon
-              mainColor={darkLogoColor}
-              secondaryColor={lightLogoColor}
-              crossColor={isDark ? lightLogoColor : darkLogoColor}
+              mainColor={theme.colors._svg.darkColor}
+              secondaryColor={theme.colors._svg.lightColor}
+              crossColor={theme.colors._svg.crossColor}
             />
           </div>
           <span
             className="absolute w-[258px] left-[208px] top-[116px] font-['Bebas_Neue'] text-[17px] tracking-widest text-center"
-            style={{ color: fillСolor }}
+            style={{ color: theme.colors._svg.fill }}
           >
             {t('about.about.descriptionBg')}
           </span>
           <span
             className="absolute w-[258px] left-[208px] top-[654px] font-['Bebas_Neue'] text-[17px] tracking-widest text-center"
-            style={{ color: fillСolor }}
+            style={{ color: theme.colors._svg.fill }}
           >
             {t('about.history.descriptionBg')}
           </span>
           <div className='absolute left-[200px] top-[235px] flex flex-col items-start'>
             <div className='flex items-start'>
-              <div className='w-[24px] h-[63px]' style={{ backgroundColor: particleColor }} />
+              <div
+                className='w-[24px] h-[63px]'
+                style={{ backgroundColor: theme.colors.particle }}
+              />
               <span
                 className="relative left-[12px] font-['Bebas_Neue'] text-[60px] md:text-[70px] lg:text-[80px] leading-[100%]"
-                style={{ color: titleColor }}
+                style={{ color: theme.colors.title }}
               >
                 {t('about.about.title')}
               </span>
             </div>
             <span
               className='relative left-[42px] md:text-[24px] lg:text-[26px] font-[AdventProLight] text-[29px] uppercase'
-              style={{ color: subTitleColor }}
+              style={{ color: theme.colors.subtitle }}
             >
               {t('about.about.description')}
             </span>
           </div>
           <div className='absolute left-[200px] top-[835px] flex flex-col items-start'>
             <div className='flex items-start'>
-              <div className='w-[24px] h-[63px]' style={{ backgroundColor: particleColor }} />
+              <div
+                className='w-[24px] h-[63px]'
+                style={{ backgroundColor: theme.colors.particle }}
+              />
               <span
                 className="relative left-[12px] font-['Bebas_Neue'] text-[60px] md:text-[70px] lg:text-[80px] whitespace-nowrap leading-[100%]"
-                style={{ color: titleColor }}
+                style={{ color: theme.colors.title }}
               >
                 {t('about.history.title')}
               </span>
@@ -112,17 +123,20 @@ export default function About() {
         {!isLG && (
           <div className='flex flex-col items-start'>
             <div className='flex items-center gap-x-4'>
-              <div className='w-[24px] h-[63px]' style={{ backgroundColor: particleColor }} />
+              <div
+                className='w-[24px] h-[63px]'
+                style={{ backgroundColor: theme.colors.particle }}
+              />
               <span
                 className='relative left-[10px] font-bebas text-[60px] md:text-[70px] lg:text-[80px]'
-                style={{ color: titleColor }}
+                style={{ color: theme.colors.title }}
               >
                 {t('about.about.title')}
               </span>
             </div>
             <span
               className='relative text-[20px] md:text-[24px] lg:text-[26px] font-adventpro'
-              style={{ color: subTitleColor }}
+              style={{ color: theme.colors.subtitle }}
             >
               {t('about.about.description')}
             </span>
@@ -139,45 +153,31 @@ export default function About() {
             position: !isLG ? 'static' : 'absolute',
             top: !isLG ? '' : '0',
             right: !isLG ? '' : '0',
-            color: textColor,
+            color: theme.colors.text,
           }}
         >
           {t('about.about.text')}
         </div>
 
-        {isLG && (
-          <TimeLine
-            smallCircleColor={isDark ? '#82643F' : '#7D9BC0'}
-            bigCircleColor={isDark ? '#2E3032' : '#D1CFCD'}
-            wandColor={isDark ? '#82643F' : '#7D9BC0'}
-            mainDirectFillColor={isDark ? '#212325' : '#DEDCDA'}
-            mainSidesColor={isDark ? '#383838' : '#C7C7C7'}
-            mainArrowOnLineColor={isDark ? '#82643F' : ''}
-            textYearColor={isDark ? '#82643F' : '#7D9BC0'}
-            textOnLineColor={isDark ? '#737373' : ''}
-            textUnderLogoColor={isDark ? '#969284' : '#696D7B'}
-            lktColor={'#235C82'}
-            dieColor={'#605C54'}
-            millColor={'#82653E'}
-            logosDecorativeUpArrowColor={isDark ? '#4390BD' : '#4391BB'}
-            logosDecorativeDownArrowColor={isDark ? '#265C84' : '#1D5781'}
-          />
-        )}
+        {isLG && <TimeLine colors={timelineStyles} />}
 
         {!isLG && (
           <div className='flex flex-col items-start'>
             <div className='flex items-center gap-x-4'>
-              <div className='w-[24px] h-[63px]' style={{ backgroundColor: particleColor }} />
+              <div
+                className='w-[24px] h-[63px]'
+                style={{ backgroundColor: theme.colors.particle }}
+              />
               <span
                 className='relative font-bebas text-[60px] md:text-[70px] lg:text-[80px]'
-                style={{ color: titleColor }}
+                style={{ color: theme.colors.text }}
               >
                 {t('about.history.title')}
               </span>
             </div>
             <div
               className=' font-adventpro text-[20px] md:text-[24px] lg:text-[26px] whitespace-nowrap'
-              style={{ color: subTitleColor }}
+              style={{ color: theme.colors.subtitle }}
             >
               {t('about.history.description')}
             </div>
