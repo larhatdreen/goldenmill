@@ -1,10 +1,13 @@
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
-import themeConfig from '../theme/themeConfig';
+import { Theme, ThemeMode } from '../theme/types';
+import { themeConfig } from '../theme/themeConfig';
 
-export const useTheme = () => {
-  const themeName = useSelector((state: RootState) => state.theme.shadowTheme ? 'dark' : 'light');
-  const theme = themeConfig[themeName];
+export const useTheme = (): Theme => {
+  const themeMode = useSelector((state: RootState) =>
+    state.theme.shadowTheme ? 'dark' : 'light'
+  ) as ThemeMode;
 
-  return theme;
+  return useMemo(() => themeConfig[themeMode], [themeMode]);
 };

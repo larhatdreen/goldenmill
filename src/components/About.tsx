@@ -9,7 +9,8 @@ import SEO from './SEO';
 import { useSEO } from '../hooks/useSEO';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
-import { text } from 'express';
+import { getColor, getThemeStyles, getLocalThemeColor } from '../theme/utils';
+
 
 export default function About() {
   const isLG = useMediaQuery('(min-width:1120px)');
@@ -17,25 +18,27 @@ export default function About() {
   const currentLanguage = i18n.language;
   const seoData = useSEO('about');
   const theme = useTheme();
+  const styles = getThemeStyles(theme);
   const isDark = theme.name === 'dark';
 
-  // Определяем переменные для стилизации TimeLine
+  // Определяем для стилизации TimeLine локально
   const timelineStyles = {
-      smallCircle: isDark ? '#82643F' : '#7D9BC0',
-      bigCircle: isDark ? '#2E3032' : '#D1CFCD',
-      wand: isDark ? '#82643F' : '#7D9BC0',
-      mainDirectFill: isDark ? '#212325' : '#DEDCDA',
-      mainSides: isDark ? '#383838' : '#C7C7C7',
-      mainArrowOnLine: isDark ? '#82643F' : '',
-      textYear: isDark ? '#82643F' : '#7D9BC0',
-      textOnLine: isDark ? '#737373' : '',
-      textUnderLogo: isDark ? '#969284' : '#696D7B',
-      logosDecorativeUpArrow: isDark ? '#4390BD' : '#4391BB',
-      logosDecorativeDownArrow: '#1D5781',
-      lkt: '#235C82',
-      die: '#605C54',
-      mill: '#82653F',
-    };
+    smallCircle: getLocalThemeColor(isDark, '#82643F', '#7D9BC0'),
+    bigCircle: getLocalThemeColor(isDark, '#2E3032', '#D1CFCD'),
+    wand: getLocalThemeColor(isDark, '#82643F', '#7D9BC0'),
+    mainDirectFill: getLocalThemeColor(isDark, '#212325', '#DEDCDA'),
+    mainSides: getLocalThemeColor(isDark, '#383838', '#C7C7C7'),
+    mainArrowOnLine: getLocalThemeColor(isDark, '#82643F', ''),
+    textYear: getLocalThemeColor(isDark, '#82643F', '#7D9BC0'),
+    textOnLine: getLocalThemeColor(isDark, '#737373', ''),
+    textUnderLogo: getLocalThemeColor(isDark, '#969284', '#696D7B'),
+    logosDecorativeUpArrow: getLocalThemeColor(isDark, '#4390BD', '#4391BB'),
+    logosDecorativeDownArrow: '#1D5781',
+    lkt: '#235C82',
+    die: '#605C54',
+    mill: '#82653F',
+  };
+
   return (
     <>
       <SEO title={seoData.title} description={seoData.description} keywords={seoData.keywords} />
@@ -44,40 +47,40 @@ export default function About() {
         style={{
           display: !isLG ? 'flex' : '',
           flexDirection: !isLG ? 'column' : 'row',
-          backgroundColor: theme.colors.background,
+          ...styles.background,
         }}
       >
         <div className={`${!isLG ? 'hidden' : ''} w-full h-[1100px]`}>
-          <Arrow fillColor={theme.colors._svg.fill} />
+          <Arrow fillColor={getColor(theme, 'svg.fill')} />
           <div
             className='absolute left-[200px] top-[225px] w-[271px] h-[271px] rounded-full flex justify-center items-center'
-            style={{ backgroundColor: theme.colors.decorative }}
+            style={styles.decorative}
           >
             <LogoIcon
-              mainColor={theme.colors._svg.darkColor}
-              secondaryColor={theme.colors._svg.lightColor}
-              crossColor={theme.colors._svg.crossColor}
+              mainColor={getColor(theme, 'svg.darkColor')}
+              secondaryColor={getColor(theme, 'svg.lightColor')}
+              crossColor={getColor(theme, 'svg.crossColor')}
             />
           </div>
           <div
             className='absolute left-[200px] top-[810px] w-[271px] h-[271px] rounded-full flex justify-center items-center'
-            style={{ backgroundColor: theme.colors.decorative }}
+            style={styles.decorative}
           >
             <LogoIcon
-              mainColor={theme.colors._svg.darkColor}
-              secondaryColor={theme.colors._svg.lightColor}
-              crossColor={theme.colors._svg.crossColor}
+              mainColor={getColor(theme, 'svg.darkColor')}
+              secondaryColor={getColor(theme, 'svg.lightColor')}
+              crossColor={getColor(theme, 'svg.crossColor')}
             />
           </div>
           <span
             className="absolute w-[258px] left-[208px] top-[116px] font-['Bebas_Neue'] text-[17px] tracking-widest text-center"
-            style={{ color: theme.colors._svg.fill }}
+            style={{ color: getColor(theme, 'svg.fill') }}
           >
             {t('about.about.descriptionBg')}
           </span>
           <span
             className="absolute w-[258px] left-[208px] top-[654px] font-['Bebas_Neue'] text-[17px] tracking-widest text-center"
-            style={{ color: theme.colors._svg.fill }}
+            style={{ color: getColor(theme, 'svg.fill') }}
           >
             {t('about.history.descriptionBg')}
           </span>
@@ -85,18 +88,18 @@ export default function About() {
             <div className='flex items-start'>
               <div
                 className='w-[24px] h-[63px]'
-                style={{ backgroundColor: theme.colors.particle }}
+                style={styles.particle}
               />
               <span
                 className="relative left-[12px] font-['Bebas_Neue'] text-[60px] md:text-[70px] lg:text-[80px] leading-[100%]"
-                style={{ color: theme.colors.title }}
+                style={styles.title}
               >
                 {t('about.about.title')}
               </span>
             </div>
             <span
               className='relative left-[42px] md:text-[24px] lg:text-[26px] font-[AdventProLight] text-[29px] uppercase'
-              style={{ color: theme.colors.subtitle }}
+              style={styles.subtitle}
             >
               {t('about.about.description')}
             </span>
@@ -105,11 +108,11 @@ export default function About() {
             <div className='flex items-start'>
               <div
                 className='w-[24px] h-[63px]'
-                style={{ backgroundColor: theme.colors.particle }}
+                style={styles.particle}
               />
               <span
                 className="relative left-[12px] font-['Bebas_Neue'] text-[60px] md:text-[70px] lg:text-[80px] whitespace-nowrap leading-[100%]"
-                style={{ color: theme.colors.title }}
+                style={styles.title}
               >
                 {t('about.history.title')}
               </span>
@@ -125,18 +128,18 @@ export default function About() {
             <div className='flex items-center gap-x-4'>
               <div
                 className='w-[24px] h-[63px]'
-                style={{ backgroundColor: theme.colors.particle }}
+                style={styles.particle}
               />
               <span
                 className='relative left-[10px] font-bebas text-[60px] md:text-[70px] lg:text-[80px]'
-                style={{ color: theme.colors.title }}
+                style={styles.title}
               >
                 {t('about.about.title')}
               </span>
             </div>
             <span
               className='relative text-[20px] md:text-[24px] lg:text-[26px] font-adventpro'
-              style={{ color: theme.colors.subtitle }}
+              style={styles.subtitle}
             >
               {t('about.about.description')}
             </span>
@@ -144,7 +147,7 @@ export default function About() {
         )}
 
         <div
-          className='right-0 w-1/2 font-adventpro text-[18px] md:text-[22px] lg:text-[24px]  whitespace-pre-wrap'
+          className='right-0 w-1/2 font-adventpro text-[18px] md:text-[22px] lg:text-[24px] whitespace-pre-wrap'
           style={{
             width: !isLG ? '100%' : '50%',
             marginTop: !isLG ? '' : '223px ',
@@ -153,7 +156,7 @@ export default function About() {
             position: !isLG ? 'static' : 'absolute',
             top: !isLG ? '' : '0',
             right: !isLG ? '' : '0',
-            color: theme.colors.text,
+            ...styles.text,
           }}
         >
           {t('about.about.text')}
@@ -166,18 +169,18 @@ export default function About() {
             <div className='flex items-center gap-x-4'>
               <div
                 className='w-[24px] h-[63px]'
-                style={{ backgroundColor: theme.colors.particle }}
+                style={styles.particle}
               />
               <span
                 className='relative font-bebas text-[60px] md:text-[70px] lg:text-[80px]'
-                style={{ color: theme.colors.text }}
+                style={styles.text}
               >
                 {t('about.history.title')}
               </span>
             </div>
             <div
-              className=' font-adventpro text-[20px] md:text-[24px] lg:text-[26px] whitespace-nowrap'
-              style={{ color: theme.colors.subtitle }}
+              className='font-adventpro text-[20px] md:text-[24px] lg:text-[26px] whitespace-nowrap'
+              style={styles.subtitle}
             >
               {t('about.history.description')}
             </div>

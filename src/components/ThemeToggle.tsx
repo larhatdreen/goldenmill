@@ -1,11 +1,12 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SunIcon from '../assets/tumbler/SunIcon';
 import MoonIcon from '../assets/tumbler/MoonIcon';
 import ToggleOval from '../assets/tumbler/ToggleOval';
 import ToggleEllipse from '../assets/tumbler/ToggleEllipse';
-import { toggleTheme, setTheme } from '../store/themeSlice';
+import { toggleTheme } from '../store/themeSlice';
 import { RootState } from '../store';
+import { getLocalThemeColor } from '../theme/utils';
 
 interface ThemeToggleProps {
   onToggle?: () => void;
@@ -15,32 +16,19 @@ const ThemeToggle = ({ onToggle }: ThemeToggleProps) => {
   const dispatch = useDispatch();
   const isDark = useSelector((state: RootState) => state.theme.shadowTheme);
 
-  useEffect(() => {
-    // Check if there's a saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      dispatch(setTheme(savedTheme === 'dark'));
-    } else {
-      // If no saved preference, use system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      dispatch(setTheme(prefersDark));
-    }
-  }, [dispatch]);
-
   const handleClick = () => {
     dispatch(toggleTheme());
-    localStorage.setItem('theme', !isDark ? 'dark' : 'light');
     onToggle?.();
   };
 
   const { ovalColor, ellipseColor, icon, ellipsePosition, ellipseShadow } = useMemo(
     () => ({
-      ovalColor: isDark ? '#666666' : '#767676',
-      ellipseColor: isDark ? '#FFFFFF' : '#F0F0F0',
+      ovalColor: getLocalThemeColor(isDark, '#767676', '#666666'),
+      ellipseColor: getLocalThemeColor(isDark, '#F0F0F0', '#FFFFFF'),
       icon: isDark ? (
-        <SunIcon width={15} height={15} fill='#666666' />
+        <SunIcon width={15} height={15} fill={getLocalThemeColor(isDark, '#767676', '#666666')} />
       ) : (
-        <MoonIcon width={16} height={17} fill='#767676' />
+        <MoonIcon width={16} height={17} fill={getLocalThemeColor(isDark, '#767676', '#666666')} />
       ),
       ellipsePosition: isDark ? 'translateX(23px)' : 'translateX(3px)',
       ellipseShadow: '0 2px 8px 0 rgba(0,0,0,0.10), 0 1.5px 4px 0 rgba(0,0,0,0.10)',
