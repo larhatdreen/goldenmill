@@ -1,4 +1,3 @@
-import newTheme from './Text.tsx';
 import {
   Autocomplete,
   Box,
@@ -11,7 +10,6 @@ import {
   InputLabel,
   TextField,
   ThemeProvider,
-  Tooltip,
 } from '@mui/material';
 import CountButton from './CountButton.tsx';
 import button from '../assets/UI/Btn.svg';
@@ -25,6 +23,8 @@ import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 import { getURLWithLang } from '../functions/get-url-with-lang.ts';
 import { ParamsType } from './NavigateProvider.tsx';
+import { useTheme } from '../hooks/useTheme';
+import { createMuiTheme } from '../theme/muiTheme';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
@@ -67,6 +67,8 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
   const modalRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
+  const theme = useTheme();
+  const muiTheme = createMuiTheme(theme);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -520,7 +522,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
               </div>
             </div>
 
-            <ThemeProvider theme={newTheme}>
+            <ThemeProvider theme={muiTheme}>
               <div className='w-full h-[300px] px-[10%] pt-6 pb-6  flex flex-col justify-between'>
                 <div className='flex flex-row justify-between  gap-x-6'>
                   <FormControl className='z-10 flex-1' error={errorText.name !== ''}>

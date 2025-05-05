@@ -8,6 +8,28 @@ const baseColors = {
     title: '#82653F',
     subtitle: '#2A3242',
     particle: '#ABB4C3',
+    // MUI specific colors
+    mui: {
+      primary: '#82653E',
+      secondary: '#666666',
+      error: '#d32f2f',
+      background: {
+        paper: '#F8F8F9',
+        default: '#FFFFFF'
+      },
+      text: {
+        primary: '#535353',
+        secondary: '#666666'
+      },
+      border: {
+        default: '#434343',
+        light: '#E8E8E8'
+      },
+      hover: {
+        primary: '#82653E',
+        secondary: '#666666'
+      }
+    }
   },
   dark: {
     text: '#ACACAC',
@@ -16,7 +38,28 @@ const baseColors = {
     title: '#D5CDBD',
     subtitle: '#D5CDBD',
     particle: '#82643F',
-    
+    // MUI specific colors
+    mui: {
+      primary: '#82653E',
+      secondary: '#666666',
+      error: '#d32f2f',
+      background: {
+        paper: '#18191B',
+        default: '#292A2C'
+      },
+      text: {
+        primary: '#D5CDBD',
+        secondary: '#666666'
+      },
+      border: {
+        default: '#434343',
+        light: '#2E3032'
+      },
+      hover: {
+        primary: '#82653E',
+        secondary: '#666666'
+      }
+    }
   },
 };
 

@@ -10,7 +10,7 @@ import {
   SelectChangeEvent,
   ThemeProvider,
 } from '@mui/material';
-import newTheme from './Text.js';
+
 import { ChangeEvent, lazy, Suspense, useState } from 'react';
 import FlatMatrix from './customIcons/FlatMatrix.js';
 import RingMatrix from './customIcons/RingMatrix.js';
@@ -24,6 +24,8 @@ import TwinTrackShell from './customIcons/TwinTrackShell.js';
 import TwinTrackShell2 from './customIcons/TwinTrackShell2.js';
 import ModalInfo from './ModalInfo.js';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '../hooks/useTheme';
+import { createMuiTheme } from '../theme/muiTheme';
 
 // lazy load
 const Shell1 = lazy(() => import('./Shell1.js'));
@@ -72,6 +74,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
   });
 
   const { t } = useTranslation();
+  const theme = useTheme();
+  const muiTheme = createMuiTheme(theme);
 
   const handleOpenModalInfo = () => setModalInfo(true);
   const handleCloseModalInfo = () => setModalInfo(false);
@@ -219,7 +223,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                               tablet:h-[468px] z-[0] bg-[#ffffff08] rounded-[10px] backdrop-blur-[19px]
                                backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(19px)_brightness(100%)]'
               >
-                <ThemeProvider theme={newTheme}>
+                <ThemeProvider theme={muiTheme}>
                   <div className='w-full h-full px-[5%] pt-[50px] pb-[60px] flex flex-col justify-between'>
                     <div className='flex flex-row justify-between gap-x-[10%]'>
                       <FormControl

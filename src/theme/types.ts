@@ -12,6 +12,27 @@ export interface ThemeColors {
     crossColor: string;
     arrow: string;
   };
+  mui: {
+    primary: string;
+    secondary: string;
+    error: string;
+    background: {
+      paper: string;
+      default: string;
+    };
+    text: {
+      primary: string;
+      secondary: string;
+    };
+    border: {
+      default: string;
+      light: string;
+    };
+    hover: {
+      primary: string;
+      secondary: string;
+    };
+  };
 }
 
 export type ThemeMode = 'light' | 'dark';

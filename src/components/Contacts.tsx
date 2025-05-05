@@ -27,7 +27,7 @@ export default function Contacts() {
     <>
       <SEO title={seoData.title} description={seoData.description} keywords={seoData.keywords} />
       <section
-        className='w-full h-auto px-[30px] md:px-[100px] gap-y-6 max-w-[1920px]'
+        className='w-full h-auto px-[30px] md:px-[100px] gap-y-6'
         style={styles.background}
       >
         <div className={`${!isLG ? 'hidden' : ''}`}>
@@ -78,7 +78,7 @@ export default function Contacts() {
           <div>
             <span
               className="font-['Bebas_Neue'] text-[40px] md:text-[60px] lg:text-[65px] leading-[100%]"
-              style={styles.title}
+              style={{color: '#82653F'}}
             >
               {t('contacts.requisites.title')}
             </span>
@@ -119,7 +119,7 @@ export default function Contacts() {
           <div className='mt-10'>
             <span
               className="font-['Bebas_Neue'] text-[40px] md:text-[60px] lg:text-[65px] leading-[100%]"
-              style={styles.title}
+              style={{color: '#82653F'}}
             >
               {t('contacts.geo.title')}
             </span>
@@ -137,7 +137,7 @@ export default function Contacts() {
             <div>
               <span
                 className="font-['Bebas_Neue'] text-[40px] md:text-[60px] lg:text-[65px] leading-[100%]"
-                style={styles.title}
+                style={{color: '#82653F'}}
               >
                 {t('contacts.email.title')}
               </span>
@@ -154,7 +154,7 @@ export default function Contacts() {
             <div>
               <span
                 className="font-['Bebas_Neue'] text-[40px] md:text-[60px] lg:text-[65px] leading-[100%]"
-                style={styles.title}
+                style={{color: '#82653F'}}
               >
                 {t('contacts.phone.title')}
               </span>

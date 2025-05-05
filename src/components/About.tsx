@@ -84,7 +84,7 @@ export default function About() {
           >
             {t('about.history.descriptionBg')}
           </span>
-          <div className='absolute left-[200px] top-[235px] flex flex-col items-start'>
+          <div className='absolute left-[200px] top-[200px] flex flex-col items-start'>
             <div className='flex items-start'>
               <div
                 className='w-[24px] h-[63px]'
@@ -104,7 +104,7 @@ export default function About() {
               {t('about.about.description')}
             </span>
           </div>
-          <div className='absolute left-[200px] top-[835px] flex flex-col items-start'>
+          <div className='absolute left-[200px] top-[800px] flex flex-col items-start'>
             <div className='flex items-start'>
               <div
                 className='w-[24px] h-[63px]'

@@ -1,5 +1,3 @@
-import { useTranslation } from 'react-i18next';
-
 interface MapProps {
   colors: {
     title?: string;
@@ -8,7 +6,6 @@ interface MapProps {
   };
 }
 function Map({ colors }: MapProps) {
-  const { t } = useTranslation();
 
   return (
     <svg

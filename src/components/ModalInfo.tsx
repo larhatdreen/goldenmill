@@ -14,7 +14,7 @@ import {
   styled,
   ThemeProvider,
 } from '@mui/material';
-import newTheme from './Text.tsx';
+
 import CountButton from './CountButton.tsx';
 import button from '../assets/UI/BtnBig.svg';
 import PlaneIcon from './customIcons/PlaneIcon.tsx';
@@ -25,7 +25,9 @@ import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 import { getURLWithLang } from '../functions/get-url-with-lang.ts';
 import { ParamsType } from './NavigateProvider.tsx';
-import { LanguagesEnum } from './translation/i18n';
+import { useTheme } from '../hooks/useTheme';
+import { createMuiTheme } from '../theme/muiTheme';
+// import { LanguagesEnum } from './translation/i18n';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
@@ -63,8 +65,10 @@ export default function ModalInfo({
   const [checked, setChecked] = useState(false);
   const [bottomChecked, setBottomChecked] = useState(false);
   const [bottomCheckedError, setBottomCheckedError] = useState(false);
-  const [checkedError, setCheckedError] = useState(false);
+  // const [checkedError, setCheckedError] = useState(false);
   const { t, i18n } = useTranslation();
+  const theme = useTheme();
+  const muiTheme = createMuiTheme(theme);
 
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -78,19 +82,19 @@ export default function ModalInfo({
     width: 1,
   });
 
-  function handleChange(event: React.SyntheticEvent<Element, Event>) {
-    setErrorText((prevState) => ({
-      ...prevState,
-      manufacturer: '',
-      model: '',
-      serialNumber: '',
-      manufactureYear: '',
-      commentary: '',
-    }));
-    const x = event as React.ChangeEvent<HTMLInputElement>;
-    setChecked(x.target.checked);
-    setCheckedError(false);
-  }
+  // function handleChange(event: React.SyntheticEvent<Element, Event>) {
+  //   setErrorText((prevState) => ({
+  //     ...prevState,
+  //     manufacturer: '',
+  //     model: '',
+  //     serialNumber: '',
+  //     manufactureYear: '',
+  //     commentary: '',
+  //   }));
+  //   const x = event as React.ChangeEvent<HTMLInputElement>;
+  //   setChecked(x.target.checked);
+  //   setCheckedError(false);
+  // }
 
   function handleBottomChange(event: React.SyntheticEvent<Element, Event>) {
     setBottomCheckedError(false);
@@ -503,7 +507,7 @@ export default function ModalInfo({
                         pt-[53px] pb-[3%] px-[20px] sm:px-[30px] md:px-[40px] lg:px-[58px] xl:px-[76px] justify-end min-h-[120px] modal-mobile"
             style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}
           >
-            <ThemeProvider theme={newTheme}>
+            <ThemeProvider theme={muiTheme}>
               <CloseIcon
                 className='absolute top-[20px] right-[20px] hover:fill-gold_ cursor-pointer'
                 onClick={() => {

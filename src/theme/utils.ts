@@ -8,7 +8,10 @@ export const getColor = (
     const svgKey = path.replace('svg.', '') as keyof Theme['colors']['svg'];
     return theme.colors.svg[svgKey];
   }
-  return theme.colors[path as keyof Omit<Theme['colors'], 'svg'>];
+  if (path === 'mui') {
+    throw new Error('Cannot get MUI colors directly, use specific paths like mui.primary');
+  }
+  return theme.colors[path as keyof Omit<Theme['colors'], 'svg' | 'mui'>];
 };
 
 export const getThemeStyles = (theme: Theme) => ({
