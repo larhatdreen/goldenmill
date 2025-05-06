@@ -5,7 +5,7 @@ interface TwinTrackMatrixProps {
 
 function TwinTrackMatrix({ className, stroke = '#82643F' }: TwinTrackMatrixProps) {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 88 91' className={className}>
+    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 88 91' className={className} style={{height: '60%'}}>
       <path
         stroke={stroke}
         strokeWidth='.8'

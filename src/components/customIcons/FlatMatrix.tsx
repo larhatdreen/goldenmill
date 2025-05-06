@@ -3,9 +3,9 @@ interface FlatMatrixProps {
   stroke: string;
 }
 
-function FlatMatrix({ className, stroke }: FlatMatrixProps) {
+function FlatMatrix({ stroke }: FlatMatrixProps) {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 87 78'>
+    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 87 78' style={{height: '60%'}}>
       <g clipPath='url(#a)'>
         <path
           stroke={stroke}

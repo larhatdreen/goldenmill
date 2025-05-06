@@ -1,163 +1,200 @@
-import {useTranslation} from "react-i18next";
+import { useTranslation } from 'react-i18next'
+import { useMediaQuery } from '@mui/material'
+
 
 function Section3() {
-
-    const {t} = useTranslation();
-
+    const { t } = useTranslation()
+    const isLG = useMediaQuery('(min-width:768px)')
     return (
-        <section id="section3" className="flex justify-center mt-[15%] mb-[15%] w-full h-auto px-[5%]">
-            <svg width="1311" viewBox="0 0 1311 840" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g filter="url(#filter0_b_116_175)">
-                    <circle cx="137.5" cy="140.5" r="135.5" fill="#1E1F20"/>
-                </g>
-                <path
-                    d="M110.492 153.119L72.969 190.372C71.4867 189.531 70.4703 187.975 70.4703 186.167V155.473C70.4703 152.783 72.6302 150.638 75.3407 150.638H106.257C108.078 150.638 109.645 151.647 110.492 153.119Z"
-                    fill="#212324"/>
-                <path
-                    d="M111.127 155.474V186.168C111.127 188.817 108.925 191.003 106.256 191.003H75.3406C74.4512 191.003 73.6465 190.793 72.9689 190.373L110.492 153.12C110.873 153.793 111.127 154.591 111.127 155.474Z"
-                    fill="#212324"/>
-                <path
-                    d="M203.239 184.192C193.626 198.235 156.527 189.784 120.359 165.397C84.1919 140.926 62.6778 109.77 72.2914 95.727C79.6604 85.0053 104.139 87.3178 132.133 101.109L123.663 109.182C116.04 107.121 109.899 108.425 107.654 111.662C104.266 116.624 108.374 125.664 117.268 134.956C119.004 136.764 120.952 138.614 123.027 140.38L123.62 140.884C124.891 141.978 126.246 143.071 127.601 144.08C128.321 144.626 129.041 145.173 129.761 145.678C130.058 145.888 130.312 146.098 130.608 146.266C130.905 146.476 131.201 146.687 131.498 146.897C131.794 147.107 132.133 147.359 132.429 147.57C132.853 147.864 133.319 148.158 133.742 148.453C135.648 149.714 137.554 150.891 139.459 151.942C140.942 152.783 142.382 153.54 143.822 154.255L144.076 154.381C145.812 155.222 147.548 156.021 149.242 156.694C161.439 161.739 171.773 162.286 175.203 157.24C178.083 153.036 175.542 145.888 169.317 138.109H183.716C201.588 156.483 209.888 174.479 203.239 184.192Z"
-                    fill="#212324"/>
-                <path
-                    d="M204.891 94.6347V109.981H153.943L128.957 134.788C127.135 133.233 125.484 131.719 124.044 130.248C118.835 124.992 116.04 120.451 115.066 117.76L140.349 92.6164C142.17 90.8085 144.669 89.7573 147.252 89.7573H200.063C202.731 89.7994 204.891 91.9858 204.891 94.6347Z"
-                    fill="#212324"/>
-                <path
-                    d="M204.891 109.981V125.328C204.891 128.019 202.689 130.163 200.021 130.163H166.649C165.336 130.163 164.108 130.668 163.176 131.593L147.591 147.15C144.287 145.51 140.772 143.492 137.088 140.969C135.987 140.212 134.928 139.497 133.912 138.74C132.09 137.437 130.439 136.134 128.914 134.83L153.901 110.023H204.891V109.981Z"
-                    fill="#212324"/>
-                <path d="M273 134L273 472" stroke="#2C2D2F" strokeWidth="0.5"/>
-                <path
-                    d="M273.53 450.53C273.823 450.237 273.823 449.763 273.53 449.47L268.757 444.697C268.464 444.404 267.989 444.404 267.697 444.697C267.404 444.99 267.404 445.464 267.697 445.757L271.939 450L267.697 454.243C267.404 454.536 267.404 455.01 267.697 455.303C267.989 455.596 268.464 455.596 268.757 455.303L273.53 450.53ZM2.46954 449.47C2.17667 449.763 2.17667 450.237 2.46954 450.53L7.24252 455.303C7.5354 455.596 8.01028 455.596 8.30316 455.303C8.59607 455.01 8.59607 454.536 8.30316 454.243L4.06055 450L8.30316 445.757C8.59607 445.464 8.59607 444.99 8.30316 444.697C8.01028 444.404 7.5354 444.404 7.24252 444.697L2.46954 449.47ZM273 449.25H271.5V450.75H273V449.25ZM268.5 449.25H265.5V450.75H268.5V449.25ZM262.5 449.25H259.5V450.75H262.5V449.25ZM256.5 449.25H253.5V450.75H256.5V449.25ZM250.5 449.25H247.5V450.75H250.5V449.25ZM244.5 449.25H241.5V450.75H244.5V449.25ZM238.5 449.25H235.5V450.75H238.5V449.25ZM232.5 449.25H229.5V450.75H232.5V449.25ZM226.5 449.25H223.5V450.75H226.5V449.25ZM220.5 449.25H217.5V450.75H220.5V449.25ZM214.5 449.25H211.5V450.75H214.5V449.25ZM208.5 449.25H205.5V450.75H208.5V449.25ZM202.5 449.25H199.5V450.75H202.5V449.25ZM196.5 449.25H193.5V450.75H196.5V449.25ZM190.5 449.25H187.5V450.75H190.5V449.25ZM184.5 449.25H181.5V450.75H184.5V449.25ZM178.5 449.25H175.5V450.75H178.5V449.25ZM172.5 449.25H169.5V450.75H172.5V449.25ZM166.5 449.25H163.5V450.75H166.5V449.25ZM160.5 449.25H157.5V450.75H160.5V449.25ZM154.5 449.25H151.5V450.75H154.5V449.25ZM148.5 449.25H145.5V450.75H148.5V449.25ZM142.5 449.25H139.5V450.75H142.5V449.25ZM136.5 449.25H133.5V450.75H136.5V449.25ZM130.5 449.25H127.5V450.75H130.5V449.25ZM124.5 449.25H121.5V450.75H124.5V449.25ZM118.5 449.25H115.5V450.75H118.5V449.25ZM112.5 449.25H109.5V450.75H112.5V449.25ZM106.5 449.25H103.5V450.75H106.5V449.25ZM100.5 449.25H97.4999V450.75H100.5V449.25ZM94.4999 449.25H91.4999V450.75H94.4999V449.25ZM88.4999 449.25H85.4999V450.75H88.4999V449.25ZM82.4999 449.25H79.4999V450.75H82.4999V449.25ZM76.4999 449.25H73.4999V450.75H76.4999V449.25ZM70.4999 449.25H67.4999V450.75H70.4999V449.25ZM64.4999 449.25H61.4999V450.75H64.4999V449.25ZM58.4999 449.25H55.4999V450.75H58.4999V449.25ZM52.4999 449.25H49.4999V450.75H52.4999V449.25ZM46.4999 449.25H43.4999V450.75H46.4999V449.25ZM40.4999 449.25H37.4999V450.75H40.4999V449.25ZM34.4999 449.25H31.4999V450.75H34.4999V449.25ZM28.4999 449.25H25.4999V450.75H28.4999V449.25ZM22.4999 449.25H19.4999V450.75H22.4999V449.25ZM16.4999 449.25H13.4999V450.75H16.4999V449.25ZM10.4999 449.25H7.49988V450.75H10.4999V449.25ZM4.49988 449.25H2.99988V450.75H4.49988V449.25Z"
-                    fill="#2C2D2F"/>
+        <section className='flex flex-col tablet:flex-row justify-center mt-[15%] w-full px-[5%] max-w-[1920px]'>
+            <svg
+                id='section3'
+                className='w-[60%] tablet:w-[40%]'
+                viewBox={`0 0 650 ${isLG ? '733' : '450'}`}
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+                style={{ position: isLG ? 'absolute' : undefined, left: '10.5%' }}
+            >
+                <svg className='hidden tablet:block '>
+                    <g filter='url(#filter0_b_20_1296)'>
+                        <circle cx='122' cy='350' r='121' fill='#2E3032' />
+                        <foreignObject x="54" y="300" width="136" height="103">
+                            <svg
+                                width="136"
+                                height="103"
+                                viewBox="0 0 136 103"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M55.3133 52.9636L97.5287 102.232H72.1318C60.342 102.232 50.7495 92.5907 50.7495 80.7408V53.0485H2.15323C2.15323 53.0485 1.26582 49.9905 0.970014 49.0136C-3.55155 33.3411 8.6609 29.3487 18.4647 34.0207L50.4537 49.226L16.6898 0L35.9171 2.50589C46.566 3.90749 54.5527 12.9967 54.5527 23.8272V49.1835H103.36C108.811 63.964 97.4441 70.2075 87.0065 65.9178L55.3133 52.9636Z"
+                                    fill="#343637"
+                                />
+                                <path
+                                    d="M41.4881 63.9629L4.04788 101.594C2.56887 100.744 1.55469 99.1729 1.55469 97.3465V66.3414C1.55469 63.6231 3.70983 61.457 6.41431 61.457H37.2624C39.0372 61.457 40.643 62.4764 41.4881 63.9629Z"
+                                    fill="#343637"
+                                />
+                                <path
+                                    d="M42.1288 66.3863V97.3914C42.1288 100.067 39.9314 102.276 37.2692 102.276H6.42112C5.53371 102.276 4.73081 102.063 4.05469 101.639L41.4949 64.0078C41.8753 64.6874 42.1288 65.4944 42.1288 66.3863Z"
+                                    fill="#2D2D2D"
+                                />
+                                <path
+                                    d="M130.822 0.0429688H78.1268H77.9578C75.6759 0.21286 73.5207 0.934901 71.9149 2.54887L68.154 6.32894C68.154 6.32894 68.154 6.32895 68.154 6.37142L64.4353 10.109C63.4634 11.0859 62.9141 12.4026 62.9141 13.8042V35.975C62.9141 37.8013 63.9283 39.4152 65.4073 40.2222L82.8597 22.3837C84.0851 21.1519 85.7332 20.4724 87.4657 20.4724H135.639V4.96982C135.682 2.20908 133.484 0.0429688 130.822 0.0429688Z"
+                                    fill="#343637"
+                                />
+                                <path
+                                    d="M87.5038 20.4292C85.7712 20.4292 84.1232 21.1088 82.8977 22.3405L65.4453 40.179C66.1214 40.5613 66.9243 40.7737 67.7695 40.7737H130.818C133.48 40.7737 135.677 38.6075 135.677 35.8893V20.3867H87.5038V20.4292Z"
+                                    fill="#2D2D2D"
+                                />
+                            </svg>
+                        </foreignObject>
+                    </g>
+                    <path d='M242 330L242 631' stroke='#3F4042' strokeWidth='0.5' />
+                    <path
+                        d='M242.53 609.53C242.823 609.237 242.823 608.763 242.53 608.47L237.757 603.697C237.464 603.404 236.99 603.404 236.697 603.697C236.404 603.99 236.404 604.464 236.697 604.757L240.939 609L236.697 613.243C236.404 613.536 236.404 614.01 236.697 614.303C236.99 614.596 237.464 614.596 237.757 614.303L242.53 609.53ZM0.469666 608.47C0.176773 608.763 0.176773 609.237 0.469666 609.53L5.24265 614.303C5.53554 614.596 6.01041 614.596 6.3033 614.303C6.59619 614.01 6.59619 613.536 6.3033 613.243L2.06067 609L6.3033 604.757C6.59619 604.464 6.59619 603.99 6.3033 603.697C6.01041 603.404 5.53554 603.404 5.24265 603.697L0.469666 608.47ZM242 608.25H240.494V609.75H242V608.25ZM237.481 608.25H234.469V609.75H237.481V608.25ZM231.456 608.25H228.444V609.75H231.456V608.25ZM225.431 608.25H222.419V609.75H225.431V608.25ZM219.406 608.25H216.394V609.75H219.406V608.25ZM213.381 608.25H210.369V609.75H213.381V608.25ZM207.356 608.25H204.344V609.75H207.356V608.25ZM201.331 608.25H198.319V609.75H201.331V608.25ZM195.306 608.25H192.294V609.75H195.306V608.25ZM189.281 608.25H186.269V609.75H189.281V608.25ZM183.256 608.25H180.244V609.75H183.256V608.25ZM177.231 608.25H174.219V609.75H177.231V608.25ZM171.206 608.25H168.194V609.75H171.206V608.25ZM165.181 608.25H162.169V609.75H165.181V608.25ZM159.156 608.25H156.144V609.75H159.156V608.25ZM153.131 608.25H150.119V609.75H153.131V608.25ZM147.106 608.25H144.094V609.75H147.106V608.25ZM141.081 608.25H138.069V609.75H141.081V608.25ZM135.056 608.25H132.044V609.75H135.056V608.25ZM129.031 608.25H126.019V609.75H129.031V608.25ZM123.006 608.25H119.994V609.75H123.006V608.25ZM116.981 608.25H113.969V609.75H116.981V608.25ZM110.956 608.25H107.944V609.75H110.956V608.25ZM104.931 608.25H101.919V609.75H104.931V608.25ZM98.9063 608.25H95.8938V609.75H98.9063V608.25ZM92.8813 608.25H89.8688V609.75H92.8813V608.25ZM86.8563 608.25H83.8438V609.75H86.8563V608.25ZM80.8313 608.25H77.8188V609.75H80.8313V608.25ZM74.8063 608.25H71.7938V609.75H74.8063V608.25ZM68.7813 608.25H65.7688V609.75H68.7813V608.25ZM62.7563 608.25H59.7439V609.75H62.7563V608.25ZM56.7314 608.25H53.7189V609.75H56.7314V608.25ZM50.7064 608.25H47.6939V609.75H50.7064V608.25ZM44.6814 608.25H41.6689V609.75H44.6814V608.25ZM38.6564 608.25H35.6439V609.75H38.6564V608.25ZM32.6314 608.25H29.6189V609.75H32.6314V608.25ZM26.6064 608.25H23.5939V609.75H26.6064V608.25ZM20.5814 608.25H17.5689V609.75H20.5814V608.25ZM14.5564 608.25H11.5439V609.75H14.5564V608.25ZM8.53142 608.25H5.51892V609.75H8.53142V608.25ZM2.50642 608.25H1V609.75H2.50642V608.25Z'
+                        fill='#3F4042'
+                    />
+                    <path d='M0.999985 330L1 633' stroke='#3F4042' strokeWidth='0.5' />
 
-                <foreignObject className="text-center" x="9" y="418" width="258" height="25">
-                    <span className="font-bebas text-grey_svg text-[18px] whitespace-normal uppercase tracking-[.2em]">
-                        {t("diagrams.dieMatrix.technicalData.descriptionBg")}
-                    </span>
-                </foreignObject>
+                    <foreignObject className='text-center' x='7' y='580' width='230' height='25'>
+                        <span className='w-full font-["Bebas_Neue"] text-[#3F4042] text-[18px] whitespace-normal uppercase tracking-[.2em]'>
+                            {/* {t('diagrams.dieMatrix.highHardness.descriptionBg')} */}
+                            Опция
+                        </span>
+                    </foreignObject>
+                </svg>
 
+                <path id='my_path' d='M 20,20 C 40,40 80,40 100,20' />
 
-
-                <path d="M2.99986 138L2.99988 474" stroke="#2C2D2F" strokeWidth="0.5"/>
-
-                <text
-                    className="font-adventpro fill-navSelect text-[29px] uppercase translate-x-[32px] translate-y-[134px]">
-                    {t("diagrams.dieMatrix.technicalData.description")}
+                <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[35px] translate-y-[93px]'>
+                    {/* {t('diagrams.dieMatrix.highHardness.title.first')} */}
+                    Датчики вибрации
                 </text>
-
-                {/*<path className="section3fill"*/}
-                {/*      d="M51.5299 83.9954H47.3899V24.7754H34.5199V20.9954H64.3999V24.7754H51.5299V83.9954ZM74.6325 50.1554H91.8225V53.9354H74.6325V80.2154H95.3325V83.9954H70.4925V20.9954H95.3325V24.7754H74.6325V50.1554ZM130.845 83.9954L118.065 54.6554L105.285 83.9954H101.235L115.455 51.3254L102.225 20.9954H106.545L118.425 48.0854L130.395 20.9954H134.355L121.125 51.3254L135.255 83.9954H130.845ZM165.444 54.3854H145.824V83.9954H141.684V20.9954H145.824V50.6054H165.444V20.9954H169.674V83.9954H165.444V54.3854ZM201.14 28.2854L191.69 54.3854L181.34 83.9954H176.84V20.9954H180.62V74.9054L189.8 49.1654L199.97 20.9954H204.92V83.9954H201.14V28.2854ZM235.486 83.9954V53.7554C233.146 57.8054 229.276 59.9654 224.416 59.9654C215.506 59.9654 211.726 53.0354 211.726 44.5754V20.9954H215.866V44.3054C215.866 50.7854 218.836 56.1854 225.586 56.1854C230.806 56.1854 234.136 53.3054 235.486 47.9954V20.9954H239.626V83.9954H235.486ZM250.941 50.1554H268.131V53.9354H250.941V80.2154H271.641V83.9954H246.801V20.9954H271.641V24.7754H250.941V50.1554ZM291.674 20.4554C301.304 20.4554 305.264 27.2954 305.264 36.3854V41.6054H301.304V36.1154C301.304 29.3654 298.694 24.2354 291.764 24.2354C284.834 24.2354 282.224 29.3654 282.224 36.1154V68.8754C282.224 75.6254 284.834 80.6654 291.764 80.6654C298.694 80.6654 301.304 75.6254 301.304 68.8754V61.4054H305.264V68.6054C305.264 77.6954 301.304 84.5354 291.674 84.5354C282.044 84.5354 278.084 77.6954 278.084 68.6054V36.3854C278.084 27.2954 282.044 20.4554 291.674 20.4554ZM337.846 83.9954L320.476 54.3854L316.156 61.2254V83.9954H312.016V20.9954H316.156V54.2954L336.676 20.9954H340.996L322.996 50.3354L342.166 83.9954H337.846ZM374.053 70.0454H354.433L351.283 83.9954H347.503L361.273 20.9054H367.303L381.343 83.9954H377.203L374.053 70.0454ZM364.153 25.6754L355.063 66.4454H373.423L364.153 25.6754ZM411.002 55.8254H404.432C397.232 55.8254 392.642 58.1654 392.642 66.5354V76.4354C392.642 79.8554 392.372 82.1054 391.292 83.9954H386.972C388.322 81.9254 388.502 79.0454 388.502 76.4354V66.6254C388.502 59.7854 391.112 55.1954 397.592 53.7554C391.382 52.3154 388.502 48.0854 388.502 40.7054V35.2154C388.502 26.3054 392.372 20.9954 402.002 20.9954H415.142V83.9954H411.002V55.8254ZM411.002 24.7754H402.092C395.252 24.7754 392.642 28.8254 392.642 35.5754V41.5154C392.642 49.9754 396.962 52.0454 404.342 52.0454H411.002V24.7754Z"*/}
-                {/*      fill="#554F45"/>*/}
-                <text
-                    className="font-bebas fill-gold_svg text-[90px] whitespace-normal uppercase translate-x-[32px] translate-y-[84px]">
-                    {t("diagrams.dieMatrix.technicalData.title")}
+                <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[35px] translate-y-[183px]'>
+                    {/* {t('diagrams.dieMatrix.highHardness.title.second')} */}
+                    (Опция)
                 </text>
-
-                <path className="section3stroke" d="M12 20.9954L12 83.9954" stroke="#544B3C" strokeWidth="24"/>
-                <rect x="534.5" y="29.4954" width="776" height="810" rx="9.5" stroke="#292828"/>
-                <rect className="section3stroke" x="544.5" y="40.4954" width="756" height="788" fill="#17181A"
-                      stroke="#544B3C"/>
-
-                <foreignObject className="text-center" x="809" y="-5" width="258" height="25">
-                    <span className="font-bebas text-navUnselect text-[17px] whitespace-normal uppercase tracking-[.2em]">
-                        {t("diagrams.dieMatrix.technicalData.diagramName")}
-                    </span>
+                <foreignObject x={35} y={200} width={280} height={80}>
+                    <text
+                        className='font-adventpro text-[29px] uppercase'
+                        style={{ color: '#D5CDBD' }}
+                    >
+                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
+                        Умная система раннего обнаружения
+                    </text>
                 </foreignObject>
 
-                <rect x="798" y="197.995" width="502" height="155" fill="#1A1B1C"/>
-                <rect x="546" y="508.995" width="754" height="160" fill="#1A1B1C"/>
-                <path className="section3stroke" d="M797.5 39.9954V826.495" stroke="#544B3C"/>
-                <path className="section3stroke" d="M1050 39.9954V826.495" stroke="#544B3C"/>
-                <path className="section3stroke" d="M799.5 197.995H1299.5" stroke="#544B3C"/>
-                <path className="section3stroke" d="M799.5 352.995H1299.5" stroke="#544B3C"/>
-                <path className="section3stroke" d="M546 508.995H1299" stroke="#544B3C"/>
-                <path className="section3stroke" d="M546 669.995H1299" stroke="#544B3C"/>
+                <path className='section3stroke' d='M15 30L15 93' stroke='#82643F' strokeWidth='24' />
+                <path className='section3stroke' d='M15 120L15 183' stroke='#82643F' strokeWidth='24' />
 
+            </svg>
 
-                <foreignObject x="560" y="50" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-normal">
-                        {t("diagrams.dieMatrix.technicalData.column.first.drilling")}
-                    </span>
-                </foreignObject>
-                <foreignObject x="560" y="518" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-normal">
-                        {t("diagrams.dieMatrix.technicalData.column.first.metal")}
-                    </span>
-                </foreignObject>
-                <foreignObject x="560" y="679" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-normal">
-                        {t("diagrams.dieMatrix.technicalData.column.first.hardening")}
-                    </span>
-                </foreignObject>
+            {/* SVG-блок */}
 
-
-                <foreignObject x="815" y="50" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-normal">
-                        {t("diagrams.dieMatrix.technicalData.column.second.holes")}
-                    </span>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1300 1200"
+                fill="none"
+                className='w-[60%] tablet:w-[70%]'
+            >
+                <g transform="translate(300, 300)">
+                <foreignObject x={0} y={0} width={280} height={80}>
+                    <text
+                        className='font-adventpro text-[25px]'
+                        style={{ color: '#969284' }}
+                    >
+                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
+                        Частота (Hz)
+                    </text>
                 </foreignObject>
-                <foreignObject x="815" y="208" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-normal">
-                        {t("diagrams.dieMatrix.technicalData.column.second.counterSink")}
-                    </span>
+                <foreignObject x={830} y={570} width={280} height={80}>
+                    <text
+                        className='font-adventpro text-[25px]'
+                        style={{ color: '#969284' }}
+                    >
+                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
+                        Период (t)
+                    </text>
                 </foreignObject>
-                <foreignObject x="815" y="362" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-normal">
-                        {t("diagrams.dieMatrix.technicalData.column.second.counterDrill")}
-                    </span>
+                <foreignObject x={145} y={595} width={280} height={80}>
+                    <text
+                        className='font-adventpro text-[25px]'
+                        style={{ color: '#969284' }}
+                    >
+                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
+                        Датчик 1
+                    </text>
                 </foreignObject>
-                <foreignObject x="815" y="518" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-normal">
-                        {t("diagrams.dieMatrix.technicalData.column.second.alloyType")}
-                    </span>
+                <foreignObject x={145} y={650} width={280} height={80}>
+                    <text
+                        className='font-adventpro text-[25px]'
+                        style={{ color: '#969284' }}
+                    >
+                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
+                        Датчик 2
+                    </text>
                 </foreignObject>
-                <foreignObject x="815" y="679" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-normal">
-                        {t("diagrams.dieMatrix.technicalData.column.second.vacuum")}
-                    </span>
+                <foreignObject x={350} y={750} width={300} height={120} style={{ textAlign: 'end' }}>
+                    <text
+                        className='font-adventpro text-[25px]'
+                        style={{ color: '#969284' }}
+                    >
+                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
+                        преждевременное оповещение о возможных поломках при повышенной вибрации
+                    </text>
                 </foreignObject>
-
-
-
-                <foreignObject x="1068" y="50" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-normal">
-                        {t("diagrams.dieMatrix.technicalData.column.third.holesValue")}
-                    </span>
-                </foreignObject>
-                <foreignObject x="1068" y="207" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-normal">
-                        {t("diagrams.dieMatrix.technicalData.column.third.counterSinkValue")}
-                    </span>
-                </foreignObject>
-                <foreignObject x="1068" y="362" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-pre-wrap">
-                        {t("diagrams.dieMatrix.technicalData.column.third.counterDrillValue")}
-                    </span>
-                </foreignObject>
-                <foreignObject x="1068" y="518" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-normal">
-                        {t("diagrams.dieMatrix.technicalData.column.third.alloyTypeValue")}
-                    </span>
-                </foreignObject>
-                <foreignObject x="1068" y="679" width="220" height="100">
-                    <span className="font-adventpro text-lightYellow_svg text-[25px] whitespace-normal">
-                        {t("diagrams.dieMatrix.technicalData.column.third.vacuumValue")}
-                    </span>
-                </foreignObject>
-
+                    <path d="M131.431 651.602H52.2314V687.602H131.431V651.602Z" fill="#D5CDBD" />
+                    <path d="M131.431 597.602H52.2314V633.602H131.431V597.602Z" fill="#82643F" />
+                    <path d="M50.6841 44.7494C50.2161 44.2814 49.4601 44.2814 48.9921 44.7494L41.3481 52.3934C40.8801 52.8614 40.8801 53.6174 41.3481 54.0854C41.8161 54.5534 42.5721 54.5534 43.0401 54.0854L49.8321 47.2934L56.6241 54.0854C57.0921 54.5534 57.8481 54.5534 58.3161 54.0854C58.7841 53.6174 58.7841 52.8614 58.3161 52.3934L50.6841 44.7614V44.7494ZM51.0321 562.801V45.6014H48.6321V562.801H51.0321Z" fill="#CACBC9" />
+                    <path d="M881.263 561.624C881.731 561.156 881.731 560.401 881.263 559.921L873.631 552.288C873.163 551.821 872.407 551.821 871.927 552.288C871.459 552.756 871.459 553.513 871.927 553.981L878.719 560.773L871.927 567.565C871.459 568.033 871.459 568.789 871.927 569.257C872.395 569.725 873.151 569.725 873.631 569.257L881.263 561.624ZM50.3115 561.985H880.411V559.585H50.3115V561.985Z" fill="#CACBC9" />
+                    <path d="M50.3115 480.227H694.688" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M50.3115 399.684H694.688" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M50.3115 318.191H694.688" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M50.3115 237.648H694.688" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M50.3115 156.156H694.688" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M128.012 156.156V560.784" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M208.556 156.156V560.784" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M289.111 156.156V560.784" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M369.656 156.156V560.784" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M451.148 156.156V560.784" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M532.641 156.156V560.784" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M614.133 156.156V560.784" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M693.74 156.156V560.784" stroke="#BFBFBF" stroke-width="1.2" />
+                    <path d="M49.832 381.275C60.656 381.203 70.232 385.799 70.232 385.799L95.432 381.083L127.232 388.199L155.432 373.799L175.232 388.199L199.832 373.799L226.832 388.199L246.632 373.799L282.032 388.199L307.232 373.799L340.832 388.199L361.232 370.199L393.032 391.799L422.432 366.599L444.032 394.199L480.032 364.199L504.032 394.199L536.432 364.199L569.432 398.399L598.832 366.599L624.632 400.199L652.832 364.199L676.232 398.399L702.032 366.599L724.232 398.399L754.832 370.199L777.032 391.799L805.832 370.199" stroke="url(#paint0_linear_151_87)" stroke-width="7.2" stroke-miterlimit="10" />
+                    <path d="M631.832 296.402L627.296 226.994L621.26 443.258L609.188 251.438L599.12 427.286L587.708 164.906L580.328 477.098L569.924 131.99L560.192 422.99L549.464 180.89L540.74 464.87L532.016 126.59L521.276 428.21L512.552 214.73L501.824 445.178L491.084 164.882L481.688 464.858L472.964 193.094L462.896 457.178L459.548 250.466L451.496 443.234L440.756 322.178L432.032 422.978L421.964 332.978L413.912 410.978L403.172 332.978L392.444 401.978L385.064 345.578L366.716 393.578L342.716 369.866L334.316 389.63L314.156 373.01L301.316 389.63C301.316 389.63 295.4 361.478 292.4 361.478C289.4 361.478 282.536 389.63 282.536 389.63L269.108 368.378L261.2 382.118L251.528 373.022L238.388 382.118L222.788 373.022L207.188 380.354L198.788 369.878L185.588 380.354L168.188 368.822L159.788 375.11L134.576 366.722L103.364 380.342L91.3644 366.722L71.5524 384.542L49.9404 373.01" stroke="#82643F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M631.832 297.001L638.708 409.405L653.432 270.001L661.232 465.001L676.232 252.001L685.832 459.001L692.432 208.801L706.832 452.401L718.232 148.201L727.832 428.401L738.032 241.801L743.432 449.401L750.632 208.801L759.632 468.001L764.432 124.801L775.832 490.801L786.032 213.001L792.032 465.001L809.432 241.801" stroke="url(#paint1_linear_151_87)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.8 4.8" />
+                    <foreignObject x="401.432" y="72" width="289.2" height="289.199">
+                        <div
+                            style={{
+                                backdropFilter: 'blur(3px)',
+                                clipPath: 'url(#bgblur_1_151_87_clip_path)',
+                                height: '100%',
+                                width: '100%'
+                            }}>
+                        </div>
+                    </foreignObject>
+                    <path data-figma-bg-blur-radius="6" d="M546.032 355.2C622.578 355.2 684.632 293.147 684.632 216.6C684.632 140.053 622.578 78 546.032 78C469.485 78 407.432 140.053 407.432 216.6C407.432 293.147 469.485 355.2 546.032 355.2Z" fill="white" fill-opacity="0.01" />
+                    <path d="M545.432 356.998C468.344 356.998 405.632 294.286 405.632 217.198C405.632 140.11 468.344 77.3984 545.432 77.3984C622.52 77.3984 685.232 140.11 685.232 217.198C685.232 294.286 622.52 356.998 545.432 356.998ZM545.432 78.7904C469.112 78.7904 407.024 140.878 407.024 217.198C407.024 293.518 469.112 355.606 545.432 355.606C621.752 355.606 683.84 293.518 683.84 217.198C683.84 140.878 621.752 78.7904 545.432 78.7904Z" fill="#D5CDBD" stroke="#D5CDBD" stroke-width="1.2" />
+                    <path d="M551 357.602V360.429H553.4V357.602H551ZM551 366.065V371.72H553.4V366.065H551ZM551 377.375V383.01H553.4V377.375H551ZM551 388.665V394.32H553.4V388.665H551ZM551 399.956V405.611H553.4V399.956H551ZM551 411.247V416.902H553.4V411.247H551ZM551 422.538V428.193H553.4V422.538H551ZM551 433.828V439.483H553.4V433.828H551ZM551 445.138V450.793H553.4V445.138H551ZM551 456.429V462.084H553.4V456.429H551ZM551 467.72V473.375H553.4V467.72H551ZM551 479.01V484.665H553.4V479.01H551ZM551 490.301V495.956H553.4V490.301H551ZM551 501.611V507.266H553.4V501.611H551ZM551 512.902V518.557H553.4V512.902H551ZM551 524.193V529.828H553.4V524.193H551ZM551 535.483V541.138H553.4V535.483H551ZM551 546.774V552.429H553.4V546.774H551ZM551 558.065V563.72H553.4V558.065H551ZM551 569.375V575.01H553.4V569.375H551ZM551 580.665V586.32H553.4V580.665H551ZM551 591.956V597.611H553.4V591.956H551ZM551 603.247V608.902H553.4V603.247H551ZM551 614.538V620.193H553.4V614.538H551ZM551 625.828V631.483H553.4V625.828H551ZM551 637.138V642.793H553.4V637.138H551ZM551 648.429V654.084H553.4V648.429H551ZM551 659.72V665.375H553.4V659.72H551ZM551 671.01V676.665H553.4V671.01H551ZM551 682.301V687.956H553.4V682.301H551ZM551 693.611V699.266H553.4V693.611H551ZM551 704.902V710.557H553.4V704.902H551ZM551 716.193V721.848H553.4V716.193H551ZM551 727.483V733.138H553.4V727.483H551ZM551 738.774V741.602H553.4V738.774H551Z" fill="#D5CDBD" />
                 <defs>
-                    <filter id="filter0_b_116_175" x="-17" y="-14" width="309" height="309" filterUnits="userSpaceOnUse"
-                            colorInterpolationFilters="sRGB">
-                        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                        <feGaussianBlur in="BackgroundImageFix" stdDeviation="9.5"/>
-                        <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_116_175"/>
-                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_116_175" result="shape"/>
-                    </filter>
+                    <clipPath id="bgblur_1_151_87_clip_path" transform="translate(-401.432 -72)"><path d="M546.032 355.2C622.578 355.2 684.632 293.147 684.632 216.6C684.632 140.053 622.578 78 546.032 78C469.485 78 407.432 140.053 407.432 216.6C407.432 293.147 469.485 355.2 546.032 355.2Z" />
+                    </clipPath><linearGradient id="paint0_linear_151_87" x1="49.808" y1="382.091" x2="805.808" y2="382.091" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.85" stop-color="#D5CDBD" />
+                        <stop offset="1" stop-color="#E3EFF2" stop-opacity="0.05" />
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_151_87" x1="631.832" y1="307.801" x2="809.432" y2="307.801" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#544B3C" />
+                        <stop offset="1" stop-color="#544B3C" stop-opacity="0.05" />
+                    </linearGradient>
+                    <clipPath id="clip0_151_87">
+                        <rect width="874.032" height="687.6" fill="white" transform="translate(41)" />
+                    </clipPath>
                 </defs>
+                </g>
             </svg>
 
         </section>
-    );
+    )
 }
 
-export default Section3;
+export default Section3

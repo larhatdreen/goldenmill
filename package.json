@@ -29,7 +29,6 @@
     "@types/nodemailer": "^6.4.17",
     "@types/recharts": "^1.8.29",
     "axios": "^1.7.9",
-    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "countries-list": "^3.0.6",
