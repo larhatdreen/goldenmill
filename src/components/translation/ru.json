@@ -143,25 +143,24 @@
     "dieMatrix": {
       "highHardness": {
         "title": {
-          "first": "Высокий",
-          "second": "показатель",
-          "third": "твердости"
+          "first": "Модель gm",
+          "second": "Характеристики"
         },
-        "description": "При рабочей температуре",
-        "descriptionBg": "Твердость",
+        "description": "Высококачественные\nпеллет",
+        "descriptionBg": "Характеристики",
         "diagramName": "График зависимости",
         "diagramX": "Рабочая температура (°С)"
       },
       "comparisons": {
         "title": {
-          "first": "Сравнение с",
-          "second": "конкурентами"
+          "first": "Эффективное",
+          "second": "Охлаждение",
+          "third": "Роликов"
         },
         "description": {
-          "first": "До 10% меньше износа",
-          "second": "поверхности"
+          "first": "Низкая температура"
         },
-        "descriptionBg": "Преимущество",
+        "descriptionBg": "Охлаждение",
         "diagramName": "Вид матрицы в разрезе",
         "diagramArrow": "До 10% меньше износа",
         "diagramDesignation": "Конкуренты"

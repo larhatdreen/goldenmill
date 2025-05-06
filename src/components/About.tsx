@@ -45,8 +45,10 @@ export default function About() {
           </span>
           <div className='absolute left-[200px] top-[235px] flex flex-col items-start'>
             <div className='flex items-start'>
-              <div className='w-[24px] h-[63px] bg-[#82643F]' />
-              <span className="relative left-[12px] font-['Bebas_Neue'] text-[60px] md:text-[70px] lg:text-[80px] text-[#D5CDBD] leading-[100%]">
+              <div 
+                className='w-[24px] h-[63px] bg-[#82643F]' />
+              <span 
+                className="relative left-[12px] font-['Bebas_Neue'] text-[60px] md:text-[70px] lg:text-[80px] text-[#D5CDBD] leading-[100%]">
                 {t('about.about.title')}
               </span>
             </div>

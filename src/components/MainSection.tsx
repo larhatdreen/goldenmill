@@ -417,8 +417,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
       <div className='w-full flex justify-center px-2 mobileMd:px-4 '>
         <div className='w-[10%] hidden laptop:block' />
         <div
-          className='flex flex-wrap justify-center laptop:justify-between mt-6 laptop:mt-0 pt-5 gap-x-8 sm:gap-x-12 laptop:gap-x-16 gap-y-6 px-4 sm:px-6 laptop:px-6
-                relative top-0 laptop:top-5 desktopFHD:-top-10'
+          className='flex flex-wrap justify-center laptop:justify-between mt-6 laptop:mt-0 pt-5 gap-x-8 sm:gap-x-12 laptop:gap-x-32 gap-y-6 px-4 sm:px-6 laptop:px-6
+                relative top-0 laptop:top-5'
         >
           {type === 'Matrix' && (
             <>

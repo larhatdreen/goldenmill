@@ -5,7 +5,7 @@ interface RingMatrixProps {
 
 function RingMatrix({ className, stroke = '#2A3242' }: RingMatrixProps) {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 87 72' className={className}>
+    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 87 72' className={className} style={{height: '60%'}}>
       <g clipPath='url(#a)'>
         <path
           stroke={stroke}

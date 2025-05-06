@@ -2,6 +2,9 @@ import MainSection from './components/MainSection.tsx'
 import Section1 from './components/Section1.tsx'
 import Section2 from './components/Section2.tsx'
 import Section3 from './components/Section3.tsx'
+import Section4 from './components/Section4.tsx'
+import Section5 from './components/Section5.tsx'
+import Section6 from './components/Section6.tsx'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import About from './components/About.tsx'
 import Contacts from './components/Contacts.tsx'
@@ -82,6 +85,9 @@ function App() {
                     <Section1 />
                     <Section2 />
                     <Section3 />
+                    <Section4 />
+                    <Section5 />
+                    <Section6 />
                   </Wrapper>
                 }
               />
