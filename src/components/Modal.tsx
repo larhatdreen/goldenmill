@@ -446,7 +446,8 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
       {send ? (
         <div
           ref={successRef}
-          className='relative w-[90%] max-w-[640px] h-[224px] bg-[#27282B] rounded-xl flex flex-row items-center justify-center'
+          className='relative w-[90%] max-w-[640px] h-[224px] rounded-xl flex flex-row items-center justify-center'
+          style={{ backgroundColor: theme.colors.mui.form.background.fill }}
         >
           <CloseIcon
             className='absolute top-[20px] right-[20px] hover:fill-gold_ cursor-pointer z-1'
@@ -484,7 +485,8 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
           </div>
         </div>
       ) : (
-        <div className='relative w-[96vw] max-w-[98vw] mx-auto bg-[#27282B] rounded-xl px-4 md:px-8 pt-10 pb-8 box-border modal-mobile md:w-[90%] md:max-w-[640px]'>
+        <div className='relative w-[96vw] max-w-[98vw] mx-auto bg-[#27282B] rounded-xl px-4 md:px-8 pt-10 pb-8 box-border modal-mobile md:w-[90%] md:max-w-[640px]'
+             style={{ backgroundColor: theme.colors.mui.form.background.fill }}>
           <div
             className="absolute top-0 right-0 w-[48px] h-[48px] flex items-center justify-center z-50 sm:top-[20px] sm:right-[20px] sm:w-auto sm:h-auto"
             onClick={() => {
@@ -523,8 +525,8 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
             </div>
 
             <ThemeProvider theme={muiTheme}>
-              <div className='w-full h-[300px] px-[10%] pt-6 pb-6  flex flex-col justify-between'>
-                <div className='flex flex-row justify-between  gap-x-6'>
+              <div className='w-full h-[300px] px-[10%] pt-6 pb-6 flex flex-col justify-between'>
+                <div className='flex flex-row justify-between gap-x-6'>
                   <FormControl className='z-10 flex-1' error={errorText.name !== ''}>
                     <InputLabel htmlFor='name'>{t('inputHelpBlock.name')}</InputLabel>
                     <Input
@@ -556,7 +558,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                   </FormControl>
                 </div>
 
-                <div className='flex flex-row justify-between  gap-x-6'>
+                <div className='flex flex-row justify-between gap-x-6'>
                   <FormControl className='z-10 flex-1'>
                     <ReactPhoneInput
                       onChange={(e) => phoneHandler(e)}
@@ -566,16 +568,21 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                       value={inputText.phone}
                       inputProps={{
                         sx: {
+                          color: theme.colors.mui.form.text.input,
                           '& .MuiInputLabel-root': {
-                            color: errorText.phone ? '#d32f2f !important' : '#666666',
+                            color: errorText.phone ? `${theme.colors.mui.form.error} !important` : theme.colors.mui.form.secondary,
+                          },
+                          '& .MuiInputLabel-root.Mui-error': {
+                            color: `${theme.colors.mui.form.error} !important`,
                           },
                           '& .MuiInput-underline:before': {
-                            borderColor: errorText.phone ? '#d32f2f !important' : '#666666',
+                            borderColor: errorText.phone ? `${theme.colors.mui.form.error} !important` : theme.colors.mui.form.secondary,
                           },
                           '& .MuiInput-underline:after': {
-                            borderColor: errorText.phone ? '#d32f2f !important' : '#82653E',
+                            borderColor: errorText.phone ? `${theme.colors.mui.form.error} !important` : theme.colors.mui.form.hover.primary,
                           },
                         },
+                        error: !!errorText.phone,
                       }}
                     />
                     {errorText.phone && (
@@ -614,14 +621,37 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                         <TextField
                           {...params}
                           label={t('inputHelpBlock.country')}
-                          error={errorText.country !== ''}
+                          error={!!errorText.country}
                           inputProps={{ ...params.inputProps, autoComplete: 'new-password' }}
                           sx={{
+                            '& .MuiInputLabel-root': {
+                              color: errorText.country ? `${theme.colors.mui.form.error} !important` : theme.colors.mui.form.secondary,
+                            },
+                            '& .MuiInputLabel-root.Mui-error': {
+                              color: `${theme.colors.mui.form.error} !important`,
+                            },
+                            '& .MuiInput-underline:before': {
+                              borderColor: errorText.country ? `${theme.colors.mui.form.error} !important` : theme.colors.mui.form.secondary,
+                            },
+                            '& .MuiInput-underline:after': {
+                              borderColor: errorText.country ? `${theme.colors.mui.form.error} !important` : theme.colors.mui.form.hover.primary,
+                            },
                             '& .MuiAutocomplete-popupIndicator': {
-                              color: errorText.country ? '#d32f2f' : '#666666',
-                              '&:hover': {
-                                color: errorText.country ? '#d32f2f' : '#82653E',
-                              },
+                              color: errorText.country ? `${theme.colors.mui.form.error} !important` : theme.colors.mui.form.secondary,
+                            },
+                            '& .MuiAutocomplete-popupIndicator svg': {
+                              color: errorText.country ? `${theme.colors.mui.form.error} !important` : theme.colors.mui.form.secondary,
+                              fill: errorText.country ? `${theme.colors.mui.form.error} !important` : theme.colors.mui.form.secondary,
+                            },
+                            '& .MuiAutocomplete-popupIndicator:hover, & .MuiAutocomplete-popupIndicator:hover svg': {
+                              color: errorText.country ? `${theme.colors.mui.form.error} !important` : theme.colors.mui.form.hover.primary,
+                              fill: errorText.country ? `${theme.colors.mui.form.error} !important` : theme.colors.mui.form.hover.primary,
+                            },
+                            '& .MuiAutocomplete-noOptions': {
+                              color: theme.colors.mui.form.text.input,
+                              padding: '10px 14px',
+                              fontSize: '14px',
+                              fontFamily: 'AdventProRegular',
                             },
                           }}
                         />
@@ -634,7 +664,8 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                     )}
                   </FormControl>
                 </div>
-                <div className='flex flex-row justify-between  gap-x-6'>
+
+                <div className='flex flex-row justify-between gap-x-6'>
                   <FormControl className='z-10 flex-1' error={errorText.companyName !== ''}>
                     <InputLabel htmlFor='companyName'>{t('inputHelpBlock.companyName')}</InputLabel>
                     <Input
@@ -680,9 +711,19 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                       control={<Checkbox id='checkb' />}
                       sx={{
                         '& .MuiTypography-root': {
-                          color: !checked && checkedError ? '#d32f2f' : '#666666',
+                          color: !checked && checkedError ? theme.colors.mui.form.error : theme.colors.mui.form.secondary,
+                          transition: 'color 0.2s',
                         },
                         '& .MuiFormControlLabel-asterisk': { display: 'none' },
+                        '&:hover .MuiTypography-root.Mui-error': {
+                          color: `${theme.colors.mui.form.error} !important`,
+                        },
+                        '&:hover .MuiTypography-root:not(.Mui-error)': {
+                          color:  theme.colors.mui.form.hover.checkbox.text,
+                        },
+                        '&:hover .MuiCheckbox-root': {
+                          color: theme.colors.mui.form.hover.checkbox.fill,
+                        },
                       }}
                       label={
                         <div className='flex flex-row gap-2'>

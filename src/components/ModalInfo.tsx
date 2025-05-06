@@ -479,7 +479,7 @@ export default function ModalInfo({
         <div
           className="absolute w-[96vw] max-w-[98vw] mx-auto px-4 py-6 bg-[#27282B] top-1/2 left-1/2
                     -translate-x-1/2 -translate-y-1/2 outline-0 rounded-xl flex flex-row items-center justify-center md:w-[90%] md:max-w-[640px] md:h-[224px]"
-          style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}
+          style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)',  backgroundColor: theme.colors.mui.form.background.fill }}
         >
           <CloseIcon
             className='absolute top-[20px] right-[20px] hover:fill-gold_ cursor-pointer'
@@ -490,7 +490,7 @@ export default function ModalInfo({
             }}
           />
 
-          <PlaneIcon />
+          < PlaneIcon />
           <div className='flex flex-col items-start'>
             <div className='font-labgrotesque text-footerBottomText text-[22px]'>
               {t('inputInfoBlock.success.first')}
@@ -505,7 +505,7 @@ export default function ModalInfo({
             className="absolute w-[90%] max-w-[1300px] h-auto lg:h-[629px] bg-[#27282b] top-1/2 left-1/2
                         -translate-x-1/2 -translate-y-1/2 outline-0 rounded-xl flex flex-col items-end
                         pt-[53px] pb-[3%] px-[20px] sm:px-[30px] md:px-[40px] lg:px-[58px] xl:px-[76px] justify-end min-h-[120px] modal-mobile"
-            style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}
+            style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)', backgroundColor: theme.colors.mui.form.background.fill}}
           >
             <ThemeProvider theme={muiTheme}>
               <CloseIcon
@@ -713,10 +713,10 @@ export default function ModalInfo({
                             <div className='flex flex-col justify-center items-center w-full h-full'>
                               {!inputText.upload ? (
                                 <span className='text-sm md:text-base lg:text-lg flex flex-row md:flex-col justify-between p-0 m-0'>
-                                  <span className='p-0 m-0' style={{ color: '#666666' }}>
+                                  <span className='p-0 m-0' style={{ color: theme.colors.mui.form.text.primary }}>
                                     {t('inputInfoBlock.upload')}
                                   </span>
-                                  <span className='p-0 m-0' style={{ color: '#666666' }}>
+                                  <span className='p-0 m-0' style={{ color: theme.colors.mui.form.text.primary }}>
                                     PDF, Word, Excel, CSV, JPG, PNG
                                   </span>
                                 </span>
@@ -747,9 +747,19 @@ export default function ModalInfo({
                             control={<Checkbox id='checkb' />}
                             sx={{
                               '& .MuiTypography-root': {
-                                color: bottomCheckedError ? '#d32f2f' : '#666666',
+                                color: !checked && bottomCheckedError ? theme.colors.mui.form.error : theme.colors.mui.form.secondary,
+                                transition: 'color 0.2s',
                               },
                               '& .MuiFormControlLabel-asterisk': { display: 'none' },
+                              '&:hover .MuiTypography-root.Mui-error': {
+                                color: `${theme.colors.mui.form.error} !important`,
+                              },
+                              '&:hover .MuiTypography-root:not(.Mui-error)': {
+                                color:  theme.colors.mui.form.hover.checkbox.text,
+                              },
+                              '&:hover .MuiCheckbox-root': {
+                                color: theme.colors.mui.form.hover.checkbox.fill,
+                              },
                             }}
                             label={
                               <div className='flex flex-row gap-2'>

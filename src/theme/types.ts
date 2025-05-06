@@ -14,31 +14,39 @@ export interface ThemeColors {
   };
   mui: {
     form: {
-      primary: string;
+      title: string;
       secondary: string;
       error: string;
       background: {
         paper: string;
-        default: string;
+        fill: string;
       };
       text: {
         primary: string;
-        secondary: string;
+        input: string;
       };
       border: {
-        default: string;
+        form: string;
       };
       hover: {
         primary: string;
-        secondary: string;
+        secondary: string,
+          checkbox: {
+            fill: string;
+            text: string;
+         }
+      };
+      scrollbar: {
+        thumb: string;
+        fill: string;
       };
       button: {
         text: string;
         slider: string;
-      }
-    };
-  };
-}
+      };
+    };  
+  }
+};
 
 export type ThemeMode = 'light' | 'dark';
 

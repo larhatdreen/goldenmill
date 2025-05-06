@@ -225,7 +225,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                   backgroundColor: theme.colors.mui.form.background.paper,
                   backdropFilter: 'blur(19px) brightness(100%)',
                   WebkitBackdropFilter: 'blur(19px) brightness(100%)',
-                  outline: `1px solid ${theme.colors.mui.form.border.default}`,
+                  outline: `1px solid ${theme.colors.mui.form.border.form}`,
                   outlineOffset: '-1px'
                 }}
               >
@@ -256,6 +256,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                           </FormHelperText>
                         )}
                       </FormControl>
+
                       <FormControl
                         error={errorText.outerDiameter !== ''}
                         variant='standard'
@@ -303,6 +304,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                           </FormHelperText>
                         )}
                       </FormControl>
+
                       <FormControl
                         error={errorText.workingWidth !== ''}
                         variant='standard'
