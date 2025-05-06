@@ -168,7 +168,13 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
             desktopFHD:grid-cols-[6%_44%_auto] px-4 sm:px-6 md:px-8'
       >
         <div className='firstHelpColumn' />
-        <Suspense fallback='loading'>{selectMatrix()}</Suspense>
+        <Suspense fallback='loading'>
+          <div className="relative">
+            {selectMatrix()}
+            <div className="absolute left-20 bottom-10 w-48 h-16 bg-[#AC8956] rounded-full blur-3xl opacity-70 pointer-events-none z-0"/>
+            <div className="absolute right-0 bottom-20 w-[80%] h-[40%] bg-[#7B7F7F] rounded-full blur-3xl opacity-30 pointer-events-none z-0 rotate-145"/>
+          </div>
+        </Suspense>
 
         <div className='flex flex-col justify-between mt-6 laptop:mt-12 order-first laptop:order-2 min-h-[420px] laptop:min-h-[520px]'>
           <div>
@@ -257,8 +263,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                           id='outerDiameter'
                           aria-describedby='component-error-text'
                           onChange={(e) => inputHandler(e)}
-                          // onFocus={() => onPointerEnterCircle('circle2')}
-                          // onBlur={() => onPointerLeaveCircle('circle2')}
+                        // onFocus={() => onPointerEnterCircle('circle2')}
+                        // onBlur={() => onPointerLeaveCircle('circle2')}
                         />
                         {errorText.outerDiameter && (
                           <FormHelperText id='component-error-text'>
@@ -282,8 +288,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                           id='overallWidth'
                           aria-describedby='component-error-text'
                           onChange={(e) => inputHandler(e)}
-                          // onFocus={() => onPointerEnterCircle('circle3')}
-                          // onBlur={() => onPointerLeaveCircle('circle3')}
+                        // onFocus={() => onPointerEnterCircle('circle3')}
+                        // onBlur={() => onPointerLeaveCircle('circle3')}
                         />
                         {errorText.overallWidth && (
                           <FormHelperText id='component-error-text'>
@@ -304,8 +310,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                           id='workingWidth'
                           aria-describedby='component-error-text'
                           onChange={(e) => inputHandler(e)}
-                          // onFocus={() => onPointerEnterCircle('circle4')}
-                          // onBlur={() => onPointerLeaveCircle('circle4')}
+                        // onFocus={() => onPointerEnterCircle('circle4')}
+                        // onBlur={() => onPointerLeaveCircle('circle4')}
                         />
                         {errorText.workingWidth && (
                           <FormHelperText id='component-error-text'>
@@ -330,8 +336,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                             id='drillingDiameter'
                             aria-describedby='component-error-text'
                             onChange={(e) => inputHandler(e)}
-                            // onFocus={() => onPointerEnterCircle('circle5')}
-                            // onBlur={() => onPointerLeaveCircle('circle5')}
+                          // onFocus={() => onPointerEnterCircle('circle5')}
+                          // onBlur={() => onPointerLeaveCircle('circle5')}
                           />
                           {errorText.drillingDiameter && (
                             <FormHelperText id='component-error-text'>
@@ -362,8 +368,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                                 drillingDiameter: '',
                               }));
                             }}
-                            // onFocus={() => onPointerEnterCircle('circle5')}
-                            // onBlur={() => onPointerLeaveCircle('circle5')}
+                          // onFocus={() => onPointerEnterCircle('circle5')}
+                          // onBlur={() => onPointerLeaveCircle('circle5')}
                           >
                             <MenuItem value=''>
                               <em className='text-footerBottomText'>
@@ -443,9 +449,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${
-                          matrix === 1 ? '#ffffff08' : 'transparent'
-                        }] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${matrix === 1 ? '#ffffff08' : 'transparent'
+                    }] hover:bg-[#544B3C50]`}
                 >
                   <FlatMatrix
                     className='h-[90%]'
@@ -475,9 +480,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${
-                          matrix === 2 ? '#ffffff08' : 'transparent'
-                        }] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${matrix === 2 ? '#ffffff08' : 'transparent'
+                    }] hover:bg-[#544B3C50]`}
                 >
                   <RingMatrix className='h-[90%]' stroke={matrix === 2 ? '#D5CDBD' : '#605C54'} />
                 </div>
@@ -504,9 +508,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${
-                          matrix === 3 ? '#ffffff08' : 'transparent'
-                        }] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${matrix === 3 ? '#ffffff08' : 'transparent'
+                    }] hover:bg-[#544B3C50]`}
                 >
                   <TwinTrackMatrix
                     className='h-[90%]'
@@ -541,9 +544,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${
-                          shell === 1 ? '#ffffff08' : 'transparent'
-                        }] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${shell === 1 ? '#ffffff08' : 'transparent'
+                    }] hover:bg-[#544B3C50]`}
                 >
                   <FlatShell className='h-[90%]' stroke={shell === 1 ? '#D5CDBD' : '#605C54'} />
                 </div>
@@ -571,9 +573,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${
-                          shell === 2 ? '#ffffff08' : 'transparent'
-                        }] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${shell === 2 ? '#ffffff08' : 'transparent'
+                    }] hover:bg-[#544B3C50]`}
                 >
                   <RingShell className='h-[90%]' stroke={shell === 2 ? '#D5CDBD' : '#605C54'} />
                 </div>
@@ -601,9 +602,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${
-                          shell === 3 ? '#ffffff08' : 'transparent'
-                        }] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${shell === 3 ? '#ffffff08' : 'transparent'
+                    }] hover:bg-[#544B3C50]`}
                 >
                   <TwinTrackShell
                     className='h-[90%]'
@@ -632,9 +632,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${
-                          shell === 4 ? '#ffffff08' : 'transparent'
-                        }] hover:bg-[#544B3C50]`}
+                        rounded-full bg-[${shell === 4 ? '#ffffff08' : 'transparent'
+                    }] hover:bg-[#544B3C50]`}
                 >
                   <TwinTrackShell2
                     className='h-[90%]'
