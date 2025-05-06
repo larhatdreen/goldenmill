@@ -220,8 +220,14 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
             {countWindow && (
               <div
                 className='ml-0 laptop:ml-[4.8%] w-full sm:w-[320px] h-[400px] mobileLg:w-[440px] mobileLg:h-[400px] tablet:w-[561px] desktopMd:w-[597px]
-                              tablet:h-[468px] z-[0] bg-[#ffffff08] rounded-[10px] backdrop-blur-[19px]
-                               backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(19px)_brightness(100%)]'
+                              tablet:h-[468px] z-[0] rounded-[10px]'
+                style={{
+                  backgroundColor: theme.colors.mui.form.background.paper,
+                  backdropFilter: 'blur(19px) brightness(100%)',
+                  WebkitBackdropFilter: 'blur(19px) brightness(100%)',
+                  outline: `1px solid ${theme.colors.mui.form.border.default}`,
+                  outlineOffset: '-1px'
+                }}
               >
                 <ThemeProvider theme={muiTheme}>
                   <div className='w-full h-full px-[5%] pt-[50px] pb-[60px] flex flex-col justify-between'>

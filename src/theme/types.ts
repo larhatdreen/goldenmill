@@ -13,24 +13,29 @@ export interface ThemeColors {
     arrow: string;
   };
   mui: {
-    primary: string;
-    secondary: string;
-    error: string;
-    background: {
-      paper: string;
-      default: string;
-    };
-    text: {
+    form: {
       primary: string;
       secondary: string;
-    };
-    border: {
-      default: string;
-      light: string;
-    };
-    hover: {
-      primary: string;
-      secondary: string;
+      error: string;
+      background: {
+        paper: string;
+        default: string;
+      };
+      text: {
+        primary: string;
+        secondary: string;
+      };
+      border: {
+        default: string;
+      };
+      hover: {
+        primary: string;
+        secondary: string;
+      };
+      button: {
+        text: string;
+        slider: string;
+      }
     };
   };
 }

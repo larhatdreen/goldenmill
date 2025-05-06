@@ -173,7 +173,7 @@ export default function About() {
               />
               <span
                 className='relative font-bebas text-[60px] md:text-[70px] lg:text-[80px]'
-                style={styles.text}
+                style={styles.title}
               >
                 {t('about.history.title')}
               </span>
