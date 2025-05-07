@@ -58,8 +58,7 @@ function Section3() {
 
                     <foreignObject className='text-center' x='7' y='580' width='230' height='25'>
                         <span className='w-full font-["Bebas_Neue"] text-[#3F4042] text-[18px] whitespace-normal uppercase tracking-[.2em]'>
-                            {/* {t('diagrams.dieMatrix.highHardness.descriptionBg')} */}
-                            Автоматизация
+                          {t('diagrams.millGranulator.sensorsBlock.descriptionBg')}
                         </span>
                     </foreignObject>
                 </svg>
@@ -67,21 +66,17 @@ function Section3() {
                 <path id='my_path' d='M 20,20 C 40,40 80,40 100,20' />
 
                 <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[35px] translate-y-[93px]'>
-                    {/* {t('diagrams.dieMatrix.highHardness.title.first')} */}
-                    Датчики и модули
+                  {t('diagrams.millGranulator.sensorsBlock.title.sensors')}
                 </text>
                 <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[35px] translate-y-[183px]'>
-                    {/* {t('diagrams.dieMatrix.highHardness.title.second')} */}
-                    с IO-Link
+                  {t('diagrams.millGranulator.sensorsBlock.title.model')}
                 </text>
                 <foreignObject x={35} y={200} width={670} height={80}>
                     <text
                         className='font-adventpro text-[29px] uppercase'
                         style={{ color: '#D5CDBD' }}
                     >
-                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
-                        Автоматизация с минимальным количеством кабеля и дистанционным управлением
-
+                      {t('diagrams.millGranulator.sensorsBlock.subtitle')}
                     </text>
                 </foreignObject>
 

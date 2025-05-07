@@ -38,7 +38,8 @@
       "keywords": "{{productName}}, LKE Group GmbH, GoldenDie, dies, roller shells, spare parts, pellet mills, industrial equipment, high quality, custom manufacturing, wear resistance, pellet production, granulation, extrusion"
     }
   },
-  "dieMatrix": "DIE / MATRIX",
+  "firstTitle": "Pellet",
+  "secondTitle": "Press",
   "rollerShell": "ROLLER SHELL",
   "navBar": {
     "main": "Main Page",
@@ -56,10 +57,8 @@
     "surfaceType": "Surface type"
   },
   "titleBlock": {
-    "enterData": "Enter specs",
     "needHelp": "Need help with measurements?",
-    "productName": "",
-    "productDescription": "FOR ANY TYPE OF PELLET-MILL",
+    "productDescription": "For granulation of biomass, RDF, \ncompound feed, and food products",
     "countPrice": "GET QUOTE"
   },
   "inputSizesBlock": {
@@ -126,10 +125,10 @@
       "wrongFormat": "Incorrect entry"
     }
   },
-  "matrixTypes": {
-    "flatDie": "Flat die",
-    "ringDie": "Ring die",
-    "twinTrack": "Twin-Track"
+  "granulatorTypes": {
+    "GM420 — GM520": "GM420 — GM520",
+    "GM650": "GM650",
+    "GM850": "GM850"
   },
   "rollerShellTypes": {
     "forFlatDie": "For flat die",
@@ -137,116 +136,84 @@
     "forTwinTrack": "For Twin-Track"
   },
   "diagrams": {
-    "dieMatrix": {
-      "highHardness": {
+    "millGranulator": {
+      "mainFeatures": {
         "title": {
-          "first": "HIGH",
-          "second": "HARDNESS",
-          "third": "VALUE"
+          "model": "GM Model",
+          "features": "Features"
         },
-        "description": "AT WORKING TEMPERATURE  ",
-        "descriptionBg": "HARDNESS",
-        "diagramName": "DEPENDENCY DIAGRAM",
-        "diagramX": "Working temperature (°С)"
-      },
-      "comparisons": {
-        "title": {
-          "first": "COMPARISONS WITH",
-          "second": "COMPETITORS"
-        },
-        "description": {
-          "first": "UP TO 10% LESS WEAR",
-          "second": "OF SURFACE"
-        },
-        "descriptionBg": "ADVANTAGE",
-        "diagramName": "SECTIONAL VIEW OF A DIE",
-        "diagramArrow": "Up to 10% less wear",
-        "diagramDesignation": "Competitors"
-      },
-      "technicalData": {
-        "title": "TECHNICAL",
-        "description": "DATA",
-        "descriptionBg": "DATA",
-        "diagramName": "TABLE OF CHARACTERISTICS",
-        "column": {
-          "first": {
-            "drilling": "Drilling",
-            "metal": "Metal",
-            "hardening": "Hardening"
-          },
-          "second": {
-            "holes": "Holes",
-            "counterSink": "Countersink",
-            "counterDrill": "Counter-drill",
-            "alloyType": "Alloy type",
-            "vacuum": "Vacuum"
-          },
-          "third": {
-            "holesValue": "1,8 - 25 mm",
-            "counterSinkValue": "15° - 60°",
-            "counterDrillValue": "Conical / Cylindrical /    1-, 2-, 3-step",
-            "alloyTypeValue": "Chrome steel",
-            "vacuumValue": "52-55 HRC"
-          }
-        }
-      }
-    },
-    "rollerShell": {
-      "surfaceTypes": {
-        "title": {
-          "first": "TYPES OF",
-          "second": "SURFACE"
-        },
-        "description": "YOUR CHOICE",
-        "descriptionBg": "SURFACE",
-        "surfaceTypes": {
-          "perforated": "Dimpled",
-          "ribbedClosed": "Corrugated (closed)",
-          "ribbedOpen": "Corrugated (open)",
-          "slantGrooved": "Helical corrugated",
-          "fishBone": "Fishbone",
-          "arc": "Curved"
+        "subtitle": "High-quality pellets",
+        "descriptionBg": "Features",
+        "features": {
+          "1": "The reinforced GM press-granulator body ensures maximum stability and reliability even in the most difficult conditions.",
+          "2": "The overload pneumatic valve and the safety system in the form of a cutting bolt ensure safe operation of the GM press-granulator even in unexpected situations.",
+          "3": "The GM press-granulator's V-belt drive is not only easy to maintain but also reduces operating costs, making your investments even more profitable.",
+          "4": "The GM press-granulator's rotor and main shaft are specially designed for materials with high density and can withstand high loads.",
+          "5": "The GM press-granulator, equipped with an IE4 standard motor, ensures a high level of efficiency, energy savings, and environmental protection."
         }
       },
-      "comparisons": {
+      "temperatureBlock": {
         "title": {
-          "first": "COMPARISONS WITH",
-          "second": "COMPETITORS"
+          "efficient": "Efficient",
+          "cooling": "Cooling",
+          "rollers": "Rollers"
         },
-        "description": {
-          "first": "UP TO 7% LESS WEAR",
-          "second": "OF SURFACE"
-        },
-        "descriptionBg": "ADVANTAGE",
-        "diagramName": "SECTIONAL VIEW OF A ROLLER SHELL",
-        "diagramArrow": "Up to 7% less wear",
-        "diagramDesignation": "Competitors"
+        "subtitle": "Low temperature",
+        "descriptionBg": "Cooling",
+        "working": "Working temperature",
+        "shellAverage": "Shell average temperature",
+        "bearingAverage": "Bearing average temperature"
       },
-      "technicalData": {
-        "title": "TECHNICAL",
-        "description": "DATA",
-        "descriptionBg": "DATA",
-        "diagramName": "TABLE OF CHARACTERISTICS",
-        "column": {
-          "first": {
-            "surface": "Surface",
-            "metal": "Metal",
-            "hardening": "Hardening"
-          },
-          "second": {
-            "perforation": "Perforation",
-            "corrugation": "Corrugation",
-            "gradient": "Gradient",
-            "alloyType": "Alloy type",
-            "induction": "Induction"
-          },
-          "third": {
-            "perforationValue": "6/7,5 - 8/12 mm",
-            "corrugationValue": "M1 - M10",
-            "gradientValue": "0 - 40°",
-            "alloyTypeValue": "100Cr6/20MnCr5",
-            "inductionValue": "58-62 HRC"
-          }
+      "vibrationBlock": {
+        "title": {
+          "sensor": "Vibration sensors",
+          "option": "(OPTIONAL)"
+        },
+        "subtitle": "Smart early detection system",
+        "descriptionBg": "Option",
+        "frequency": "Frequency (Hz)",
+        "period": "Time period (t)",
+        "sensor1": "Sensor 1",
+        "sensor2": "Sensor 2",
+        "notification": "Early warning of possible breakdowns due to increased vibration"
+      },
+      "safetyBlock": {
+        "title": {
+          "system": "System",
+          "security": "Security"
+        },
+        "subtitle": "During overload",
+        "descriptionBg": "Security",
+        "safety": {
+          "bolt": "Cutting bolt at overload",
+          "emergency": "Emergency stop limit switch"
+        }
+      },
+      "sensorsBlock": {
+        "title": {
+          "sensors": "Sensors and modules",
+          "model": "with IO-Link"
+        },
+        "subtitle": "Automation with minimal cable and remote control",
+        "descriptionBg": "Automation"
+      },
+      "specificationBlock": {
+        "title": {
+          "dataSheet": "Technical data"
+        },
+        "subtitle": "Specification",
+        "descriptionBg": "Specification",
+        "characteristics": {
+          "title": "Characteristics table",
+          "biomassOutput": "Biomass output (t/h)*¹",
+          "feedOutput": "Feed output (t/h)*¹",
+          "nominalEnginePower": "Nominal engine power (kW)",
+          "pressSpeed": "Press speed (rpm)",
+          "mixerPower": "Mixer power (kW)",
+          "dimensions": "Dimensions (mm)*² (LxWxH)",
+          "weight": "Weight (t)*²",
+          "note1": "* Calculation based on test values with a matrix ⌀ 6/8 mm. Performance may vary depending on the type of raw material, material preparation, and technical characteristics of the matrix.",
+          "note2": "* Information without a mixer."
         }
       }
     }

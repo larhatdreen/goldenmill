@@ -48,22 +48,22 @@ function Section2() {
         />
         <foreignObject className='text-center' x='872' y='532' width='258' height='25'>
           <span className='font-["Bebas_Neue"] text-[#3F4042] text-[18px] whitespace-normal uppercase tracking-[.2em]'>
-            {t('diagrams.dieMatrix.comparisons.descriptionBg')}
+            {t('diagrams.millGranulator.temperatureBlock.descriptionBg')}
           </span>
         </foreignObject>
 
         <text className='font-adventpro fill-[#D5CDBD] text-[29px] uppercase translate-x-[898px] translate-y-[290px]'>
-          {t('diagrams.dieMatrix.comparisons.description.first')}
+          {t('diagrams.millGranulator.temperatureBlock.subtitle')}
         </text>
 
         <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[897px] translate-y-[70px]'>
-          {t('diagrams.dieMatrix.comparisons.title.first')}
+          {t('diagrams.millGranulator.temperatureBlock.title.efficient')}
         </text>
         <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[897px] translate-y-[160px]'>
-          {t('diagrams.dieMatrix.comparisons.title.second')}
+          {t('diagrams.millGranulator.temperatureBlock.title.cooling')}
         </text>
         <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[897px] translate-y-[250px]'>
-          {t('diagrams.dieMatrix.comparisons.title.third')}
+          {t('diagrams.millGranulator.temperatureBlock.title.rollers')}
         </text>
 
         <path className='section2stroke' d='M878 5L878 70' stroke='#82643F' strokeWidth='24' />
@@ -155,8 +155,7 @@ function Section2() {
               className="text-[25px] font-adventpro"
               style={{ color: '#969284' }}
             >
-              {/* {t('text.granulator.height')} */}
-              Средняя температура обечайки
+              {t('diagrams.millGranulator.temperatureBlock.shellAverage')}
             </text>
           </foreignObject>
           <foreignObject x='65%' y='110' width='250' height='80' style={{textAlign: 'end'}}>
@@ -164,8 +163,7 @@ function Section2() {
               className="text-[25px] font-adventpro"
               style={{ color: '#969284'}}
             >
-              {/* {t('text.granulator.height')} */}
-              Средняя температура подшипника
+                {t('diagrams.millGranulator.temperatureBlock.bearingAverage')}
             </text>
           </foreignObject>
           <foreignObject x='44%' y='72%' width='300' height='80' style={{letterSpacing: 4.5}}>
@@ -173,8 +171,7 @@ function Section2() {
               className="text-[20px] font-['Bebas_Neue']"
               style={{ color: '#605C54'}}
             >
-              {/* {t('text.granulator.height')} */}
-              Рабочая температура
+             {t('diagrams.millGranulator.temperatureBlock.working')}
             </text>
           </foreignObject>
           <defs>

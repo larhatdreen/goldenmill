@@ -12,7 +12,7 @@ const DropdownMenu = ({ close, open }: { close: boolean; open: (state: boolean) 
   const { lang } = useParams<ParamsType>()
   const location = useLocation()
 
-  const options = [t('dieMatrix'), t('rollerShell'), t('nav.spareParts')]
+  const options = [t('Granulator'), t('rollerShell'), t('nav.spareParts')]
 
   // Helper function to check if products section is active
   const isProductsActive = () => {

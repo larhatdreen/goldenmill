@@ -58,8 +58,7 @@ function Section3() {
 
                     <foreignObject className='text-center' x='7' y='580' width='230' height='25'>
                         <span className='w-full font-["Bebas_Neue"] text-[#3F4042] text-[18px] whitespace-normal uppercase tracking-[.2em]'>
-                            {/* {t('diagrams.dieMatrix.highHardness.descriptionBg')} */}
-                            Опция
+                            {t('diagrams.millGranulator.vibrationBlock.descriptionBg')}
                         </span>
                     </foreignObject>
                 </svg>
@@ -67,20 +66,17 @@ function Section3() {
                 <path id='my_path' d='M 20,20 C 40,40 80,40 100,20' />
 
                 <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[35px] translate-y-[93px]'>
-                    {/* {t('diagrams.dieMatrix.highHardness.title.first')} */}
-                    Датчики вибрации
+                    {t('diagrams.millGranulator.vibrationBlock.title.sensor')}
                 </text>
                 <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[35px] translate-y-[183px]'>
-                    {/* {t('diagrams.dieMatrix.highHardness.title.second')} */}
-                    (Опция)
+                    {t('diagrams.millGranulator.vibrationBlock.title.option')}
                 </text>
                 <foreignObject x={35} y={200} width={280} height={80}>
                     <text
                         className='font-adventpro text-[29px] uppercase'
                         style={{ color: '#D5CDBD' }}
                     >
-                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
-                        Умная система раннего обнаружения
+                        {t('diagrams.millGranulator.vibrationBlock.subtitle')}
                     </text>
                 </foreignObject>
 
@@ -103,8 +99,7 @@ function Section3() {
                         className='font-adventpro text-[25px]'
                         style={{ color: '#969284' }}
                     >
-                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
-                        Частота (Hz)
+                        {t('diagrams.millGranulator.vibrationBlock.frequency')}
                     </text>
                 </foreignObject>
                 <foreignObject x={830} y={570} width={280} height={80}>
@@ -112,8 +107,7 @@ function Section3() {
                         className='font-adventpro text-[25px]'
                         style={{ color: '#969284' }}
                     >
-                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
-                        Период (t)
+                        {t('diagrams.millGranulator.vibrationBlock.period')}
                     </text>
                 </foreignObject>
                 <foreignObject x={145} y={595} width={280} height={80}>
@@ -121,8 +115,7 @@ function Section3() {
                         className='font-adventpro text-[25px]'
                         style={{ color: '#969284' }}
                     >
-                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
-                        Датчик 1
+                        {t('diagrams.millGranulator.vibrationBlock.sensor1')}
                     </text>
                 </foreignObject>
                 <foreignObject x={145} y={650} width={280} height={80}>
@@ -130,8 +123,7 @@ function Section3() {
                         className='font-adventpro text-[25px]'
                         style={{ color: '#969284' }}
                     >
-                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
-                        Датчик 2
+                        {t('diagrams.millGranulator.vibrationBlock.sensor2')}
                     </text>
                 </foreignObject>
                 <foreignObject x={350} y={750} width={300} height={120} style={{ textAlign: 'end' }}>
@@ -139,8 +131,7 @@ function Section3() {
                         className='font-adventpro text-[25px]'
                         style={{ color: '#969284' }}
                     >
-                        {/* {t('diagrams.dieMatrix.highHardness.description')} */}
-                        преждевременное оповещение о возможных поломках при повышенной вибрации
+                        {t('diagrams.millGranulator.vibrationBlock.notification')}
                     </text>
                 </foreignObject>
                     <path d="M131.431 651.602H52.2314V687.602H131.431V651.602Z" fill="#D5CDBD" />

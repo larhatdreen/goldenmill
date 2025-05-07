@@ -38,7 +38,8 @@
       "keywords": "{{productName}}, LKE Group GmbH, GoldenDie, Matrizen, Kollerhülsen, Ersatzteile, Pelletpressen, Industrieanlagen, hohe Qualität, individuelle Fertigung, Verschleißfestigkeit, Pelletproduktion, Granulierung, Extrusion"
     }
   },
-  "dieMatrix": "Matrize",
+  "firstTitle": "Pellet",
+  "secondTitle": "Presse",
   "rollerShell": "Kollerhülse",
   "navBar": {
     "main": "Hauptseite",
@@ -56,12 +57,11 @@
     "surfaceType": "Oberflächentyp"
   },
   "titleBlock": {
-    "enterData": "Daten eingeben",
     "needHelp": "Benötigen Sie Hilfe bei den Maßen?",
-    "productName": "",
-    "productDescription": "FÜR JEDE ART VON PELLET-PRESSE",
+    "productDescription": "Für die Granulierung von Biomasse, RDF, \nMischfutter und Lebensmittelprodukten",
     "countPrice": "Preis anfragen"
   },
+
   "inputSizesBlock": {
     "innerDiameter": "Innendurchmesser, mm",
     "outerDiameter": "Außendurchmesser, mm",
@@ -126,10 +126,10 @@
       "wrongFormat": "Falsches Format"
     }
   },
-  "matrixTypes": {
-    "flatDie": "Flachmatrize",
-    "ringDie": "Ringmatrize",
-    "twinTrack": "Klemmmatrize"
+  "granulatorTypes": {
+    "GM420 — GM520": "GM420 — GM520",
+    "GM650": "GM650",
+    "GM850": "GM850"
   },
   "rollerShellTypes": {
     "forFlatDie": "Für Flachmatrize",
@@ -137,116 +137,84 @@
     "forTwinTrack": "Für Twin-Track"
   },
   "diagrams": {
-    "dieMatrix": {
-      "highHardness": {
+    "millGranulator": {
+      "mainFeatures": {
         "title": {
-          "first": "HOHER",
-          "second": "HÄRTE",
-          "third": "WERT"
+          "model": "Modell gm",
+          "features": "Merkmale"
         },
-        "description": "BEI ARBEITSTEMPERATURT",
-        "descriptionBg": "HÄRTE",
-        "diagramName": "ABHÄNGIGKEITSDIAGRAMM",
-        "diagramX": "Arbeitstemperatur (°С)"
-      },
-      "comparisons": {
-        "title": {
-          "first": "VERGLEICH MIT",
-          "second": "WETTBEWERBERN"
-        },
-        "description": {
-          "first": "BIS ZU 10 % WENIGER VERSCHLEISS",
-          "second": "DER OBERFLÄCHE"
-        },
-        "descriptionBg": "VORTEIL",
-        "diagramName": "SCHNITTANSICHT EINER MATRIZE",
-        "diagramArrow": "Bis zu 10 % weniger Verschleiß",
-        "diagramDesignation": "Konkurrenz"
-      },
-      "technicalData": {
-        "title": "TECHNISCHE",
-        "description": "DATEN",
-        "descriptionBg": "SPEZIFIKATION",
-        "diagramName": "ABHÄNGIGKEITSDIAGRAMM",
-        "column": {
-          "first": {
-            "drilling": "Bohrung",
-            "metal": "Metal",
-            "hardening": "Härtung"
-          },
-          "second": {
-            "holes": "Lochmaß",
-            "counterSink": "Ansenkung",
-            "counterDrill": "Gegenbohrung",
-            "alloyType": "Legierungstyp",
-            "vacuum": "Vakuum"
-          },
-          "third": {
-            "holesValue": "1,8 - 25 mm",
-            "counterSinkValue": "15° - 60°",
-            "counterDrillValue": "Konisch / Zylindrisch / 1-, 2-, 3-stufig",
-            "alloyTypeValue": "Chrom-Stahl",
-            "vacuumValue": "52-55 HRC"
-          }
-        }
-      }
-    },
-    "rollerShell": {
-      "surfaceTypes": {
-        "title": {
-          "first": "TYP DER",
-          "second": "OBERFLÄCHE"
-        },
-        "description": "AUSWAHL",
-        "descriptionBg": "OBERFLÄCHE",
-        "surfaceTypes": {
-          "perforated": "Gelocht",
-          "ribbedClosed": "Geriffelt (geschlossen)",
-          "ribbedOpen": "Geriffelt (offen)",
-          "slantGrooved": "Schräg-Geriffelt",
-          "fishBone": "Fischgräte",
-          "arc": "Gewölbt"
+        "subtitle": "Hohe Qualität Pellets",
+        "descriptionBg": "Merkmale",
+        "features": {
+          "1": "Das verstärkte GM Press-Granulator-Körpergehäuse gewährleistet maximale Stabilität und Zuverlässigkeit auch unter den schwierigsten Bedingungen.",
+          "2": "Das pneumatische Überlastventil und das Sicherheitssystem in Form eines Schnittbolzens gewährleisten einen sicheren Betrieb des GM Press-Granulators auch bei unerwarteten Situationen.",
+          "3": "Der Keilriemenantrieb des GM Press-Granulators ist nicht nur wartungsfreundlich, sondern reduziert auch die Betriebskosten und macht Ihre Investition noch profitabler.",
+          "4": "Der Rotor und die Hauptwelle des GM Press-Granulators sind speziell für hochdichte Materialien entwickelt und können hohe Belastungen aushalten.",
+          "5": "Der GM Press-Granulator, ausgestattet mit einem IE4-Standardmotor, gewährleistet ein hohes Maß an Effizienz, spart Energie und schützt die Umwelt."
         }
       },
-      "comparisons": {
+      "temperatureBlock": {
         "title": {
-          "first": "VERGLEICH MIT",
-          "second": "WETTBEWERBERN"
+          "efficient": "Effizient",
+          "cooling": "Kühlung",
+          "rollers": "Rollen"
         },
-        "description": {
-          "first": "BIS ZU 7% WENIGER VERSCHLEISS",
-          "second": "DER OBERFLÄCHE"
-        },
-        "descriptionBg": "VORTEIL",
-        "diagramName": "SCHNITTANSICHT EINER KOLLERHÜLSE",
-        "diagramArrow": "Bis zu 7 % weniger Verschleiß",
-        "diagramDesignation": "Konkurrenz"
+        "subtitle": "Niedrige Temperatur",
+        "descriptionBg": "Kühlung",
+        "working": "Betriebstemperatur",
+        "shellAverage": "Oberflächentemperatur",
+        "bearingAverage": "Lager-Temperatur"
       },
-      "technicalData": {
-        "title": "TECHNISCHE",
-        "description": "DATEN",
-        "descriptionBg": "SPEZIFIKATION",
-        "diagramName": "ABHÄNGIGKEITSDIAGRAMM",
-        "column": {
-          "first": {
-            "surface": "Oberfläche",
-            "metal": "Metall",
-            "hardening": "Härtung"
-          },
-          "second": {
-            "perforation": "Bohrung",
-            "corrugation": "Riffelung",
-            "gradient": "Gradient",
-            "alloyType": "Legierungstyp",
-            "induction": "Induktion"
-          },
-          "third": {
-            "perforationValue": "6/7,5 oder 8/12 mm",
-            "corrugationValue": "M1 - M10",
-            "gradientValue": "0 - 40°",
-            "alloyTypeValue": "100Cr6/20MnCr5",
-            "inductionValue": "58-62 HRC"
-          }
+      "vibrationBlock": {
+        "title": {
+          "sensor": "Vibrationssensoren",
+          "option": "(OPTIONAL)"
+        },
+        "subtitle": "Smart frühe Erkennungssystem",
+        "descriptionBg": "Option",
+        "frequency": "Frequenz (Hz)",
+        "period": "Period (t)",
+        "sensor1": "Sensor 1",
+        "sensor2": "Sensor 2",
+        "notification": "Frühe Warnung vor möglichen Ausfällen aufgrund von erhöhten Vibrationen"
+      },
+      "safetyBlock": {
+        "title": {
+          "system": "System",
+          "security": "Sicherheit"
+        },
+        "subtitle": "Bei Überlast",
+        "descriptionBg": "Sicherheit",
+        "safety": {
+          "bolt": "Schnittbolzen bei Überlast",
+          "emergency": "Endschalter für Notausgang der Presse"
+        }
+      },
+      "sensorsBlock": {
+        "title": {
+          "sensors": "Sensoren und Module",
+          "model": "mit IO-Link"
+        },
+        "subtitle": "Automatisierung mit minimalem Kabel und Fernsteuerung",
+        "descriptionBg": "Automatisierung"
+      },
+      "specificationBlock": {
+        "title": {
+          "dataSheet": "Technische Daten"
+        },
+        "subtitle": "Spezifikation",
+        "descriptionBg": "Spezifikation",
+        "characteristics": {
+          "title": "Charakteristische Tabelle",
+          "biomassOutput": "Biomasseausgang (t/h)*¹",
+          "feedOutput": "Futterausgang (t/h)*¹",
+          "nominalEnginePower": "Nenn-Motorleistung (kW)",
+          "pressSpeed": "Pressgeschwindigkeit (U/min)",
+          "mixerPower": "Mixerleistung (kW)",
+          "dimensions": "Abmessungen (mm)*² (LxWxH)",
+          "weight": "Gewicht (t)*²",
+          "note1": "* Berechnung basierend auf Testwerten mit einer Matrize ⌀ 6/8 mm. Leistung kann je nach Rohmaterial, Materialvorbereitung und technischen Merkmalen der Matrize variieren.",
+          "note2": "* Informationen ohne Mischer."
         }
       }
     }

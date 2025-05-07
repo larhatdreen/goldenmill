@@ -477,7 +477,7 @@ export default function ModalInfo({
     >
       <Fragment>
         <div
-          className="absolute w-[96vw] max-w-[98vw] mx-auto px-4 py-6 bg-[#27282B] top-1/2 left-1/2
+          className="absolute w-[90%] max-w-[640px] mx-auto px-4 py-6 top-1/2 left-1/2
                     -translate-x-1/2 -translate-y-1/2 outline-0 rounded-xl flex flex-row items-center justify-center md:w-[90%] md:max-w-[640px] md:h-[224px]"
           style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)',  backgroundColor: theme.colors.mui.form.background.fill }}
         >

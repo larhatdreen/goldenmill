@@ -194,10 +194,10 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
               <div className='flex justify-between items-start flex-col mt-4 laptop:mt-16 ml-0 laptop:ml-[8%]'>
                 <div className='flex flex-col'>
                   <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[143px] laptop:text-[143px] text-[#82653F] uppercase leading-none">
-                    {type === 'Matrix' ? t('dieMatrix') : t('rollerShell')}
+                    {type === 'Matrix' ? t('firstTitle') : t('rollerShell')}
                   </div>
                   <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[106px] laptop:text-[106px] text-[#767676] uppercase leading-none">
-                    {t('granulator')}
+                    {t('secondTitle')}
                   </div>
                 </div>
                 <div className='font-adventpro text-[20px] sm:text-[28px] laptop:text-[32px] text-[#D5CDBD] uppercase font-normal mt-2 laptop:mt-0 whitespace-pre-line'>
@@ -447,7 +447,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
                 >
-                  {t('matrixTypes.flatDie')}
+                  {t('granulatorTypes.GM420 — GM520')}
                 </div>
                 <div
                   className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labrotesque text-white text-[14px]
@@ -476,7 +476,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
                 >
-                  {t('matrixTypes.ringDie')}
+                  {t('granulatorTypes.GM650')}
                 </div>
                 <div
                   className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
@@ -505,7 +505,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
                 >
-                  {t('matrixTypes.twinTrack')}
+                  {t('granulatorTypes.GM850')}
                 </div>
                 <div
                   className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]

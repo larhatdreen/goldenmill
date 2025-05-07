@@ -9,7 +9,7 @@ function UploadIcon({ className, style,}: UploadIconProps) {
   const theme = useTheme();
   const isDark = theme.name === 'dark';
   const fillColor = getLocalThemeColor(isDark, '#5D5D5D', '#CFCDCB');
-  const pinColor = getLocalThemeColor(isDark, '#82653E', '#8E8E8E');
+  const pinColor = getLocalThemeColor(isDark, '#FFFFFF', '#8E8E8E');
 
   return (
     <svg className='w-8 h-8 md:w-10 md:h-10 lg:w-[45px] lg:h-[45px]' viewBox='0 0 45 45' fill='none' xmlns='http://www.w3.org/2000/svg' style={style}>

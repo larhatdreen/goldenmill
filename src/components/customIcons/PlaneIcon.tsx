@@ -3,10 +3,6 @@ import { getLocalThemeColor } from '../../theme/utils';
 interface PlaneIconProps {
   className?: string
 }
-
-
-
-
 function PlaneIcon({ className }: PlaneIconProps) {
     const theme = useTheme(); 
     const isDark = theme.name === 'dark';

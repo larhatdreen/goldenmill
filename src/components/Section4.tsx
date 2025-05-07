@@ -48,23 +48,19 @@ function Section4() {
                 />
                 <foreignObject className='text-center' x='872' y='482' width='258' height='25'>
                     <span className='font-["Bebas_Neue"] text-[#3F4042] text-[18px] whitespace-normal uppercase tracking-[.2em]'>
-                        {/* {t('diagrams.dieMatrix.comparisons.descriptionBg')} */}
-                        Безопасность
+                        {t('diagrams.millGranulator.safetyBlock.descriptionBg')}
                     </span>
                 </foreignObject>
 
                 <text className='font-adventpro fill-[#D5CDBD] text-[29px] uppercase translate-x-[900px] translate-y-[200px]'>
-                    {/* {t('diagrams.dieMatrix.comparisons.description.first')} */}
-                    При перегрузке
+                    {t('diagrams.millGranulator.safetyBlock.subtitle')}
                 </text>
 
                 <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[897px] translate-y-[70px]'>
-                    {/* {t('diagrams.dieMatrix.comparisons.title.first')} */}
-                    Система
+                    {t('diagrams.millGranulator.safetyBlock.title.system')}
                 </text>
                 <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[897px] translate-y-[160px]'>
-                    {/* {t('diagrams.dieMatrix.comparisons.title.second')} */}
-                    Безопасности
+                    {t('diagrams.millGranulator.safetyBlock.title.security')}
                 </text>
 
                 <path className='section4stroke' d='M878 5L878 70' stroke='#82643F' strokeWidth='24' />
@@ -137,8 +133,7 @@ function Section4() {
                             className='font-adventpro text-[25px]'
                             style={{ color: '#969284' }}
                         >
-                            {/* {t('diagrams.dieMatrix.highHardness.description')} */}
-                            cрез срезного болта при перегрузке
+                            {t('diagrams.millGranulator.safetyBlock.safety.bolt')}
                         </text>
                     </foreignObject>
                     <foreignObject x={0} y={610} width={280} height={80}>
@@ -146,8 +141,7 @@ function Section4() {
                             className='font-adventpro text-[25px]'
                             style={{ color: '#969284' }}
                         >
-                            {/* {t('diagrams.dieMatrix.highHardness.description')} */}
-                            Концевик для аварийной остановки пресса
+                            {t('diagrams.millGranulator.safetyBlock.safety.emergency')}
                         </text>
                     </foreignObject>
                 </svg>

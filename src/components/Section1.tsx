@@ -5,28 +5,29 @@ import React, { useState } from 'react'
 const items = [
   {
     number: '01',
-    text: 'Усиленный корпус пресс-гранулятора GM гарантирует максимальную устойчивость и стабильность даже в самых тяжелых условиях.',
+    textKey: 'diagrams.millGranulator.mainFeatures.features.1'
   },
   {
     number: '02',
-    text: 'Пневматический клапан от перегрузки и система безопасности в виде срезного болта обеспечивают безопасную работу пресс-гранулятора GM даже в случае непредвиденных событий.',
+    textKey: 'diagrams.millGranulator.mainFeatures.features.2'
   },
   {
     number: '03',
-    text: 'Клиноременный привод пресс-гранулятора GM не только прост в обслуживании, но и снижает эксплуатационные расходы, делая ваши инвестиции еще более выгодными.',
+    textKey: 'diagrams.millGranulator.mainFeatures.features.3'
   },
   {
     number: '04',
-    text: 'Ротор и главный вал пресс-гранулятора GM специально разработаны для материалов высокой плотности и могут выдерживать высокие нагрузки.',
+    textKey: 'diagrams.millGranulator.mainFeatures.features.4'
   },
   {
     number: '05',
-    text: 'Пресс-гранулятор GM, оснащенный двигателем по стандарту IE4, обеспечивает высокий уровень эффективности, экономит энергию и защищает окружающую среду.',
+    textKey: 'diagrams.millGranulator.mainFeatures.features.5'
   },
 ];
 
 function GMFeaturesSVG() {
   const [active, setActive] = useState(0);
+  const { t } = useTranslation();
 
   // Параметры для динамического расчета
   const topPadding = 100;
@@ -103,7 +104,7 @@ function GMFeaturesSVG() {
                 }}
                 className="font-adventpro"
               >
-                {item.text}
+                {t(item.textKey)}
               </div>
             </foreignObject>
           </g>
@@ -169,7 +170,7 @@ function Section1() {
 
           <foreignObject className='text-center' x='7' y='580' width='230' height='25'>
             <span className='w-full font-["Bebas_Neue"] text-[#3F4042] text-[18px] whitespace-normal uppercase tracking-[.2em]'>
-              {t('diagrams.dieMatrix.highHardness.descriptionBg')}
+              {t('diagrams.millGranulator.mainFeatures.descriptionBg')}
             </span>
           </foreignObject>
         </svg>
@@ -177,17 +178,17 @@ function Section1() {
         <path id='my_path' d='M 20,20 C 40,40 80,40 100,20' />
 
         <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[35px] translate-y-[93px]'>
-          {t('diagrams.dieMatrix.highHardness.title.first')}
+          {t('diagrams.millGranulator.mainFeatures.title.model')}
         </text>
         <text className='font-["Bebas_Neue"] fill-[#D5CDBD] text-[90px] whitespace-normal uppercase translate-x-[35px] translate-y-[183px]'>
-          {t('diagrams.dieMatrix.highHardness.title.second')}
+          {t('diagrams.millGranulator.mainFeatures.title.features')}
         </text>
         <foreignObject x={35} y={200} width={250} height={80}>
           <text 
             className='font-adventpro text-[29px] uppercase'
             style={{color: '#D5CDBD'}}
           >
-            {t('diagrams.dieMatrix.highHardness.description')}
+            {t('diagrams.millGranulator.mainFeatures.subtitle')}
           </text>
         </foreignObject>
 

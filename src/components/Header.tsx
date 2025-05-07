@@ -6,7 +6,7 @@ const Header = () => {
   
   const productMenuItems = [
     { 
-      label: t('nav.matrix'),
+      label: t('nav.granulator'),
       path: '/granulator' 
     },
     { 
