@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import AnimatedCircle from './AnimatedCircle.js'
 import shell3_2 from '../assets/Shell/Shell3_2.webp'
 
-function Shell3_2({ handleOpen }: { handleOpen: () => void }) {
+function Shell3_2() {
   const { t } = useTranslation()
 
   return (
@@ -211,7 +211,6 @@ function Shell3_2({ handleOpen }: { handleOpen: () => void }) {
               onMouseEnter={event => onPointerEnterCircle(event.currentTarget.id)}
               onMouseLeave={event => onPointerLeaveCircle(event.currentTarget.id)}
               onClick={() => {
-                handleOpen()
                 setTimeout(() => onInputFocus('innerDiameter'), 100)
               }}
             >
@@ -237,7 +236,6 @@ function Shell3_2({ handleOpen }: { handleOpen: () => void }) {
               onMouseEnter={event => onPointerEnterCircle(event.currentTarget.id)}
               onMouseLeave={event => onPointerLeaveCircle(event.currentTarget.id)}
               onClick={() => {
-                handleOpen()
                 setTimeout(() => onInputFocus('outerDiameter'), 100)
               }}
             >
@@ -263,7 +261,6 @@ function Shell3_2({ handleOpen }: { handleOpen: () => void }) {
               onMouseEnter={event => onPointerEnterCircle(event.currentTarget.id)}
               onMouseLeave={event => onPointerLeaveCircle(event.currentTarget.id)}
               onClick={() => {
-                handleOpen()
                 setTimeout(() => onInputFocus('overallWidth'), 100)
               }}
             >
@@ -289,7 +286,6 @@ function Shell3_2({ handleOpen }: { handleOpen: () => void }) {
               onMouseEnter={event => onPointerEnterCircle(event.currentTarget.id)}
               onMouseLeave={event => onPointerLeaveCircle(event.currentTarget.id)}
               onClick={() => {
-                handleOpen()
                 setTimeout(() => onInputFocus('workingWidth'), 100)
               }}
             >
@@ -315,7 +311,6 @@ function Shell3_2({ handleOpen }: { handleOpen: () => void }) {
               onMouseEnter={event => onPointerEnterCircle(event.currentTarget.id)}
               onMouseLeave={event => onPointerLeaveCircle(event.currentTarget.id)}
               onClick={() => {
-                handleOpen()
                 setTimeout(() => onInputFocus('drillingDiameter'), 100)
               }}
             >

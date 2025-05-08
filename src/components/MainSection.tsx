@@ -126,7 +126,6 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
       workingWidth: '',
       drillingDiameter: '',
     });
-    setCountWindow((prevCountWindow) => !prevCountWindow);
   }
 
   function selectMatrix() {
@@ -145,16 +144,16 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
     } else if (type === 'Shell') {
       switch (shell) {
         case 1:
-          return <Shell1 handleOpen={() => setCountWindow(true)} />;
+          return <Shell1 />;
         case 2:
-          return <Shell2 handleOpen={() => setCountWindow(true)} />;
+          return <Shell2 />;
         case 3:
-          return <Shell3_1 handleOpen={() => setCountWindow(true)} />;
+          return <Shell3_1 />;
         case 4:
-          return <Shell3_2 handleOpen={() => setCountWindow(true)} />;
+          return <Shell3_2 />;
 
         default:
-          return <Shell1 handleOpen={() => setCountWindow(true)} />;
+          return <Shell1 />;
       }
     }
   }
@@ -448,9 +447,9 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                   1
                 </div>
                 <div
-                  className={`flex justify-center items-center aspect-square
+                  className={`flex justify-center items-center aspect-square cursor-pointer
                         rounded-full bg-[${matrix === 1 ? '#ffffff08' : 'transparent'
-                    }] hover:bg-[#544B3C50]`}
+                    }] hover:bg-[#fff]`}
                 >
                   <FlatMatrix
                     className='h-[90%]'
@@ -479,7 +478,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                   2
                 </div>
                 <div
-                  className={`flex justify-center items-center aspect-square
+                  className={`flex justify-center items-center aspect-square cursor-pointer
                         rounded-full bg-[${matrix === 2 ? '#ffffff08' : 'transparent'
                     }] hover:bg-[#544B3C50]`}
                 >
@@ -507,7 +506,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                   3
                 </div>
                 <div
-                  className={`flex justify-center items-center aspect-square
+                  className={`flex justify-center items-center aspect-square cursor-pointer
                         rounded-full bg-[${matrix === 3 ? '#ffffff08' : 'transparent'
                     }] hover:bg-[#544B3C50]`}
                 >
