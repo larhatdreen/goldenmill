@@ -12,7 +12,7 @@ import {
   ThemeProvider,
 } from '@mui/material';
 import CountButton from './CountButton.tsx';
-import button from '../assets/UI/Btn.svg';
+import ButtonIcon from './customIcons/ButtonIcon.tsx';
 import CloseIcon from './customIcons/CloseIcon.tsx';
 import React, { ChangeEvent, useState, useRef, useEffect } from 'react';
 import PlaneIcon from './customIcons/PlaneIcon.tsx';
@@ -758,7 +758,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                   </FormControl>
                 </FormGroup>
                 <CountButton
-                  src={button}
+                  src={<ButtonIcon />}
                   className='relative z-[1] w-full max-w-[284px] h-[58px] font-bebas text-white text-[16px] md:text-[18px] lg:text-[22px]
                                 flex items-center justify-center bg-no-repeat bg-contain mb-2'
                   defaultValue={t('inputHelpBlock.ready')}

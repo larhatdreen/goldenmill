@@ -1,9 +1,15 @@
-interface TwinTrackMatrixProps {
+import { useTheme } from '../../hooks/useTheme';
+import { getLocalThemeColor } from '../../theme/utils';
+
+interface GranulatorModelProps {
   className?: string;
-  stroke?: string;
 }
 
-function TwinTrackMatrix({ className, stroke = '#82643F' }: TwinTrackMatrixProps) {
+function GranulatorModel({ className }: GranulatorModelProps) {
+  const theme = useTheme();
+  const isDark = theme.name === 'dark';
+  const stroke = getLocalThemeColor(isDark, '#82643F', '#ABB4C3');
+
   return (
     <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 88 91' className={className} style={{height: '60%'}}>
       <path
@@ -41,4 +47,4 @@ function TwinTrackMatrix({ className, stroke = '#82643F' }: TwinTrackMatrixProps
   );
 }
 
-export default TwinTrackMatrix;
+export default GranulatorModel;

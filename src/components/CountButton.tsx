@@ -2,8 +2,12 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../hooks/useTheme'
 
-interface CountButtonProps extends React.HTMLProps<HTMLDivElement> {}
-function CountButton({ ...props }: CountButtonProps) {
+interface CountButtonProps extends Omit<React.HTMLProps<HTMLDivElement>, 'src'> {
+  src: React.ReactElement;
+  defaultValue?: string;
+}
+
+function CountButton({ src, defaultValue, ...props }: CountButtonProps) {
   const [filled, setFilled] = useState(false)
   const { t } = useTranslation()
   const theme = useTheme()
@@ -22,23 +26,24 @@ function CountButton({ ...props }: CountButtonProps) {
       onMouseLeave={handleMouseLeave}
       {...props}
       style={{ 
-        backgroundImage: `url(${props.src})`, 
         cursor: 'pointer',
         position: 'relative',
         color: theme.colors.mui.form.button.text,
         fontSize: '22px'
       }}
     >
-      {filled ? t('products.buttons.details') : props.defaultValue}
+      {React.cloneElement(src, { className: 'absolute inset-0 w-full h-full z-0' })}
       <div
-        className='absolute z-[-1] top-0 left-0 h-full'
+        className='absolute top-0 left-0 h-full z-10'
         style={{ 
           width: filled ? '100%' : '0%', 
           transition: 'width 0.5s ease',
           backgroundColor: theme.colors.mui.form.button.slider
         }}
       />
-      {/*<img className="absolute top-0 object-cover" src={props.src} alt="button"/>*/}
+      <span className="relative z-20">
+        {filled ? t('products.buttons.details') : defaultValue}
+      </span>
     </div>
   )
 }

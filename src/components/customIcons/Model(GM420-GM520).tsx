@@ -1,11 +1,17 @@
-interface FlatMatrixProps {
+import { useTheme } from '../../hooks/useTheme';
+import { getLocalThemeColor } from '../../theme/utils';
+
+interface GranulatorModelProps {
   className?: string;
-  stroke: string;
 }
 
-function FlatMatrix({ stroke }: FlatMatrixProps) {
+function GranulatorModel({ className }: GranulatorModelProps) {
+  const theme = useTheme();
+  const isDark = theme.name === 'dark';
+  const stroke = getLocalThemeColor(isDark, '#82643F', '#ABB4C3');
+
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 87 78' style={{height: '60%'}}>
+    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 87 78' style={{height: '60%'}} className={className}>
       <g clipPath='url(#a)'>
         <path
           stroke={stroke}
@@ -65,4 +71,4 @@ function FlatMatrix({ stroke }: FlatMatrixProps) {
   );
 }
 
-export default FlatMatrix;
+export default GranulatorModel;

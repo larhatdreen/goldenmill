@@ -12,6 +12,16 @@ export interface ThemeColors {
     crossColor: string;
     arrow: string;
   };
+  mainSection: {
+    title: string;
+    subtitle: string;
+    description: string;
+    needHelp: string;
+    hover: string;
+    focus: string;
+    models: string;
+    numbers: string;
+  },
   mui: {
     form: {
       title: string;

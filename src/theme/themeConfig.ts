@@ -1,3 +1,4 @@
+import { Numbers } from './../../node_modules/@mui/icons-material/index.d';
 import { Theme, ThemeMode } from './types';
 
 const baseColors = {
@@ -8,6 +9,17 @@ const baseColors = {
     title: '#82653F', // Цвет заголовков
     subtitle: '#2A3242', // Цвет подзаголовков
     particle: '#ABB4C3', // Цвет частиц
+
+    mainSection: {
+      title: '#82653F', // Цвет заголовков 
+      subtitle: '#767676', // Цвет подзаголовков
+      description: '#2A3242', // Цвет описания
+      needHelp: '#7D9AC1', // Цвет текста кнопки "Нужна помощь"
+      hover: '#2A3242', // Цвет при наведении
+      focus: '#2A3242', // Цвет при фокусе
+      models: '#2A3242', // Цвет текста моделей
+      numbers: '#000000', // Цвет цифр
+    },
     // MUI specific colors
     mui: {
       // Form specific colors
@@ -38,7 +50,7 @@ const baseColors = {
           thumb: '#999999', // Цвет ползунка скроллбара
           fill: '#F2F1F0', // Цвет фона cписка...
         },
-        button: {
+        button: { 
           text: '#000000', // Цвет текста кнопки
           slider: '#ABB4C3', // Цвет слайдера кнопки
         },
@@ -52,6 +64,17 @@ const baseColors = {
     title: '#D5CDBD', // Цвет заголовков
     subtitle: '#D5CDBD', // Цвет подзаголовков
     particle: '#82643F', // Цвет частиц
+
+    mainSection: {
+      title: '#82653F', // Цвет заголовков 
+      subtitle: '#767676', // Цвет подзаголовков
+      description: '#D5CDBD', // Цвет описания
+      needHelp: '#D5CDBD', // Цвет текста кнопки "Нужна помощь"
+      hover: '#82653E', // Цвет при наведении
+      focus: '#82653E', // Цвет при фокусе
+      models: '#D5CDBD', // Цвет текста моделей
+      numbers: '#FFFFFF', // Цвет цифр
+    },
     // MUI specific colors
     mui: {
       // Form specific colors
@@ -82,7 +105,7 @@ const baseColors = {
           thumb: '#666666', // Цвет ползунка скроллбара
           fill: '#18191B', // Цвет фона cписка...
         },
-        button: {
+        button: { 
           text: '#FFFFFF', // Цвет текста кнопки
           slider: '#82653E', // Цвет слайдера кнопки
         },

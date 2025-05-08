@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 
 import CountButton from './CountButton.tsx';
-import button from '../assets/UI/BtnBig.svg';
+import ButtonIcon from './customIcons/ButtonIcon.tsx';
 import PlaneIcon from './customIcons/PlaneIcon.tsx';
 import UploadIcon from './customIcons/UploadIcon.tsx';
 import UploadDecorSvg from './customIcons/UploadDecorSvg.tsx';
@@ -794,7 +794,7 @@ export default function ModalInfo({
                         </FormGroup>
                       </FormControl>
                       <CountButton
-                        src={button}
+                        src={<ButtonIcon />}
                         className='relative z-[1] w-full aspect-[507/59] font-bebas text-white text-[16px] md:text-[18px] lg:text-[22px]
                                              flex items-center justify-center bg-contain bg-no-repeat mt-10'
                         defaultValue={t('inputInfoBlock.ready')}

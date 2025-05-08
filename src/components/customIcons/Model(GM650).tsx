@@ -1,9 +1,15 @@
-interface RingMatrixProps {
+import { useTheme } from '../../hooks/useTheme';
+import { getLocalThemeColor } from '../../theme/utils';
+
+interface GranulatorModelProps {
   className?: string;
-  stroke?: string;
 }
 
-function RingMatrix({ className, stroke = '#2A3242' }: RingMatrixProps) {
+function GranulatorModel({ className }: GranulatorModelProps) {
+  const theme = useTheme();
+  const isDark = theme.name === 'dark';
+  const stroke = getLocalThemeColor(isDark, '#82643F', '#ABB4C3');
+
   return (
     <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 87 72' className={className} style={{height: '60%'}}>
       <g clipPath='url(#a)'>
@@ -66,4 +72,4 @@ function RingMatrix({ className, stroke = '#2A3242' }: RingMatrixProps) {
   );
 }
 
-export default RingMatrix;
+export default GranulatorModel;
