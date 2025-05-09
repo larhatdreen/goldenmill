@@ -1,4 +1,4 @@
-import LogoIcon from './about/LogoIcon.js';
+import LogoIcon from './customIcons/LogoIcon.js';
 import Arrow from './about/Arrow.js';
 import TimeLine from './about/TimeLine.js';
 import { useMediaQuery } from '@mui/material';
@@ -9,7 +9,7 @@ import SEO from './SEO';
 import { useSEO } from '../hooks/useSEO';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
-import { getColor, getThemeStyles, getLocalThemeColor } from '../theme/utils';
+import { getColor, getLocalThemeColor } from '../theme/utils';
 
 
 export default function About() {
@@ -18,7 +18,6 @@ export default function About() {
   const currentLanguage = i18n.language;
   const seoData = useSEO('about');
   const theme = useTheme();
-  const styles = getThemeStyles(theme);
   const isDark = theme.name === 'dark';
 
   // Определяем для стилизации TimeLine локально
@@ -47,14 +46,13 @@ export default function About() {
         style={{
           display: !isLG ? 'flex' : '',
           flexDirection: !isLG ? 'column' : 'row',
-          ...styles.background,
         }}
       >
         <div className={`${!isLG ? 'hidden' : ''} w-full h-[1100px]`}>
           <Arrow fillColor={getColor(theme, 'svg.fill')} />
           <div
             className='absolute left-[200px] top-[225px] w-[271px] h-[271px] rounded-full flex justify-center items-center'
-            style={styles.decorative}
+            style={{backgroundColor: getColor(theme, 'decorative')}}
           >
             <LogoIcon
               mainColor={getColor(theme, 'svg.darkColor')}
@@ -64,7 +62,7 @@ export default function About() {
           </div>
           <div
             className='absolute left-[200px] top-[810px] w-[271px] h-[271px] rounded-full flex justify-center items-center'
-            style={styles.decorative}
+            style={{ backgroundColor: getColor(theme, 'decorative') }}
           >
             <LogoIcon
               mainColor={getColor(theme, 'svg.darkColor')}
@@ -88,18 +86,18 @@ export default function About() {
             <div className='flex items-start'>
               <div
                 className='w-[24px] h-[63px]'
-                style={styles.particle}
+                style={{ backgroundColor: getColor(theme, 'particle') }}
               />
               <span
                 className="relative left-[12px] font-['Bebas_Neue'] text-[60px] md:text-[70px] lg:text-[80px] leading-[100%]"
-                style={styles.title}
+                style={{ color: getColor(theme, 'title') }}
               >
                 {t('about.about.title')}
               </span>
             </div>
             <span
               className='relative left-[42px] md:text-[24px] lg:text-[26px] font-[AdventProLight] text-[29px] uppercase'
-              style={styles.subtitle}
+              style={{ color: getColor(theme, 'subtitle') }}
             >
               {t('about.about.description')}
             </span>
@@ -108,11 +106,11 @@ export default function About() {
             <div className='flex items-start'>
               <div
                 className='w-[24px] h-[63px]'
-                style={styles.particle}
+                style={{ backgroundColor: getColor(theme, 'particle') }}
               />
               <span
                 className="relative left-[12px] font-['Bebas_Neue'] text-[60px] md:text-[70px] lg:text-[80px] whitespace-nowrap leading-[100%]"
-                style={styles.title}
+                style={{ color: getColor(theme, 'title') }}
               >
                 {t('about.history.title')}
               </span>
@@ -128,18 +126,18 @@ export default function About() {
             <div className='flex items-center gap-x-4'>
               <div
                 className='w-[24px] h-[63px]'
-                style={styles.particle}
+                style={{ backgroundColor: getColor(theme, 'particle') }}
               />
               <span
                 className='relative left-[10px] font-bebas text-[60px] md:text-[70px] lg:text-[80px]'
-                style={styles.title}
+                style={{ color: getColor(theme, 'title') }}
               >
                 {t('about.about.title')}
               </span>
             </div>
             <span
               className='relative text-[20px] md:text-[24px] lg:text-[26px] font-adventpro'
-              style={styles.subtitle}
+              style={{ color: getColor(theme, 'subtitle') }}
             >
               {t('about.about.description')}
             </span>
@@ -156,7 +154,7 @@ export default function About() {
             position: !isLG ? 'static' : 'absolute',
             top: !isLG ? '' : '0',
             right: !isLG ? '' : '0',
-            ...styles.text,
+            color: getColor(theme, 'text'),
           }}
         >
           {t('about.about.text')}
@@ -169,18 +167,18 @@ export default function About() {
             <div className='flex items-center gap-x-4'>
               <div
                 className='w-[24px] h-[63px]'
-                style={styles.particle}
+                style={{ backgroundColor: getColor(theme, 'particle') }}
               />
               <span
                 className='relative font-bebas text-[60px] md:text-[70px] lg:text-[80px]'
-                style={styles.title}
+                style={{ color: getColor(theme, 'title') }}
               >
                 {t('about.history.title')}
               </span>
             </div>
             <div
               className='font-adventpro text-[20px] md:text-[24px] lg:text-[26px] whitespace-nowrap'
-              style={styles.subtitle}
+              style={{ color: getColor(theme, 'subtitle') }}
             >
               {t('about.history.description')}
             </div>

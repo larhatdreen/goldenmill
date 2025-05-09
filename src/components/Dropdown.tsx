@@ -12,7 +12,7 @@ const DropdownMenu = ({ close, open }: { close: boolean; open: (state: boolean) 
   const { lang } = useParams<ParamsType>()
   const location = useLocation()
 
-  const options = [t('Granulator'), t('rollerShell'), t('nav.spareParts')]
+  const options = [t('granulator'), t('rollerShell'), t('nav.spareParts')]
 
   // Helper function to check if products section is active
   const isProductsActive = () => {
@@ -24,7 +24,7 @@ const DropdownMenu = ({ close, open }: { close: boolean; open: (state: boolean) 
 
   // Helper function to check if specific product type is active
   const isProductTypeActive = (type: string) => {
-    if (type === t('dieMatrix')) {
+    if (type === t('granulator')) {
       return location.pathname.includes('/granulator') || location.pathname === `/${lang}`;
     }
     if (type === t('rollerShell')) {
@@ -83,7 +83,7 @@ const DropdownMenu = ({ close, open }: { close: boolean; open: (state: boolean) 
           <div className={`products1 absolute -top-[35px] w-[${parentWidth}px] h-[35px] rounded-t-lg bg-dropdown`} />
           {options.map(option => (
             <Link
-              to={option === t('dieMatrix') 
+              to={option === t('granulator') 
                 ? getURLWithLang('granulator', lang!) 
                 : option === t('rollerShell')
                 ? getURLWithLang('shell', lang!)

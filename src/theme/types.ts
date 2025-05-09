@@ -5,6 +5,8 @@ export interface ThemeColors {
   title: string;
   subtitle: string;
   particle: string;
+
+  textOnSvg: string;
   svg: {
     fill: string;
     darkColor: string;

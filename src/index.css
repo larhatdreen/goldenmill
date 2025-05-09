@@ -65,13 +65,6 @@
   }
 }
 
-body {
-  background-color: #292A2C;
-  /* background-color: #F8F8F9; */
-  /*overflow-x: hidden;*/
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
 /*Hide input number spin button*/
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

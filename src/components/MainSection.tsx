@@ -25,9 +25,7 @@ import ModalInfo from './ModalInfo.js';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
 import { createMuiTheme } from '../theme/muiTheme';
-import { getThemeStyles } from '../theme/utils';
-import styled from '@emotion/styled';
-import { Theme } from '../theme/types';
+import { getColor } from '../theme/utils';
 import ButtonIcon from './customIcons/ButtonIcon';
 
 
@@ -48,34 +46,6 @@ export interface IMainData {
   workingWidth: string;
   drillingDiameter: string;
 }
-
-const StyledHelpButton = styled.div<{ isOpen: boolean; theme: Theme }>`
-  font-family: 'Lab Grotesque', sans-serif;
-  font-size: 16px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  transition: color 0.3s ease;
-  cursor: ${props => props.isOpen ? 'default' : 'pointer'};
-  color: ${props => props.theme.colors.mainSection.needHelp};
-
-  &:hover {
-    color: ${props => props.theme.colors.mainSection.hover};
-  }
-
-  &:focus {
-    color: ${props => props.theme.colors.mainSection.focus};
-    outline: none;
-  }
-
-  @media (min-width: 640px) {
-    font-size: 18px;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 20px;
-  }
-`;
 
 function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
   const [open, setOpen] = useState(false);
@@ -107,7 +77,6 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
 
   const { t } = useTranslation();
   const theme = useTheme();
-  const styles = getThemeStyles(theme);
   const muiTheme = createMuiTheme(theme);
 
   const handleOpenModalInfo = () => setModalInfo(true);
@@ -197,7 +166,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
   }
 
   return (
-    <section className='w-full max-w-[1920px] select-none' style={styles.background}>
+    <section className='w-full max-w-[1920px] select-none'>
       <ModalInfo open={modalInfo} handleClose={handleCloseModalInfo} data={data} type={type} />
 
       <div
@@ -210,31 +179,37 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
         <div className='flex flex-col justify-between mt-6 laptop:mt-12 order-first laptop:order-2 min-h-[420px] laptop:min-h-[520px]'>
           <div>
             <div className='flex flex-col tablet:flex-row gap-4 ml-0 laptop:ml-[8%]'>
-              <StyledHelpButton isOpen={open} theme={theme} onMouseUp={handleOpen} tabIndex={!open ? 0 : -1}>
-                <QuestionIcon className='w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] laptop:w-[40px] laptop:h-[40px] mt-[8px] mr-2 fill-[#82653F] stroke-[#82653F]' />
+              <div
+                className={`font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px] flex flex-row items-center group ${
+                  theme.name === 'dark' ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#2A3242]'
+                } ${
+                  !open ? 'cursor-pointer' : ''
+                }`}
+                onMouseUp={handleOpen}
+              >
+                <QuestionIcon className='w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] laptop:w-[40px] laptop:h-[40px] mt-[8px] mr-2' />
                 {t('titleBlock.needHelp')}
-
                 <Modal open={open} handleClose={handleClose} />
-              </StyledHelpButton>
+              </div>
             </div>
 
             {!countWindow && (
               <div className='flex justify-between items-start flex-col mt-4 laptop:mt-16 ml-0 laptop:ml-[8%]'>
                 <div className='flex flex-col'>
-                  <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[143px] laptop:text-[143px] text-[#82653F] uppercase leading-none"
-                    style={{color: theme.colors.mainSection.title}}
+                  <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[143px] laptop:text-[143px] uppercase leading-none"
+                    style={{color: getColor(theme, 'mainSection.title')}}
                   >
                     {type === 'Matrix' ? t('firstTitle') : t('rollerShell')}
                   </div>
-                  <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[106px] laptop:text-[106px] text-[#767676] uppercase leading-none"
-                    style={{color: theme.colors.mainSection.subtitle}}
+                  <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[106px] laptop:text-[106px] uppercase leading-none"
+                    style={{color: getColor(theme, 'mainSection.subtitle')}}
                   >
                     {t('secondTitle')}
                   </div>
                 </div>
                 <div
                   className='font-adventpro text-[20px] sm:text-[28px] laptop:text-[32px] uppercase font-normal mt-2 laptop:mt-0 whitespace-pre-line'
-                  style={{color: theme.colors.mainSection.description}}
+                  style={{color: getColor(theme, 'mainSection.description')}}
                 >
                   {t('titleBlock.productDescription')}
                 </div>
@@ -481,25 +456,33 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
-                  style={{color: theme.colors.mainSection.models}}
+                  style={{color: getColor(theme, 'mainSection.models')}}
                 >
                   {t('granulatorTypes.GM420—GM520')}
                 </div>
                 <div
                   className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labrotesque
                             text-[14px] md:text-[17px] lg:text-[20px]'
-                  style={{color: theme.colors.mainSection.numbers}}
+                  style={{color: getColor(theme, 'mainSection.numbers')}}
                 >
                   1
                 </div>
-                <div
-                  className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${
-                          matrix === 1 ? '#ffffff08' : 'transparent'
-                        }] hover:bg-[#544B3C50]`}
-                >
-                  <GranulatorModel1 className='h-[90%]' />
-                  {/* deleted stroke={matrix === 1 ? '#D5CDBD' : '#605C54'} */}
+                  <div
+                    className={`flex justify-center items-center aspect-square rounded-full transition-colors 
+                      ${theme.name === 'dark'
+                        ? `${matrix === 1 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                        : `${matrix === 1 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                      }
+                    `}
+                  >
+                  <GranulatorModel1 
+                    className="h-[90%]" 
+                    stroke={
+                      matrix === 1
+                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
+                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                    }
+                  />
                 </div>
               </div>
 
@@ -513,25 +496,33 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
-                  style={{color: theme.colors.mainSection.models}}
+                  style={{color: getColor(theme, 'mainSection.models')}}
                 >
                   {t('granulatorTypes.GM650')}
                 </div>
                 <div
                   className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque
                             text-[14px] md:text-[17px] lg:text-[20px]'
-                  style={{color: theme.colors.mainSection.numbers}}
+                  style={{color: getColor(theme, 'mainSection.numbers')}}
                 >
                   2
                 </div>
                 <div
-                  className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${
-                          matrix === 2 ? '#ffffff08' : 'transparent'
-                        }] hover:bg-[#544B3C50]`}
+                  className={`flex justify-center items-center aspect-square rounded-full transition-colors 
+                    ${theme.name === 'dark'
+                      ? `${matrix === 2 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                      : `${matrix === 2 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                    }
+                  `}
                 >
-                  <GranulatorModel2 className='h-[90%]'/> 
-                  {/* deleted stroke={matrix === 2 ? '#D5CDBD' : '#605C54'} */}
+                  <GranulatorModel2 
+                    className='h-[90%]' 
+                    stroke={
+                      matrix === 2
+                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
+                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                    }
+                  />
                 </div>
               </div>
 
@@ -545,25 +536,33 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
-                  style={{color: theme.colors.mainSection.models}}
+                  style={{color: getColor(theme, 'mainSection.models')}}
                 >
                   {t('granulatorTypes.GM850')}
                 </div>
                 <div
                   className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
                             md:text-[17px] lg:text-[20px]'
-                  style={{color: theme.colors.mainSection.numbers}}
+                  style={{color: getColor(theme, 'mainSection.numbers')}}
                 >
                   3
                 </div>
                 <div
-                  className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${
-                          matrix === 3 ? '#ffffff08' : 'transparent'
-                        }] hover:bg-[#544B3C50]`}
+                  className={`flex justify-center items-center aspect-square rounded-full transition-colors 
+                    ${theme.name === 'dark'
+                      ? `${matrix === 3 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                      : `${matrix === 3 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                    }
+                  `}
                 >
-                  <GranulatorModel3 className='h-[90%]'/>
-                    {/* deleted stroke={matrix === 3 ? '#D5CDBD' : '#605C54'} */}
+                  <GranulatorModel3 
+                    className='h-[90%]' 
+                    stroke={
+                      matrix === 3
+                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
+                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                    }
+                  />
                 </div>
               </div>
             </>

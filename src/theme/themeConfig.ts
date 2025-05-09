@@ -1,4 +1,3 @@
-import { Numbers } from './../../node_modules/@mui/icons-material/index.d';
 import { Theme, ThemeMode } from './types';
 
 const baseColors = {
@@ -9,6 +8,8 @@ const baseColors = {
     title: '#82653F', // Цвет заголовков
     subtitle: '#2A3242', // Цвет подзаголовков
     particle: '#ABB4C3', // Цвет частиц
+
+  textOnSvg: '#696D7B', // Цвет текста на svg
 
     mainSection: {
       title: '#82653F', // Цвет заголовков 
@@ -64,6 +65,8 @@ const baseColors = {
     title: '#D5CDBD', // Цвет заголовков
     subtitle: '#D5CDBD', // Цвет подзаголовков
     particle: '#82643F', // Цвет частиц
+
+    textOnSvg: '#969284', // Цвет текста на svg
 
     mainSection: {
       title: '#82653F', // Цвет заголовков 

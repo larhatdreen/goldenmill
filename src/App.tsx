@@ -25,6 +25,7 @@ import AdminPanel from './components/admin/AdminPanel'
 import ProductLanding from './components/ProductLanding'
 import { isStaticFile } from './staticFileHandler'
 import SEO from './components/SEO'
+import ThemeBodySync from './components/ThemeBodySync'
 
 function App() {
   const location = useLocation();
@@ -54,6 +55,7 @@ function App() {
 
   return (
     <>
+      <ThemeBodySync />
       <SEO />
       <div className='min-h-screen flex flex-col items-center'>
         <HelmetWrapper />

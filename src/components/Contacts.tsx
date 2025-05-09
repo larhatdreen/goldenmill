@@ -1,19 +1,18 @@
 import SEO from './SEO';
 import { useSEO } from '../hooks/useSEO';
 import Arrow from './about/Arrow.js';
-import LogoIcon from './about/LogoIcon.js';
+import LogoIcon from './customIcons/LogoIcon.js';
 import Map from './contacts/Map.js';
 import { useMediaQuery } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
-import { getColor, getThemeStyles, getLocalThemeColor } from '../theme/utils';
+import { getColor, getLocalThemeColor } from '../theme/utils';
 
 export default function Contacts() {
   const seoData = useSEO('contacts');
   const isLG = useMediaQuery('(min-width:1150px)');
   const { t } = useTranslation();
   const theme = useTheme();
-  const styles = getThemeStyles(theme);
   const isDark = theme.name === 'dark';
 
   // Определяем для стилизации Map локально
@@ -28,13 +27,12 @@ export default function Contacts() {
       <SEO title={seoData.title} description={seoData.description} keywords={seoData.keywords} />
       <section
         className='w-full h-auto px-[30px] md:px-[100px] gap-y-6'
-        style={styles.background}
       >
         <div className={`${!isLG ? 'hidden' : ''}`}>
           <Arrow fillColor={getColor(theme, 'svg.fill')} />
           <div
             className='absolute left-[200px] top-[225px] w-[271px] h-[271px] rounded-full flex justify-center items-center'
-            style={styles.decorative}
+            style={{ backgroundColor: getColor(theme, 'decorative') }}
           >
             <LogoIcon
               mainColor={getColor(theme, 'svg.darkColor')}
@@ -57,17 +55,17 @@ export default function Contacts() {
 
           <div className='absolute left-[200px] top-[200px] flex flex-col items-start'>
             <div className='flex items-start'>
-              <div className='w-[24px] h-[63px]' style={styles.particle} />
+              <div className='w-[24px] h-[63px]' style={{ backgroundColor: getColor(theme, 'particle') }} />
               <span
                 className="relative left-[12px] font-['Bebas_Neue'] text-[60px] md:text-[70px] lg:text-[80px] leading-[100%]"
-                style={styles.title}
+                style={{ color: getColor(theme, 'title') }}
               >
                 {t('contacts.title')}
               </span>
             </div>
             <span
               className='relative left-[40px] md:text-[24px] lg:text-[26px] font-[AdventProLight] text-[29px]'
-              style={styles.subtitle}
+              style={{ color: getColor(theme, 'subtitle') }}
             >
               {t('contacts.description')}
             </span>
@@ -85,31 +83,31 @@ export default function Contacts() {
             <div className='flex flex-col mt-4 justify-between'>
               <span
                 className='text-[18px] md:text-[20px] lg:text-[23px] font-[AdventProLight] ml-1'
-                style={styles.text}
+                style={{ color: getColor(theme, 'text') }}
               >
                 {t('contacts.requisites.companyName')}
               </span>
               <span
                 className='text-[18px] md:text-[20px] lg:text-[23px] font-[AdventProLight] ml-1'
-                style={styles.text}
+                style={{ color: getColor(theme, 'text') }}
               >
                 {t('contacts.requisites.vat')}
               </span>
               <span
                 className='text-[18px] md:text-[20px] lg:text-[23px] font-[AdventProLight] ml-1'
-                style={styles.text}
+                style={{ color: getColor(theme, 'text') }}
               >
                 {t('contacts.requisites.bank')}
               </span>
               <span
                 className='text-[18px] md:text-[20px] lg:text-[23px] font-[AdventProLight] ml-1'
-                style={styles.text}
+                style={{ color: getColor(theme, 'text') }}
               >
                 {t('contacts.requisites.swift')}
               </span>
               <span
                 className='text-[18px] md:text-[20px] lg:text-[23px] font-[AdventProLight] ml-1'
-                style={styles.text}
+                style={{ color: getColor(theme, 'text') }}
               >
                 {t('contacts.requisites.konto')}
               </span>
@@ -126,7 +124,7 @@ export default function Contacts() {
             <div className='flex flex-col mt-4 justify-between'>
               <span
                 className='text-[18px] md:text-[20px] lg:text-[23px] font-[AdventProLight] ml-1'
-                style={styles.text}
+                style={{ color: getColor(theme, 'text') }}
               >
                 {t('contacts.geo.address')}
               </span>
@@ -144,7 +142,7 @@ export default function Contacts() {
               <div className='flex flex-col mt-4 justify-between'>
                 <span
                   className='text-[18px] md:text-[20px] lg:text-[23px] font-[AdventProLight] ml-1'
-                  style={styles.text}
+                  style={{ color: getColor(theme, 'text') }}
                 >
                   {t('contacts.email.email')}
                 </span>
@@ -161,7 +159,7 @@ export default function Contacts() {
               <div className='flex flex-col mt-4 justify-between'>
                 <span
                   className='text-[18px] md:text-[20px] lg:text-[23px] font-[AdventProLight] ml-1'
-                  style={styles.text}
+                  style={{ color: getColor(theme, 'text') }}
                 >
                   {t('contacts.phone.phone')}
                 </span>
