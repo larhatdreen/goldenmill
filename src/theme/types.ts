@@ -24,6 +24,11 @@ export interface ThemeColors {
     models: string;
     numbers: string;
   },
+  footer: {
+    background: string;
+    bottom: string;
+    text: string;
+  },
   mui: {
     form: {
       title: string;
