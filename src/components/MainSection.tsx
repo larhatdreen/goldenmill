@@ -597,7 +597,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                   className='absolute -left-[16%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
                             md:text-[17px] lg:text-[20px]'
                 >
-                  3.1
+                  3
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
@@ -621,13 +621,13 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
-                ></div>
+                >Сюда тоже текст</div>
 
                 <div
                   className='absolute -left-[16%] lg:-left-[22%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
                             md:text-[17px] lg:text-[20px]'
                 >
-                  3.2
+                  4
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square
