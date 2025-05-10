@@ -39,9 +39,12 @@
     }
   },
   "granulator": "Гранулятор",
-  "firstTitle": "Пресс",
-  "secondTitle": "Гранулятор",
-  "rollerShell": "Обечайка",
+  "granulatorTitle": "Пресс",
+  "granulatorSubtitle": "Гранулятор",
+  "mixer": "Смеситель",
+  "mixerTitle": "Смеситель",
+  "mixerSubtitle": "GM-520",
+  
   "navBar": {
     "main": "Главная страница",
     "products": "Продукция",

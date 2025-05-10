@@ -8,8 +8,8 @@ import { useTranslation } from 'react-i18next'
 import { getURLWithLang } from '../functions/get-url-with-lang.js'
 import { ParamsType } from './NavigateProvider.js'
 import ThemeToggle from './ThemeToggle'
-import { Snackbar, Alert } from '@mui/material'
-
+// import { Snackbar, Alert } from '@mui/material'
+import { useTheme } from '../hooks/useTheme.js'
 export default function NavBar() {
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -18,7 +18,9 @@ export default function NavBar() {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const location = useLocation()
-  const [snackbarOpen, setSnackbarOpen] = useState(false)
+  // const [snackbarOpen, setSnackbarOpen] = useState(false)
+  const theme = useTheme()
+  const isDark = theme.name === 'dark'
 
   const languages = ['de', 'en', 'ru']
   
@@ -46,13 +48,13 @@ export default function NavBar() {
     }
   }
 
-  const handleThemeChange = () => {
-    setSnackbarOpen(true)
-  }
+  // const handleThemeChange = () => {
+  //   setSnackbarOpen(true)
+  // }
 
-  const handleSnackbarClose = () => {
-    setSnackbarOpen(false)
-  }
+  // const handleSnackbarClose = () => {
+  //   setSnackbarOpen(false)
+  // }
 
   // Helper function to check if a path is active
   const isActive = (path: string) => {
@@ -69,25 +71,39 @@ export default function NavBar() {
           </Link>
 
           {/* Desktop Menu */}
-          <ul className='hidden md:flex md:flex-row text-xl text-navUnselect cursor-pointer shrink-0 gap-x-6 items-center font-labgrotesque'>
+          <ul className={`hidden md:flex md:flex-row text-xl  cursor-pointer shrink-0 gap-x-6 items-center font-labgrotesque
+            ${isDark ? 'text-[#767676]' : 'text-[#767676]'}
+          `}>
             <Link to={getURLWithLang('granulator', lang!)}>
-              <li className={`ease-out duration-300 ${isActive('granulator') ? 'text-navSelect' : 'hover:text-navSelect'}`}>
+              <li className={`ease-out duration-300 ${
+                isActive('granulator') 
+                  ? isDark ? 'text-[#D5CDBD]' : 'text-[#2A3242]'
+                  : isDark ? 'hover:text-[#D5CDBD]' : 'hover:text-[#2A3242]'
+              }`}>
                 {t('navBar.main')}
               </li>
             </Link>
             <DropdownMenu close={dropdownIsOpen} open={state => setDropdownIsOpen(state)} />
             <Link to={getURLWithLang('about', lang!)}>
-              <li className={`ease-out duration-300 ${isActive('about') ? 'text-navSelect' : 'hover:text-navSelect'}`}>
+              <li className={`ease-out duration-300 ${
+                isActive('about') 
+                  ? isDark ? 'text-[#D5CDBD]' : 'text-[#2A3242]'
+                  : isDark ? 'hover:text-[#D5CDBD]' : 'hover:text-[#2A3242]'
+              }`}>
                 {t('navBar.about')}
               </li>
             </Link>
             <Link to={getURLWithLang('contacts', lang!)}>
-              <li className={`ease-out duration-300 ${isActive('contacts') ? 'text-navSelect' : 'hover:text-navSelect'}`}>
+              <li className={`ease-out duration-300 ${
+                isActive('contacts') 
+                  ? isDark ? 'text-[#D5CDBD]' : 'text-[#2A3242]'
+                  : isDark ? 'hover:text-[#D5CDBD]' : 'hover:text-[#2A3242]'
+              }`}>
                 {t('navBar.contacts')}
               </li>
             </Link>
             <div className="flex items-center gap-4 ml-6 md:ml-[15px] lg:ml-[30px] xl:ml-[125px]">
-              <ThemeToggle onToggle={handleThemeChange} />
+              <ThemeToggle/> {/* // deleted onToggle={handleThemeChange}  */}
               <LanguageDropdown />
             </div>
           </ul>
@@ -95,15 +111,19 @@ export default function NavBar() {
           {/* Mobile Menu Button */}
           <div className='md:hidden flex items-center gap-4'>
             <div className="flex items-center gap-4">
-              <ThemeToggle onToggle={handleThemeChange} />
+              <ThemeToggle/> {/* // deleted onToggle={handleThemeChange}  */}
               <div className="flex items-center gap-2">
                 {languages.map(language => (
                   <button
                     key={language}
                     className={`uppercase px-2 py-1 text-sm rounded transition-all ${
-                      language === mobileLanguage 
-                        ? 'text-[#D5CDBD] bg-[#D5CDBD]/10' 
-                        : 'text-[#605C54] hover:text-[#D5CDBD] hover:bg-[#D5CDBD]/5'
+                      language === mobileLanguage
+                        ? isDark
+                          ? 'text-[#D5CDBD] bg-[#D5CDBD]/10'
+                          : 'text-[#2A3242] bg-[#2A3242]/10'
+                        : isDark
+                          ? 'text-[#605C54] hover:text-[#D5CDBD] hover:bg-[#D5CDBD]/5'
+                          : 'text-[#605C54] hover:text-[#2A3242] hover:bg-[#2A3242]/5'
                     }`}
                     onClick={() => setMobileLanguage(language)}
                   >
@@ -122,17 +142,23 @@ export default function NavBar() {
             menuIsOpen ? 'block' : 'hidden'
           } md:hidden fixed top-[80px] left-0 right-0 bg-[#1A1A1A] backdrop-blur-md border-b border-[#D5CDBD]/10`}
         >
-          <ul className='flex flex-col text-xl text-navUnselect p-6 space-y-4 bg-[#1A1A1A] font-labgrotesque'>
+          <ul className={`flex flex-col text-xl text-navUnselect p-6 space-y-4 ${isDark ? 'bg-[#373739]' : 'bg-[#F2F1F0]'} font-labgrotesque`}>
             <Link to={getURLWithLang('/', lang!)}>
               <li
-                className={`py-3 ease-out duration-300 ${isActive('granulator') ? 'text-navSelect' : 'hover:text-navSelect'}`}
+                className={`py-3 ease-out duration-300 ${
+                  isActive('granulator') 
+                    ? isDark ? 'text-[#D5CDBD]' : 'text-[#2A3242]'
+                    : isDark ? 'hover:text-[#D5CDBD]' : 'hover:text-[#2A3242]'
+                }`}
                 onClick={() => setMenuIsOpen(false)}
               >
                 {t('navBar.main')}
               </li>
             </Link>
             <details className='group'>
-              <summary className='flex items-center py-3 gap-2 marker:content-none hover:cursor-pointer hover:text-navSelect'>
+              <summary className={`flex items-center py-3 gap-2 marker:content-none hover:cursor-pointer ${
+                isDark ? 'hover:text-[#D5CDBD]' : 'hover:text-[#2A3242]'
+              }`}>
                 <span>{t('navBar.products')}</span>
                 <ArrowDropDownIcon className='transition group-open:rotate-180' />
               </summary>
@@ -140,23 +166,35 @@ export default function NavBar() {
                 <ul className='flex flex-col gap-3 pl-2'>
                   <Link to={getURLWithLang('granulator', lang!)}>
                     <li
-                      className={`py-2 transition-colors ${isActive('granulator') ? 'text-navSelect' : 'hover:text-navSelect'}`}
+                      className={`py-2 transition-colors ${
+                        isActive('granulator') 
+                          ? isDark ? 'text-[#D5CDBD]' : 'text-[#2A3242]'
+                          : isDark ? 'hover:text-[#D5CDBD]' : 'hover:text-[#2A3242]'
+                      }`}
                       onClick={() => setMenuIsOpen(false)}
                     >
-                      {t('dieMatrix')}
+                      {t('granulator')}
                     </li>
                   </Link>
-                  <Link to={getURLWithLang('shell', lang!)}>
+                  <Link to={getURLWithLang('mixer', lang!)}>
                     <li
-                      className={`py-2 transition-colors ${isActive('shell') ? 'text-navSelect' : 'hover:text-navSelect'}`}
+                      className={`py-2 transition-colors ${
+                        isActive('mixer') 
+                          ? isDark ? 'text-[#D5CDBD]' : 'text-[#2A3242]'
+                          : isDark ? 'hover:text-[#D5CDBD]' : 'hover:text-[#2A3242]'
+                      }`}
                       onClick={() => setMenuIsOpen(false)}
                     >
-                      {t('rollerShell')}
+                      {t('mixer')}
                     </li>
                   </Link>
                   <Link to={getURLWithLang('spare-parts', lang!)}>
                     <li
-                      className={`py-2 transition-colors ${isActive('spare-parts') ? 'text-navSelect' : 'hover:text-navSelect'}`}
+                      className={`py-2 transition-colors ${
+                        isActive('spare-parts') 
+                          ? isDark ? 'text-[#D5CDBD]' : 'text-[#2A3242]'
+                          : isDark ? 'hover:text-[#D5CDBD]' : 'hover:text-[#2A3242]'
+                      }`}
                       onClick={() => setMenuIsOpen(false)}
                     >
                       {t('nav.spareParts')}
@@ -167,7 +205,11 @@ export default function NavBar() {
             </details>
             <Link to={getURLWithLang('about', lang!)} className='shrink-0'>
               <li
-                className={`py-3 ease-out duration-300 ${isActive('about') ? 'text-navSelect' : 'hover:text-navSelect'}`}
+                className={`py-3 ease-out duration-300 ${
+                  isActive('about') 
+                    ? isDark ? 'text-[#D5CDBD]' : 'text-[#2A3242]'
+                    : isDark ? 'hover:text-[#D5CDBD]' : 'hover:text-[#2A3242]'
+                }`}
                 onClick={() => setMenuIsOpen(false)}
               >
                 {t('navBar.about')}
@@ -175,7 +217,11 @@ export default function NavBar() {
             </Link>
             <Link to={getURLWithLang('contacts', lang!)}>
               <li
-                className={`py-3 ease-out duration-300 ${isActive('contacts') ? 'text-navSelect' : 'hover:text-navSelect'}`}
+                className={`py-3 ease-out duration-300 ${
+                  isActive('contacts') 
+                    ? isDark ? 'text-[#D5CDBD]' : 'text-[#2A3242]'
+                    : isDark ? 'hover:text-[#D5CDBD]' : 'hover:text-[#2A3242]'
+                }`}
                 onClick={() => setMenuIsOpen(false)}
               >
                 {t('navBar.contacts')}
@@ -188,7 +234,7 @@ export default function NavBar() {
       {/* Spacer to prevent content from hiding under fixed navbar */}
       <div className="h-[80px]" />
 
-      <Snackbar
+      {/* <Snackbar
         open={snackbarOpen}
         autoHideDuration={3000}
         onClose={handleSnackbarClose}
@@ -209,7 +255,7 @@ export default function NavBar() {
         >
           {t('common.inDevelopment')}
         </Alert>
-      </Snackbar>
+      </Snackbar> */}
     </>
   )
 }

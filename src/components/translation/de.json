@@ -39,9 +39,12 @@
     }
   },
   "granulator": "Pellet",
-  "firstTitle": "Pellet",
-  "secondTitle": "Presse",
-  "rollerShell": "Kollerhülse",
+  "granulatorTitle": "Pellet",
+  "granulatorSubtitle": "Presse",
+  "mixer": "Mixer",
+  "mixerTitle": "Mixer",
+  "mixerSubtitle": "GM-520",
+  
   "navBar": {
     "main": "Hauptseite",
     "products": "Produkte",

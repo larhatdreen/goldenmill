@@ -10,8 +10,8 @@ const Header = () => {
       path: '/granulator' 
     },
     { 
-      label: t('nav.shell'),
-      path: '/shell' 
+      label: t('nav.mixer'),
+      path: '/mixer' 
     },
     { 
       label: t('nav.spareParts'),

@@ -8,22 +8,22 @@ import { toggleTheme } from '../store/themeSlice';
 import { RootState } from '../store';
 import { getLocalThemeColor } from '../theme/utils';
 
-interface ThemeToggleProps {
-  onToggle?: () => void;
-}
+// interface ThemeToggleProps {
+//   onToggle?: () => void;
+// }
 
-const ThemeToggle = ({ onToggle }: ThemeToggleProps) => {
+const ThemeToggle = () => { // deleted { onToggle }: ThemeToggleProps)
   const dispatch = useDispatch();
   const isDark = useSelector((state: RootState) => state.theme.shadowTheme);
 
   const handleClick = () => {
     dispatch(toggleTheme());
-    onToggle?.();
+    // onToggle?.();
   };
 
   const { ovalColor, ellipseColor, icon, ellipsePosition, ellipseShadow } = useMemo(
     () => ({
-      ovalColor: getLocalThemeColor(isDark, '#767676', '#666666'),
+      ovalColor: getLocalThemeColor(isDark, '#666666', '#F0F0F0'),
       ellipseColor: getLocalThemeColor(isDark, '#F0F0F0', '#FFFFFF'),
       icon: isDark ? (
         <SunIcon width={15} height={15} fill={getLocalThemeColor(isDark, '#767676', '#666666')} />

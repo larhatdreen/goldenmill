@@ -38,10 +38,12 @@
       "keywords": "{{productName}}, LKE Group GmbH, GoldenDie, dies, roller shells, spare parts, pellet mills, industrial equipment, high quality, custom manufacturing, wear resistance, pellet production, granulation, extrusion"
     }
   },
-  "granulator": "Granulator",
-  "firstTitle": "Pellet",
-  "secondTitle": "Press",
-  "rollerShell": "ROLLER SHELL",
+  "granulator": "Pellet",
+  "granulatorTitle": "Pellet",
+  "granulatorSubtitle": "Press",
+  "mixer": "Mixer",
+  "mixerTitle": "Mixer",
+  "mixerSubtitle": "GM-520",
   "navBar": {
     "main": "Main Page",
     "products": "Products",

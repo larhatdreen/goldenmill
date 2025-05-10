@@ -94,7 +94,7 @@ function App() {
                 }
               />
               <Route
-                path='shell'
+                path='mixer'
                 element={
                   <Wrapper>
                     <MainSection type='Shell' />

@@ -49,8 +49,8 @@ function GMFeaturesSVG() {
   const svgHeight = topPadding + sectionCount * sectionHeight + (sectionCount - 1) * itemGap + bottomPadding;
 
   const barX = 120;
-  const barY = topPadding + 20;
-  const barHeight = svgHeight - topPadding - bottomPadding - 40;
+  const barY = topPadding;
+  const barHeight = svgHeight - topPadding - bottomPadding;
   const barWidth = 0.5;
   const numberX = barX - 100;
   const textX = barX + 2 + 17;
@@ -65,19 +65,19 @@ function GMFeaturesSVG() {
   return (
     <svg
       viewBox={`0 0 800 ${svgHeight}`}
-      className='w-[60%] tablet:w-[60%]'
+      className='w-[60%] tablet:w-[40%]'
       height="auto"
-      style={{ display: 'block', transform: 'translate(15%, 18%)' }}
+      style={{ display: 'block' }}
       onWheel={handleWheel}
     >
       {/* Вертикальный бар */}
       <rect x={barX} y={barY} width={barWidth} height={barHeight} rx={2} fill={numberColor} />
       {/* Активная линия */}
       <rect
-        x={barX-0.75}
+        x={barX}
         y={barY + active * (sectionHeight + itemGap)}
         width={2}
-        height={(active === 0 || active === 4) ? sectionHeight - 40 : sectionHeight}
+        height={sectionHeight}
         rx={2}
         fill={sliderColor}
         style={{ transition: 'all 0.4s cubic-bezier(.4,0,.2,1)' }}
@@ -134,10 +134,10 @@ function Section1() {
       <svg
         id='section1'
         className='w-[60%] tablet:w-[40%]'
-        viewBox={`0 0 650 ${isLG ? '633' : '450'}`}
+        viewBox={`0 0 850 ${isLG ? '833' : '450'}`}
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
-        style={{position: isLG ? 'absolute' : undefined, left: '10.5%'}}
+        style={{position: isLG ? undefined : 'absolute'}}
       >
         <svg className='hidden tablet:block '>
           <g filter='url(#filter0_b_20_1296)'>
