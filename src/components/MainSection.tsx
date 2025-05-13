@@ -216,10 +216,10 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                   className='font-adventpro text-[20px] sm:text-[28px] laptop:text-[32px] uppercase font-normal mt-2 laptop:mt-0 whitespace-pre-line'
                   style={{color: getColor(theme, 'mainSection.description')}}
                 >
-                  {t('titleBlock.productDescription')}
+                  {type === 'Matrix' ? t('titleBlock.granulatorProductDescription') : t('titleBlock.mixerProductDescription')}
                 </div>
                 <CountButton
-                  className='relative z-[1] w-full sm:w-[282px] mt-8 laptop:mt-[36px] aspect-[282/58] font-bebas text-white
+                  className='relative z-[1] w-full sm:w-[282px] mt-8 laptop:mt-[36px] aspect-[282/58] font-bebas
                                       text-[18px] sm:text-[20px] laptop:text-[22px] flex items-center justify-center bg-contain
                                       bg-no-repeat'
                   src={<ButtonIcon />}
@@ -391,6 +391,38 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                                 drillingDiameter: '',
                               }));
                             }}
+                            sx={{
+                              '& .MuiSelect-icon': {
+                                color: errorText.drillingDiameter
+                                  ? `${theme.colors.mui.form.error} !important`
+                                  : theme.colors.mui.form.secondary,
+                                fill: errorText.drillingDiameter
+                                  ? `${theme.colors.mui.form.error} !important`
+                                  : theme.colors.mui.form.secondary,
+                                transition: 'color 0.3s, fill 0.3s',
+                              },
+                              '&:hover .MuiSelect-icon': {
+                                color: errorText.drillingDiameter
+                                  ? `${theme.colors.mui.form.error} !important`
+                                  : theme.colors.mui.form.hover.primary,
+                                fill: errorText.drillingDiameter
+                                  ? `${theme.colors.mui.form.error} !important`
+                                  : theme.colors.mui.form.hover.primary,
+                              },
+                            }}
+                            MenuProps={{
+                              PaperProps: {
+                                className: 'selectMenuPaper',
+                                sx: {
+                                  '& .MuiMenuItem-root': {
+                                    '&.Mui-selected': {
+                                      backgroundColor: 'transparent',
+                                      color: 'inherit',
+                                    },
+                                  },
+                                },
+                              },
+                            }}
                           // onFocus={() => onPointerEnterCircle('circle5')}
                           // onBlur={() => onPointerLeaveCircle('circle5')}
                           >
@@ -414,7 +446,9 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                             <MenuItem value='5'>
                               {t('inputSizesBlock.surfaceTypes.fishBone')}
                             </MenuItem>
-                            <MenuItem value='6'>{t('inputSizesBlock.surfaceTypes.arc')}</MenuItem>
+                            <MenuItem value='6'>
+                              {t('inputSizesBlock.surfaceTypes.arc')}
+                            </MenuItem>
                           </Select>
                           {errorText.drillingDiameter && (
                             <FormHelperText id='component-error-text'>
@@ -425,8 +459,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                       )}
                     </div>
                     <CountButton
-                      className='relative mt-[5%] z-[1] w-[282px] aspect-[282/58] font-bebas text-white
-                                                         text-[22px] flex items-center justify-center bg-contain bg-no-repeat'
+                      className='relative mt-[5%] z-[1] w-[282px] aspect-[282/58] font-bebas
+                        text-[22px] flex items-center justify-center bg-contain bg-no-repeat'
                       src={<ButtonIcon />}
                       onClick={() => {
                         inputErrorHandler();
@@ -583,24 +617,36 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 }}
               >
                 <div
-                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
+                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
+                  style={{color: getColor(theme, 'mainSection.models')}}
                 >
-                  {t('rollerShellTypes.forFlatDie')}
+                  {t('mixerTypes.GM-520')}
                 </div>
 
                 <div
-                  className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
-                            md:text-[17px] lg:text-[20px]'
+                  className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque
+                            text-[14px] md:text-[17px] lg:text-[20px]'
+                  style={{color: getColor(theme, 'mainSection.numbers')}}
                 >
                   1
                 </div>
                 <div
-                  className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${shell === 1 ? '#ffffff08' : 'transparent'
-                    }] hover:bg-[#544B3C50]`}
+                  className={`flex justify-center items-center aspect-square rounded-full transition-colors 
+                    ${theme.name === 'dark'
+                      ? `${shell === 1 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                      : `${shell === 1 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                    }
+                  `}
                 >
-                  <FlatShell className='h-[90%]' stroke={shell === 1 ? '#D5CDBD' : '#605C54'} />
+                  <FlatShell 
+                    className='h-[90%]' 
+                    stroke={
+                      shell === 1
+                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
+                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                    }
+                  />
                 </div>
               </div>
 
@@ -612,24 +658,36 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 }}
               >
                 <div
-                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
+                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
+                  style={{color: getColor(theme, 'mainSection.models')}}
                 >
-                  {t('rollerShellTypes.forRingDie')}
+                  {t('mixerTypes.GM650')}
                 </div>
 
                 <div
-                  className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
-                            md:text-[17px] lg:text-[20px]'
+                  className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque
+                            text-[14px] md:text-[17px] lg:text-[20px]'
+                  style={{color: getColor(theme, 'mainSection.numbers')}}
                 >
                   2
                 </div>
                 <div
-                  className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${shell === 2 ? '#ffffff08' : 'transparent'
-                    }] hover:bg-[#544B3C50]`}
+                  className={`flex justify-center items-center aspect-square rounded-full transition-colors 
+                    ${theme.name === 'dark'
+                      ? `${shell === 2 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                      : `${shell === 2 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                    }
+                  `}
                 >
-                  <RingShell className='h-[90%]' stroke={shell === 2 ? '#D5CDBD' : '#605C54'} />
+                  <RingShell 
+                    className='h-[90%]' 
+                    stroke={
+                      shell === 2
+                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
+                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                    }
+                  />
                 </div>
               </div>
 
@@ -641,26 +699,35 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 }}
               >
                 <div
-                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
+                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
+                  style={{color: getColor(theme, 'mainSection.models')}}
                 >
-                  {t('rollerShellTypes.forTwinTrack')}
+                  {t('mixerTypes.GM850')}
                 </div>
 
                 <div
-                  className='absolute -left-[16%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
-                            md:text-[17px] lg:text-[20px]'
+                  className='absolute -left-[16%] top-[50%] -translate-y-[50%] font-labgrotesque
+                            text-[14px] md:text-[17px] lg:text-[20px]'
+                  style={{color: getColor(theme, 'mainSection.numbers')}}
                 >
                   3
                 </div>
                 <div
-                  className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${shell === 3 ? '#ffffff08' : 'transparent'
-                    }] hover:bg-[#544B3C50]`}
+                  className={`flex justify-center items-center aspect-square rounded-full transition-colors 
+                    ${theme.name === 'dark'
+                      ? `${shell === 3 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                      : `${shell === 3 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                    }
+                  `}
                 >
                   <TwinTrackShell
                     className='h-[90%]'
-                    stroke={shell === 3 ? '#D5CDBD' : '#605C54'}
+                    stroke={
+                      shell === 3
+                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
+                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                    }
                   />
                 </div>
               </div>
@@ -673,24 +740,35 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 }}
               >
                 <div
-                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro text-navSelect
+                  className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
-                >Сюда тоже текст</div>
+                  style={{color: getColor(theme, 'mainSection.models')}}
+                >
+                  {t('mixerTypes.GM850D')}
+                </div>
 
                 <div
-                  className='absolute -left-[16%] lg:-left-[22%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
-                            md:text-[17px] lg:text-[20px]'
+                  className='absolute -left-[16%] lg:-left-[22%] top-[50%] -translate-y-[50%] font-labgrotesque
+                            text-[14px] md:text-[17px] lg:text-[20px]'
+                  style={{color: getColor(theme, 'mainSection.numbers')}}
                 >
                   4
                 </div>
                 <div
-                  className={`flex justify-center items-center aspect-square
-                        rounded-full bg-[${shell === 4 ? '#ffffff08' : 'transparent'
-                    }] hover:bg-[#544B3C50]`}
+                  className={`flex justify-center items-center aspect-square rounded-full transition-colors 
+                    ${theme.name === 'dark'
+                      ? `${shell === 4 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                      : `${shell === 4 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                    }
+                  `}
                 >
                   <TwinTrackShell2
                     className='h-[90%]'
-                    stroke={shell === 4 ? '#D5CDBD' : '#605C54'}
+                    stroke={
+                      shell === 4
+                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
+                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                    }
                   />
                 </div>
               </div>

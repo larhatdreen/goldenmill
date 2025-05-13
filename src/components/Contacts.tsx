@@ -6,21 +6,13 @@ import Map from './contacts/Map.js';
 import { useMediaQuery } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
-import { getColor, getLocalThemeColor } from '../theme/utils';
+import { getColor } from '../theme/utils';
 
 export default function Contacts() {
   const seoData = useSEO('contacts');
   const isLG = useMediaQuery('(min-width:1150px)');
   const { t } = useTranslation();
   const theme = useTheme();
-  const isDark = theme.name === 'dark';
-
-  // Определяем для стилизации Map локально
-  const mapStyles = {
-    title: getLocalThemeColor(isDark, '#82653E', '#7D9AC1'),
-    outline: getLocalThemeColor(isDark, '', '#292828'),
-    invertMap: getLocalThemeColor(isDark, '0', '1'),
-  };
 
   return (
     <>
@@ -168,7 +160,7 @@ export default function Contacts() {
           </div>
         </div>
 
-        <Map colors={mapStyles} />
+        <Map />
       </section>
     </>
   );

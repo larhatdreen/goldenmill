@@ -62,7 +62,8 @@
   },
   "titleBlock": {
     "needHelp": "Benötigen Sie Hilfe bei den Maßen?",
-    "productDescription": "Für die Granulierung von Biomasse, RDF, \nMischfutter und Lebensmittelprodukten",
+    "granulatorProductDescription": "Für die Granulierung von Biomasse, RDF, \nMischfutter und Lebensmittelprodukten",
+    "mixerProductDescription": "Für die Granulierung von Biomasse, RDF, \nMischfutter und Lebensmittelprodukten",
     "countPrice": "Preis anfragen"
   },
 
@@ -135,91 +136,126 @@
     "GM650": "GM650",
     "GM850": "GM850"
   },
-  "rollerShellTypes": {
-    "forFlatDie": "Für Flachmatrize",
-    "forRingDie": "Für Ringmatrize",
-    "forTwinTrack": "Für Twin-Track"
+  "mixerTypes": {
+    "GM-520": "GM-520",
+    "GM650": "GM650",
+    "GM850": "GM850",
+    "GM850D": "GM850D"
   },
   "diagrams": {
     "millGranulator": {
       "mainFeatures": {
         "title": {
-          "model": "Modell gm",
+          "model": "GM-Modell",
           "features": "Merkmale"
         },
-        "subtitle": "Hohe Qualität Pellets",
+        "subtitle": "Hochwertige pellets",
         "descriptionBg": "Merkmale",
         "features": {
-          "1": "Das verstärkte GM Press-Granulator-Körpergehäuse gewährleistet maximale Stabilität und Zuverlässigkeit auch unter den schwierigsten Bedingungen.",
-          "2": "Das pneumatische Überlastventil und das Sicherheitssystem in Form eines Schnittbolzens gewährleisten einen sicheren Betrieb des GM Press-Granulators auch bei unerwarteten Situationen.",
-          "3": "Der Keilriemenantrieb des GM Press-Granulators ist nicht nur wartungsfreundlich, sondern reduziert auch die Betriebskosten und macht Ihre Investition noch profitabler.",
-          "4": "Der Rotor und die Hauptwelle des GM Press-Granulators sind speziell für hochdichte Materialien entwickelt und können hohe Belastungen aushalten.",
-          "5": "Der GM Press-Granulator, ausgestattet mit einem IE4-Standardmotor, gewährleistet ein hohes Maß an Effizienz, spart Energie und schützt die Umwelt."
+          "1": "Die verstärkte konstruktion des GM-Press-Granulators gewährleistet maximale stabilität und zuverlässigkeit auch unter den schwierigsten bedingungen.",
+          "2": "Das pneumatische überlastventil und das sicherheitssystem in form eines schnittbolzens gewährleisten einen sicheren betrieb des GM-Press-Granulators auch bei unerwarteten situationen.",
+          "3": "Der keilriemenantrieb des GM-Press-Granulators ist nicht nur wartungsfreundlich, sondern reduziert auch die betriebskosten und macht ihre investition noch profitabler.",
+          "4": "Der rotor und die hauptwelle des GM-Press-Granulators sind speziell für hochdichte materialien entwickelt und können hohe belastungen aushalten.",
+          "5": "Der GM-Press-Granulator, ausgestattet mit einem IE4-standardmotor, gewährleistet ein hohes maß an effizienz, spart energie und schützt die umwelt."
         }
       },
       "temperatureBlock": {
         "title": {
-          "efficient": "Effizient",
+          "efficient": "Effiziente",
           "cooling": "Kühlung",
           "rollers": "Rollen"
         },
-        "subtitle": "Niedrige Temperatur",
+        "subtitle": "Niedrige temperatur",
         "descriptionBg": "Kühlung",
         "working": "Betriebstemperatur",
-        "shellAverage": "Oberflächentemperatur",
-        "bearingAverage": "Lager-Temperatur"
+        "shellAverage": "Durchschnittliche oberflächentemperatur",
+        "bearingAverage": "Durchschnittliche lagertemperatur"
       },
       "vibrationBlock": {
         "title": {
           "sensor": "Vibrationssensoren",
           "option": "(OPTIONAL)"
         },
-        "subtitle": "Smart frühe Erkennungssystem",
+        "subtitle": "Intelligentes frühwarnsystem",
         "descriptionBg": "Option",
         "frequency": "Frequenz (Hz)",
-        "period": "Period (t)",
+        "period": "Zeitperiode (t)",
         "sensor1": "Sensor 1",
         "sensor2": "Sensor 2",
-        "notification": "Frühe Warnung vor möglichen Ausfällen aufgrund von erhöhten Vibrationen"
+        "notification": "Frühe warnung vor möglichen ausfällen aufgrund von erhöhten vibrationen"
       },
       "safetyBlock": {
         "title": {
           "system": "System",
           "security": "Sicherheit"
         },
-        "subtitle": "Bei Überlast",
+        "subtitle": "Bei überlast",
         "descriptionBg": "Sicherheit",
         "safety": {
-          "bolt": "Schnittbolzen bei Überlast",
-          "emergency": "Endschalter für Notausgang der Presse"
+          "bolt": "Schnittbolzen bei überlast",
+          "emergency": "Notaus-schalter"
         }
       },
       "sensorsBlock": {
         "title": {
-          "sensors": "Sensoren und Module",
+          "sensors": "Sensoren und module",
           "model": "mit IO-Link"
         },
-        "subtitle": "Automatisierung mit minimalem Kabel und Fernsteuerung",
+        "subtitle": "Automatisierung mit minimalem kabel und fernsteuerung",
         "descriptionBg": "Automatisierung"
       },
       "specificationBlock": {
         "title": {
-          "dataSheet": "Technische Daten"
+          "dataSheet": "Technische daten"
         },
         "subtitle": "Spezifikation",
         "descriptionBg": "Spezifikation",
         "characteristics": {
-          "title": "Charakteristische Tabelle",
+          "title": "Charakteristische tabelle",
           "biomassOutput": "Biomasseausgang (t/h)*¹",
           "feedOutput": "Futterausgang (t/h)*¹",
-          "nominalEnginePower": "Nenn-Motorleistung (kW)",
+          "nominalEnginePower": "Nenn-motorleistung (kW)",
           "pressSpeed": "Pressgeschwindigkeit (U/min)",
           "mixerPower": "Mixerleistung (kW)",
-          "dimensions": "Abmessungen (mm)*² (LxWxH)",
+          "dimensions": "Abmessungen (mm)*² (LxBxH)",
           "weight": "Gewicht (t)*²",
-          "note1": "* Berechnung basierend auf Testwerten mit einer Matrize ⌀ 6/8 mm. Leistung kann je nach Rohmaterial, Materialvorbereitung und technischen Merkmalen der Matrize variieren.",
-          "note2": "* Informationen ohne Mischer."
+          "note1": "* Berechnung basierend auf testwerten mit einer matrize ⌀ 6/8 mm. Leistung kann je nach rohmaterial, materialvorbereitung und technischen merkmalen der matrize variieren.",
+          "note2": "* Informationen ohne mixer."
         }
+      }
+    },
+    "millMixer": {
+      "mainFeatures": {
+        "title": {
+          "characteristics": "Hauptmerkmale",
+          "mixer": "GM-Mischer"
+        },
+        "subtitle": "Homogene rohstoffaufbereitung",
+        "descriptionBg": "Merkmale",
+        "features": {
+          "1": "Die verstärkte konstruktion des GM-Mischer-Konditionierers gewährleistet eine gleichmäßige und stabile mischung der komponenten, auch bei der verarbeitung von schweren, feuchten und schwer zu verarbeitenden materialien, und sichert so eine hohe qualität des endprodukts.",
+          "2": "Mit fokus auf bedienfreundlichkeit: die wartungsklappe ermöglicht schnellen zugang zu den innenelementen, und die konstruktion mit leicht abnehmbaren schaufeln vereinfacht deren demontage und austausch erheblich.",
+          "3": "Optional: die ausstattung mit automatischer wasser- und flüssigkeitsdosierung gewährleistet eine maximale präzision durch die integration eines controllers und einer hocheffizienten ProMinent-Düse.",
+          "4": "Die speziell konstruierte verstärkte welle und das verbesserte schaufelsystem des GM-Mischer-Konditionierers ermöglichen eine intensive mischung der komponenten, widerstehen hohen mechanischen belastungen und behalten die optimale leistung unter allen betriebsbedingungen bei."
+        }
+      },
+      "steamSystemBlock": {
+        "title": {
+          "system": "Dampfversorgungssystem",
+          "intelligent": "Mit intelligentem",
+          "steam": "Dampfventil"
+        },
+        "subtitle": "Effiziente prozesssteuerung",
+        "descriptionBg": "Steuerung",
+        "notification": "Die kleine einstellschraube ermöglicht eine präzisere dampfvolumenregelung"
+      },
+      "AutomaticDosingWaterBlock": {
+        "title": {
+          "dosing": "Automatische dosierung",
+          "liquids": "Von wasser und flüssigkeiten"
+        },
+        "subtitle": "Ein präziseres zuführ- und dosiersystem\nmit ProMinent-Controller und düse",
+        "descriptionBg": "Automatisierung"
       }
     }
   },

@@ -114,8 +114,7 @@ export const createMuiTheme = (theme: Theme) => {
             // Стили для кнопок внутри контейнера
             '& .MuiButtonBase-root': {
               borderBottom: `1px solid ${theme.colors.mui.form.border.form}`,
-              height: 'auto',
-              backgroundColor: theme.colors.mui.form.secondary,
+              height: 'auto', 
             },
             // Стили для текста в списке
             '& .MuiListItemText-root': { width: '100px' },

@@ -1,34 +1,44 @@
 import SEO from './SEO';
 import { useSEO } from '../hooks/useSEO';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
+import { useTheme } from '../hooks/useTheme';
 
 function ServiceInformation() {
   const seoData = useSEO('serviceInformation');
-  const { i18n } = useTranslation()
-  const currentLanguage = i18n.language
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+  const theme = useTheme();
 
-  const containerStyle = 'w-full min-h-screen bg-gradient-to-b from-[#1A1B1C] to-[#282828] py-[100px] px-[30px] md:px-[100px] font-adventpro'
-  const titleStyle = 'text-[32px] md:text-[40px] text-gold_ font-medium mb-8 animate-fadeIn'
-  const sectionTitleStyle = 'text-[24px] text-gold_ font-medium mt-8 mb-4'
-  const listStyle = 'list-none space-y-2 text-gray-300'
-  const listItemStyle = 'hover:text-gold_ transition-colors duration-300'
+
+  const containerStyle = `w-full min-h-screen py-[100px] px-[30px] md:px-[100px] font-adventpro border ${
+    theme.name === 'dark'
+      ? 'bg-gradient-to-r from-[#1A1B1C] via-[#28292a] to-[#1A1B1C] border-[#2C2D2F]'
+      : 'bg-gradient-to-b from-[#F8F8F9] via-[#F2F2F2] to-[#ECECEC] border-[#82653F]'
+  }`;
+  const titleStyle = 'text-[32px] md:text-[40px] font-medium mb-8 animate-fadeIn text-[#82653F]';
+  const sectionTitleStyle = `text-[24px] font-medium mt-8 mb-4 text-[#82653F]`;
+  const listStyle = `list-none space-y-2 ${
+    theme.name === 'dark' ? 'text-[#D5CDBD]' : 'text-[#2A3242]'
+  }`;
+  const listItemStyle = 'hover:text-[#82653E] transition-colors duration-300';
+  const sectionStyle = `p-6 rounded-lg border ${
+    theme.name === 'dark'
+    ? 'bg-gradient-to-r from-[#1A1B1C] via-[#28292a] to-[#1A1B1C] border-[#2C2D2F]'
+    : 'bg-gradient-to-r from-[#F8F8F9] via-[#F2F2F2] to-[#F8F8F9] border-[#82653F]'
+  }`;
 
   return (
     <>
-      <SEO 
-        title={seoData.title}
-        description={seoData.description}
-        keywords={seoData.keywords}
-      />
+      <SEO title={seoData.title} description={seoData.description} keywords={seoData.keywords} />
       {currentLanguage === 'ru' && (
         <div className={containerStyle}>
-          <div className="max-w-4xl mx-auto">
+          <div className='max-w-4xl mx-auto'>
             <h1 className={titleStyle}>
               Служебная информация в соответствии с § 5 Закона о телемедиа (TMG)
             </h1>
             
             <div className="space-y-8">
-              <div className="bg-gradient-to-r from-[#1A1B1C] via-[#28292a] to-[#1A1B1C] p-6 rounded-lg border border-[#2C2D2F]">
+              <div className={sectionStyle}>
                 <ul className={listStyle}>
                   <li className={listItemStyle}>LKT Group GmbH</li>
                   <li className={listItemStyle}>Lindenstraße 48-52</li>
@@ -61,7 +71,9 @@ function ServiceInformation() {
               </div>
 
               <div>
-                <h2 className={sectionTitleStyle}>Идентификационный номер налога на добавленную стоимость (VAT ID)</h2>
+                <h2 className={sectionTitleStyle}>
+                  Идентификационный номер налога на добавленную стоимость (VAT ID)
+                </h2>
                 <ul className={listStyle}>
                   <li className={listItemStyle}>DE369065377</li>
                 </ul>
@@ -73,13 +85,11 @@ function ServiceInformation() {
 
       {currentLanguage === 'en' && (
         <div className={containerStyle}>
-          <div className="max-w-4xl mx-auto">
-            <h1 className={titleStyle}>
-              Legal Information According to § 5 TMG
-            </h1>
-            
-            <div className="space-y-8">
-              <div className="bg-gradient-to-r from-[#1A1B1C] via-[#28292a] to-[#1A1B1C] p-6 rounded-lg border border-[#2C2D2F]">
+          <div className='max-w-4xl mx-auto'>
+            <h1 className={titleStyle}>Legal Information According to § 5 TMG</h1>
+
+            <div className='space-y-8'>
+              <div className={sectionStyle}>
                 <ul className={listStyle}>
                   <li className={listItemStyle}>LKT Group GmbH</li>
                   <li className={listItemStyle}>Lindenstraße 48-52</li>
@@ -112,7 +122,9 @@ function ServiceInformation() {
               </div>
 
               <div>
-                <h2 className={sectionTitleStyle}>Value Added Tax Identification Number (VAT ID)</h2>
+                <h2 className={sectionTitleStyle}>
+                  Value Added Tax Identification Number (VAT ID)
+                </h2>
                 <ul className={listStyle}>
                   <li className={listItemStyle}>DE369065377</li>
                 </ul>
@@ -124,13 +136,11 @@ function ServiceInformation() {
 
       {currentLanguage === 'de' && (
         <div className={containerStyle}>
-          <div className="max-w-4xl mx-auto">
-            <h1 className={titleStyle}>
-              Impressum gemäß § 5 des Telemediengesetzes (TMG)
-            </h1>
-            
-            <div className="space-y-8">
-              <div className="bg-gradient-to-r from-[#1A1B1C] via-[#28292a] to-[#1A1B1C] p-6 rounded-lg border border-[#2C2D2F]">
+          <div className='max-w-4xl mx-auto'>
+            <h1 className={titleStyle}>Impressum gemäß § 5 des Telemediengesetzes (TMG)</h1>
+
+            <div className='space-y-8'>
+              <div className={sectionStyle}>
                 <ul className={listStyle}>
                   <li className={listItemStyle}>LKT Group GmbH</li>
                   <li className={listItemStyle}>Lindenstraße 48-52</li>
@@ -163,7 +173,9 @@ function ServiceInformation() {
               </div>
 
               <div>
-                <h2 className={sectionTitleStyle}>Umsatzsteuer-Identifikationsnummer (USt-IdNr.)</h2>
+                <h2 className={sectionTitleStyle}>
+                  Umsatzsteuer-Identifikationsnummer (USt-IdNr.)
+                </h2>
                 <ul className={listStyle}>
                   <li className={listItemStyle}>DE369065377</li>
                 </ul>
@@ -173,7 +185,7 @@ function ServiceInformation() {
         </div>
       )}
     </>
-  )
+  );
 }
 
-export default ServiceInformation
+export default ServiceInformation;

@@ -61,7 +61,8 @@
   },
   "titleBlock": {
     "needHelp": "Need help with measurements?",
-    "productDescription": "For granulation of biomass, RDF, \ncompound feed, and food products",
+    "granulatorProductDescription": "For granulation of biomass, RDF, \ncompound feed, and food products",
+    "mixerProductDescription": "For continuous mixing and\nmoistening of materials",
     "countPrice": "GET QUOTE"
   },
   "inputSizesBlock": {
@@ -72,13 +73,13 @@
     "drillingDiameter": "Hole diameter, mm",
     "surfaceType": "Surface type",
     "surfaceTypes": {
-      "default": "Не выбрано",
-      "perforated": "Перфорированная",
-      "ribbedClosed": "Рифленая (закрытая)",
-      "ribbedOpen": "Рифленая (открытая)",
-      "slantGrooved": "Косо-рифленая",
-      "fishBone": "Рыбья кость",
-      "arc": "Дуга"
+      "default": "Not selected",
+      "perforated": "Perforated",
+      "ribbedClosed": "Ribbed (closed)",
+      "ribbedOpen": "Ribbed (open)",
+      "slantGrooved": "Slant-ribbed",
+      "fishBone": "Fish bone",
+      "arc": "Arc"
     },
     "errors": {
       "emptyFieldError": "This field is blank"
@@ -133,16 +134,17 @@
     "GM650": "GM650",
     "GM850": "GM850"
   },
-  "rollerShellTypes": {
-    "forFlatDie": "For flat die",
-    "forRingDie": "For ring die",
-    "forTwinTrack": "For Twin-Track"
+  "mixerTypes": {
+    "GM-520": "GM-520",
+    "GM650": "GM650",
+    "GM850": "GM850",
+    "GM850D": "GM850D"
   },
   "diagrams": {
     "millGranulator": {
       "mainFeatures": {
         "title": {
-          "model": "GM Model",
+          "model": "GM model",
           "features": "Features"
         },
         "subtitle": "High-quality pellets",
@@ -219,6 +221,40 @@
           "note2": "* Information without a mixer."
         }
       }
+    },
+    "millMixer": {
+      "mainFeatures": {
+        "title": {
+          "characteristics": "Main characteristics",
+          "mixer": "GM mixer"
+        },
+        "subtitle": "Homogeneous raw material\npreparation",
+        "descriptionBg": "Characteristics",
+        "features": {
+          "1": "The reinforced construction of the GM mixer-conditioner ensures uniform and stable mixing of components even when working with heavy, wet, and difficult-to-process materials, ensuring high quality of the finished product.",
+          "2": "With a focus on ease of operation: the presence of a service hatch allows quick access to internal elements, and the design with easily removable blades significantly simplifies their disassembly and replacement.",
+          "3": "Optional: the automatic water and liquid dosing system ensures maximum precise supply through the integration of a controller and high-efficiency ProMinent nozzle.",
+          "4": "The specially designed reinforced shaft and improved blade system of the GM mixer-conditioner provide intensive mixing of components, withstanding high mechanical loads and maintaining optimal performance under any operating conditions."
+        }
+      },
+      "steamSystemBlock": {
+        "title": {
+          "system": "Steam supply system",
+          "intelligent": "With intelligent",
+          "steam": "Steam valve"
+        },
+        "subtitle": "Efficient process control",
+        "descriptionBg": "Control",
+        "notification": "The small adjustment screw enables more precise steam volume regulation"
+      },
+      "AutomaticDosingWaterBlock": {
+        "title": {
+          "dosing": "Automatic dosing",
+          "liquids": "Of water and liquids"
+        },
+        "subtitle": "A more precise supply and dosing system\nwith ProMinent controller and nozzle",
+        "descriptionBg": "Automation"
+      }
     }
   },
   "about": {
@@ -293,3 +329,4 @@
     "privacyPolicy": "Privacy policy"
   }
 }
+
