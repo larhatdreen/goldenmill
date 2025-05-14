@@ -537,7 +537,7 @@ const MobileProductLanding: React.FC = () => {
               {/* Price Button */}
               <CountButton
                 className="w-[282px] max-w-full aspect-[282/58] font-bebas text-white text-[24px] flex items-center justify-center bg-contain bg-no-repeat mt-4"
-                src={button}
+                src={<img src={button} alt="pricebtn" />}
                 defaultValue={product.price ? formatPrice(product.price) : t('products.onRequest')}
                 onClick={handleOpenHelpModal}
               />

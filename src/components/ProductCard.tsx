@@ -414,7 +414,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           >
             <CountButton
               className="relative z-[1] w-[200px] aspect-[282/58] font-bebas text-[#FFFFFF] flex items-center justify-center bg-contain bg-no-repeat transition-colors duration-300 select-none"
-              src={button}
+              src={<img src={button} alt="sectionbtn" />}
               defaultValue={price ? formatPrice(price) : t('products.onRequest')}
               style={{
                 fontFamily: 'Bebas Neue',
