@@ -71,9 +71,9 @@
       "granulation": "Granulierung",
       "type": "Typ",
       "productType": "Produkttyp",
-      "matrices": "Matrizen",
-      "shells": "Gehäuse",
-      "spareParts": "Ersatzteile",
+      "granulators": "Matrizen",
+      "mixers": "Gehäuse",
+      "spare-parts": "Ersatzteile",
       "applicationsTitle": "Anwendungsbereiche",
       "select": "Auswählen",
       "reset": "Zurücksetzen",
@@ -436,51 +436,51 @@
   },
   "seo": {
     "home": {
-      "title": "GoldenDie - Industrieausrüstung und Ersatzteile",
+      "title": "GoldenMill - Industrieausrüstung und Ersatzteile",
       "description": "Hochwertige Industrieausrüstung, Ersatzteile und Lösungen für Pelletpressen und Industrieanlagen. Expertenfertigung mit moderner Technologie.",
       "keywords": "Industrieausrüstung, Ersatzteile, Pelletpressen, Fertigung, Industrielösungen"
     },
     "matrix": {
-      "title": "Pelletpressenmatrizen | GoldenDie",
+      "title": "Pelletpressenmatrizen | GoldenMill",
       "description": "Professionelle Matrizen für verschiedene Arten von Pelletpressen. Höchste Fertigungsqualität, präzise Geometrie, lange Lebensdauer.",
       "keywords": "Pelletpressenmatrizen, Industriematrizen, Pelletpressenteile"
     },
     "shell": {
-      "title": "Industriegehäuse | GoldenDie",
+      "title": "Industriegehäuse | GoldenMill",
       "description": "Herstellung hochwertiger Industriegehäuse. Individueller Ansatz, präzise Fertigung, zuverlässiger Betrieb.",
       "keywords": "Industriegehäuse, Gehäuseherstellung, Anlagenteile"
     },
     "about": {
-      "title": "Über GoldenDie",
-      "description": "GoldenDie - führender Hersteller von Industrieanlagen und Ersatzteilen. Erfahren Sie mehr über unsere Geschichte, Mission und Qualitätsanspruch.",
-      "keywords": "über goldendie, Firmengeschichte, Mission, Anlagenfertigung"
+      "title": "Über GoldenMill",
+      "description": "GoldenMill - führender Hersteller von Industrieanlagen und Ersatzteilen. Erfahren Sie mehr über unsere Geschichte, Mission und Qualitätsanspruch.",
+      "keywords": "über GoldenMill, Firmengeschichte, Mission, Anlagenfertigung"
     },
     "contacts": {
-      "title": "Kontakt | GoldenDie",
-      "description": "Kontaktieren Sie GoldenDie für Anlagen- und Ersatzteilbestellungen. Professionelle Beratung, individueller Ansatz für jeden Kunden.",
-      "keywords": "Kontakt goldendie, Anlagenbestellung, Beratung"
+      "title": "Kontakt | GoldenMill",
+      "description": "Kontaktieren Sie GoldenMill für Anlagen- und Ersatzteilbestellungen. Professionelle Beratung, individueller Ansatz für jeden Kunden.",
+      "keywords": "Kontakt GoldenMill, Anlagenbestellung, Beratung"
     },
     "serviceInformation": {
-      "title": "Serviceinformationen | GoldenDie",
-      "description": "Wichtige Informationen über Service und Wartung von GoldenDie-Anlagen. Empfehlungen für Betrieb und technische Wartung.",
+      "title": "Serviceinformationen | GoldenMill",
+      "description": "Wichtige Informationen über Service und Wartung von GoldenMill-Anlagen. Empfehlungen für Betrieb und technische Wartung.",
       "keywords": "Serviceinformationen, Anlagenwartung, technischer Support"
     },
     "privacyPolicy": {
-      "title": "Datenschutzerklärung | GoldenDie",
-      "description": "GoldenDie Datenschutzerklärung. Informationen über die Verarbeitung personenbezogener Daten und den Schutz der Privatsphäre der Nutzer.",
+      "title": "Datenschutzerklärung | GoldenMill",
+      "description": "GoldenMill Datenschutzerklärung. Informationen über die Verarbeitung personenbezogener Daten und den Schutz der Privatsphäre der Nutzer.",
       "keywords": "Datenschutzerklärung, Datenschutz, personenbezogene Daten"
     },
     "product": {
       "title": "{{productName}} | Industrieausrüstung",
-      "description": "{{productDescription}}. Hochwertige Industrieausrüstung von GoldenDie. Kategorie: {{category}}",
+      "description": "{{productDescription}}. Hochwertige Industrieausrüstung von GoldenMill. Kategorie: {{category}}",
       "keywords": "{{productName}}, Industrieausrüstung, {{category}}, Fertigung, Ersatzteile"
     },
     "spareParts": {
-      "title": "Ersatzteile | GoldenDie - Hochwertige Industrieausrüstung",
+      "title": "Ersatzteile | GoldenMill - Hochwertige Industrieausrüstung",
       "description": "Entdecken Sie unser umfangreiches Sortiment an hochwertigen Ersatzteilen für Industrieanlagen. Maßgefertigte Lösungen für Pelletpressen und mehr.",
-      "keywords": "Ersatzteile, Industrieausrüstung, Pelletpressen, Matrizen, Gehäuse, Industrieanlagen, Granulierung, GoldenDie"
+      "keywords": "Ersatzteile, Industrieausrüstung, Pelletpressen, Matrizen, Gehäuse, Industrieanlagen, Granulierung, GoldenMill"
     },
-    "defaultTitle": "GoldenDie - Industrieanlagen und Ersatzteile",
+    "defaultTitle": "GoldenMill - Industrieanlagen und Ersatzteile",
     "defaultDescription": "Hochwertige Industrieanlagen, Ersatzteile und Lösungen für Pelletpressen und Industrieanlagen. Experten-Fertigung mit modernster Technologie.",
     "defaultKeywords": "Industrieanlagen, Ersatzteile, Pelletpressen, Fertigung, Industrielösungen"
   },

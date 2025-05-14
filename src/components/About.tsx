@@ -13,6 +13,7 @@ import { getColor } from '../theme/utils';
 
 export default function About() {
   const isLG = useMediaQuery('(min-width:1120px)');
+  const isLGText = useMediaQuery('(min-width:1450px)');
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
   const seoData = useSEO('about');
@@ -125,7 +126,7 @@ export default function About() {
         )}
 
         <div
-          className='right-0 w-1/2 font-adventpro text-[18px] md:text-[22px] lg:text-[24px] whitespace-pre-wrap'
+          className='right-0 w-1/2 font-adventpro md:text-[22px] lg:text-[24px] whitespace-pre-wrap'
           style={{
             width: !isLG ? '100%' : '50%',
             marginTop: !isLG ? '' : '223px ',
@@ -135,6 +136,7 @@ export default function About() {
             top: !isLG ? '' : '0',
             right: !isLG ? '' : '0',
             color: getColor(theme, 'text'),
+            fontSize: isLGText ? '18px' : 'clamp(12px, 1.32vw, 18px)'
           }}
         >
           {t('about.about.text')}
@@ -150,7 +152,7 @@ export default function About() {
                 style={{ backgroundColor: getColor(theme, 'particle') }}
               />
               <span
-                className='relative font-bebas text-[60px] md:text-[70px] lg:text-[80px]'
+                className='relative font-bebas text-[52px] laptop:text-[60px] md:text-[70px] lg:text-[80px] whitespace-nowrap'
                 style={{ color: getColor(theme, 'title') }}
               >
                 {t('about.history.title')}

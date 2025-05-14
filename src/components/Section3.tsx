@@ -24,8 +24,8 @@ function Section3() {
         <section className='flex flex-col tablet:flex-row justify-center mt-[15%] w-full px-[5%] max-w-[1920px]'>
             <svg
                 id='section3'
-                className='w-[60%] tablet:w-[40%]'
-                viewBox={`0 0 650 ${isLG ? '733' : '450'}`}
+                className='w-[100%] tablet:w-[40%]'
+                viewBox={`0 0 650 ${isLG ? '733' : '300'}`}
                 fill='none'
                 xmlns='http://www.w3.org/2000/svg'
                 style={{ position: isLG ? 'absolute' : undefined, left: '10.5%' }}
@@ -87,11 +87,11 @@ function Section3() {
 
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1300 1200"
+                viewBox={`0 0 ${isLG ? '1300' : '1100'} ${isLG ? '1200' : '1100'}`}
                 fill="none"
-                className='w-[60%] tablet:w-[70%]'
+                className='w-[100%] tablet:w-[70%]'
             >
-                <g transform="translate(300, 300)">
+                <g transform="translate(100, 200)">
                 <foreignObject x={0} y={0} width={280} height={80}>
                     <text
                         className='font-adventpro text-[25px]'

@@ -1,6 +1,6 @@
-# GoldenDie API Server
+# GoldenMill API Server
 
-Сервер API для управления продуктами в админ-панели GoldenDie.
+Сервер API для управления продуктами в админ-панели GoldenMill.
 
 ## Требования
 

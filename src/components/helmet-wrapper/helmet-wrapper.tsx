@@ -6,18 +6,18 @@ export const HelmetWrapper = () => {
   
   useEffect(() => {
     const path = location.pathname;
-    let title = 'Golden Die';
+    let title = 'Golden Mill';
     let description = 'Default description';
 
     // Определяем заголовок на основе пути
     if (path.includes('/granulator')) {
-      title = 'Golden Die | Matrix';
-      description = 'Matrix page description';
-    } else if (path.includes('/shell')) {
-      title = 'Golden Die | Shell';
-      description = 'Shell page description';
+      title = 'Golden Mill | Granulator';
+      description = 'Granulator page description';
+    } else if (path.includes('/mixer')) {
+      title = 'Golden Mill | Mixer';
+      description = 'Mixer page description';
     } else if (path.includes('/about')) {
-      title = 'Golden Die | About';
+      title = 'Golden Mill | About';
       description = 'About page description';
     }
     // и т.д. для других путей

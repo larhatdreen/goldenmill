@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://goldendie.de/sitemap.xml
+Sitemap: https://goldenmill.de/sitemap.xml
 
 # Prevent crawling of admin and private areas
 Disallow: /admin/
@@ -24,7 +24,7 @@ Allow: /fonts/
 Crawl-delay: 10
 
 # Host directive for preferred domain version
-Host: https://goldendie.de
+Host: https://goldenmill.de
 
 # Additional rules for specific bots
 User-agent: Googlebot

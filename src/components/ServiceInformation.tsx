@@ -58,7 +58,7 @@ function ServiceInformation() {
                 <h2 className={sectionTitleStyle}>Контакт</h2>
                 <ul className={listStyle}>
                   <li className={listItemStyle}>Телефон: +49(0)2119891272</li>
-                  <li className={listItemStyle}>Электронная почта: info@goldendie.de</li>
+                  <li className={listItemStyle}>Электронная почта: info@goldenmill.de</li>
                 </ul>
               </div>
 
@@ -109,7 +109,7 @@ function ServiceInformation() {
                 <h2 className={sectionTitleStyle}>Contact</h2>
                 <ul className={listStyle}>
                   <li className={listItemStyle}>Phone: +49 (0) 2119891272</li>
-                  <li className={listItemStyle}>Email: info@goldendie.de</li>
+                  <li className={listItemStyle}>Email: info@goldenmill.de</li>
                 </ul>
               </div>
 
@@ -160,7 +160,7 @@ function ServiceInformation() {
                 <h2 className={sectionTitleStyle}>Kontakt</h2>
                 <ul className={listStyle}>
                   <li className={listItemStyle}>Telefon: +49 (0) 2119891272</li>
-                  <li className={listItemStyle}>E-Mail: info@goldendie.de</li>
+                  <li className={listItemStyle}>E-Mail: info@goldenmill.de</li>
                 </ul>
               </div>
 

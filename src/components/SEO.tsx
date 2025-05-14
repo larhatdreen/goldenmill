@@ -36,10 +36,10 @@ const SEO: React.FC<SEOProps> = ({
   const currentLanguage = i18n.language;
 
   const site = {
-    name: 'GoldenDie - LKE Group GmbH',
-    url: 'https://goldendie.de',
-    logo: 'https://goldendie.de/logo.svg',
-    email: 'info@goldendie.de',
+    name: 'GoldenMill - LKE Group GmbH',
+    url: 'https://goldenmill.de',
+    logo: 'https://goldenmill.de/logo.svg',
+    email: 'info@goldenmill.de',
     phone: '+49...',
     companyName: 'LKE Group GmbH'
   };
@@ -47,7 +47,7 @@ const SEO: React.FC<SEOProps> = ({
   const seo = {
     title: title ? `${title} | ${site.companyName}` : t('seo.defaultTitle'),
     description: description || t('seo.defaultDescription'),
-    keywords: keywords ? `${keywords}, LKE Group GmbH, GoldenDie` : t('seo.defaultKeywords'),
+    keywords: keywords ? `${keywords}, LKE Group GmbH, GoldenMill` : t('seo.defaultKeywords'),
     image: image || `${site.url}/default-og-image.jpg`,
     url: `${site.url}${location.pathname}`
   };

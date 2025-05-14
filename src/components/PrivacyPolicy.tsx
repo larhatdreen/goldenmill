@@ -130,7 +130,7 @@ function PrivacyPolicy() {
                 <h2 className={sectionTitleStyle}>11. Контактная информация</h2>
                 <p className={textStyle}>
                   Для запросов по вопросам конфиденциальности обращайтесь по следующим контактам: LKT Group GmbH Lindenstraße
-                  48-52, 40233 Düsseldorf, Германия Электронная почта: info@goldendie.de
+                  48-52, 40233 Düsseldorf, Германия Электронная почта: info@goldenmill.de
                 </p>
               </section>
 
@@ -254,7 +254,7 @@ function PrivacyPolicy() {
                 <h2 className={sectionTitleStyle}>11. Kontaktinformationen</h2>
                 <p className={textStyle}>
                   Für Datenschutzanfragen kontaktieren Sie uns bitte unter: LKT Group GmbH Seibelstraße 26, 40822 Mettmann,
-                  Deutschland E-Mail: info@goldendie.de
+                  Deutschland E-Mail: info@goldenmill.de
                 </p>
               </section>
 
@@ -375,7 +375,7 @@ function PrivacyPolicy() {
                 <h2 className={sectionTitleStyle}>11. Contact Information</h2>
                 <p className={textStyle}>
                   For privacy inquiries, please contact us at: LKT Group GmbH Lindenstraße 48-52, 40233 Düsseldorf,
-                  Germany Email: info@goldendie.de
+                  Germany Email: info@goldenmill.de
                 </p>
               </section>
 

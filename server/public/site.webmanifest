@@ -1,14 +1,14 @@
 {
   "name": {
-    "en": "GoldenDie - LKE Group GmbH | Dies and Roller Shells for Pellet Mills",
-    "de": "GoldenDie - LKE Group GmbH | Matrizen und Presswalzen für Pelletpressen",
-    "ru": "GoldenDie - LKE Group GmbH | Матрицы и ролики для грануляторов"
+    "en": "GoldenMill - LKE Group GmbH | Dies and Roller Shells for Pellet Mills",
+    "de": "GoldenMill - LKE Group GmbH | Matrizen und Presswalzen für Pelletpressen",
+    "ru": "GoldenMill - LKE Group GmbH | Матрицы и ролики для грануляторов"
   },
-  "short_name": "GoldenDie",
+  "short_name": "GoldenMill",
   "description": {
-    "en": "GoldenDie - LKE Group GmbH - manufacturer of high-quality dies, roller shells, and spare parts for pellet mills. Custom manufacturing according to customer specifications.",
-    "de": "GoldenDie - LKE Group GmbH - Hersteller von hochwertigen Matrizen, Presswalzen und Ersatzteilen für Pelletpressen. Kundenspezifische Fertigung nach Kundenvorgaben.",
-    "ru": "GoldenDie - LKE Group GmbH - производитель высококачественных матриц, роликов и запчастей для грануляторов. Индивидуальное производство по спецификациям заказчика."
+    "en": "GoldenMill - LKE Group GmbH - manufacturer of high-quality dies, roller shells, and spare parts for pellet mills. Custom manufacturing according to customer specifications.",
+    "de": "GoldenMill - LKE Group GmbH - Hersteller von hochwertigen Matrizen, Presswalzen und Ersatzteilen für Pelletpressen. Kundenspezifische Fertigung nach Kundenvorgaben.",
+    "ru": "GoldenMill - LKE Group GmbH - производитель высококачественных матриц, роликов и запчастей для грануляторов. Индивидуальное производство по спецификациям заказчика."
   },
   "icons": [
     {
@@ -50,7 +50,7 @@
   "lang": ["en", "de", "ru"],
   "dir": "ltr",
   "orientation": "portrait-primary",
-  "categories": ["business", "manufacturing", "industrial", "machinery", "equipment", "spare parts", "dies", "shells"],
+  "categories": ["business", "manufacturing", "industrial", "machinery", "equipment", "spare parts", "dies", "mixers"],
   "product_categories": {
     "matrix": {
       "en": "Dies and Matrices",
@@ -105,14 +105,14 @@
     },
     {
       "name": {
-        "en": "Roller Shells",
+        "en": "Mixers",
         "de": "Presswalzen",
-        "ru": "Ролики"
+        "ru": "Миксеры"
       },
       "url": {
-        "en": "/en/shell",
-        "de": "/de/shell",
-        "ru": "/ru/shell"
+        "en": "/en/mixer",
+        "de": "/de/mixer",
+        "ru": "/ru/mixer"
       },
       "description": {
         "en": "Premium roller shells for pellet mills from LKE Group GmbH",
@@ -150,17 +150,18 @@
   },
   "author": {
     "name": "LKE Group GmbH",
-    "website": "https://goldendie.de",
+    "website": "https://goldenmill.de",
     "github": "",
     "twitter": ""
   },
-  "homepage_url": "https://goldendie.de",
+  "homepage_url": "https://goldenmill.de",
   "keywords": [
-    "GoldenDie",
+    "goldenmill",
     "LKE Group GmbH",
     "dies",
-    "matrices",
+    "granulators",
     "roller shells",
+    "mixers",
     "spare parts",
     "pellet mills",
     "hammer mills",

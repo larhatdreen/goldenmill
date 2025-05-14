@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useMediaQuery } from '@mui/material'
 import { useTheme } from '../hooks/useTheme';
-import React, { useState } from 'react'
+import { useState } from 'react'
 import LogoIcon from './customIcons/LogoIcon';
 import { getColor, getLocalThemeColor } from '../theme/utils';
 const items = [
@@ -56,19 +56,12 @@ function GMFeaturesSVG() {
   const textX = barX + 2 + 17;
   const maxTextWidth = 650;
 
-  const handleWheel = (e: React.WheelEvent<SVGSVGElement>) => {
-    e.preventDefault();
-    if (e.deltaY > 0 && active < items.length - 1) setActive(active + 1);
-    else if (e.deltaY < 0 && active > 0) setActive(active - 1);
-  };
-
   return (
     <svg
       viewBox={`0 0 800 ${svgHeight}`}
-      className='w-[60%] tablet:w-[40%]'
+      className='w-[100%] tablet:w-[40%]'
       height="auto"
       style={{ display: 'block' }}
-      onWheel={handleWheel}
     >
       {/* Вертикальный бар */}
       <rect x={barX} y={barY} width={barWidth} height={barHeight} rx={2} fill={numberColor} />
@@ -82,45 +75,47 @@ function GMFeaturesSVG() {
         fill={sliderColor}
         style={{ transition: 'all 0.4s cubic-bezier(.4,0,.2,1)' }}
       />
-      {items.map((item, i) => {
-        const isActive = i === active;
-        const y = topPadding + i * (sectionHeight + itemGap) + sectionHeight / 2;
-        const color = isActive ? numberActiveColor : numberColor;
-        const fontSize = isActive ? 108 : 45;
-        return (
-          <g key={i} style={{ transition: 'all 0.4s cubic-bezier(.4,0,.2,1)' }}>
-            <text
-              x={numberX}
-              y={y}
-              fill={color}
-              fontSize={fontSize}
-              className='font-["Bebas_Neue"]'
-              style={{ cursor: 'pointer', transition: 'all 0.4s cubic-bezier(.4,0,.2,1)' }}
-              onClick={() => setActive(i)}
-              alignmentBaseline="middle"
-            >
-              {item.number}
-            </text>
-            <foreignObject x={textX} y={y - sectionHeight / 2} width={maxTextWidth} height={sectionHeight}>
-              <div
-                style={{
-                  fontSize: 25,
-                  color: isActive ? textActiveColor : textColor,
-                  lineHeight: '100%',
-                  wordBreak: 'break-word',
-                  whiteSpace: 'pre-line',
-                  height: sectionHeight,
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-                className="font-adventpro"
-              >
-                {t(item.textKey)}
-              </div>
-            </foreignObject>
-          </g>
-        );
-      })}
+     {items.map((item, i) => {
+  const isActive = i === active;
+  const y = topPadding + i * (sectionHeight + itemGap) + sectionHeight / 2;
+  const color = isActive ? numberActiveColor : numberColor;
+  const fontSize = isActive ? 108 : 45;
+  return (
+    <g
+      key={i}
+      style={{ transition: 'all 0.4s cubic-bezier(.4,0,.2,1)', cursor: 'pointer' }}
+      onMouseEnter={() => setActive(i)} // 💡 активация при ховере
+    >
+      <text
+        x={numberX}
+        y={y}
+        fill={color}
+        fontSize={fontSize}
+        className='font-["Bebas_Neue"]'
+        alignmentBaseline="middle"
+      >
+        {item.number}
+      </text>
+      <foreignObject x={textX} y={y - sectionHeight / 2} width={maxTextWidth} height={sectionHeight}>
+        <div
+          style={{
+            fontSize: 25,
+            color: isActive ? textActiveColor : textColor,
+            lineHeight: '100%',
+            wordBreak: 'break-word',
+            whiteSpace: 'pre-line',
+            height: sectionHeight,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+          className="font-adventpro"
+        >
+          {t(item.textKey)}
+        </div>
+      </foreignObject>
+    </g>
+  );
+})}
     </svg>
   );
 }
@@ -130,14 +125,14 @@ function Section1() {
   const isLG = useMediaQuery('(min-width:768px)')
   const theme = useTheme();
   return (
-    <section className='flex flex-col tablet:flex-row justify-center mt-[15%] w-full px-[5%] max-w-[1920px] gap-[20px]'>
+    <section className='flex flex-col tablet:flex-row justify-center mt-[15%] w-full px-[5%] max-w-[1920px] tablet:gap-[20px]'>
       <svg
         id='section1'
-        className='w-[60%] tablet:w-[40%]'
-        viewBox={`0 0 850 ${isLG ? '833' : '450'}`}
+        className='w-[100%] tablet:w-[40%]'
+        viewBox={`0 0 850 ${isLG ? '833' : '250'}`}
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
-        style={{position: isLG ? undefined : 'absolute'}}
+        // style={{position: isLG ? undefined : 'absolute'}}
       >
         <svg className='hidden tablet:block '>
           <g filter='url(#filter0_b_20_1296)'>

@@ -23,7 +23,7 @@ const PRODUCTS_DIR = path.join(PUBLIC_DIR, 'img', 'products');
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173', 'https://goldendie.de'],
+  origin: ['http://localhost:3000', 'http://localhost:5173', 'https://goldenmill.de'],
   credentials: true
 }));
 app.use(express.json());

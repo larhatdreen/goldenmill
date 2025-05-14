@@ -139,9 +139,9 @@ const ProductsSection = () => {
   const [activeTab, setActiveTab] = useState('catalog');
 
   const categories = [
-    { value: 'matrices', label: t('products.matrices') },
-    { value: 'shells', label: t('products.shells') },
-    { value: 'spare-parts', label: t('products.spareParts') }
+    { value: 'granulators', label: t('products.granulators') },
+    { value: 'mixers', label: t('products.mixers') },
+    { value: 'spare-parts', label: t('products.spare-parts') }
   ];
 
   const applications = [

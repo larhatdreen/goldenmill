@@ -13,7 +13,7 @@ const configs: Record<string, ConsentConfigType> = {
     logLevel: 'debug',
   },
   production: {
-    backendUrl: 'https://api.goldendie.com',
+    backendUrl: 'https://api.goldenmill.com',
     cookieEncryption: true,
     logLevel: 'error',
   },

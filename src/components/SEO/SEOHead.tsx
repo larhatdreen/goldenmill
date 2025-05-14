@@ -11,15 +11,15 @@ interface SEOProps {
 }
 
 export const SEOHead: React.FC<SEOProps> = ({
-  title = 'Golden Die - Industrial Equipment Parts',
-  description = 'GOLDENDIE supplies technical spare parts for industrial equipment, including dies, shells, rollers for pellet mills, eccentric shafts, hammers, and more.',
-  keywords = 'industrial equipment, spare parts, dies, shells, rollers, pellet mills',
+  title = 'Golden Mill - Industrial Equipment Parts',
+  description = 'GOLDENMILL supplies technical spare parts for industrial equipment, including dies, mixers, rollers for pellet mills, eccentric shafts, hammers, and more.',
+  keywords = 'industrial equipment, spare parts, dies, shells, mixers, rollers, pellet mills',
   image = '/logo.svg',
   article = false,
   noindex = false,
 }) => {
   const { pathname } = useLocation();
-  const siteUrl = 'https://goldendie.de'; // Замените на ваш домен
+  const siteUrl = 'https://goldenmill.de'; // Замените на ваш домен
 
   const seo = {
     title: title,
@@ -37,7 +37,7 @@ export const SEOHead: React.FC<SEOProps> = ({
     description: seo.description,
     publisher: {
       '@type': 'Organization',
-      name: 'Golden Die',
+      name: 'Golden Mill',
       logo: {
         '@type': 'ImageObject',
         url: `${siteUrl}/logo.svg`,

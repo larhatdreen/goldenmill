@@ -71,9 +71,9 @@
       "granulation": "Granulation",
       "type": "Type",
       "productType": "Product Type",
-      "matrices": "Matrices",
-      "shells": "Shells",
-      "spareParts": "Spare Parts",
+      "granulators": "Matrices",
+      "mixers": "Shells",
+      "spare-parts": "Spare Parts",
       "applicationsTitle": "Applications",
       "select": "Select",
       "reset": "Reset",
@@ -479,51 +479,51 @@
   },
   "seo": {
     "home": {
-      "title": "GoldenDie - Industrial Equipment and Spare Parts",
+      "title": "GoldenMill - Industrial Equipment and Spare Parts",
       "description": "High-quality industrial equipment, spare parts, and solutions for pellet mills and industrial facilities. Expert manufacturing with modern technology.",
       "keywords": "industrial equipment, spare parts, pellet mills, manufacturing, industrial solutions"
     },
     "matrix": {
-      "title": "Pellet Mill Matrices | GoldenDie",
+      "title": "Pellet Mill Matrices | GoldenMill",
       "description": "Professional matrices for various types of pellet mills. High manufacturing quality, precise geometry, long service life.",
       "keywords": "pellet mill matrices, industrial matrices, pellet mill parts"
     },
     "shell": {
-      "title": "Industrial Shells | GoldenDie",
+      "title": "Industrial Shells | GoldenMill",
       "description": "Manufacturing of high-quality industrial shells. Individual approach, precise manufacturing, reliable operation.",
       "keywords": "industrial shells, shell manufacturing, equipment parts"
     },
     "about": {
-      "title": "About GoldenDie",
-      "description": "GoldenDie - leading manufacturer of industrial equipment and spare parts. Learn about our history, mission, and commitment to quality.",
-      "keywords": "about goldendie, company history, mission, equipment manufacturing"
+      "title": "About GoldenMill",
+      "description": "GoldenMill - leading manufacturer of industrial equipment and spare parts. Learn about our history, mission, and commitment to quality.",
+      "keywords": "about GoldenMill, company history, mission, equipment manufacturing"
     },
     "contacts": {
-      "title": "Contact Us | GoldenDie",
-      "description": "Contact GoldenDie for equipment and spare parts orders. Professional consultation, individual approach to each client.",
-      "keywords": "contact goldendie, order equipment, consultation"
+      "title": "Contact Us | GoldenMill",
+      "description": "Contact GoldenMill for equipment and spare parts orders. Professional consultation, individual approach to each client.",
+      "keywords": "contact GoldenMill, order equipment, consultation"
     },
     "serviceInformation": {
-      "title": "Service Information | GoldenDie",
-      "description": "Important information about GoldenDie equipment service and maintenance. Recommendations for operation and technical maintenance.",
+      "title": "Service Information | GoldenMill",
+      "description": "Important information about GoldenMill equipment service and maintenance. Recommendations for operation and technical maintenance.",
       "keywords": "service information, equipment maintenance, technical support"
     },
     "privacyPolicy": {
-      "title": "Privacy Policy | GoldenDie",
-      "description": "GoldenDie Privacy Policy. Information about personal data processing and user privacy protection.",
+      "title": "Privacy Policy | GoldenMill",
+      "description": "GoldenMill Privacy Policy. Information about personal data processing and user privacy protection.",
       "keywords": "privacy policy, data protection, personal data"
     },
     "product": {
       "title": "{{productName}} | Industrial Equipment",
-      "description": "{{productDescription}}. High-quality industrial equipment by GoldenDie. Category: {{category}}",
+      "description": "{{productDescription}}. High-quality industrial equipment by GoldenMill. Category: {{category}}",
       "keywords": "{{productName}}, industrial equipment, {{category}}, manufacturing, spare parts"
     },
     "spare-parts": {
-      "title": "Spare Parts | GoldenDie - High-Quality Industrial Equipment",
+      "title": "Spare Parts | GoldenMill - High-Quality Industrial Equipment",
       "description": "Explore our extensive range of high-quality spare parts for industrial equipment. Custom solutions for pellet mills and more.",
-      "keywords": "spare parts, industrial equipment, pellet mills, dies, shells, industrial facilities, granulation, GoldenDie"
+      "keywords": "spare parts, industrial equipment, pellet mills, dies, shells, industrial facilities, granulation, GoldenMill"
     },
-    "defaultTitle": "GoldenDie - Industrial Equipment and Spare Parts",
+    "defaultTitle": "GoldenMill - Industrial Equipment and Spare Parts",
     "defaultDescription": "High-quality industrial equipment, spare parts, and solutions for pellet mills and industrial facilities. Expert manufacturing with modern technology.",
     "defaultKeywords": "industrial equipment, spare parts, pellet mills, manufacturing, industrial solutions"
   },

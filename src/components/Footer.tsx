@@ -144,16 +144,16 @@ function Footer() {
           backgroundColor: getColor(theme, 'footer.bottom'),
         }}
       >
-        <span className={`text-start ${isDark ? 'text-[#605C53]' : 'text-[#9FA3AC]'}`}>
+        <span className={`text-start ${isDark ? 'text-[#767676]' : 'text-[#898989]'}`}>
           {t('subFooter.copyright')}
         </span>
         <Link to={getURLWithLang('serviceinformation', lang!)} onClick={() => scrollToTop(1000)}>
-          <span className={`text-start ${isDark ? 'text-[#605C53] hover:text-[#D5CDBD]' : 'text-[#9FA3AC] hover:text-[#2A3242]'}`}>
+          <span className={`text-start ${isDark ? 'text-[#767676] hover:text-[#D5CDBD]' : 'text-[#898989] hover:text-[#2A3242]'}`}>
             {t('subFooter.serviceInfo')}
           </span>
         </Link>
         <Link to={getURLWithLang('privacypolicy', lang!)} onClick={() => scrollToTop(1000)}>
-          <span className={`text-end ${isDark ? 'text-[#605C53] hover:text-[#D5CDBD]' : 'text-[#9FA3AC] hover:text-[#2A3242]'}`}>
+          <span className={`text-end ${isDark ? 'text-[#767676] hover:text-[#D5CDBD]' : 'text-[#898989] hover:text-[#2A3242]'}`}>
             {t('subFooter.privacyPolicy')}
           </span>
         </Link>

@@ -16,11 +16,10 @@ import GranulatorModel1 from './customIcons/Model(GM420-GM520).js';
 import GranulatorModel2 from './customIcons/Model(GM650).js';
 import GranulatorModel3 from './customIcons/Model(GM850).js';
 import Modal from './Modal.js';
-// import { onPointerEnterCircle, onPointerLeaveCircle } from '../functions/Functions.js';
-import FlatShell from './customIcons/FlatShell.js';
-import RingShell from './customIcons/RingShell.js';
-import TwinTrackShell from './customIcons/TwinTrackShell.js';
-import TwinTrackShell2 from './customIcons/TwinTrackShell2.js';
+import FlatMixer from './customIcons/FlatMixer.js';
+import RingMixer from './customIcons/RingMixer.js';
+import TwinTrackMixer from './customIcons/TwinTrackMixer.js';
+import TwinTrackMixer2 from './customIcons/TwinTrackMixer2.js';
 import ModalInfo from './ModalInfo.js';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
@@ -30,14 +29,14 @@ import ButtonIcon from './customIcons/ButtonIcon';
 
 
 // lazy load
-const Shell1 = lazy(() => import('./Shell1.js'));
-const Shell2 = lazy(() => import('./Shell2.js'));
-const Shell3_1 = lazy(() => import('./Shell3_1.js'));
-const Shell3_2 = lazy(() => import('./Shell3_2.js'));
+const Mixer1 = lazy(() => import('./Mixer1.js'));
+const Mixer2 = lazy(() => import('./Mixer2.js'));
+const Mixer3 = lazy(() => import('./Mixer3.js'));
+const Mixer4 = lazy(() => import('./Mixer4.js'));
 
-const Matrix1 = lazy(() => import('./Matrix1.js'));
-const Matrix2 = lazy(() => import('./Matrix2.js'));
-const Matrix3 = lazy(() => import('./Matrix3.js'));
+const Granulator1 = lazy(() => import('./Granulator1.js'));
+const Granulator2 = lazy(() => import('./Granulator2.js'));
+const Granulator3 = lazy(() => import('./Granulator3.js'));
 
 export interface IMainData {
   innerDiameter: string;
@@ -47,7 +46,7 @@ export interface IMainData {
   drillingDiameter: string;
 }
 
-function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
+function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
   const [open, setOpen] = useState(false);
   const [countWindow, setCountWindow] = useState(false);
   const [inputText, setInputText] = useState<IMainData>({
@@ -64,8 +63,8 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
     workingWidth: '',
     drillingDiameter: '',
   });
-  const [matrix, setMatrix] = useState(1);
-  const [shell, setShell] = useState(1);
+  const [granulator, setGranulator] = useState(1);
+  const [mixer, setMixer] = useState(1);
   const [modalInfo, setModalInfo] = useState(false);
   const [data, setData] = useState<IMainData>({
     innerDiameter: '',
@@ -134,32 +133,32 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
     });
   }
 
-  function selectMatrix() {
-    if (type === 'Matrix') {
-      switch (matrix) {
+  function selectGranulator() {
+    if (type === 'Granulator') {
+      switch (granulator) {
         case 1:
-          return <Matrix1 />;
+          return <Granulator1 />;
         case 2:
-          return <Matrix2 />;
+          return <Granulator2 />;
         case 3:
-          return <Matrix3 />;
+          return <Granulator3 />;
 
         default:
-          return <Matrix1 />;
+          return <Granulator1 />;
       }
-    } else if (type === 'Shell') {
-      switch (shell) {
+    } else if (type === 'Mixer') {
+      switch (mixer) {
         case 1:
-          return <Shell1 />;
+          return <Mixer1 />;
         case 2:
-          return <Shell2 />;
+          return <Mixer2 />;
         case 3:
-          return <Shell3_1 />;
+          return <Mixer3 />;
         case 4:
-          return <Shell3_2 />;
+          return <Mixer4 />;
 
         default:
-          return <Shell1 />;
+          return <Mixer1 />;
       }
     }
   }
@@ -175,13 +174,17 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
         <div className='firstHelpColumn' />
         <Suspense fallback='loading'>
           <div className="relative">
-            {selectMatrix()}
-            <div className="absolute left-20 bottom-10 w-48 h-16 bg-[#AC8956] rounded-full blur-3xl opacity-70 pointer-events-none z-0"/>
-            <div className="absolute right-0 bottom-20 w-[80%] h-[40%] bg-[#7B7F7F] rounded-full blur-3xl opacity-30 pointer-events-none z-0 rotate-145"/>
+            {selectGranulator()}
+            {theme.name !== 'dark' ? '' : 
+              <>
+                <div className="absolute left-20 bottom-10 w-48 h-16 bg-[#AC8956] rounded-full blur-3xl opacity-70 pointer-events-none z-0"></div>
+                <div className="absolute right-0 bottom-20 w-[80%] h-[40%] bg-[#7B7F7F] rounded-full blur-3xl opacity-30 pointer-events-none z-0 rotate-145"></div>
+              </>
+            }
           </div>
         </Suspense>
 
-        <div className='flex flex-col justify-between mt-6 laptop:mt-12 order-first laptop:order-2 min-h-[420px] laptop:min-h-[520px]'>
+        <div className={`flex flex-col justify-between mt-6 laptop:mt-12 order-first laptop:order-2 ${type === 'Mixer' ? 'pb-0' : 'pb-12'} laptop:pb-0 laptop:min-h-[520px]`}>
           <div>
             <div className='flex flex-col tablet:flex-row gap-4 ml-0 laptop:ml-[8%]'>
               <div
@@ -204,19 +207,19 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                   <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[143px] laptop:text-[143px] uppercase leading-none"
                     style={{color: getColor(theme, 'mainSection.title')}}
                   >
-                    {type === 'Matrix' ? t('granulatorTitle') : t('mixer')}
+                    {type === 'Granulator' ? t('granulatorTitle') : t('mixer')}
                   </div>
                   <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[106px] laptop:text-[106px] uppercase leading-none"
                     style={{color: getColor(theme, 'mainSection.subtitle')}}
                   >
-                    {type === 'Matrix' ? t('granulatorSubtitle') : t('mixerSubtitle')}
+                    {type === 'Granulator' ? t('granulatorSubtitle') : t('mixerSubtitle')}
                   </div>
                 </div>
                 <div
                   className='font-adventpro text-[20px] sm:text-[28px] laptop:text-[32px] uppercase font-normal mt-2 laptop:mt-0 whitespace-pre-line'
                   style={{color: getColor(theme, 'mainSection.description')}}
                 >
-                  {type === 'Matrix' ? t('titleBlock.granulatorProductDescription') : t('titleBlock.mixerProductDescription')}
+                  {type === 'Granulator' ? t('titleBlock.granulatorProductDescription') : t('titleBlock.mixerProductDescription')}
                 </div>
                 <CountButton
                   className='relative z-[1] w-full sm:w-[282px] mt-8 laptop:mt-[36px] aspect-[282/58] font-bebas
@@ -345,7 +348,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                     </div>
 
                     <div className='flex flex-row justify-between w-[45%]'>
-                      {type === 'Matrix' && (
+                      {type === 'Granulator' && (
                         <FormControl
                           error={errorText.drillingDiameter !== ''}
                           variant='standard'
@@ -369,7 +372,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                           )}
                         </FormControl>
                       )}
-                      {type === 'Shell' && (
+                      {type === 'Mixer' && (
                         <FormControl
                           error={errorText.drillingDiameter !== ''}
                           variant='standard'
@@ -483,12 +486,12 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
           className='flex flex-wrap justify-center laptop:justify-between mt-6 laptop:mt-0 pt-5 gap-x-8 sm:gap-x-12 laptop:gap-x-32 gap-y-6 px-4 sm:px-6 laptop:px-6
                 relative top-0 laptop:top-5'
         >
-          {type === 'Matrix' && (
+          {type === 'Granulator' && (
             <>
               <div
                 className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px] z-10 cursor-pointer'
                 onClick={() => {
-                  setMatrix(1);
+                  setGranulator(1);
                   setCountWindow(false);
                 }}
               >
@@ -509,15 +512,15 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                   <div
                     className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                       ${theme.name === 'dark'
-                        ? `${matrix === 1 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
-                        : `${matrix === 1 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                        ? `${granulator === 1 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                        : `${granulator === 1 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                       }
                     `}
                   >
                   <GranulatorModel1 
                     className="h-[90%]" 
                     stroke={
-                      matrix === 1
+                      granulator === 1
                         ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
                         : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
                     }
@@ -528,7 +531,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
               <div
                 className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px] z-10 cursor-pointer'
                 onClick={() => {
-                  setMatrix(2);
+                  setGranulator(2);
                   setCountWindow(false);
                 }}
               >
@@ -549,15 +552,15 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                     ${theme.name === 'dark'
-                      ? `${matrix === 2 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
-                      : `${matrix === 2 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                      ? `${granulator === 2 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                      : `${granulator === 2 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                     }
                   `}
                 >
                   <GranulatorModel2 
                     className='h-[90%]' 
                     stroke={
-                      matrix === 2
+                      granulator === 2
                         ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
                         : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
                     }
@@ -568,7 +571,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
               <div
                 className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px] z-10 cursor-pointer'
                 onClick={() => {
-                  setMatrix(3);
+                  setGranulator(3);
                   setCountWindow(false);
                 }}
               >
@@ -589,15 +592,15 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                     ${theme.name === 'dark'
-                      ? `${matrix === 3 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
-                      : `${matrix === 3 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                      ? `${granulator === 3 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                      : `${granulator === 3 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                     }
                   `}
                 >
                   <GranulatorModel3 
                     className='h-[90%]' 
                     stroke={
-                      matrix === 3
+                      granulator === 3
                         ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
                         : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
                     }
@@ -607,12 +610,12 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
             </>
           )}
 
-          {type === 'Shell' && (
+          {type === 'Mixer' && (
             <>
               <div
                 className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px] z-10 cursor-pointer'
                 onClick={() => {
-                  setShell(1);
+                  setMixer(1);
                   setCountWindow(false);
                 }}
               >
@@ -634,15 +637,15 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                     ${theme.name === 'dark'
-                      ? `${shell === 1 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
-                      : `${shell === 1 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                      ? `${mixer === 1 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                      : `${mixer === 1 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                     }
                   `}
                 >
-                  <FlatShell 
+                  <FlatMixer 
                     className='h-[90%]' 
                     stroke={
-                      shell === 1
+                      mixer === 1
                         ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
                         : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
                     }
@@ -653,7 +656,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
               <div
                 className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px] z-10 cursor-pointer'
                 onClick={() => {
-                  setShell(2);
+                  setMixer(2);
                   setCountWindow(false);
                 }}
               >
@@ -675,15 +678,15 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                     ${theme.name === 'dark'
-                      ? `${shell === 2 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
-                      : `${shell === 2 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                      ? `${mixer === 2 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                      : `${mixer === 2 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                     }
                   `}
                 >
-                  <RingShell 
+                  <RingMixer 
                     className='h-[90%]' 
                     stroke={
-                      shell === 2
+                      mixer === 2
                         ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
                         : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
                     }
@@ -694,7 +697,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
               <div
                 className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px] z-10 cursor-pointer'
                 onClick={() => {
-                  setShell(3);
+                  setMixer(3);
                   setCountWindow(false);
                 }}
               >
@@ -716,15 +719,15 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                     ${theme.name === 'dark'
-                      ? `${shell === 3 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
-                      : `${shell === 3 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                      ? `${mixer === 3 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                      : `${mixer === 3 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                     }
                   `}
                 >
-                  <TwinTrackShell
+                  <TwinTrackMixer
                     className='h-[90%]'
                     stroke={
-                      shell === 3
+                      mixer === 3
                         ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
                         : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
                     }
@@ -735,7 +738,7 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
               <div
                 className='relative w-[20vw] max-w-[132px] max-h-[132px] min-w-[100px] z-10 cursor-pointer'
                 onClick={() => {
-                  setShell(4);
+                  setMixer(4);
                   setCountWindow(false);
                 }}
               >
@@ -757,15 +760,15 @@ function MainSection({ type }: { type: 'Matrix' | 'Shell' }) {
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                     ${theme.name === 'dark'
-                      ? `${shell === 4 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
-                      : `${shell === 4 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                      ? `${mixer === 4 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                      : `${mixer === 4 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                     }
                   `}
                 >
-                  <TwinTrackShell2
+                  <TwinTrackMixer2
                     className='h-[90%]'
                     stroke={
-                      shell === 4
+                      mixer === 4
                         ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
                         : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
                     }

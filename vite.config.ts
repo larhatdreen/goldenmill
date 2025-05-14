@@ -26,9 +26,9 @@ export default defineConfig({
         'site.webmanifest'
       ],
       manifest: {
-        name: 'GoldenDie',
-        short_name: 'GoldenDie',
-        description: 'GoldenDie Application',
+        name: 'GoldenMill',
+        short_name: 'GoldenMill',
+        description: 'GoldenMill Application',
         theme_color: '#ffffff',
         icons: [
           {
@@ -95,6 +95,7 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
   },
   server: {
+    host: '0.0.0.0',
     open: true,
     cors: true,
     port: 3000,

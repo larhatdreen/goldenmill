@@ -429,7 +429,7 @@ const ProductLanding: React.FC = () => {
           technicalSpecification: product.technicalDescription?.[currentLanguage],
           manufacturingDetails: product.manufacturingDescription?.[currentLanguage],
           category: t(`products.categories.${product.category || 'default'}`),
-          brand: 'GOLDENDIE',
+          brand: 'GOLDENMILL',
           model: product.subtitle?.[currentLanguage],
         }}
       />
@@ -690,7 +690,7 @@ const ProductLanding: React.FC = () => {
               >
                 <CountButton
                   className="relative z-[1] w-[282px] aspect-[282/58] font-bebas text-white text-[22px] flex items-center justify-center bg-contain bg-no-repeat"
-                  src={button}
+                  src={<img src={button} alt="btn" />}
                   defaultValue={price ? formatPrice(price) : t('products.onRequest')}
                   onClick={handleOpenHelpModal}
                 />

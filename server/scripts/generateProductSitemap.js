@@ -27,27 +27,27 @@ async function generateProductSitemap() {
     
     <!-- Products Main Page -->
     <url>
-        <loc>https://goldendie.de/products</loc>
+        <loc>https://goldenmill.de/products</loc>
         <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/products"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/products"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/products"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/products"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/products"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/products"/>
     </url>\n`;
 
     // Add product categories
-    const categories = ['matrix', 'shell', 'spare-parts'];
+    const categories = ['granulator', 'mixer', 'spare-parts'];
     for (const category of categories) {
       xmlContent += `
     <url>
-        <loc>https://goldendie.de/products/${category}</loc>
+        <loc>https://goldenmill.de/products/${category}</loc>
         <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/products/${category}"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/products/${category}"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/products/${category}"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/products/${category}"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/products/${category}"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/products/${category}"/>
     </url>`;
     }
 
@@ -58,13 +58,13 @@ async function generateProductSitemap() {
       
       xmlContent += `
     <url>
-        <loc>https://goldendie.de/product/${product.id}</loc>
+        <loc>https://goldenmill.de/product/${product.id}</loc>
         <lastmod>${product.updatedAt.toISOString().split('T')[0]}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/product/${product.id}"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/product/${product.id}"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/product/${product.id}"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/product/${product.id}"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/product/${product.id}"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/product/${product.id}"/>
         <image:image>
             <image:loc>${product.imageUrl}</image:loc>
             <image:title>${title?.en || ''}</image:title>

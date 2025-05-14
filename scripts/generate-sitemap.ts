@@ -3,7 +3,7 @@ import { resolve } from 'path';
 
 const routes = [
   '/granulator',
-  '/shell',
+  '/mixer',
   '/about',
   '/contacts',
   '/serviceinformation',
@@ -17,7 +17,7 @@ const languages = ['en', 'de', 'ru'];
 // Add priority mapping for different types of pages
 const priorities: { [key: string]: number } = {
   '/granulator': 0.9,    // Product category pages
-  '/shell': 0.9,         // Product category pages
+  '/mixer': 0.9,         // Product category pages
   '/about': 0.7,         // About page
   '/contacts': 0.7,      // Contact page
   '/serviceinformation': 0.7, // Service information page
@@ -29,7 +29,7 @@ const priorities: { [key: string]: number } = {
 // Add change frequency mapping for different types of pages
 const changefreqs: { [key: string]: string } = {
   '/granulator': 'weekly',   // Product pages change weekly
-  '/shell': 'weekly',        // Product pages change weekly
+  '/mixer': 'weekly',        // Product pages change weekly
   '/about': 'monthly',       // Static content
   '/contacts': 'monthly',    // Static content
   '/serviceinformation': 'monthly', // Static content
@@ -39,7 +39,7 @@ const changefreqs: { [key: string]: string } = {
 };
 
 async function generateSitemap() {
-  const siteUrl = 'https://goldendie.de';
+  const siteUrl = 'https://goldenmill.de';
   
   // Here you would typically fetch your product IDs from your API or database
   // For now, we'll just add a placeholder for the structure

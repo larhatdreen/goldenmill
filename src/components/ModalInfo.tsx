@@ -205,7 +205,7 @@ export default function ModalInfo({
 
       const messageText = `
         ${t('emailContent.type')}: ${
-        type === 'Shell' ? t('emailContent.shell') : t('emailContent.matrix')
+        type === 'Mixer' ? t('emailContent.shell') : t('emailContent.matrix')
       }
         ${t('emailContent.innerDiameter')}: ${data.innerDiameter}
         ${t('emailContent.outerDiameter')}: ${data.outerDiameter}
@@ -303,7 +303,7 @@ export default function ModalInfo({
                 <div class="field">
                   <span class="label">${t('emailContent.type')}:</span>
                   <span class="value">${
-                    type === 'Shell' ? t('emailContent.shell') : t('emailContent.matrix')
+                    type === 'Mixer' ? t('emailContent.shell') : t('emailContent.matrix')
                   }</span>
                 </div>
               </div>

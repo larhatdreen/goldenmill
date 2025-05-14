@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-  Sitemap for GoldenDie and LKE Group GmbH
+  Sitemap for GoldenMill and LKE Group GmbH
   Manufacturer of dies and shells for pellet mills
   High-quality spare parts for industrial equipment
-  Contact: info@goldendie.de
+  Contact: info@goldenmill.de
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -14,85 +14,85 @@
     
     <!-- Main Page -->
     <url>
-        <loc>https://goldendie.de/</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru"/>
+        <loc>https://goldenmill.de/</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru"/>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <mobile:mobile/>
         <image:image>
-            <image:loc>https://goldendie.de/images/main-page.jpg</image:loc>
-            <image:title>GoldenDie - LKE Group GmbH</image:title>
+            <image:loc>https://goldenmill.de/images/main-page.jpg</image:loc>
+            <image:title>GoldenMill - LKE Group GmbH</image:title>
             <image:caption>High-quality dies and shells for pellet mills</image:caption>
         </image:image>
     </url>
 
-    <!-- Dies/Matrix -->
+    <!-- Granulator -->
     <url>
-        <loc>https://goldendie.de/granulator</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/granulator"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/granulator"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/granulator"/>
+        <loc>https://goldenmill.de/granulator</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/granulator"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/granulator"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/granulator"/>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
         <mobile:mobile/>
         <image:image>
-            <image:loc>https://goldendie.de/images/matrix.jpg</image:loc>
-            <image:title>Die Matrix - LKE Group GmbH</image:title>
+            <image:loc>https://goldenmill.de/images/granulator.jpg</image:loc>
+            <image:title>Granulator - LKE Group GmbH</image:title>
             <image:caption>High-quality dies for pellet mills with superior hardness and wear resistance</image:caption>
         </image:image>
         <news:news>
             <news:publication>
-                <news:name>GoldenDie Blog</news:name>
+                <news:name>GoldenMill Blog</news:name>
                 <news:language>en</news:language>
             </news:publication>
             <news:publication_date>2023-12-01</news:publication_date>
-            <news:title>New Die Matrix Technology Reduces Wear by 10%</news:title>
+            <news:title>New Granulator Technology Reduces Wear by 10%</news:title>
         </news:news>
     </url>
 
-    <!-- Roller Shells -->
+    <!-- Mixer -->
     <url>
-        <loc>https://goldendie.de/shell</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/shell"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/shell"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/shell"/>
+        <loc>https://goldenmill.de/shell</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/shell"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/shell"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/shell"/>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
         <mobile:mobile/>
         <image:image>
-            <image:loc>https://goldendie.de/images/shell.jpg</image:loc>
-            <image:title>Roller Shell - LKE Group GmbH</image:title>
+            <image:loc>https://goldenmill.de/images/shell.jpg</image:loc>
+            <image:title>Mixer - LKE Group GmbH</image:title>
             <image:caption>Premium roller shells with various surface types for optimal performance</image:caption>
         </image:image>
         <news:news>
             <news:publication>
-                <news:name>GoldenDie Blog</news:name>
+                <news:name>GoldenMill Blog</news:name>
                 <news:language>en</news:language>
             </news:publication>
             <news:publication_date>2023-11-15</news:publication_date>
-            <news:title>Advanced Roller Shell Surface Types for Different Applications</news:title>
+            <news:title>Advanced Mixer Surface Types for Different Applications</news:title>
         </news:news>
     </url>
 
     <!-- Spare Parts -->
     <url>
-        <loc>https://goldendie.de/spare-parts</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/spare-parts"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/spare-parts"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/spare-parts"/>
+        <loc>https://goldenmill.de/spare-parts</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/spare-parts"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/spare-parts"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/spare-parts"/>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
         <mobile:mobile/>
         <image:image>
-            <image:loc>https://goldendie.de/images/spare-parts.jpg</image:loc>
+            <image:loc>https://goldenmill.de/images/spare-parts.jpg</image:loc>
             <image:title>Spare Parts for Pellet Mills - LKE Group GmbH</image:title>
             <image:caption>High-quality spare parts for pellet mills and hammer mills</image:caption>
         </image:image>
         <news:news>
             <news:publication>
-                <news:name>GoldenDie Blog</news:name>
+                <news:name>GoldenMill Blog</news:name>
                 <news:language>en</news:language>
             </news:publication>
             <news:publication_date>2023-10-20</news:publication_date>
@@ -102,15 +102,15 @@
 
     <!-- About Us -->
     <url>
-        <loc>https://goldendie.de/about</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/about"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/about"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/about"/>
+        <loc>https://goldenmill.de/about</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/about"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/about"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/about"/>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <mobile:mobile/>
         <image:image>
-            <image:loc>https://goldendie.de/images/about-company.jpg</image:loc>
+            <image:loc>https://goldenmill.de/images/about-company.jpg</image:loc>
             <image:title>About LKE Group GmbH</image:title>
             <image:caption>LKE Group GmbH - manufacturer of high-quality dies, roller shells, and spare parts</image:caption>
         </image:image>
@@ -118,15 +118,15 @@
 
     <!-- Contacts -->
     <url>
-        <loc>https://goldendie.de/contacts</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/contacts"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/contacts"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/contacts"/>
+        <loc>https://goldenmill.de/contacts</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/contacts"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/contacts"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/contacts"/>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <mobile:mobile/>
         <image:image>
-            <image:loc>https://goldendie.de/images/contacts.jpg</image:loc>
+            <image:loc>https://goldenmill.de/images/contacts.jpg</image:loc>
             <image:title>Contact LKE Group GmbH</image:title>
             <image:caption>Get in touch with LKE Group GmbH for high-quality industrial equipment parts</image:caption>
         </image:image>
@@ -134,10 +134,10 @@
 
     <!-- Service Information -->
     <url>
-        <loc>https://goldendie.de/service-information</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/service-information"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/service-information"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/service-information"/>
+        <loc>https://goldenmill.de/service-information</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/service-information"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/service-information"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/service-information"/>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <mobile:mobile/>
@@ -145,10 +145,10 @@
 
     <!-- Privacy Policy -->
     <url>
-        <loc>https://goldendie.de/privacy-policy</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/privacy-policy"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/privacy-policy"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/privacy-policy"/>
+        <loc>https://goldenmill.de/privacy-policy</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/privacy-policy"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/privacy-policy"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/privacy-policy"/>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
         <mobile:mobile/>
@@ -156,10 +156,10 @@
 
     <!-- Cookie Policy -->
     <url>
-        <loc>https://goldendie.de/cookie-policy</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/cookie-policy"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/cookie-policy"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/cookie-policy"/>
+        <loc>https://goldenmill.de/cookie-policy</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/cookie-policy"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/cookie-policy"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/cookie-policy"/>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
         <mobile:mobile/>
@@ -167,7 +167,7 @@
 
     <!-- Product Template -->
     <url>
-        <loc>https://goldendie.de/product</loc>
+        <loc>https://goldenmill.de/product</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <mobile:mobile/>
@@ -175,25 +175,25 @@
 
     <!-- Product Landing Pages -->
     <url>
-        <loc>https://goldendie.de/product/landing</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/product/productlanding  "/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/product/productlanding"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/product/productlanding"/>
+        <loc>https://goldenmill.de/product/landing</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/product/productlanding  "/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/product/productlanding"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/product/productlanding"/>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <mobile:mobile/>
         <image:image>
-            <image:loc>https://goldendie.de/images/product-landing.jpg</image:loc>
+            <image:loc>https://goldenmill.de/images/product-landing.jpg</image:loc>
             <image:title>Product Landing - LKE Group GmbH</image:title>
         </image:image>
     </url>
 
     <!-- Mobile Product Pages -->
     <url>
-        <loc>https://goldendie.de/product/mobile</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/product/mobileproductlanding"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/product/mobileproductlanding"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/product/mobileproductlanding"/>
+        <loc>https://goldenmill.de/product/mobile</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/product/mobileproductlanding"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/product/mobileproductlanding"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/product/mobileproductlanding"/>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <mobile:mobile/>
@@ -201,10 +201,10 @@
 
     <!-- Product Cards -->
     <url>
-        <loc>https://goldendie.de/product/card</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/product/productcard"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/product/productcard"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/product/productcard"/>
+        <loc>https://goldenmill.de/product/card</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/product/productcard"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/product/productcard"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/product/productcard"/>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
         <mobile:mobile/>
@@ -212,44 +212,44 @@
     
     <!-- Specific Product Categories -->
     <url>
-        <loc>https://goldendie.de/flat-die-matrix</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/flat-die-matrix"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/flat-die-matrix"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/flat-die-matrix"/>
+        <loc>https://goldenmill.de/flat-die-granulator</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/flat-die-granulator"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/flat-die-granulator"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/flat-die-granulator"/>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <mobile:mobile/>
         <image:image>
-            <image:loc>https://goldendie.de/images/flat-die-matrix.jpg</image:loc>
-            <image:title>Flat Die Matrix - LKE Group GmbH</image:title>
+            <image:loc>https://goldenmill.de/images/flat-die-granulator.jpg</image:loc>
+            <image:title>Granulator - LKE Group GmbH</image:title>
         </image:image>
     </url>
     
     <url>
-        <loc>https://goldendie.de/ring-die-matrix</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/ring-die-matrix"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/ring-die-matrix"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/ring-die-matrix"/>
+        <loc>https://goldenmill.de/ring-die-granulator</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/ring-die-granulator"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/ring-die-granulator"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/ring-die-granulator"/>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <mobile:mobile/>
         <image:image>
-            <image:loc>https://goldendie.de/images/ring-die-matrix.jpg</image:loc>
-            <image:title>Ring Die Matrix - LKE Group GmbH</image:title>
+            <image:loc>https://goldenmill.de/images/ring-die-granulator.jpg</image:loc>
+            <image:title>Granulator - LKE Group GmbH</image:title>
         </image:image>
     </url>
     
     <url>
-        <loc>https://goldendie.de/twin-track-die-matrix</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldendie.de/de/twin-track-die-matrix"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldendie.de/en/twin-track-die-matrix"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldendie.de/ru/twin-track-die-matrix"/>
+        <loc>https://goldenmill.de/twin-track-die-granulator</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/twin-track-die-granulator"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/twin-track-die-granulator"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/twin-track-die-granulator"/>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <mobile:mobile/>
         <image:image>
-            <image:loc>https://goldendie.de/images/twin-track-die-matrix.jpg</image:loc>
-            <image:title>Twin-Track Die Matrix - LKE Group GmbH</image:title>
+            <image:loc>https://goldenmill.de/images/twin-track-die-granulator.jpg</image:loc>
+            <image:title>Granulator - LKE Group GmbH</image:title>
         </image:image>
     </url>
 </urlset> 

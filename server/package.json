@@ -1,7 +1,7 @@
 {
-  "name": "goldendie-api",
+  "name": "goldenmill-api",
   "version": "1.0.0",
-  "description": "API server for GoldenDie products",
+  "description": "API server for GoldenMill products",
   "main": "dist/index.js",
   "type": "commonjs",
   "scripts": {

@@ -534,9 +534,9 @@ const SpareParts = () => {
                     </Typography>
                     <div className="flex flex-col gap-4">
                       {[
-                        { value: 'matrices', label: t('products.filters.matrices') },
-                        { value: 'shells', label: t('products.filters.shells') },
-                        { value: 'spare-parts', label: t('products.filters.spareParts') }
+                        { value: 'granulators', label: t('products.filters.granulators') },
+                        { value: 'mixers', label: t('products.filters.mixers') },
+                        { value: 'spare-parts', label: t('products.filters.spare-parts') }
                       ].map((type) => (
                         <button
                           key={type.value}

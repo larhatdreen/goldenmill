@@ -14,7 +14,7 @@ const Navigation = () => {
     },
     {
       label: t('nav.shell'),
-      path: '/shell',
+      path: '/mixer',
     },
     {
       label: t('nav.spareParts'),

@@ -27,7 +27,7 @@ export const useSEO = (page: string, params?: { [key: string]: string }) => {
 
     // Добавляем LKE Group GmbH в ключевые слова, если их еще нет
     if (!keywords.includes('LKE Group GmbH')) {
-      keywords = `${keywords}, LKE Group GmbH, GoldenDie`;
+      keywords = `${keywords}, LKE Group GmbH, GoldenMill`;
     }
 
     return {

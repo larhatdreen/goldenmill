@@ -11,9 +11,9 @@ import Contacts from './components/Contacts.tsx'
 import PageNotFound from './pages/PageNotFound.tsx'
 import PrivacyPolicy from './components/PrivacyPolicy.tsx'
 import CookiePolicy from './components/CookiePolicy.tsx'
-import Section1Shell from './components/Section1Shell.tsx'
-import Section2Shell from './components/Section2Shell.tsx'
-import Section3Shell from './components/Section3Shell.tsx'
+import Section1Mixer from './components/Section1Mixer.tsx'
+import Section2Mixer from './components/Section2Mixer.tsx'
+import Section3Mixer from './components/Section3Mixer.tsx'
 import ServiceInformation from './components/ServiceInformation.tsx'
 import { Wrapper } from './components/Wrapper.tsx'
 import { NavigateProvider } from './components/NavigateProvider.tsx'
@@ -83,7 +83,7 @@ function App() {
                 path='granulator'
                 element={
                   <Wrapper>
-                    <MainSection type='Matrix' />
+                    <MainSection type='Granulator' />
                     <Section1 />
                     <Section2 />
                     <Section3 />
@@ -97,10 +97,10 @@ function App() {
                 path='mixer'
                 element={
                   <Wrapper>
-                    <MainSection type='Shell' />
-                    <Section1Shell />
-                    <Section2Shell />
-                    <Section3Shell />
+                    <MainSection type='Mixer' />
+                    <Section1Mixer />
+                    <Section2Mixer />
+                    <Section3Mixer />
                   </Wrapper>
                 }
               />
