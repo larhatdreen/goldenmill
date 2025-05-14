@@ -54,10 +54,10 @@
 
     <!-- Mixer -->
     <url>
-        <loc>https://goldenmill.de/shell</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/shell"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/shell"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/shell"/>
+        <loc>https://goldenmill.de/mixer</loc>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/mixer"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/mixer"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/mixer"/>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
         <mobile:mobile/>
