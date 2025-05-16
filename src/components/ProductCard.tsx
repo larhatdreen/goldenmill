@@ -111,6 +111,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     technicalHint
   } = product;
 
+  console.log(product)
+
   const handleImageClick = () => {
     navigate(`/${currentLanguage}/product/${id}`, { 
       state: { 

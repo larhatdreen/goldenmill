@@ -74,13 +74,13 @@ export const CookieConsentBanner = () => {
           </svg>
         </button>
         <div className="max-w-7xl mx-auto p-3 pr-12">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-3">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="flex flex-col items-center sm:items-start gap-3 w-full sm:w-auto">
-              <div className="flex flex-col gap-1 text-center sm:text-left sm:min-w-[600px] sm:max-w-[800px]">
-                <p className="text-[#A19F9B] text-xs font-normal whitespace-nowrap">
+              <div className="flex flex-col gap-1 text-center sm:text-left">
+                <p className="text-[#A19F9B] text-xs font-normal">
                   {t('cookie.simpleDescription')}
                 </p>
-                <p className="text-[#605C54] text-[10px] whitespace-nowrap">
+                <p className="text-[#605C54] text-[10px]">
                   {t('cookie.privacyNote')}{' '}
                   <Link 
                     to={getURLWithLang('cookie-policy', currentLang)}
@@ -94,7 +94,7 @@ export const CookieConsentBanner = () => {
             </div>
             <button
               onClick={handleAccept}
-              className="relative overflow-hidden px-4 py-2 rounded-lg text-xs bg-[#544B3C] hover:bg-[#3D3629] text-[#D5CDBD] font-normal transform transition-all duration-300 hover:scale-105 opacity-75 hover:opacity-100 whitespace-nowrap w-full sm:w-auto"
+              className="relative overflow-hidden px-4 py-2 rounded-lg text-xs bg-[#544B3C] hover:bg-[#3D3629] text-[#D5CDBD] font-normal transform transition-all duration-300 hover:scale-105 opacity-75 hover:opacity-100 whitespace-nowrap w-full sm:w-auto flex justify-center"
             >
               <span className="relative z-10">{t('cookie.accept')}</span>
             </button>
