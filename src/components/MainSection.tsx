@@ -102,6 +102,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
       setData(inputText);
       setTimeout(() => {
         handleButtonClick();
+        setCountWindow(false);
       }, 200);
       handleOpenModalInfo();
     }
@@ -227,6 +228,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                                       bg-no-repeat'
                   src={<ButtonIcon />}
                   onClick={() => {
+                    handleButtonClick();
                     inputErrorHandler();
                     setCountWindow(true);
                   }}
