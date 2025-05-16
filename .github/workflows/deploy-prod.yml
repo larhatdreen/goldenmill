@@ -17,7 +17,8 @@ jobs:
     #     uses: actions/setup-node@v4
     #     with:
     #       node-version: '20' 
-
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: Cache yarn for speedest install
         uses: actions/cache@v4
         with:

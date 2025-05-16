@@ -63,11 +63,6 @@ export default defineConfig({
       }
     })
   ],
-  define: {
-    'process.env': {
-      VITE_COOKIE_ENCRYPTION_KEY: JSON.stringify(process.env.VITE_COOKIE_ENCRYPTION_KEY)
-    }
-  },
   // Добавляем WebP в список ассетов для обработки
   assetsInclude: ['**/*.webp'],
   build: {
