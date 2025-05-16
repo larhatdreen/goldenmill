@@ -14,7 +14,7 @@ const staticFileMiddleware = require('./staticFileMiddleware');
 
 const prisma = new PrismaClient();
 const app = express();
-const port = 3001;
+const port = 3002;
 
 // Resolve paths relative to server directory
 const SERVER_DIR = __dirname;

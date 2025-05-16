@@ -26,7 +26,7 @@ import { ParamsType } from './NavigateProvider.tsx';
 import { useTheme } from '../hooks/useTheme';
 import { createMuiTheme } from '../theme/muiTheme';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3002';
 
 interface ProductInfo {
   id: string;
