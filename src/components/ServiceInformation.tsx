@@ -8,21 +8,22 @@ function ServiceInformation() {
   const { i18n } = useTranslation();
   const currentLanguage = i18n.language;
   const theme = useTheme();
+  const isDark = theme.name === 'dark';
 
 
   const containerStyle = `w-full min-h-screen py-[100px] px-[30px] md:px-[100px] font-adventpro border ${
-    theme.name === 'dark'
+    isDark
       ? 'bg-gradient-to-r from-[#1A1B1C] via-[#28292a] to-[#1A1B1C] border-[#2C2D2F]'
       : 'bg-gradient-to-b from-[#F8F8F9] via-[#F2F2F2] to-[#ECECEC] border-[#82653F]'
   }`;
   const titleStyle = 'text-[32px] md:text-[40px] font-medium mb-8 animate-fadeIn text-[#82653F]';
   const sectionTitleStyle = `text-[24px] font-medium mt-8 mb-4 text-[#82653F]`;
   const listStyle = `list-none space-y-2 ${
-    theme.name === 'dark' ? 'text-[#D5CDBD]' : 'text-[#2A3242]'
+    isDark ? 'text-[#D5CDBD]' : 'text-[#2A3242]'
   }`;
   const listItemStyle = 'hover:text-[#82653E] transition-colors duration-300';
   const sectionStyle = `p-6 rounded-lg border ${
-    theme.name === 'dark'
+    isDark
     ? 'bg-gradient-to-r from-[#1A1B1C] via-[#28292a] to-[#1A1B1C] border-[#2C2D2F]'
     : 'bg-gradient-to-r from-[#F8F8F9] via-[#F2F2F2] to-[#F8F8F9] border-[#82653F]'
   }`;

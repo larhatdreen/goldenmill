@@ -79,7 +79,7 @@ function Footer() {
           </div>
           <div
             className={`font-adventprolight text-[20px] flex flex-row items-center cursor-pointer group mt-3
-            ${theme.name === 'dark' ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#7D9AC1]'}`}
+            ${isDark ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#7D9AC1]'}`}
           >
             <span className="relative flex items-center justify-center w-[35px] h-[35px] mr-3">
               <span
@@ -93,7 +93,7 @@ function Footer() {
           </div>
           <div
             className={`font-adventprolight text-[20px] flex flex-row items-center cursor-pointer group
-            ${theme.name === 'dark' ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#7D9AC1]'}`}
+            ${isDark ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#7D9AC1]'}`}
           >
             <span className="relative flex items-center justify-center w-[35px] h-[35px] mr-3">
               <span
@@ -107,7 +107,7 @@ function Footer() {
           </div>
           <div
             className={`font-adventprolight text-[20px] flex flex-row items-center cursor-pointer group
-            ${theme.name === 'dark' ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#7D9AC1]'}`}
+            ${isDark ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#7D9AC1]'}`}
           >
             <span className="relative flex items-center justify-center w-[35px] h-[35px] mr-3">
               <span
@@ -147,12 +147,20 @@ function Footer() {
         <span className={`text-start ${isDark ? 'text-[#767676]' : 'text-[#898989]'}`}>
           {t('subFooter.copyright')}
         </span>
-        <Link to={getURLWithLang('serviceinformation', lang!)} onClick={() => scrollToTop(1000)}>
+        <Link to={getURLWithLang('serviceinformation', lang!)} onClick={(e) => {
+          if (!e.ctrlKey && !e.metaKey) {
+            scrollToTop(1000);
+          }
+        }}>
           <span className={`text-start ${isDark ? 'text-[#767676] hover:text-[#D5CDBD]' : 'text-[#898989] hover:text-[#2A3242]'}`}>
             {t('subFooter.serviceInfo')}
           </span>
         </Link>
-        <Link to={getURLWithLang('privacypolicy', lang!)} onClick={() => scrollToTop(1000)}>
+        <Link to={getURLWithLang('privacypolicy', lang!)} onClick={(e) => {
+          if (!e.ctrlKey && !e.metaKey) {
+            scrollToTop(1000);
+          }
+        }}>
           <span className={`text-end ${isDark ? 'text-[#767676] hover:text-[#D5CDBD]' : 'text-[#898989] hover:text-[#2A3242]'}`}>
             {t('subFooter.privacyPolicy')}
           </span>
