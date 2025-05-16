@@ -11,7 +11,7 @@ import {
   ThemeProvider,
 } from '@mui/material';
 
-import { ChangeEvent, lazy, Suspense, useState } from 'react';
+import { ChangeEvent, lazy, Suspense, useState, memo, useEffect } from 'react';
 import GranulatorModel1 from './customIcons/Model(GM420-GM520).js';
 import GranulatorModel2 from './customIcons/Model(GM650).js';
 import GranulatorModel3 from './customIcons/Model(GM850).js';
@@ -28,15 +28,14 @@ import { getColor } from '../theme/utils';
 import ButtonIcon from './customIcons/ButtonIcon';
 
 
-// lazy load
-const Mixer1 = lazy(() => import('./Mixer1.js'));
-const Mixer2 = lazy(() => import('./Mixer2.js'));
-const Mixer3 = lazy(() => import('./Mixer3.js'));
-const Mixer4 = lazy(() => import('./Mixer4.js'));
-
-const Granulator1 = lazy(() => import('./Granulator1.js'));
-const Granulator2 = lazy(() => import('./Granulator2.js'));
-const Granulator3 = lazy(() => import('./Granulator3.js'));
+// Memoized lazy components
+const Granulator1 = memo(lazy(() => import('./Granulator1')));
+const Granulator2 = memo(lazy(() => import('./Granulator2')));
+const Granulator3 = memo(lazy(() => import('./Granulator3')));
+const Mixer1 = memo(lazy(() => import('./Mixer1')));
+const Mixer2 = memo(lazy(() => import('./Mixer2')));
+const Mixer3 = memo(lazy(() => import('./Mixer3')));
+const Mixer4 = memo(lazy(() => import('./Mixer4')));
 
 export interface IMainData {
   innerDiameter: string;
@@ -76,12 +75,47 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
 
   const { t } = useTranslation();
   const theme = useTheme();
+  const isDark = theme.name === 'dark';
   const muiTheme = createMuiTheme(theme);
 
   const handleOpenModalInfo = () => setModalInfo(true);
   const handleCloseModalInfo = () => setModalInfo(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  // Adaptive prefetch/preload for the second element
+  useEffect(() => {
+    let isFastConnection = false;
+    if (
+      typeof navigator !== 'undefined' &&
+      'connection' in navigator &&
+      typeof (navigator as any).connection.effectiveType === 'string'
+    ) {
+      isFastConnection = (navigator as any).connection.effectiveType === '4g';
+    }
+    if (type === 'Granulator') {
+      import('./Granulator1');
+      if (isFastConnection) {
+        import(/* webpackPrefetch: true */ './Granulator2');
+      }
+    } else {
+      import('./Mixer1');
+      if (isFastConnection) {
+        import(/* webpackPrefetch: true */ './Mixer2');
+      }
+    }
+  }, [type]);
+
+  // Preload only neighbors on hover, focus, or touch
+  const preloadNeighbors = (type: 'Granulator' | 'Mixer', index: number) => {
+    if (type === 'Granulator') {
+      if (index > 1) import(`./Granulator${index - 1}`);
+      if (index < 3) import(`./Granulator${index + 1}`);
+    } else {
+      if (index > 1) import(`./Mixer${index - 1}`);
+      if (index < 4) import(`./Mixer${index + 1}`);
+    }
+  };
 
   function inputErrorHandler() {
     if (!countWindow) return;
@@ -176,7 +210,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
         <Suspense fallback='loading'>
           <div className="relative">
             {selectGranulator()}
-            {theme.name !== 'dark' ? '' : 
+            {!isDark ? '' : 
               <>
                 <div className="absolute left-20 bottom-10 w-48 h-16 bg-[#AC8956] rounded-full blur-3xl opacity-70 pointer-events-none z-0"></div>
                 <div className="absolute right-0 bottom-20 w-[80%] h-[40%] bg-[#7B7F7F] rounded-full blur-3xl opacity-30 pointer-events-none z-0 rotate-145"></div>
@@ -190,7 +224,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
             <div className='flex flex-col tablet:flex-row gap-4 ml-0 laptop:ml-[8%]'>
               <div
                 className={`font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px] flex flex-row items-center group ${
-                  theme.name === 'dark' ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#2A3242]'
+                  isDark ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#2A3242]'
                 } ${
                   !open ? 'cursor-pointer' : ''
                 }`}
@@ -496,6 +530,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setGranulator(1);
                   setCountWindow(false);
                 }}
+                onMouseEnter={() => preloadNeighbors(type, 1)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
@@ -513,7 +548,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                 </div>
                   <div
                     className={`flex justify-center items-center aspect-square rounded-full transition-colors 
-                      ${theme.name === 'dark'
+                      ${ isDark
                         ? `${granulator === 1 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
                         : `${granulator === 1 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                       }
@@ -523,8 +558,8 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     className="h-[90%]" 
                     stroke={
                       granulator === 1
-                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
-                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                        ? (isDark ? '#D5CDBD' : '#2A3242')
+                        : (isDark ? '#82643F' : '#ABB4C3')
                     }
                   />
                 </div>
@@ -536,6 +571,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setGranulator(2);
                   setCountWindow(false);
                 }}
+                onMouseEnter={() => preloadNeighbors(type, 2)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
@@ -553,7 +589,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
-                    ${theme.name === 'dark'
+                    ${isDark
                       ? `${granulator === 2 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
                       : `${granulator === 2 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                     }
@@ -563,8 +599,8 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     className='h-[90%]' 
                     stroke={
                       granulator === 2
-                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
-                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                        ? (isDark ? '#D5CDBD' : '#2A3242')
+                        : (isDark ? '#82643F' : '#ABB4C3')
                     }
                   />
                 </div>
@@ -576,6 +612,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setGranulator(3);
                   setCountWindow(false);
                 }}
+                onMouseEnter={() => preloadNeighbors(type, 3)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
@@ -593,7 +630,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
-                    ${theme.name === 'dark'
+                    ${isDark
                       ? `${granulator === 3 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
                       : `${granulator === 3 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                     }
@@ -603,8 +640,8 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     className='h-[90%]' 
                     stroke={
                       granulator === 3
-                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
-                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                        ? (isDark ? '#D5CDBD' : '#2A3242')
+                        : (isDark ? '#82643F' : '#ABB4C3')
                     }
                   />
                 </div>
@@ -620,6 +657,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setMixer(1);
                   setCountWindow(false);
                 }}
+                onMouseEnter={() => preloadNeighbors(type, 1)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
@@ -638,7 +676,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
-                    ${theme.name === 'dark'
+                    ${isDark
                       ? `${mixer === 1 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
                       : `${mixer === 1 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                     }
@@ -648,8 +686,8 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     className='h-[90%]' 
                     stroke={
                       mixer === 1
-                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
-                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                        ? (isDark ? '#D5CDBD' : '#2A3242')
+                        : (isDark ? '#82643F' : '#ABB4C3')
                     }
                   />
                 </div>
@@ -661,6 +699,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setMixer(2);
                   setCountWindow(false);
                 }}
+                onMouseEnter={() => preloadNeighbors(type, 2)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
@@ -679,7 +718,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
-                    ${theme.name === 'dark'
+                    ${isDark
                       ? `${mixer === 2 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
                       : `${mixer === 2 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                     }
@@ -689,8 +728,8 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     className='h-[90%]' 
                     stroke={
                       mixer === 2
-                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
-                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                        ? (isDark ? '#D5CDBD' : '#2A3242')
+                        : (isDark ? '#82643F' : '#ABB4C3')
                     }
                   />
                 </div>
@@ -702,6 +741,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setMixer(3);
                   setCountWindow(false);
                 }}
+                onMouseEnter={() => preloadNeighbors(type, 3)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
@@ -720,7 +760,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
-                    ${theme.name === 'dark'
+                    ${isDark
                       ? `${mixer === 3 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
                       : `${mixer === 3 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                     }
@@ -730,8 +770,8 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     className='h-[90%]'
                     stroke={
                       mixer === 3
-                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
-                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                        ? (isDark ? '#D5CDBD' : '#2A3242')
+                        : (isDark ? '#82643F' : '#ABB4C3')
                     }
                   />
                 </div>
@@ -743,6 +783,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setMixer(4);
                   setCountWindow(false);
                 }}
+                onMouseEnter={() => preloadNeighbors(type, 4)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
@@ -761,7 +802,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                 </div>
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
-                    ${theme.name === 'dark'
+                    ${isDark
                       ? `${mixer === 4 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
                       : `${mixer === 4 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                     }
@@ -771,8 +812,8 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     className='h-[90%]'
                     stroke={
                       mixer === 4
-                        ? (theme.name === 'dark' ? '#D5CDBD' : '#2A3242')
-                        : (theme.name === 'dark' ? '#82643F' : '#ABB4C3')
+                        ? (isDark ? '#D5CDBD' : '#2A3242')
+                        : (isDark ? '#82643F' : '#ABB4C3')
                     }
                   />
                 </div>

@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Container, Typography, CircularProgress, Alert, useMediaQuery } from '@mui/material';
 import ProductCard from './ProductCard';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { getURLWithLang } from '../functions/get-url-with-lang';
+import { LOCAL_STORAGE_LANGUAGE_KEY, LanguagesEnum } from './translation/i18n';
+import { ParamsType } from './NavigateProvider';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import pellets from '../assets/UI/Group 508.svg';
@@ -14,6 +17,8 @@ import { API_URL } from '../config';
 import { useTranslation, Trans } from 'react-i18next';
 import SEO from './SEO';
 import { useSEO } from '../hooks/useSEO';
+import { useTheme } from '../hooks/useTheme';
+import { getColor } from '../theme/utils';
 
 interface LocalizedText {
   ru: string;
@@ -60,7 +65,10 @@ const SpareParts = () => {
   const [isTypeOpen, setIsTypeOpen] = useState(false);
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
   const { t } = useTranslation();
-  
+  const theme = useTheme();
+  const isDark = theme.name === 'dark';
+  const { lang } = useParams<ParamsType>();
+  const currentLang = (lang || localStorage.getItem(LOCAL_STORAGE_LANGUAGE_KEY) || 'en') as LanguagesEnum;
   
   const isXSmallScreen = useMediaQuery('(max-width:800px)');
   const isSmallScreen = useMediaQuery('(max-width:1024px)');
@@ -317,19 +325,39 @@ const SpareParts = () => {
                 : '70px'
             }}>
               <Link 
-                to="/"
-                className="text-[#A19F9B] hover:text-[#D5CDBD] font-[LabGrotesque] text-[14px] opacity-50 hover:opacity-100 transition-all duration-300"
+                to={getURLWithLang('/', currentLang!)}
+                className={`font-[LabGrotesque] text-[14px] opacity-50 hover:opacity-100 transition-all duration-300 ${
+                  isDark 
+                  ? 'text-[#D5CDBD] hover:text-[#D5CDBD]' 
+                  : 'text-[#2A3242] hover:text-[#2A3242]'
+                }`}
                 style={{
-                  cursor: 'default',
-                  userSelect: 'none',
+                  cursor: 'pointer',
                   WebkitTapHighlightColor: 'transparent',
-                  pointerEvents: 'none'
                 }}
               >
                 {t('common.home')}
               </Link>
-              <span className="text-[#A19F9B] font-[LabGrotesque] text-[14px] opacity-50" style={{ cursor: 'default', userSelect: 'none' }}>›</span>
-              <span className="text-[#D5CDBD] font-[LabGrotesque] text-[14px] opacity-100" style={{ cursor: 'default', userSelect: 'none' }}>{t('products.title')}</span>
+              <span className={`font-[LabGrotesque] text-[14px] opacity-50 transition-all duration-300 ${
+                  isDark 
+                  ? 'text-[#D5CDBD]' 
+                  : 'text-[#2A3242]'
+                }`} 
+                style={{
+                  cursor: 'default',
+                  userSelect: 'none' 
+                }}
+              >
+                ›
+              </span>
+              <span className={`font-[LabGrotesque] text-[14px] opacity-100 ${
+                isDark 
+                ? 'text-[#D5CDBD]' 
+                : 'text-[#2A3242]'
+              }`} 
+              style={{ cursor: 'default', userSelect: 'none' }}>
+                {t('products.title')}
+              </span>
             </div>
 
             {/* Title */}
@@ -369,7 +397,7 @@ const SpareParts = () => {
                       ? '676px'
                       : '1044px',
                     height: '1px',
-                    backgroundColor: '#554F45',
+                    backgroundColor: '#82653E',
                     opacity: 0.5,
                     userSelect: 'none',
                     transition: 'all 0.3s ease'
@@ -390,7 +418,11 @@ const SpareParts = () => {
                 {isSmallScreen && (
                   <button
                     onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
-                    className="flex items-center justify-center gap-2 w-full bg-[#202020] text-[#D5CDBD] py-3 mt-4 rounded"
+                    className={`flex items-center justify-center gap-2 w-full py-3 mt-4 rounded border ${
+                      isDark 
+                        ? 'bg-[#373739] text-[#D5CDBD] border-[#373739]'
+                        : 'bg-[#F5F5F5] text-[#2A3242] border-[#E0E0E0]'
+                    }`}
                   >
                     <FilterListIcon />
                     {t('products.filters.showFilters')}
@@ -410,7 +442,11 @@ const SpareParts = () => {
                         setIsTypeOpen(false);
                         setIsGranulationOpen(!isGranulationOpen);
                       }}
-                      className="flex items-center justify-between text-[#A19F9B] hover:text-[#D5CDBD] px-4 transition-colors font-[AdventProRegular] bg-[rgb(32_32_32_/_var(--tw-bg-opacity,1))] rounded"
+                      className={`flex items-center justify-between px-4 transition-colors text-opacity-50 hover:text-opacity-100 font-[AdventProRegular] transition-all duration-300 rounded border ${
+                        isDark 
+                          ? 'text-[#D5CDBD] hover:text-[#D5CDBD] bg-[#373739] border-[#373739]'
+                          : 'text-[#2A3242] hover:text-[#000000] bg-[#FFFFFF] border-[#E0E0E0]'
+                      }`}
                       style={{ 
                         width: '351px',
                         height: '55px',
@@ -425,7 +461,11 @@ const SpareParts = () => {
                     </button>
                     {isGranulationOpen && (
                       <div 
-                        className="absolute left-0 mt-1 bg-[rgb(32_32_32_/_var(--tw-bg-opacity,1))] rounded overflow-hidden p-1"
+                        className={`absolute left-0 mt-1 rounded overflow-hidden p-1 ${
+                          isDark 
+                          ? 'bg-[#2A2A2A]' 
+                          : 'bg-[#F5F5F5]'
+                        }`}
                         style={{
                           position: 'absolute',
                           top: '100%',
@@ -441,7 +481,11 @@ const SpareParts = () => {
                               setSelectedGranulations([]);
                               setIsGranulationOpen(false);
                             }}
-                            className={`w-full text-left px-4 py-3 hover:bg-[#2A2A2A] transition-colors text-[#A19F9B] rounded mb-1`}
+                            className={`w-full text-left px-4 py-3 transition-colors rounded mb-1 font-[AdventProRegular] ${
+                              isDark
+                                ? 'text-[#A19F9B] hover:bg-[#373739] hover:text-[#D5CDBD]'
+                                : 'text-[#2A3242] hover:bg-[#FFFFFF] hover:text-[#2A3242]'
+                            }`}
                           >
                             {t('products.filters.reset')}
                           </button>
@@ -449,8 +493,16 @@ const SpareParts = () => {
                             <button
                               key={type}
                               onClick={() => handleGranulationSelect(type)}
-                              className={`w-full text-left px-4 py-3 hover:bg-[#2A2A2A] transition-colors rounded mb-1 ${
-                                selectedGranulations.includes(type) ? 'text-[#D5CDBD] bg-[#2A2A2A]' : 'text-[#A19F9B]'
+                              className={`w-full text-left px-4 py-3 transition-colors rounded mb-1 ${
+                                isDark 
+                                ? 'text-[#A19F9B] hover:text-[#D5CDBD] hover:bg-[#373739]'
+                                : 'text-[#2A3242] hover:text-[#2A3242] hover:bg-[#FFFFFF]'
+                              } ${
+                                selectedGranulations.includes(type) ? 
+                                isDark 
+                                ? 'text-[#D5CDBD] bg-[#373739]' 
+                                : 'text-[#2A3242] bg-[#FFFFFF]'
+                                : ''
                               }`}
                             >
                               {type}
@@ -468,7 +520,12 @@ const SpareParts = () => {
                         setIsGranulationOpen(false);
                         setIsTypeOpen(!isTypeOpen);
                       }}
-                      className="flex items-center justify-between text-[#A19F9B] hover:text-[#D5CDBD] px-4 transition-colors font-[AdventProRegular] bg-[rgb(32_32_32_/_var(--tw-bg-opacity,1))] rounded"
+                      className={`flex items-center justify-between px-4 transition-colors text-opacity-50 hover:text-opacity-100 font-[AdventProRegular] transition-all duration-300 rounded border ${
+                        isDark
+                          ? 'text-[#D5CDBD] hover:text-[#D5CDBD] bg-[#373739] border-[#373739]'
+                          : 'text-[#2A3242] hover:text-[#000000] bg-[#FFFFFF] border-[#E0E0E0]'
+                      }
+                      `}
                       style={{ 
                         width: '351px',
                         height: '55px',
@@ -483,7 +540,11 @@ const SpareParts = () => {
                     </button>
                     {isTypeOpen && (
                       <div 
-                        className="absolute left-0 mt-1 bg-[rgb(32_32_32_/_var(--tw-bg-opacity,1))] rounded overflow-hidden p-1"
+                        className={`absolute left-0 mt-1 rounded overflow-hidden p-1 ${
+                          isDark 
+                          ? 'bg-[#2A2A2A]' 
+                          : 'bg-[#F5F5F5]'
+                        }`}
                         style={{
                           position: 'absolute',
                           top: '100%',
@@ -493,22 +554,34 @@ const SpareParts = () => {
                           boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
                         }}
                       >
+                        <button
+                          onClick={() => {
+                            setSelectedProductTypes([]);
+                            setIsTypeOpen(false);
+                          }}
+                          className={`w-full text-left px-4 py-3 transition-colors rounded mb-1 ${
+                            isDark 
+                            ? 'text-[#A19F9B] hover:bg-[#373739] hover:text-[#D5CDBD]'
+                            : 'text-[#2A3242] hover:bg-[#FFFFFF] hover:text-[#2A3242]'
+                          }`}
+                        >
+                          {t('products.filters.reset')}
+                        </button>
                         <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
-                          <button
-                            onClick={() => {
-                              setSelectedProductTypes([]);
-                              setIsTypeOpen(false);
-                            }}
-                            className={`w-full text-left px-4 py-3 hover:bg-[#2A2A2A] transition-colors text-[#A19F9B] rounded mb-1`}
-                          >
-                            {t('products.filters.reset')}
-                          </button>
                           {productTypes.map((type) => (
                             <button
                               key={type}
                               onClick={() => handleTypeSelect(type)}
-                              className={`w-full text-left px-4 py-3 hover:bg-[#2A2A2A] transition-colors rounded mb-1 ${
-                                selectedProductTypes.includes(type) ? 'text-[#D5CDBD] bg-[#2A2A2A]' : 'text-[#A19F9B]'
+                              className={`w-full text-left px-4 py-3 transition-colors rounded mb-1 ${
+                                isDark 
+                                ? 'text-[#A19F9B] hover:text-[#D5CDBD] hover:bg-[#373739]'
+                                : 'text-[#2A3242] hover:text-[#2A3242] hover:bg-[#FFFFFF]'
+                              } ${
+                                selectedProductTypes.includes(type) ? 
+                                isDark 
+                                ? 'text-[#D5CDBD] bg-[#373739]' 
+                                : 'text-[#2A3242] bg-[#FFFFFF]'
+                                : ''
                               }`}
                             >
                               {type}
@@ -523,7 +596,10 @@ const SpareParts = () => {
                   <div style={{ marginTop: isTypeOpen ? '320px' : '24px' }}>
                     <Typography 
                       variant="h6" 
-                      className="text-[#D5CDBD] mb-4 font-[AdventProRegular]"
+                      className="mb-4 font-[AdventProRegular]"
+                      style={{
+                        color: getColor(theme, 'title')
+                      }}
                       sx={{
                         fontSize: '29px',
                         fontFamily: 'AdventProRegular',
@@ -569,7 +645,11 @@ const SpareParts = () => {
                           <span 
                             className="font-[AdventProRegular] text-[20px]"
                             style={{
-                              color: selectedTypes.includes(type.value) ? '#82653E' : '#A19F9B',
+                              color: selectedTypes.includes(type.value)
+                                ? '#82653E'
+                                : isDark
+                                  ? '#D5CDBD'
+                                  : '#2A3242',
                               opacity: selectedTypes.includes(type.value) ? 1 : 0.5
                             }}
                           >
@@ -584,7 +664,10 @@ const SpareParts = () => {
                   <div>
                     <Typography 
                       variant="h6" 
-                      className="text-[#D5CDBD] mb-4 font-[AdventProRegular]"
+                      className="mb-4 font-[AdventProRegular]"
+                      style={{
+                        color: getColor(theme, 'title')
+                      }}
                       sx={{
                         fontSize: '29px',
                         fontFamily: 'AdventProRegular',
@@ -609,7 +692,7 @@ const SpareParts = () => {
                         >
                           <div className={`w-[48px] h-[48px] rounded-full flex items-center justify-center ${
                             selectedApplications.includes(item.label)
-                              ? 'relative after:content-[""] after:absolute after:inset-[-4px] after:border-2 after:border-[#D5CDBD] after:rounded-full' 
+                              ? `relative after:content-[""] after:absolute after:inset-[-4px] after:border-2 ${isDark ? 'after:border-[#D5CDBD]' : 'after:border-[#2A3242]'} after:rounded-full` 
                               : ''
                           }`}>
                             <img 
@@ -630,7 +713,11 @@ const SpareParts = () => {
                             className="font-[AdventProRegular] text-[20px]"
                             style={{
                               opacity: selectedApplications.includes(item.label) ? 1 : 0.5,
-                              color: selectedApplications.includes(item.label) ? '#82653E' : '#A19F9B',
+                              color: selectedApplications.includes(item.label)
+                                ? '#82653E'
+                                : isDark
+                                  ? '#D5CDBD'
+                                  : '',
                               lineHeight: 'normal',
                               letterSpacing: '0%'
                             }}

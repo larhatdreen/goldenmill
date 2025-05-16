@@ -5,11 +5,12 @@ function PrivacyPolicy() {
   const { i18n } = useTranslation()
   const currentLanguage = i18n.language
   const theme = useTheme();
+  const isDark = theme.name === 'dark';
 
-    const textColor = theme.name === 'dark' ? '#D5CDBD' : '#2A3242';
+    const textColor = isDark ? '#D5CDBD' : '#2A3242';
 
     const containerStyle = `w-full min-h-screen py-[100px] px-[30px] md:px-[100px] font-adventpro border ${
-      theme.name === 'dark' 
+      isDark 
       ? 'bg-gradient-to-b from-[#1A1B1C] to-[#282828] border-[#2C2D2F]' 
       : 'bg-gradient-to-b from-[#F8F8F9] via-[#F2F2F2] to-[#ECECEC] border-[#82653F]'
     }`
