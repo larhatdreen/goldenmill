@@ -61,6 +61,7 @@ const SpareParts = () => {
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
   const { t } = useTranslation();
   
+  
   const isXSmallScreen = useMediaQuery('(max-width:800px)');
   const isSmallScreen = useMediaQuery('(max-width:1024px)');
   const isMediumScreen = useMediaQuery('(max-width:1366px)');
@@ -129,6 +130,8 @@ const SpareParts = () => {
     try {
       setLoading(true);
       setError(false);
+
+      console.log('API_URL:', API_URL);
       
       const url = new URL(`${API_URL}/products`);
       
@@ -199,7 +202,7 @@ const SpareParts = () => {
       const response = await fetch(url.toString());
       if (!response.ok) {
         const errorData = await response.json();
-        console.error('Server error response:', errorData);
+        console.log('Server error response:', errorData);
         throw new Error(errorData.message || errorData.error || 'Failed to fetch products');
       }
       
@@ -211,7 +214,7 @@ const SpareParts = () => {
         console.log('No products found with current filters');
       }
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.log('Error fetching products:', error);
       setError(true);
     } finally {
       setLoading(false);
