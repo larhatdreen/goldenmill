@@ -55,12 +55,21 @@ class Logger {
   }
 
   private getSessionId(): string {
+    if (typeof window === 'undefined') return '';
     let sessionId = sessionStorage.getItem('sessionId');
     if (!sessionId) {
-      sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      sessionId = generateSessionId();
       sessionStorage.setItem('sessionId', sessionId);
     }
     return sessionId;
+  }
+
+  private getBrowserInfo() {
+    if (typeof window === 'undefined') return { userAgent: '', language: '' };
+    return {
+      userAgent: navigator.userAgent,
+      language: navigator.language,
+    };
   }
 
   logConsent(consent: CookieSettings): void {
@@ -73,8 +82,7 @@ class Logger {
       type: 'consent',
       data: {
         ...consent,
-        userAgent: navigator.userAgent,
-        language: navigator.language,
+        ...this.getBrowserInfo(),
       },
       sessionId: this.getSessionId(),
     };

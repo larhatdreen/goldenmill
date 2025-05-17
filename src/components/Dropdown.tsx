@@ -41,10 +41,24 @@ const DropdownMenu = ({ close, open }: { close: boolean; open: (state: boolean) 
     return false;
   };
 
+  const getDocumentElement = (selector: string) => {
+    if (typeof document === 'undefined') return null;
+    return document.querySelector(selector);
+  }
+
+  const addDocumentListener = (event: string, handler: () => void) => {
+    if (typeof document === 'undefined') return;
+    document.addEventListener(event, handler);
+  }
+
   useEffect(() => {
-    const element = document.querySelector('.products');
-    const elementWidth = element!.clientWidth;
-    const element1 = document.querySelector('.products1') as HTMLElement;
+    const element = getDocumentElement('.products');
+    if (!element) return;
+
+    const element1 = getDocumentElement('.products1') as HTMLElement;
+    if (!element1) return;
+
+    const elementWidth = element.clientWidth;
     element1.style.width = `${elementWidth}px`;
     setParentWidth(elementWidth);
   }, [open]);
@@ -63,9 +77,11 @@ const DropdownMenu = ({ close, open }: { close: boolean; open: (state: boolean) 
     }
   }, [close]);
 
-  document.addEventListener('hashchange', () => {
-    console.log('location changed!');
-  });
+  useEffect(() => {
+    addDocumentListener('hashchange', () => {
+      console.log('location changed!');
+    });
+  }, []);
 
   return (
     <>

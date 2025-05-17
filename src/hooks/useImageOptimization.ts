@@ -7,6 +7,11 @@ interface UseImageOptimizationProps {
   quality?: number;
 }
 
+const getOrigin = () => {
+  if (typeof window === 'undefined') return '';
+  return window.location.origin;
+}
+
 export const useImageOptimization = ({ src, width, height, quality = 80 }: UseImageOptimizationProps) => {
   const [optimizedSrc, setOptimizedSrc] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +30,7 @@ export const useImageOptimization = ({ src, width, height, quality = 80 }: UseIm
         }
 
         // Создаем URL с параметрами оптимизации
-        const url = new URL(src, window.location.origin);
+        const url = new URL(src, getOrigin());
         if (width) url.searchParams.set('w', width.toString());
         if (height) url.searchParams.set('h', height.toString());
         url.searchParams.set('q', quality.toString());

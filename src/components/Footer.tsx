@@ -19,25 +19,43 @@ function Footer() {
   const theme = useTheme();
   const isDark = theme.name === 'dark';
 
-  function scrollToTop(duration: number) {
-    if (document.scrollingElement!.scrollTop === 0) return
-
-    const cosParameter = document.scrollingElement!.scrollTop / 2
-    let scrollCount = 0
-    let oldTimestamp: number | null = null
-
-    function step(newTimestamp: number) {
-      if (oldTimestamp !== null) {
-        scrollCount += (Math.PI * (newTimestamp - oldTimestamp)) / duration
-        if (scrollCount >= Math.PI) return (document.scrollingElement!.scrollTop = 0)
-        document.scrollingElement!.scrollTop = cosParameter + cosParameter * Math.cos(scrollCount)
-      }
-      oldTimestamp = newTimestamp
-      window.requestAnimationFrame(step)
-    }
-
-    window.requestAnimationFrame(step)
+  const getScrollTop = () => {
+    if (typeof document === 'undefined') return 0;
+    return document.scrollingElement?.scrollTop || 0;
   }
+
+  const setScrollTop = (value: number) => {
+    if (typeof document === 'undefined') return;
+    if (document.scrollingElement) {
+      document.scrollingElement.scrollTop = value;
+    }
+  }
+
+  const requestAnimationFrame = (callback: () => void) => {
+    if (typeof window === 'undefined') return;
+    window.requestAnimationFrame(callback);
+  }
+
+  const scrollToTop = () => {
+    if (getScrollTop() === 0) return;
+
+    const cosParameter = getScrollTop() / 2;
+    let scrollCount = 0;
+    let oldTimestamp = performance.now();
+
+    const step = (newTimestamp: number) => {
+      scrollCount += Math.PI / (1000 / (newTimestamp - oldTimestamp));
+      if (scrollCount >= Math.PI) {
+        setScrollTop(0);
+        return;
+      }
+      setScrollTop(cosParameter + cosParameter * Math.cos(scrollCount));
+      oldTimestamp = newTimestamp;
+      requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  };
 
   return (
     <footer className={`mt-auto w-full bottom-0 cursor-default`}
@@ -47,7 +65,7 @@ function Footer() {
     >
       <div className='w-full px-[30px] py-[50px] lg:px-[100px] flex flex-wrap justify-between items-start gap-y-5 gap-x-5 '>
         <div className='w-auto flex items-start'>
-          <img id='logo' src={logo} alt='logo' className='w-full cursor-pointer' onClick={() => scrollToTop(1000)} />
+          <img id='logo' src={logo} alt='logo' className='w-full cursor-pointer' onClick={() => scrollToTop()} />
         </div>
         <div className='w-auto flex flex-col justify-between'>
           <div className='font-labgrotesquebold font-bold text-[28px]'
@@ -149,7 +167,7 @@ function Footer() {
         </span>
         <Link to={getURLWithLang('serviceinformation', lang!)} onClick={(e) => {
           if (!e.ctrlKey && !e.metaKey) {
-            scrollToTop(1000);
+            scrollToTop();
           }
         }}>
           <span className={`text-start ${isDark ? 'text-[#767676] hover:text-[#D5CDBD]' : 'text-[#898989] hover:text-[#2A3242]'}`}>
@@ -158,7 +176,7 @@ function Footer() {
         </Link>
         <Link to={getURLWithLang('privacypolicy', lang!)} onClick={(e) => {
           if (!e.ctrlKey && !e.metaKey) {
-            scrollToTop(1000);
+            scrollToTop();
           }
         }}>
           <span className={`text-end ${isDark ? 'text-[#767676] hover:text-[#D5CDBD]' : 'text-[#898989] hover:text-[#2A3242]'}`}>

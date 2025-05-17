@@ -1,5 +1,25 @@
 const path = document.location.pathname
 
+const getDocumentElement = (id: string) => {
+  if (typeof document === 'undefined') return null;
+  return document.getElementById(id);
+}
+
+const getDocumentElements = (className: string) => {
+  if (typeof document === 'undefined') return null;
+  return document.getElementsByClassName(className);
+}
+
+const getDocumentQuerySelector = (selector: string) => {
+  if (typeof document === 'undefined') return null;
+  return document.querySelector(selector);
+}
+
+const getWindowScroll = () => {
+  if (typeof window === 'undefined') return;
+  window.scrollTo(0, 0);
+}
+
 export function onPointerEnterCircle(circleId: string) {
   const elements = document.getElementsByClassName(circleId) as HTMLCollectionOf<HTMLElement>
   const circle = document.getElementById(circleId) as HTMLElement
@@ -76,7 +96,7 @@ export function onInputFocus(inputId: string) {
 }
 
 window.onbeforeunload = function () {
-  window.scrollTo(0, 0)
+  getWindowScroll()
 }
 
 // window.addEventListener('load', function () {
@@ -328,3 +348,13 @@ window.onbeforeunload = function () {
 // };
 //
 // window.onload = observeUrlChange;
+
+export const handleScroll = () => {
+  if (typeof document === 'undefined' || typeof window === 'undefined') return;
+  
+  const elements = getDocumentElements(circleId) as HTMLCollectionOf<HTMLElement>;
+  const circle = getDocumentElement(circleId) as HTMLElement;
+  const textElement = getDocumentElement(`${circleId}text`) as HTMLElement;
+  
+  // ... rest of the code ...
+};

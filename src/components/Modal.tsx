@@ -40,6 +40,16 @@ interface ModalProps {
   productInfo?: ProductInfo;
 }
 
+const addDocumentListener = (event: string, handler: (e: MouseEvent) => void) => {
+  if (typeof document === 'undefined') return;
+  document.addEventListener(event, handler);
+}
+
+const removeDocumentListener = (event: string, handler: (e: MouseEvent) => void) => {
+  if (typeof document === 'undefined') return;
+  document.removeEventListener(event, handler);
+}
+
 export default function BasicModal({ open, handleClose, productInfo }: ModalProps) {
   const [send, setSend] = useState(false);
   const { lang } = useParams<ParamsType>();
@@ -83,11 +93,11 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
     };
 
     if (open) {
-      document.addEventListener('mousedown', handleClickOutside);
+      addDocumentListener('mousedown', handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      removeDocumentListener('mousedown', handleClickOutside);
     };
   }, [open, handleClose]);
 
@@ -141,9 +151,9 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
         setCheckedError(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
+    addDocumentListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      removeDocumentListener('mousedown', handleClickOutside);
     };
   }, [send, handleClose]);
 

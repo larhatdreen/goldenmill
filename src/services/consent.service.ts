@@ -74,8 +74,14 @@ async function getLocationInfo(): Promise<{ city: string; country: string }> {
   }
 }
 
+const getUserAgent = () => {
+  if (typeof window === 'undefined') return '';
+  return navigator.userAgent;
+}
+
 export const sendConsentToBackend = async (consent: CookieSettings): Promise<void> => {
   try {
+    const ua = getUserAgent();
     const device = getDeviceInfo();
     const location = await getLocationInfo();
     const publicIP = await getPublicIP();
@@ -99,6 +105,6 @@ export const sendConsentToBackend = async (consent: CookieSettings): Promise<voi
       throw new Error('Failed to send consent to backend');
     }
   } catch (error) {
-    console.warn('Failed to send consent to backend:', error);
+    console.error('Failed to send consent to backend:', error);
   }
 }; 

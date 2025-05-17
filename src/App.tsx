@@ -50,7 +50,7 @@ const setStoredLanguage = (language: LanguagesEnum): void => {
 
 function App() {
   const location = useLocation();
-  const { latitude, longitude } = useGeolocation();
+  const { coordinates } = useGeolocation();
   const seoData = useSEO('home');
 
   // Проверяем, является ли текущий URL статическим файлом
@@ -72,8 +72,8 @@ function App() {
     }
     
     // Если есть координаты, используем их для определения языка
-    if (latitude && longitude) {
-      const geoLanguage = getLanguageFromCoordinates(latitude, longitude);
+    if (coordinates?.latitude && coordinates?.longitude) {
+      const geoLanguage = getLanguageFromCoordinates(coordinates.latitude, coordinates.longitude);
       // Сохраняем определенный по геолокации язык
       setStoredLanguage(geoLanguage);
       return geoLanguage;

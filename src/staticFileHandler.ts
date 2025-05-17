@@ -14,8 +14,14 @@ export const isStaticFile = (url: string): boolean => {
   return staticFiles.some(file => url.endsWith(file));
 };
 
+const getPath = () => {
+  if (typeof window === 'undefined') return '';
+  const url = window.location.pathname;
+  return url;
+}
+
 // Функция для проверки, нужно ли рендерить React-приложение
 export const shouldRenderApp = (): boolean => {
-  const url = window.location.pathname;
+  const url = getPath();
   return !isStaticFile(url);
 }; 

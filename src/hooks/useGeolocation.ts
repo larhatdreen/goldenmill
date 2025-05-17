@@ -10,6 +10,11 @@ interface GeolocationState {
   error: string | null;
 }
 
+interface Coordinates {
+  latitude: number;
+  longitude: number;
+}
+
 export const getLanguageFromCoordinates = (latitude: number, longitude: number): LanguagesEnum => {
   // Примерные границы России
   const russiaBounds = {
@@ -48,35 +53,42 @@ export const getLanguageFromCoordinates = (latitude: number, longitude: number):
   return LanguagesEnum.ENGLISH;
 };
 
+const getGeolocation = () => {
+  if (typeof window === 'undefined' || !navigator.geolocation) {
+    return null;
+  }
+  return navigator.geolocation;
+}
+
 export const useGeolocation = () => {
-  const [state, setState] = useState<GeolocationState>({
-    latitude: null,
-    longitude: null,
-    error: null,
-  });
+  const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const cookieConsent = getCookieConsent();
     
-    if (cookieConsent?.consents.geolocation) {
-      if (!navigator.geolocation) {
-        setState(prev => ({ ...prev, error: 'Geolocation is not supported' }));
-        return;
-      }
-
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setState({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            error: null,
-          });
-        },
-        (error) => {
-          setState(prev => ({ ...prev, error: error.message }));
-        }
-      );
+    if (!cookieConsent?.consents.geolocation) {
+      setError('Geolocation consent not granted');
+      return;
     }
+
+    const geolocation = getGeolocation();
+    if (!geolocation) {
+      setError('Geolocation is not supported by your browser');
+      return;
+    }
+
+    geolocation.getCurrentPosition(
+      (position) => {
+        setCoordinates({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        });
+      },
+      (error) => {
+        setError(error.message);
+      }
+    );
   }, []);
 
   const sendLocationToBackend = async (position: GeolocationPosition) => {
@@ -99,11 +111,11 @@ export const useGeolocation = () => {
   };
 
   useEffect(() => {
-    if (state.latitude && state.longitude) {
+    if (coordinates?.latitude && coordinates?.longitude) {
       sendLocationToBackend({
         coords: {
-          latitude: state.latitude,
-          longitude: state.longitude,
+          latitude: coordinates.latitude,
+          longitude: coordinates.longitude,
           accuracy: 0,
           altitude: null,
           altitudeAccuracy: null,
@@ -113,7 +125,7 @@ export const useGeolocation = () => {
         timestamp: Date.now(),
       } as GeolocationPosition);
     }
-  }, [state.latitude, state.longitude]);
+  }, [coordinates?.latitude, coordinates?.longitude]);
 
-  return state;
+  return { coordinates, error };
 }; 
