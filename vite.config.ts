@@ -4,7 +4,7 @@ import path from 'path';
 import viteCompression from 'vite-plugin-compression';
 import { VitePWA } from 'vite-plugin-pwa';
 
-export default defineConfig(({ mode, command, ssrBuild }) => ({
+export default defineConfig(({ mode, command }) => ({
   plugins: [
     react(),
     viteCompression({
@@ -76,7 +76,7 @@ export default defineConfig(({ mode, command, ssrBuild }) => ({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        ...(ssrBuild && {
+        ...(process.env.SSR && {
           server: path.resolve(__dirname, 'src/entry-server.tsx'),
         }),
       },
@@ -89,13 +89,13 @@ export default defineConfig(({ mode, command, ssrBuild }) => ({
           return `assets/[name]-[hash][extname]`;
         },
         // Применяем manualChunks только для клиентской сборки
-        manualChunks: ssrBuild
-          ? undefined
-          : {
-              vendor: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
-              ui: ['@mui/material', '@emotion/react'],
-              i18n: ['i18next', 'react-i18next'],
-            },
+        ...(!(command === 'build' && process.argv.includes('--ssr')) && {
+          manualChunks: {
+            vendor: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
+            ui: ['@mui/material', '@emotion/react'],
+            i18n: ['i18next', 'react-i18next'],
+          }
+        })
       },
     },
   },
