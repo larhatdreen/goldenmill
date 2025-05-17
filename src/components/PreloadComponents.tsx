@@ -24,11 +24,11 @@ const PreloadComponents = () => {
     };
 
     // Запускаем предварительную загрузку после загрузки страницы
-    if (typeof window !== 'undefined') {
-      window.requestIdleCallback(() => {
-        preloadComponents();
-      });
-    }
+    // if (typeof window !== 'undefined') {
+    //   window.requestIdleCallback(() => {
+    //     preloadComponents();
+    //   });
+    // }
   }, []);
 
   return null;

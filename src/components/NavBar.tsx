@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams, useLocation } from 'react-router-dom'
 import DropdownMenu from './Dropdown.js'
 import LanguageDropdown from './LanguageDropdown.js'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, useRef } from 'react'
 import MenuButton from './MenuButton.js'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { useTranslation } from 'react-i18next'
@@ -10,6 +10,7 @@ import { ParamsType } from './NavigateProvider.js'
 import ThemeToggle from './ThemeToggle'
 // import { Snackbar, Alert } from '@mui/material'
 import { useTheme } from '../hooks/useTheme.js'
+
 export default function NavBar() {
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -21,6 +22,7 @@ export default function NavBar() {
   // const [snackbarOpen, setSnackbarOpen] = useState(false)
   const theme = useTheme()
   const isDark = theme.name === 'dark'
+  const menuRef = useRef<HTMLDivElement>(null)
 
   const languages = ['de', 'en', 'ru']
   
@@ -37,6 +39,27 @@ export default function NavBar() {
   useEffect(() => {
     onClickLanguage()
   }, [mobileLanguage])
+
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    // Проверяем, что клик не по меню и не по MenuButton
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(target) &&
+      !target.closest('.menu-toggle-btn')
+    ) {
+      setMenuIsOpen(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (menuIsOpen) {
+      document.addEventListener('mousedown', handleClickOutside, { passive: true });
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [menuIsOpen, handleClickOutside]);
 
   const onClickLanguage = () => {
     if (lang !== mobileLanguage) {
@@ -71,7 +94,7 @@ export default function NavBar() {
           </Link>
 
           {/* Desktop Menu */}
-          <ul className={`hidden md:flex md:flex-row text-xl  cursor-pointer shrink-0 gap-x-6 items-center font-labgrotesque
+          <ul className={`hidden lg:flex lg:flex-row text-xl cursor-pointer shrink-0 gap-x-6 items-center font-labgrotesque
             ${isDark ? 'text-[#767676]' : 'text-[#767676]'}
           `}>
             <Link to={getURLWithLang('granulator', lang!)}>
@@ -109,7 +132,7 @@ export default function NavBar() {
           </ul>
 
           {/* Mobile Menu Button */}
-          <div className='md:hidden flex items-center gap-4'>
+          <div className='lg:hidden flex items-center gap-4'>
             <div className="flex items-center gap-4">
               <ThemeToggle/> {/* // deleted onToggle={handleThemeChange}  */}
               <div className="flex items-center gap-2">
@@ -132,15 +155,16 @@ export default function NavBar() {
                 ))}
               </div>
             </div>
-            <MenuButton className='flex items-center' onToggle={handleMenuToggle} state={menuIsOpen} />
+            <MenuButton className='flex items-center menu-toggle-btn' onToggle={handleMenuToggle} state={menuIsOpen} />
           </div>
         </div>
 
         {/* Mobile Menu */}
         <div 
+          ref={menuRef}
           className={`${
             menuIsOpen ? 'block' : 'hidden'
-          } md:hidden fixed top-[80px] left-0 right-0 bg-[#1A1A1A] backdrop-blur-md border-b border-[#D5CDBD]/10`}
+          } lg:hidden top-[80px] left-0 right-0 bg-[#1A1A1A] backdrop-blur-md border-b border-t border-[#D5CDBD]/10`}
         >
           <ul className={`flex flex-col text-xl text-navUnselect p-6 space-y-4 ${isDark ? 'bg-[#373739]' : 'bg-[#F2F1F0]'} font-labgrotesque`}>
             <Link to={getURLWithLang('/', lang!)}>
@@ -162,8 +186,8 @@ export default function NavBar() {
                 <span>{t('navBar.products')}</span>
                 <ArrowDropDownIcon className='transition group-open:rotate-180' />
               </summary>
-              <article className='px-4 pb-4'>
-                <ul className='flex flex-col gap-3 pl-2'>
+              <article>
+                <ul className='flex flex-col gap-3 pl-6'>
                   <Link to={getURLWithLang('granulator', lang!)}>
                     <li
                       className={`py-2 transition-colors ${

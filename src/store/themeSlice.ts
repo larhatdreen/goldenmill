@@ -5,7 +5,8 @@ const getInitialTheme = () => {
   if (savedTheme) {
     return savedTheme === 'dark';
   }
-  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  // По умолчанию светлая тема
+  return false;
 };
 
 const initialState = {

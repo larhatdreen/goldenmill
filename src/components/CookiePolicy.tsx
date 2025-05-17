@@ -1,20 +1,29 @@
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '../hooks/useTheme';
 
 function CookiePolicy() {
   const { i18n } = useTranslation();
   const currentLanguage = i18n.language;
+  const theme = useTheme();
+  const isDark = theme.name === 'dark';
 
-  const containerStyle = 'w-full min-h-screen bg-gradient-to-b from-[#1A1B1C] to-[#282828] py-[100px] px-[30px] md:px-[100px] font-adventpro';
-  const titleStyle = 'text-[32px] md:text-[40px] text-gold_ font-medium mb-8 animate-fadeIn';
-  const sectionTitleStyle = 'text-[24px] text-gold_ font-medium mt-12 mb-6';
-  const textStyle = 'text-gray-300 text-[16px] leading-relaxed';
-  const listStyle = 'list-disc ml-6 space-y-3 text-gray-300';
-  const listItemStyle = 'hover:text-gold_ transition-colors duration-300';
+  const textColor = isDark ? '#D5CDBD' : '#2A3242';
+
+  const containerStyle = `w-full min-h-screen py-[100px] px-[30px] md:px-[100px] font-adventpro border ${
+    isDark 
+    ? 'bg-gradient-to-b from-[#1A1B1C] to-[#282828] border-[#2C2D2F]' 
+    : 'bg-gradient-to-b from-[#F8F8F9] via-[#F2F2F2] to-[#ECECEC] border-[#82653F]'
+  }`;
+  const titleStyle = 'text-[32px] md:text-[40px] text-[#82653F] font-medium mb-8 animate-fadeIn';
+  const sectionTitleStyle = 'text-[24px] text-[#82653F] font-medium mt-12 mb-6';
+  const textStyle = 'text-[16px] leading-relaxed';
+  const listStyle = 'list-disc ml-6 space-y-3';
+  const listItemStyle = 'hover:text-[#82653E] transition-colors duration-300';
 
   return (
     <>
       {currentLanguage === 'en' && (
-        <div className={containerStyle}>
+        <div className={containerStyle} style={{color: textColor}}>
           <div className="max-w-4xl mx-auto">
             <h1 className={titleStyle}>Cookie Policy</h1>
             
@@ -79,7 +88,7 @@ function CookiePolicy() {
       )}
 
       {currentLanguage === 'ru' && (
-        <div className={containerStyle}>
+        <div className={containerStyle} style={{color: textColor}}>
           <div className="max-w-4xl mx-auto">
             <h1 className={titleStyle}>Политика использования файлов cookie</h1>
             
@@ -144,7 +153,7 @@ function CookiePolicy() {
       )}
 
       {currentLanguage === 'de' && (
-        <div className={containerStyle}>
+        <div className={containerStyle} style={{color: textColor}}>
           <div className="max-w-4xl mx-auto">
             <h1 className={titleStyle}>Cookie-Richtlinie</h1>
             

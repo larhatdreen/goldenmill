@@ -485,8 +485,11 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
           </div>
         </div>
       ) : (
-        <div className='relative w-[96vw] max-w-[98vw] mx-auto bg-[#27282B] rounded-xl px-4 md:px-8 pt-10 pb-8 box-border modal-mobile md:w-[90%] md:max-w-[640px]'
-             style={{ backgroundColor: theme.colors.mui.form.background.fill }}>
+        <div className='relative mx-auto rounded-xl px-4 md:px-8 pt-10 pb-8 box-border transition-all duration-300'
+             style={{ 
+              backgroundColor: theme.colors.mui.form.background.fill,
+              width: 'clamp(320px, 96vw, 640px)',
+             }}>
           <div
             className="absolute top-0 right-0 w-[48px] h-[48px] flex items-center justify-center z-50 sm:top-[20px] sm:right-[20px] sm:w-auto sm:h-auto"
             onClick={() => {
@@ -525,7 +528,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
             </div>
 
             <ThemeProvider theme={muiTheme}>
-              <div className='w-full h-[300px] px-[10%] pt-6 pb-6 flex flex-col justify-between'>
+              <div className='w-full px-[10%] pt-6 pb-6 flex flex-col gap-y-6 justify-between'>
                 <div className='flex flex-row justify-between gap-x-6'>
                   <FormControl className='z-10 flex-1' error={errorText.name !== ''}>
                     <InputLabel htmlFor='name'>{t('inputHelpBlock.name')}</InputLabel>
@@ -701,7 +704,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
               </div>
 
               <div className='flex flex-col items-center w-full mt-4'>
-                <FormGroup className='mb-3'>
+                <FormGroup className='mb-3 '>
                   <FormControl error={checkedError}>
                     <FormControlLabel
                       checked={checked}

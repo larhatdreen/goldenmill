@@ -502,9 +502,9 @@ export default function ModalInfo({
         </div>
         {!send && (
           <div
-            className="absolute w-[90%] max-w-[1300px] h-auto lg:h-[629px] bg-[#27282b] top-1/2 left-1/2
+            className="absolute w-[90%] max-w-[1300px] h-auto top-1/2 left-1/2
                         -translate-x-1/2 -translate-y-1/2 outline-0 rounded-xl flex flex-col items-end
-                        pt-[53px] pb-[3%] px-[20px] sm:px-[30px] md:px-[40px] lg:px-[58px] xl:px-[76px] justify-end min-h-[120px] modal-mobile"
+                        pt-[53px] pb-[3%] px-[20px] sm:px-[30px] md:px-[40px] lg:px-[58px] xl:px-[76px] justify-end min-h-[120px] duration-300"
             style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)', backgroundColor: theme.colors.mui.form.background.fill}}
           >
             <ThemeProvider theme={muiTheme}>

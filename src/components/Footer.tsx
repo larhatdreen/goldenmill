@@ -11,6 +11,7 @@ import { getURLWithLang } from '../functions/get-url-with-lang'
 import { LanguagesEnum } from './translation/i18n'
 import { useTheme } from '../hooks/useTheme'
 import { getColor, getLocalThemeColor } from '../theme/utils';
+import { scrollToTop } from '../utils/scrollToTop';
 
 
 function Footer() {
@@ -18,26 +19,6 @@ function Footer() {
   const { lang } = useParams<{ lang: LanguagesEnum }>()
   const theme = useTheme();
   const isDark = theme.name === 'dark';
-
-  function scrollToTop(duration: number) {
-    if (document.scrollingElement!.scrollTop === 0) return
-
-    const cosParameter = document.scrollingElement!.scrollTop / 2
-    let scrollCount = 0
-    let oldTimestamp: number | null = null
-
-    function step(newTimestamp: number) {
-      if (oldTimestamp !== null) {
-        scrollCount += (Math.PI * (newTimestamp - oldTimestamp)) / duration
-        if (scrollCount >= Math.PI) return (document.scrollingElement!.scrollTop = 0)
-        document.scrollingElement!.scrollTop = cosParameter + cosParameter * Math.cos(scrollCount)
-      }
-      oldTimestamp = newTimestamp
-      window.requestAnimationFrame(step)
-    }
-
-    window.requestAnimationFrame(step)
-  }
 
   return (
     <footer className={`mt-auto w-full bottom-0 cursor-default`}
