@@ -9,9 +9,19 @@ import './index.css';
 import './components/translation/i18n.ts';
 import { shouldRenderApp } from './staticFileHandler';
 
+// Безопасная проверка для window
+const isBrowser = typeof window !== 'undefined';
+
+// Безопасное получение root элемента
+const getRootElement = () => {
+  if (!isBrowser) return null;
+  return document.getElementById('root');
+};
+
 // Проверяем, нужно ли рендерить React-приложение
-if (shouldRenderApp()) {
-  const root = document.getElementById('root');
+if (isBrowser && shouldRenderApp()) {
+  console.log('shouldRenderApp:', shouldRenderApp(), 'Path:', window.location.pathname);
+  const root = getRootElement();
   if (root) {
     ReactDOM.hydrateRoot(
       root,
@@ -26,7 +36,7 @@ if (shouldRenderApp()) {
       </React.StrictMode>
     );
   }
-} else {
+} else if (isBrowser) {
   // Для статических файлов не рендерим React-приложение
   console.log('Static file requested, not rendering React app');
 }
