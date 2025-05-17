@@ -10,6 +10,15 @@ interface HelmetContext {
   helmet: HelmetServerState;
 }
 
+// Функция для очистки классов контейнера
+const cleanContainerClasses = (html: string): string => {
+  // Находим div с классом min-h-screen и удаляем все его классы
+  return html.replace(
+    /<div class="[^"]*min-h-screen[^"]*">/g,
+    '<div>'
+  );
+};
+
 export async function render(url: string) {
   const helmetContext: HelmetContext = {} as HelmetContext;
   const appHtml = ReactDOMServer.renderToString(
@@ -22,5 +31,8 @@ export async function render(url: string) {
     </Provider>
   );
 
-  return { appHtml, helmet: helmetContext.helmet };
+  // Очищаем классы контейнера
+  const cleanedHtml = cleanContainerClasses(appHtml);
+
+  return { appHtml: cleanedHtml, helmet: helmetContext.helmet };
 }
