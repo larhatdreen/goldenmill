@@ -1,5 +1,5 @@
 import { useImageOptimization } from '../../hooks/useImageOptimization';
-import { Shimmer } from '../Shimmer';
+import Shimmer from "../Shimmer";
 
 interface OptimizedImageProps {
   src: string;
