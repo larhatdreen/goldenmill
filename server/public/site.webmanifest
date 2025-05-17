@@ -2,7 +2,7 @@
   "name": {
     "en": "GoldenMill - LKE Group GmbH | Dies and Roller Shells for Pellet Mills",
     "de": "GoldenMill - LKE Group GmbH | Matrizen und Presswalzen für Pelletpressen",
-    "ru": "GoldenMill - LKE Group GmbH | Матрицы и ролики для грануляторов"
+    "ru": "GoldenMill - LKE Group GmbH | Грануляторы, миксеры и запчасти"
   },
   "short_name": "GoldenMill",
   "description": {
@@ -174,6 +174,45 @@
     "twin-track die",
     "pellet production",
     "granulation",
-    "extrusion"
-  ]
+    "extrusion",
+    "industrial machinery",
+    "feed production",
+    "biomass processing",
+    "wood pellets",
+    "animal feed",
+    "industrial automation",
+    "custom solutions",
+    "German engineering",
+    "quality manufacturing",
+    "feed mill equipment",
+    "biomass equipment",
+    "industrial solutions",
+    "custom dies",
+    "custom roller shells",
+    "pellet mill parts",
+    "hammer mill parts",
+    "industrial spare parts",
+    "manufacturing solutions",
+    "engineering solutions",
+    "industrial automation",
+    "process optimization",
+    "equipment maintenance"
+  ],
+  "open_graph": {
+    "type": "website",
+    "site_name": "GoldenMill - LKE Group GmbH",
+    "locale": ["en_US", "de_DE", "ru_RU"],
+    "image": {
+      "url": "https://goldenmill.de/og-image.jpg",
+      "width": 1200,
+      "height": 630,
+      "alt": "GoldenMill - LKE Group GmbH"
+    }
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "site": "@goldenmill",
+    "creator": "@goldenmill",
+    "image": "https://goldenmill.de/twitter-image.jpg"
+  }
 } 

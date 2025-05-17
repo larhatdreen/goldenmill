@@ -21,6 +21,18 @@ Allow: /*/spare-parts/
 Allow: /images/products/
 Allow: /img/products/
 
+# Important pages
+Allow: /about/
+Allow: /*/about/
+Allow: /contacts/
+Allow: /*/contacts/
+Allow: /service-information/
+Allow: /*/service-information/
+Allow: /privacy-policy/
+Allow: /*/privacy-policy/
+Allow: /cookie-policy/
+Allow: /*/cookie-policy/
+
 # Block access to system files and endpoints
 Disallow: /admin/
 Disallow: /api/
@@ -43,4 +55,6 @@ Crawl-delay: 1
 # Keywords for search engines
 # GoldenMill, LKE Group GmbH, dies, matrices, roller shells, spare parts, pellet mills, 
 # hammer mills, industrial equipment, manufacturing, high quality, custom manufacturing,
-# flat die, ring die, twin-track die, pellet production, granulation, extrusion 
+# flat die, ring die, twin-track die, pellet production, granulation, extrusion,
+# industrial machinery, feed production, biomass processing, wood pellets, animal feed,
+# industrial automation, custom solutions, German engineering, quality manufacturing 

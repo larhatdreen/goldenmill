@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native", "darwin", "linux-musl"]
 }
 
 datasource db {
@@ -62,4 +63,14 @@ model Log {
   user      String
   ip        String
   metadata  Json?
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       Json
+  description Json
+  imageUrl    String?
+  category    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

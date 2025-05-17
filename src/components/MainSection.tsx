@@ -175,8 +175,16 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
             desktopFHD:grid-cols-[6%_44%_auto] px-4 sm:px-6 md:px-8'
       >
         <div className='firstHelpColumn' />
-        <Suspense fallback={<Shimmer />}>
-          <div className="relative">
+        <Suspense fallback={
+          <div className="w-full" style={{
+            height: 'calc(250px + (915 - 250) * ((100vw - 320px) / (1219 - 320)))',
+            minHeight: '250px',
+            maxHeight: '650px'
+          }}>
+            <Shimmer width="100%" height="100%" />
+          </div>
+        }>
+          <div className="relative w-full h-full">
             {selectGranulator()}
             {!isDark ? '' :
               <>

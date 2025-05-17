@@ -13,9 +13,11 @@
         <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru"/>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de"/>
+        <image:image>
+            <image:loc>https://goldenmill.de/logo.svg</image:loc>
+            <image:title>GoldenMill Logo</image:title>
+        </image:image>
         <mobile:mobile/>
     </url>
 
@@ -28,9 +30,11 @@
         <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/granulator"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/granulator"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/granulator"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/granulator"/>
         <image:image>
             <image:loc>https://goldenmill.de/images/matrix.jpg</image:loc>
-            <image:title>Granulator</image:title>
+            <image:title>Granulator Matrix</image:title>
+            <image:caption>High-quality granulator matrix for industrial equipment</image:caption>
         </image:image>
         <mobile:mobile/>
     </url>
@@ -44,9 +48,11 @@
         <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/mixer"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/mixer"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/mixer"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/mixer"/>
         <image:image>
             <image:loc>https://goldenmill.de/images/mixer.jpg</image:loc>
-            <image:title>Mixer</image:title>
+            <image:title>Industrial Mixer</image:title>
+            <image:caption>Professional industrial mixer for various applications</image:caption>
         </image:image>
         <mobile:mobile/>
     </url>
@@ -60,6 +66,12 @@
         <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/spare-parts"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/spare-parts"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/spare-parts"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/spare-parts"/>
+        <image:image>
+            <image:loc>https://goldenmill.de/images/spare-parts.jpg</image:loc>
+            <image:title>Spare Parts</image:title>
+            <image:caption>High-quality spare parts for industrial equipment</image:caption>
+        </image:image>
         <mobile:mobile/>
     </url>
 
@@ -72,6 +84,12 @@
         <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/about"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/about"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/about"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/about"/>
+        <image:image>
+            <image:loc>https://goldenmill.de/images/about.jpg</image:loc>
+            <image:title>About GoldenMill</image:title>
+            <image:caption>Learn more about our company and expertise</image:caption>
+        </image:image>
         <mobile:mobile/>
     </url>
 
@@ -84,28 +102,33 @@
         <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/contacts"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/contacts"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/contacts"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/contacts"/>
         <mobile:mobile/>
     </url>
 
     <!-- Сервисная информация -->
     <url>
         <loc>https://goldenmill.de/service-information</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/service-information"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/service-information"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/service-information"/>
+        <lastmod>2024-03-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/service-information"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/service-information"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/service-information"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/service-information"/>
         <mobile:mobile/>
     </url>
 
     <!-- Политика конфиденциальности -->
     <url>
         <loc>https://goldenmill.de/privacy-policy</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/privacy-policy"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/privacy-policy"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/privacy-policy"/>
+        <lastmod>2024-03-14</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/privacy-policy"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/privacy-policy"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/privacy-policy"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/privacy-policy"/>
         <mobile:mobile/>
     </url>
 

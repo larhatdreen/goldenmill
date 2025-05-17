@@ -1,5 +1,7 @@
 const path = require('path');
 const fs = require('fs');
+const sharp = require('sharp');
+const fsPromises = require('fs').promises;
 
 // Список статических файлов, которые должны обрабатываться напрямую
 const staticFiles = [
@@ -59,4 +61,54 @@ const staticFileMiddleware = (req, res, next) => {
   }
 };
 
-module.exports = staticFileMiddleware; 
+const optimizeImage = async (req, res, next) => {
+  try {
+    const { w, h, q } = req.query;
+    const imagePath = path.join(__dirname, 'public', req.path);
+
+    // Проверяем, существует ли файл
+    try {
+      await fsPromises.access(imagePath);
+    } catch (error) {
+      return next();
+    }
+
+    // Если нет параметров оптимизации, пропускаем
+    if (!w && !h && !q) {
+      return next();
+    }
+
+    // Читаем изображение
+    const imageBuffer = await fsPromises.readFile(imagePath);
+    
+    // Создаем трансформацию
+    let transform = sharp(imageBuffer);
+
+    // Применяем ресайз если указаны размеры
+    if (w || h) {
+      transform = transform.resize({
+        width: w ? parseInt(w) : undefined,
+        height: h ? parseInt(h) : undefined,
+        fit: 'inside',
+        withoutEnlargement: true
+      });
+    }
+
+    // Применяем качество если указано
+    if (q) {
+      transform = transform.jpeg({ quality: parseInt(q) });
+    }
+
+    // Получаем оптимизированное изображение
+    const optimizedBuffer = await transform.toBuffer();
+
+    // Отправляем оптимизированное изображение
+    res.type('image/jpeg');
+    res.send(optimizedBuffer);
+  } catch (error) {
+    console.error('Error optimizing image:', error);
+    next();
+  }
+};
+
+module.exports = { staticFileMiddleware, optimizeImage }; 

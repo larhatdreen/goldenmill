@@ -23,6 +23,64 @@ interface SEOProps {
   };
 }
 
+interface SchemaOrg {
+  '@context': string;
+  '@type': string;
+  '@id': string;
+  url: string;
+  name: string;
+  description: string;
+  publisher: {
+    '@type': string;
+    name: string;
+    logo: {
+      '@type': string;
+      url: string;
+    };
+    address: {
+      '@type': string;
+      streetAddress: string;
+      addressLocality: string;
+      addressCountry: string;
+    };
+    contactPoint: {
+      '@type': string;
+      telephone: string;
+      email: string;
+      contactType: string;
+    };
+  };
+  breadcrumb: {
+    '@type': string;
+    itemListElement: Array<{
+      '@type': string;
+      position: number;
+      item: {
+        '@id': string;
+        name: string;
+      };
+    }>;
+  };
+  image?: string;
+  brand?: {
+    '@type': string;
+    name: string;
+  };
+  model?: string;
+  category?: string;
+  offers?: {
+    '@type': string;
+    price: string;
+    priceCurrency: string;
+    availability: string;
+  };
+  additionalProperty?: Array<{
+    '@type': string;
+    name: string;
+    value: string;
+  }>;
+}
+
 const SEO: React.FC<SEOProps> = ({
   title,
   description,
@@ -41,7 +99,12 @@ const SEO: React.FC<SEOProps> = ({
     logo: 'https://goldenmill.de/logo.svg',
     email: 'info@goldenmill.de',
     phone: '+49...',
-    companyName: 'LKE Group GmbH'
+    companyName: 'LKE Group GmbH',
+    address: {
+      street: 'Hauptstraße 1',
+      city: 'Berlin',
+      country: 'Germany'
+    }
   };
 
   const seo = {
@@ -52,65 +115,85 @@ const SEO: React.FC<SEOProps> = ({
     url: `${site.url}${location.pathname}`
   };
 
-  const organizationSchema = {
+  const schemaOrg: SchemaOrg = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: site.name,
-    alternateName: 'LKE Group GmbH',
-    url: site.url,
-    logo: site.logo,
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: site.phone,
-      email: site.email,
-      contactType: 'customer service'
-    },
-    sameAs: [
-      'https://www.facebook.com/lkegroupgmbh',
-      'https://www.linkedin.com/company/lke-group-gmbh'
-    ]
-  };
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: site.url
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: title || '',
-        item: seo.url
-      }
-    ]
-  };
-
-  const productSchema = product ? {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product.name,
-    description: product.description,
-    image: product.image,
-    brand: {
-      '@type': 'Brand',
-      name: 'LKE Group GmbH'
-    },
-    manufacturer: {
+    '@type': article ? 'Article' : 'WebPage',
+    '@id': seo.url,
+    url: seo.url,
+    name: seo.title,
+    description: seo.description,
+    publisher: {
       '@type': 'Organization',
-      name: 'LKE Group GmbH'
+      name: site.companyName,
+      logo: {
+        '@type': 'ImageObject',
+        url: site.logo
+      },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: site.address.street,
+        addressLocality: site.address.city,
+        addressCountry: site.address.country
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: site.phone,
+        email: site.email,
+        contactType: 'customer service'
+      }
     },
-    offers: {
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          item: {
+            '@id': site.url,
+            name: 'Home'
+          }
+        }
+      ]
+    }
+  };
+
+  if (product) {
+    schemaOrg['@type'] = 'Product';
+    schemaOrg.name = product.name;
+    schemaOrg.description = product.description;
+    schemaOrg.image = product.image;
+    schemaOrg.brand = {
+      '@type': 'Brand',
+      name: product.brand || 'GoldenMill'
+    };
+    schemaOrg.model = product.model;
+    schemaOrg.category = product.category;
+    schemaOrg.offers = {
       '@type': 'Offer',
-      price: product.price,
+      price: product.price || '',
       priceCurrency: 'EUR',
       availability: product.availability || 'https://schema.org/InStock'
+    };
+    if (product.technicalSpecification) {
+      schemaOrg.additionalProperty = [
+        {
+          '@type': 'PropertyValue',
+          name: 'Technical Specification',
+          value: product.technicalSpecification
+        }
+      ];
     }
-  } : null;
+    if (product.manufacturingDetails) {
+      if (!schemaOrg.additionalProperty) {
+        schemaOrg.additionalProperty = [];
+      }
+      schemaOrg.additionalProperty.push({
+        '@type': 'PropertyValue',
+        name: 'Manufacturing Details',
+        value: product.manufacturingDetails
+      });
+    }
+  }
 
   return (
     <Helmet>
@@ -120,11 +203,14 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="description" content={seo.description} />
       <meta name="keywords" content={seo.keywords} />
       <link rel="canonical" href={seo.url} />
-      <meta name="author" content="LKE Group GmbH" />
+      <meta name="author" content={site.companyName} />
+      <meta name="robots" content="index, follow" />
+      <meta name="googlebot" content="index, follow" />
+      <meta name="revisit-after" content="7 days" />
 
       {/* Viewport и совместимость */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="format-detection" content="telephone=no" />
 
       {/* Open Graph */}
@@ -135,9 +221,9 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:type" content={article ? 'article' : 'website'} />
       <meta property="og:site_name" content={site.name} />
       <meta property="og:locale" content={currentLanguage} />
-      <meta property="business:contact_data:street_address" content="Hauptstraße 1" />
-      <meta property="business:contact_data:locality" content="Berlin" />
-      <meta property="business:contact_data:country_name" content="Germany" />
+      <meta property="business:contact_data:street_address" content={site.address.street} />
+      <meta property="business:contact_data:locality" content={site.address.city} />
+      <meta property="business:contact_data:country_name" content={site.address.country} />
       <meta property="business:contact_data:email" content={site.email} />
 
       {/* Twitter Card */}
@@ -159,18 +245,10 @@ const SEO: React.FC<SEOProps> = ({
       <link rel="manifest" href="/site.webmanifest" />
       <meta name="theme-color" content="#ffffff" />
 
-      {/* Структурированные данные */}
+      {/* Schema.org */}
       <script type="application/ld+json">
-        {JSON.stringify(organizationSchema)}
+        {JSON.stringify(schemaOrg)}
       </script>
-      <script type="application/ld+json">
-        {JSON.stringify(breadcrumbSchema)}
-      </script>
-      {product && (
-        <script type="application/ld+json">
-          {JSON.stringify(productSchema)}
-        </script>
-      )}
     </Helmet>
   );
 };

@@ -268,13 +268,6 @@ const ProductLanding: React.FC = () => {
   const isLargeDesktop = useMediaQuery('(min-width:1921px) and (max-width:2560px)');
   const isXLargeDesktop = useMediaQuery('(min-width:2561px)');
 
-  // Get SEO data with dynamic product information
-  const seoData = useSEO('product', product ? {
-    productName: product.title[currentLanguage],
-    productDescription: product.description[currentLanguage],
-    category: t(`products.categories.${product.category || 'default'}`),
-  } : undefined);
-
   // Добавляем функцию форматирования цены
   const formatPrice = (price: string): string => {
     // Удаляем все нечисловые символы, кроме точки
@@ -411,6 +404,13 @@ const ProductLanding: React.FC = () => {
   console.log('Active Image URL in render:', product.activeImageUrl);
 
   const { title, description, subtitle, imageUrl, price } = product;
+
+  // Get SEO data with dynamic product information
+  const seoData = useSEO('product', {
+    productName: product.title[currentLanguage],
+    productDescription: product.description[currentLanguage],
+    category: t(`products.categories.${product.category || 'default'}`),
+  });
 
   return (
     <>

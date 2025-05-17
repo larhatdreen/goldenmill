@@ -19,9 +19,17 @@ Disallow: /temp/
 Allow: /images/
 Allow: /pdf/
 Allow: /fonts/
+Allow: /assets/
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
 
 # Crawl-delay for better server performance
-Crawl-delay: 10
+Crawl-delay: 2
 
 # Host directive for preferred domain version
 Host: https://goldenmill.de
@@ -29,11 +37,11 @@ Host: https://goldenmill.de
 # Additional rules for specific bots
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 5
+Crawl-delay: 1
 
 User-agent: Yandex
 Allow: /
-Crawl-delay: 5
+Crawl-delay: 1
 
 # Clean parameters
 Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term 

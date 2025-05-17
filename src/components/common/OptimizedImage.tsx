@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useImageOptimization } from '../../hooks/useImageOptimization';
+import { Shimmer } from '../Shimmer';
 
 interface OptimizedImageProps {
   src: string;
@@ -7,6 +8,7 @@ interface OptimizedImageProps {
   width?: number;
   height?: number;
   loading?: 'lazy' | 'eager';
+  quality?: number;
 }
 
 export const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -16,26 +18,36 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   width,
   height,
   loading = 'lazy',
+  quality = 80,
 }) => {
-  const [imageSrc, setImageSrc] = useState<string>('');
+  const { optimizedSrc, isLoading, error } = useImageOptimization({
+    src,
+    width,
+    height,
+    quality,
+  });
 
-  useEffect(() => {
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
-      setImageSrc(src);
-    };
-  }, [src]);
+  if (error) {
+    console.error('Error loading image:', error);
+    return null;
+  }
 
   return (
-    <img
-      src={imageSrc}
-      alt={alt}
-      className={className}
-      width={width}
-      height={height}
-      loading={loading}
-      decoding="async"
-    />
+    <div className="relative" style={{ width, height }}>
+      {isLoading && <Shimmer />}
+      <img
+        src={optimizedSrc}
+        alt={alt}
+        className={className}
+        width={width}
+        height={height}
+        loading={loading}
+        decoding="async"
+        style={{
+          opacity: isLoading ? 0 : 1,
+          transition: 'opacity 0.3s ease-in-out',
+        }}
+      />
+    </div>
   );
 }; 

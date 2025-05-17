@@ -26,10 +26,13 @@ import ProductLanding from './components/ProductLanding'
 import { isStaticFile } from './staticFileHandler'
 import SEO from './components/SEO'
 import ThemeBodySync from './components/ThemeBodySync'
+import PreloadComponents from './components/PreloadComponents'
+import { useSEO } from './hooks/useSEO'
 
 function App() {
   const location = useLocation();
   const defaultLanguage = 'de';
+  const seoData = useSEO('home');
 
   // Проверяем, является ли текущий URL статическим файлом
   if (isStaticFile(location.pathname)) {
@@ -56,7 +59,12 @@ function App() {
   return (
     <>
       <ThemeBodySync />
-      <SEO />
+      <SEO 
+        title={seoData.title}
+        description={seoData.description}
+        keywords={seoData.keywords}
+      />
+      <PreloadComponents />
       <div className='min-h-screen flex flex-col items-center'>
         <HelmetWrapper />
         <Suspense fallback='loading'>

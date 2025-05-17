@@ -11,6 +11,7 @@ require('dotenv').config();
 
 // Импортируем middleware для статических файлов
 const staticFileMiddleware = require('./staticFileMiddleware');
+const { optimizeImage } = require('./staticFileMiddleware');
 
 const prisma = new PrismaClient();
 const app = express();
@@ -36,6 +37,9 @@ app.use((req, res, next) => {
 
 // Применяем middleware для статических файлов перед другими middleware
 app.use(staticFileMiddleware);
+
+// Добавляем middleware для оптимизации изображений перед статическими файлами
+app.use('/img', optimizeImage);
 
 // Обслуживаем статические файлы из директории public
 app.use(express.static(PUBLIC_DIR));
