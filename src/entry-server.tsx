@@ -10,7 +10,7 @@ interface HelmetContext {
   helmet: HelmetServerState;
 }
 
-export function render(url: string) {
+export async function render(url: string) {
   const helmetContext: HelmetContext = {} as HelmetContext;
   const appHtml = ReactDOMServer.renderToString(
     <Provider store={store}>
@@ -23,4 +23,4 @@ export function render(url: string) {
   );
 
   return { appHtml, helmet: helmetContext.helmet };
-} 
+}

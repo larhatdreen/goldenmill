@@ -3,17 +3,34 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useTheme } from '../hooks/useTheme'
+import { LOCAL_STORAGE_LANGUAGE_KEY, LanguagesEnum } from './translation/i18n'
 
-const LANGUAGE_STORAGE_KEY = 'preferred_language'
+// Безопасное получение языка из localStorage
+const getStoredLanguage = (): LanguagesEnum | null => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const stored = window.localStorage.getItem(LOCAL_STORAGE_LANGUAGE_KEY)
+    if (stored && Object.values(LanguagesEnum).includes(stored as LanguagesEnum)) {
+      return stored as LanguagesEnum
+    }
+  }
+  return null
+}
+
+// Безопасное сохранение языка в localStorage
+const setStoredLanguage = (language: LanguagesEnum): void => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    window.localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, language)
+  }
+}
 
 const LanguageDropdown = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { lang } = useParams<{ lang: string }>()
-  const [selectedLanguage, setSelectedLanguage] = useState(() => {
+  const [selectedLanguage, setSelectedLanguage] = useState<LanguagesEnum>(() => {
     // Сначала проверяем localStorage
-    const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY)
+    const savedLanguage = getStoredLanguage()
     // Если есть сохраненный язык, используем его, иначе используем язык из URL или дефолтный
-    return savedLanguage || lang || 'de'
+    return savedLanguage || (lang as LanguagesEnum) || LanguagesEnum.ENGLISH
   })
   const dropdownRef = useRef<HTMLDivElement>(null)
   const theme = useTheme()
@@ -22,13 +39,13 @@ const LanguageDropdown = () => {
   const navigate = useNavigate()
   const { i18n } = useTranslation()
 
-  const languages = ['de', 'en', 'ru']
+  const languages = Object.values(LanguagesEnum)
 
   // Синхронизация с URL при изменении параметра lang
   useEffect(() => {
-    if (lang && lang !== selectedLanguage) {
-      setSelectedLanguage(lang)
-      localStorage.setItem(LANGUAGE_STORAGE_KEY, lang)
+    if (lang && lang !== selectedLanguage && Object.values(LanguagesEnum).includes(lang as LanguagesEnum)) {
+      setSelectedLanguage(lang as LanguagesEnum)
+      setStoredLanguage(lang as LanguagesEnum)
     }
   }, [lang])
 
@@ -47,13 +64,13 @@ const LanguageDropdown = () => {
   }, [])
 
   // Обработка смены языка
-  const handleLanguageChange = (language: string) => {
+  const handleLanguageChange = (language: LanguagesEnum) => {
     if (lang !== language) {
       // Меняем язык в i18n
       i18n.changeLanguage(language)
       
       // Сохраняем выбранный язык в localStorage
-      localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
+      setStoredLanguage(language)
       
       // Обновляем URL
       const currentPath = window.location.pathname
@@ -89,7 +106,7 @@ const LanguageDropdown = () => {
               style={{ color: '#767676' }}
               onMouseEnter={e => e.currentTarget.style.color = isDark ? '#F1F1F1' : '#2A3242'}
               onMouseLeave={e => e.currentTarget.style.color = '#767676'}
-              onClick={() => handleLanguageChange(language)}
+              onClick={() => handleLanguageChange(language as LanguagesEnum)}
             >
               {language}
             </li>

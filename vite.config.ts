@@ -114,6 +114,7 @@ export default defineConfig(({ mode, command }) => ({
         changeOrigin: true,
       },
     },
+    allowedHosts: ['goldenmill.de']
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],

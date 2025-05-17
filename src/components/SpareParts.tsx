@@ -53,6 +53,17 @@ interface Product {
   technicalHint?: LocalizedText;
 }
 
+// Безопасное получение языка из localStorage
+const getStoredLanguage = (): LanguagesEnum | null => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const stored = window.localStorage.getItem(LOCAL_STORAGE_LANGUAGE_KEY)
+    if (stored && Object.values(LanguagesEnum).includes(stored as LanguagesEnum)) {
+      return stored as LanguagesEnum
+    }
+  }
+  return null
+}
+
 const SpareParts = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -68,7 +79,7 @@ const SpareParts = () => {
   const theme = useTheme();
   const isDark = theme.name === 'dark';
   const { lang } = useParams<ParamsType>();
-  const currentLang = (lang || localStorage.getItem(LOCAL_STORAGE_LANGUAGE_KEY) || 'en') as LanguagesEnum;
+  const currentLang = (lang || getStoredLanguage() || 'en') as LanguagesEnum;
   
   const isXSmallScreen = useMediaQuery('(max-width:800px)');
   const isSmallScreen = useMediaQuery('(max-width:1024px)');

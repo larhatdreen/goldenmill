@@ -18,6 +18,17 @@ export const LOCAL_STORAGE_LANGUAGE_KEY = 'language'
 export const activeLanguages = ['en', 'de', 'ru']
 export const redirectedLanguages = []
 
+// Безопасное получение языка из localStorage
+const getStoredLanguage = (): LanguagesEnum => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const stored = window.localStorage.getItem(LOCAL_STORAGE_LANGUAGE_KEY)
+    if (stored && Object.values(LanguagesEnum).includes(stored as LanguagesEnum)) {
+      return stored as LanguagesEnum
+    }
+  }
+  return LanguagesEnum.ENGLISH
+}
+
 const resources = {
   ru: {
     translation: {
@@ -126,12 +137,12 @@ const resources = {
   },
 }
 
-const currentLanguage = localStorage.getItem(LOCAL_STORAGE_LANGUAGE_KEY) || 'en'
+const currentLanguage = getStoredLanguage()
 
 i18next.use(initReactI18next).init({
   resources,
   lng: currentLanguage,
-  fallbackLng: 'en',
+  fallbackLng: LanguagesEnum.ENGLISH,
   interpolation: {
     escapeValue: false,
   },

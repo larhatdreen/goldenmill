@@ -28,8 +28,25 @@ import SEO from './components/SEO'
 import ThemeBodySync from './components/ThemeBodySync'
 import { useSEO } from './hooks/useSEO'
 import { useGeolocation, getLanguageFromCoordinates } from './hooks/useGeolocation'
+import { LOCAL_STORAGE_LANGUAGE_KEY, LanguagesEnum } from './components/translation/i18n'
 
-const LANGUAGE_STORAGE_KEY = 'preferred_language'
+// Безопасное получение языка из localStorage
+const getStoredLanguage = (): LanguagesEnum | null => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const stored = window.localStorage.getItem(LOCAL_STORAGE_LANGUAGE_KEY)
+    if (stored && Object.values(LanguagesEnum).includes(stored as LanguagesEnum)) {
+      return stored as LanguagesEnum
+    }
+  }
+  return null
+}
+
+// Безопасное сохранение языка в localStorage
+const setStoredLanguage = (language: LanguagesEnum): void => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    window.localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, language)
+  }
+}
 
 function App() {
   const location = useLocation();
@@ -42,31 +59,34 @@ function App() {
   }
 
   // Функция для определения языка из URL, localStorage или геолокации
-  const getLanguageFromPath = () => {
+  const getLanguageFromPath = (): LanguagesEnum => {
     const pathParts = location.pathname.split('/');
-    if (pathParts[1] && ['en', 'de', 'ru'].includes(pathParts[1])) {
-      return pathParts[1];
+    if (pathParts[1] && Object.values(LanguagesEnum).includes(pathParts[1] as LanguagesEnum)) {
+      return pathParts[1] as LanguagesEnum;
     }
     
     // Проверяем сохраненный язык в localStorage
-    const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    if (savedLanguage && ['en', 'de', 'ru'].includes(savedLanguage)) {
+    const savedLanguage = getStoredLanguage();
+    if (savedLanguage) {
       return savedLanguage;
     }
     
     // Если есть координаты, используем их для определения языка
     if (latitude && longitude) {
-      return getLanguageFromCoordinates(latitude, longitude);
+      const geoLanguage = getLanguageFromCoordinates(latitude, longitude);
+      // Сохраняем определенный по геолокации язык
+      setStoredLanguage(geoLanguage);
+      return geoLanguage;
     }
     
-    return 'en'; // Дефолтный язык
+    return LanguagesEnum.ENGLISH; // Дефолтный язык
   };
 
   // Функция для перенаправления на правильный языковой маршрут
   const getRedirectPath = () => {
     const currentLang = getLanguageFromPath();
     // Если язык не определен, используем дефолтный язык
-    const lang = currentLang || 'en';
+    const lang = currentLang || LanguagesEnum.ENGLISH;
     return `/${lang}/granulator`;
   };
 

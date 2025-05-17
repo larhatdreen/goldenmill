@@ -12,11 +12,22 @@ import { LOCAL_STORAGE_LANGUAGE_KEY, LanguagesEnum } from '../translation/i18n';
 
 const COOKIE_VERSION = '1.0';
 
+// Безопасное получение языка из localStorage
+const getStoredLanguage = (): LanguagesEnum | null => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const stored = window.localStorage.getItem(LOCAL_STORAGE_LANGUAGE_KEY)
+    if (stored && Object.values(LanguagesEnum).includes(stored as LanguagesEnum)) {
+      return stored as LanguagesEnum
+    }
+  }
+  return null
+}
+
 export const CookieConsentBanner = () => {
   const { t } = useTranslation();
   const [showBanner, setShowBanner] = useState(false);
   const { lang } = useParams<ParamsType>();
-  const currentLang = (lang || localStorage.getItem(LOCAL_STORAGE_LANGUAGE_KEY) || 'en') as LanguagesEnum;
+  const currentLang = (lang || getStoredLanguage() || 'en') as LanguagesEnum;
 
   useEffect(() => {
     const existingConsent = getCookieConsent();

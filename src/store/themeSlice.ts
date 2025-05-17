@@ -1,7 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Безопасное получение данных из localStorage
+const getStoredData = (key: string): string | null => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    return window.localStorage.getItem(key)
+  }
+  return null
+}
+
+// Безопасное сохранение данных в localStorage
+const setStoredData = (key: string, value: string): void => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    window.localStorage.setItem(key, value)
+  }
+}
+
 const getInitialTheme = () => {
-  const savedTheme = localStorage.getItem('theme');
+  const savedTheme = getStoredData('theme');
   if (savedTheme) {
     return savedTheme === 'dark';
   }
@@ -18,11 +33,11 @@ const themeSlice = createSlice({
   reducers: {
     toggleTheme: (state) => {
       state.shadowTheme = !state.shadowTheme;
-      localStorage.setItem('theme', state.shadowTheme ? 'dark' : 'light');
+      setStoredData('theme', state.shadowTheme ? 'dark' : 'light');
     },
     setTheme: (state, action) => {
       state.shadowTheme = action.payload;
-      localStorage.setItem('theme', action.payload ? 'dark' : 'light');
+      setStoredData('theme', action.payload ? 'dark' : 'light');
     },
   },
 });

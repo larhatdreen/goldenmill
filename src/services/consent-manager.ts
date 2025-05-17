@@ -1,5 +1,21 @@
 import { CookieSettings } from '../types/cookie.types';
 
+// Безопасное получение данных из localStorage
+const getStoredData = (key: string): any => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const data = window.localStorage.getItem(key)
+    return data ? JSON.parse(data) : null
+  }
+  return null
+}
+
+// Безопасное сохранение данных в localStorage
+const setStoredData = (key: string, value: any): void => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    window.localStorage.setItem(key, JSON.stringify(value))
+  }
+}
+
 interface ConsentManager {
   initialize(): void;
   getConsent(): CookieSettings;
@@ -43,8 +59,8 @@ class CustomConsentManager implements ConsentManager {
     };
 
     try {
-      const storedConsent = localStorage.getItem('userConsent');
-      return storedConsent ? JSON.parse(storedConsent) : defaultConsent;
+      const storedConsent = getStoredData('userConsent');
+      return storedConsent || defaultConsent;
     } catch {
       return defaultConsent;
     }
@@ -53,7 +69,7 @@ class CustomConsentManager implements ConsentManager {
   updateConsent(settings: CookieSettings): void {
     // Сохраняем согласия
     try {
-      localStorage.setItem('userConsent', JSON.stringify(settings));
+      setStoredData('userConsent', settings);
       
       // Применяем настройки
       if (settings.consents.analytics) {

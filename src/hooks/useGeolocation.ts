@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getCookieConsent } from '../utils/cookie.utils';
 import { logger } from '../services/logger/logger.service';
 import { api } from '../utils/api.utils';
+import { LanguagesEnum } from '../components/translation/i18n';
 
 interface GeolocationState {
   latitude: number | null;
@@ -9,7 +10,7 @@ interface GeolocationState {
   error: string | null;
 }
 
-export const getLanguageFromCoordinates = (latitude: number, longitude: number): string => {
+export const getLanguageFromCoordinates = (latitude: number, longitude: number): LanguagesEnum => {
   // Примерные границы России
   const russiaBounds = {
     north: 77.7,
@@ -32,7 +33,7 @@ export const getLanguageFromCoordinates = (latitude: number, longitude: number):
     longitude >= russiaBounds.west &&
     longitude <= russiaBounds.east
   ) {
-    return 'ru';
+    return LanguagesEnum.RUSSIAN;
   }
 
   if (
@@ -41,10 +42,10 @@ export const getLanguageFromCoordinates = (latitude: number, longitude: number):
     longitude >= germanyBounds.west &&
     longitude <= germanyBounds.east
   ) {
-    return 'de';
+    return LanguagesEnum.GERMANY;
   }
 
-  return 'en';
+  return LanguagesEnum.ENGLISH;
 };
 
 export const useGeolocation = () => {

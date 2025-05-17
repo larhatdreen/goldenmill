@@ -6,6 +6,13 @@ export type ParamsType = {
   lang: LanguagesEnum
 }
 
+// Безопасное сохранение языка в localStorage
+const setStoredLanguage = (language: LanguagesEnum): void => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    window.localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, language)
+  }
+}
+
 export const NavigateProvider: FC<PropsWithChildren> = ({ children }) => {
   const navigate = useNavigate()
   const { lang } = useParams<ParamsType>()
@@ -13,13 +20,13 @@ export const NavigateProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     if (!lang || !activeLanguages.includes(lang)) {
       i18next.changeLanguage(LanguagesEnum.ENGLISH)
-      localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, LanguagesEnum.ENGLISH)
+      setStoredLanguage(LanguagesEnum.ENGLISH)
       navigate(`/${LanguagesEnum.ENGLISH}`, { replace: true })
     }
 
     if (lang && i18next.language !== lang) {
       i18next.changeLanguage(lang)
-      localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, lang)
+      setStoredLanguage(lang)
     }
   }, [lang])
 

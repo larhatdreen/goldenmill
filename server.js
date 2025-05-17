@@ -41,7 +41,7 @@ async function createServer() {
           path.resolve(__dirname, 'dist/index.html'),
           'utf-8'
         );
-        render = (await import('./dist/server/entry-server.js')).render;
+        render = (await import('./dist/entry-server.js')).render;
       }
 
       const { appHtml, helmet } = await render(url);
@@ -63,7 +63,7 @@ async function createServer() {
 }
 
 createServer().then(app => {
-  const port = process.env.PORT || 3000;
+  const port = 3005;
   app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
   });
