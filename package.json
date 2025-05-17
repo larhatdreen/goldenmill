@@ -11,10 +11,10 @@
     "build": "tsc && vite build",
     "build:ssr": "vite build --ssr src/entry-server.tsx",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir server",
-    "postbuild": "cd server && ts-node scripts/generateProductSitemap.ts",
+    "postbuild": "cd server && tsx scripts/generateProductSitemap.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "generate-sitemap": "ts-node scripts/generate-sitemap.ts",
+    "generate-sitemap": "tsx scripts/generate-sitemap.ts",
     "start:ssr": "node server.js"
   },
   "dependencies": {
@@ -35,6 +35,7 @@
     "@types/recharts": "^1.8.29",
     "axios": "^1.6.7",
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "cors": "^2.8.5",
     "countries-list": "^3.0.6",
     "crypto-js": "^4.2.0",
@@ -60,8 +61,7 @@
     "recharts": "^2.12.2",
     "svgo": "^3.3.2",
     "tailwindcss-animated": "^1.0.1",
-    "yup": "^1.6.1",
-    "compression": "^1.7.4"
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
@@ -83,6 +83,7 @@
     "prisma": "^6.3.1",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.4",
     "typescript": "^5.2.2",
     "vite": "^5.1.3",
     "vite-plugin-compression": "^0.5.1",
