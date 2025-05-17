@@ -2,10 +2,10 @@
   "name": "goldenmill-api",
   "version": "1.0.0",
   "description": "API server for GoldenMill products",
-  "main": "dist/index.js",
+  "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node index.js",
     "dev": "nodemon src/index.ts",
     "build": "prisma generate && tsc && npm run generate-sitemap",
     "generate-sitemap": "node scripts/generateProductSitemap.js"

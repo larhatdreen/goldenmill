@@ -95,20 +95,10 @@ export default {
         },
         shine: {
           '0%': {
-            transform: 'translateX(-100%) translateY(-100%)',
-            opacity: '0'
-          },
-          '10%': {
-            transform: 'translateX(0%) translateY(0%)',
-            opacity: '0.5'
-          },
-          '20%': {
-            transform: 'translateX(100%) translateY(100%)',
-            opacity: '0'
+            transform: 'translateX(-120%)',
           },
           '100%': {
-            transform: 'translateX(100%) translateY(100%)',
-            opacity: '0'
+            transform: 'translateX(550%)',
           }
         },
         bounce: {
@@ -134,7 +124,7 @@ export default {
       animation: {
         slideUp: 'slideUp 0.6s ease-out',
         ring: 'ring 4s ease-in-out infinite',
-        shine: 'shine 4s ease-in-out infinite',
+        shine: 'shine 1s infinite',
         bounce: 'bounce 4s ease-in-out infinite',
         glow: 'glow 2s infinite'
       }

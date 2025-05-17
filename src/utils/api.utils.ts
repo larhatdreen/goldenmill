@@ -9,7 +9,7 @@ interface ApiResponse<T> {
 
 const getApiUrl = (endpoint: string): string => {
   const baseUrl = process.env.NODE_ENV === 'development' 
-    ? 'http://localhost:3000' 
+    ? 'http://localhost:3002' 
     : consentConfig.backendUrl;
   return `${baseUrl}${endpoint}`;
 };

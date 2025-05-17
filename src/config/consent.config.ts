@@ -8,17 +8,17 @@ interface ConsentConfigType {
 
 const configs: Record<string, ConsentConfigType> = {
   development: {
-    backendUrl: 'http://localhost:3000',
+    backendUrl: 'https://goldenmill.de/api',
     cookieEncryption: false,
     logLevel: 'debug',
   },
   production: {
-    backendUrl: 'https://api.goldenmill.com',
+    backendUrl: 'https://goldenmill.de/api',
     cookieEncryption: true,
     logLevel: 'error',
   },
   test: {
-    backendUrl: 'http://localhost:3000',
+    backendUrl: 'https://goldenmill.de/api',
     cookieEncryption: false,
     logLevel: 'none',
   },

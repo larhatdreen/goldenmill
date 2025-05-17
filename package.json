@@ -55,6 +55,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^6.16.0",
     "recharts": "^2.12.2",
+    "svgo": "^3.3.2",
     "tailwindcss-animated": "^1.0.1",
     "yup": "^1.6.1"
   },

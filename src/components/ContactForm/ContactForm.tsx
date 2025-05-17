@@ -63,7 +63,7 @@ export const ContactForm: React.FC = () => {
         }
       });
 
-      const response = await fetch(`${API_URL}/api/send-email`, {
+      const response = await fetch(`${API_URL}/send-email`, {
         method: 'POST',
         body: formDataToSend,
       });

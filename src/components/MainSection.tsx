@@ -11,7 +11,7 @@ import {
   ThemeProvider,
 } from '@mui/material';
 
-import { ChangeEvent, lazy, Suspense, useState, memo, useEffect } from 'react';
+import { ChangeEvent, lazy, Suspense, useState, memo } from 'react';
 import GranulatorModel1 from './customIcons/Model(GM420-GM520).js';
 import GranulatorModel2 from './customIcons/Model(GM650).js';
 import GranulatorModel3 from './customIcons/Model(GM850).js';
@@ -26,6 +26,7 @@ import { useTheme } from '../hooks/useTheme';
 import { createMuiTheme } from '../theme/muiTheme';
 import { getColor } from '../theme/utils';
 import ButtonIcon from './customIcons/ButtonIcon';
+import Shimmer from './Shimmer.js';
 
 
 // Memoized lazy components
@@ -83,39 +84,6 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // Adaptive prefetch/preload for the second element
-  useEffect(() => {
-    let isFastConnection = false;
-    if (
-      typeof navigator !== 'undefined' &&
-      'connection' in navigator &&
-      typeof (navigator as any).connection.effectiveType === 'string'
-    ) {
-      isFastConnection = (navigator as any).connection.effectiveType === '4g';
-    }
-    if (type === 'Granulator') {
-      import('./Granulator1');
-      if (isFastConnection) {
-        import(/* webpackPrefetch: true */ './Granulator2');
-      }
-    } else {
-      import('./Mixer1');
-      if (isFastConnection) {
-        import(/* webpackPrefetch: true */ './Mixer2');
-      }
-    }
-  }, [type]);
-
-  // Preload only neighbors on hover, focus, or touch
-  const preloadNeighbors = (type: 'Granulator' | 'Mixer', index: number) => {
-    if (type === 'Granulator') {
-      if (index > 1) import(`./Granulator${index - 1}`);
-      if (index < 3) import(`./Granulator${index + 1}`);
-    } else {
-      if (index > 1) import(`./Mixer${index - 1}`);
-      if (index < 4) import(`./Mixer${index + 1}`);
-    }
-  };
 
   function inputErrorHandler() {
     if (!countWindow) return;
@@ -207,10 +175,10 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
             desktopFHD:grid-cols-[6%_44%_auto] px-4 sm:px-6 md:px-8'
       >
         <div className='firstHelpColumn' />
-        <Suspense fallback='loading'>
+        <Suspense fallback={<Shimmer />}>
           <div className="relative">
             {selectGranulator()}
-            {!isDark ? '' : 
+            {!isDark ? '' :
               <>
                 <div className="absolute left-20 bottom-10 w-48 h-16 bg-[#AC8956] rounded-full blur-3xl opacity-70 pointer-events-none z-0"></div>
                 <div className="absolute right-0 bottom-20 w-[80%] h-[40%] bg-[#7B7F7F] rounded-full blur-3xl opacity-30 pointer-events-none z-0 rotate-145"></div>
@@ -223,11 +191,9 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
           <div>
             <div className='flex flex-col tablet:flex-row gap-4 ml-0 laptop:ml-[8%]'>
               <div
-                className={`font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px] flex flex-row items-center group ${
-                  isDark ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#2A3242]'
-                } ${
-                  !open ? 'cursor-pointer' : ''
-                }`}
+                className={`font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px] flex flex-row items-center group ${isDark ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#2A3242]'
+                  } ${!open ? 'cursor-pointer' : ''
+                  }`}
                 onMouseUp={handleOpen}
               >
                 <QuestionIcon className='w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] laptop:w-[40px] laptop:h-[40px] mt-[8px] mr-2' />
@@ -240,19 +206,19 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
               <div className='flex justify-between items-start flex-col mt-4 laptop:mt-16 ml-0 laptop:ml-[8%]'>
                 <div className='flex flex-col'>
                   <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[143px] laptop:text-[143px] uppercase leading-none"
-                    style={{color: getColor(theme, 'mainSection.title')}}
+                    style={{ color: getColor(theme, 'mainSection.title') }}
                   >
                     {type === 'Granulator' ? t('granulatorTitle') : t('mixer')}
                   </div>
                   <div className="font-['Bebas_Neue'] text-[60px] sm:text-[80px] mobileLg:text-[100px] tablet:text-[106px] laptop:text-[106px] uppercase leading-none"
-                    style={{color: getColor(theme, 'mainSection.subtitle')}}
+                    style={{ color: getColor(theme, 'mainSection.subtitle') }}
                   >
                     {type === 'Granulator' ? t('granulatorSubtitle') : t('mixerSubtitle')}
                   </div>
                 </div>
                 <div
                   className='font-adventpro text-[20px] sm:text-[28px] laptop:text-[32px] uppercase font-normal mt-2 laptop:mt-0 whitespace-pre-line'
-                  style={{color: getColor(theme, 'mainSection.description')}}
+                  style={{ color: getColor(theme, 'mainSection.description') }}
                 >
                   {type === 'Granulator' ? t('titleBlock.granulatorProductDescription') : t('titleBlock.mixerProductDescription')}
                 </div>
@@ -530,39 +496,40 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setGranulator(1);
                   setCountWindow(false);
                 }}
-                onMouseEnter={() => preloadNeighbors(type, 1)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
-                  style={{color: getColor(theme, 'mainSection.models')}}
+                  style={{ color: getColor(theme, 'mainSection.models') }}
                 >
                   {t('granulatorTypes.GM420—GM520')}
                 </div>
                 <div
                   className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labrotesque
                             text-[14px] md:text-[17px] lg:text-[20px]'
-                  style={{color: getColor(theme, 'mainSection.numbers')}}
+                  style={{ color: getColor(theme, 'mainSection.numbers') }}
                 >
                   1
                 </div>
+                <Suspense fallback={<Shimmer />}>
                   <div
                     className={`flex justify-center items-center aspect-square rounded-full transition-colors 
-                      ${ isDark
+                      ${isDark
                         ? `${granulator === 1 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
                         : `${granulator === 1 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
                       }
                     `}
                   >
-                  <GranulatorModel1 
-                    className="h-[90%]" 
-                    stroke={
-                      granulator === 1
-                        ? (isDark ? '#D5CDBD' : '#2A3242')
-                        : (isDark ? '#82643F' : '#ABB4C3')
-                    }
-                  />
-                </div>
+                    <GranulatorModel1
+                      className="h-[90%]"
+                      stroke={
+                        granulator === 1
+                          ? (isDark ? '#D5CDBD' : '#2A3242')
+                          : (isDark ? '#82643F' : '#ABB4C3')
+                      }
+                    />
+                  </div>
+                </Suspense>
               </div>
 
               <div
@@ -571,39 +538,40 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setGranulator(2);
                   setCountWindow(false);
                 }}
-                onMouseEnter={() => preloadNeighbors(type, 2)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
-                  style={{color: getColor(theme, 'mainSection.models')}}
+                  style={{ color: getColor(theme, 'mainSection.models') }}
                 >
                   {t('granulatorTypes.GM650')}
                 </div>
                 <div
                   className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque
                             text-[14px] md:text-[17px] lg:text-[20px]'
-                  style={{color: getColor(theme, 'mainSection.numbers')}}
+                  style={{ color: getColor(theme, 'mainSection.numbers') }}
                 >
                   2
                 </div>
-                <div
-                  className={`flex justify-center items-center aspect-square rounded-full transition-colors 
+                <Suspense fallback={<Shimmer />}>
+                  <div
+                    className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                     ${isDark
-                      ? `${granulator === 2 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
-                      : `${granulator === 2 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
-                    }
+                        ? `${granulator === 2 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                        : `${granulator === 2 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                      }
                   `}
-                >
-                  <GranulatorModel2 
-                    className='h-[90%]' 
-                    stroke={
-                      granulator === 2
-                        ? (isDark ? '#D5CDBD' : '#2A3242')
-                        : (isDark ? '#82643F' : '#ABB4C3')
-                    }
-                  />
-                </div>
+                  >
+                    <GranulatorModel2
+                      className='h-[90%]'
+                      stroke={
+                        granulator === 2
+                          ? (isDark ? '#D5CDBD' : '#2A3242')
+                          : (isDark ? '#82643F' : '#ABB4C3')
+                      }
+                    />
+                  </div>
+                </Suspense>
               </div>
 
               <div
@@ -612,39 +580,40 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setGranulator(3);
                   setCountWindow(false);
                 }}
-                onMouseEnter={() => preloadNeighbors(type, 3)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
-                  style={{color: getColor(theme, 'mainSection.models')}}
+                  style={{ color: getColor(theme, 'mainSection.models') }}
                 >
                   {t('granulatorTypes.GM850')}
                 </div>
                 <div
                   className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque text-white text-[14px]
                             md:text-[17px] lg:text-[20px]'
-                  style={{color: getColor(theme, 'mainSection.numbers')}}
+                  style={{ color: getColor(theme, 'mainSection.numbers') }}
                 >
                   3
                 </div>
-                <div
-                  className={`flex justify-center items-center aspect-square rounded-full transition-colors 
+                <Suspense fallback={<Shimmer />}>
+                  <div
+                    className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                     ${isDark
-                      ? `${granulator === 3 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
-                      : `${granulator === 3 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
-                    }
+                        ? `${granulator === 3 ? 'bg-[#ffffff08]' : 'bg-transparent'} hover:bg-white/20`
+                        : `${granulator === 3 ? 'bg-gray-300/20' : 'bg-transparent'} hover:bg-gray-300/20`
+                      }
                   `}
-                >
-                  <GranulatorModel3 
-                    className='h-[90%]' 
-                    stroke={
-                      granulator === 3
-                        ? (isDark ? '#D5CDBD' : '#2A3242')
-                        : (isDark ? '#82643F' : '#ABB4C3')
-                    }
-                  />
-                </div>
+                  >
+                    <GranulatorModel3
+                      className='h-[90%]'
+                      stroke={
+                        granulator === 3
+                          ? (isDark ? '#D5CDBD' : '#2A3242')
+                          : (isDark ? '#82643F' : '#ABB4C3')
+                      }
+                    />
+                  </div>
+                </Suspense>
               </div>
             </>
           )}
@@ -657,12 +626,11 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setMixer(1);
                   setCountWindow(false);
                 }}
-                onMouseEnter={() => preloadNeighbors(type, 1)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
-                  style={{color: getColor(theme, 'mainSection.models')}}
+                  style={{ color: getColor(theme, 'mainSection.models') }}
                 >
                   {t('mixerTypes.GM-520')}
                 </div>
@@ -670,10 +638,11 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                 <div
                   className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque
                             text-[14px] md:text-[17px] lg:text-[20px]'
-                  style={{color: getColor(theme, 'mainSection.numbers')}}
+                  style={{ color: getColor(theme, 'mainSection.numbers') }}
                 >
                   1
                 </div>
+                <Suspense fallback={<Shimmer />}>
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                     ${isDark
@@ -682,8 +651,8 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     }
                   `}
                 >
-                  <FlatMixer 
-                    className='h-[90%]' 
+                  <FlatMixer
+                    className='h-[90%]'
                     stroke={
                       mixer === 1
                         ? (isDark ? '#D5CDBD' : '#2A3242')
@@ -691,6 +660,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     }
                   />
                 </div>
+                </Suspense>
               </div>
 
               <div
@@ -699,12 +669,11 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setMixer(2);
                   setCountWindow(false);
                 }}
-                onMouseEnter={() => preloadNeighbors(type, 2)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
-                  style={{color: getColor(theme, 'mainSection.models')}}
+                  style={{ color: getColor(theme, 'mainSection.models') }}
                 >
                   {t('mixerTypes.GM650')}
                 </div>
@@ -712,10 +681,11 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                 <div
                   className='absolute -left-[12%] top-[50%] -translate-y-[50%] font-labgrotesque
                             text-[14px] md:text-[17px] lg:text-[20px]'
-                  style={{color: getColor(theme, 'mainSection.numbers')}}
+                  style={{ color: getColor(theme, 'mainSection.numbers') }}
                 >
                   2
                 </div>
+                <Suspense fallback={<Shimmer />}>
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                     ${isDark
@@ -724,8 +694,8 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     }
                   `}
                 >
-                  <RingMixer 
-                    className='h-[90%]' 
+                  <RingMixer
+                    className='h-[90%]'
                     stroke={
                       mixer === 2
                         ? (isDark ? '#D5CDBD' : '#2A3242')
@@ -733,6 +703,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     }
                   />
                 </div>
+                </Suspense>
               </div>
 
               <div
@@ -741,12 +712,11 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setMixer(3);
                   setCountWindow(false);
                 }}
-                onMouseEnter={() => preloadNeighbors(type, 3)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
-                  style={{color: getColor(theme, 'mainSection.models')}}
+                  style={{ color: getColor(theme, 'mainSection.models') }}
                 >
                   {t('mixerTypes.GM850')}
                 </div>
@@ -754,10 +724,11 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                 <div
                   className='absolute -left-[16%] top-[50%] -translate-y-[50%] font-labgrotesque
                             text-[14px] md:text-[17px] lg:text-[20px]'
-                  style={{color: getColor(theme, 'mainSection.numbers')}}
+                  style={{ color: getColor(theme, 'mainSection.numbers') }}
                 >
                   3
                 </div>
+                <Suspense fallback={<Shimmer />}>
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                     ${isDark
@@ -775,6 +746,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     }
                   />
                 </div>
+                </Suspense>
               </div>
 
               <div
@@ -783,12 +755,11 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                   setMixer(4);
                   setCountWindow(false);
                 }}
-                onMouseEnter={() => preloadNeighbors(type, 4)}
               >
                 <div
                   className='absolute -top-5 left-[50%] -translate-x-[50%] font-adventpro
                             text-[10px] md:text-[12px] lg:text-[15px] whitespace-nowrap'
-                  style={{color: getColor(theme, 'mainSection.models')}}
+                  style={{ color: getColor(theme, 'mainSection.models') }}
                 >
                   {t('mixerTypes.GM850D')}
                 </div>
@@ -796,10 +767,11 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                 <div
                   className='absolute -left-[16%] lg:-left-[22%] top-[50%] -translate-y-[50%] font-labgrotesque
                             text-[14px] md:text-[17px] lg:text-[20px]'
-                  style={{color: getColor(theme, 'mainSection.numbers')}}
+                  style={{ color: getColor(theme, 'mainSection.numbers') }}
                 >
                   4
                 </div>
+                <Suspense fallback={<Shimmer />}>
                 <div
                   className={`flex justify-center items-center aspect-square rounded-full transition-colors 
                     ${isDark
@@ -817,6 +789,7 @@ function MainSection({ type }: { type: 'Granulator' | 'Mixer' }) {
                     }
                   />
                 </div>
+                </Suspense>
               </div>
             </>
           )}
