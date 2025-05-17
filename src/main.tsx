@@ -12,6 +12,12 @@ import { shouldRenderApp } from './staticFileHandler';
 // Безопасная проверка для window
 const isBrowser = typeof window !== 'undefined';
 
+// Безопасное получение pathname
+const getPathname = (): string => {
+  if (!isBrowser) return '';
+  return window.location.pathname;
+};
+
 // Безопасное получение root элемента
 const getRootElement = () => {
   if (!isBrowser) return null;
@@ -20,7 +26,7 @@ const getRootElement = () => {
 
 // Проверяем, нужно ли рендерить React-приложение
 if (isBrowser && shouldRenderApp()) {
-  console.log('shouldRenderApp:', shouldRenderApp(), 'Path:', window.location.pathname);
+  console.log('shouldRenderApp:', shouldRenderApp(), 'Path:', getPathname());
   const root = getRootElement();
   if (root) {
     ReactDOM.hydrateRoot(
