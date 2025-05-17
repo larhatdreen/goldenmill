@@ -13,16 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-    #   - name: Setup Node.js
-    #     uses: actions/setup-node@v4
-    #     with:
-    #       node-version: '20' 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
       - name: Create .env
         run: |
           echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env
           echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > server/.env
+
       - name: Cache yarn for speedest install
         uses: actions/cache@v4
         with:
@@ -50,6 +52,8 @@ jobs:
             yarn install --frozen-lockfile
             rm -rf dist
             yarn build
+            yarn build:ssr
             yarn generate-sitemap
+            pm2 restart goldenmill-ssr || pm2 start server.js --name goldenmill-ssr
             echo "Deployed commit: $(git rev-parse HEAD)"
           EOF

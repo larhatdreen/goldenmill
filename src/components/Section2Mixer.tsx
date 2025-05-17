@@ -18,7 +18,7 @@ function Section2() {
   const particleColor = getLocalThemeColor(isDark, '#363636', '#D9D9D9')
 
   return (
-    <section id='section2' className='flex justify-center mt-[15%] w-full h-auto'>
+    <section id='section2' className='flex justify-center mt-[15%] w-full'>
       <svg viewBox='0 0 1639 667' fill='none' xmlns='http://www.w3.org/2000/svg'>
         <g filter='url(#filter0_b_113_613)'>
           <circle cx='1000' cy='370' r='135.5' fill={getColor(theme, 'decorative')} />

@@ -63,6 +63,9 @@ export default defineConfig({
       }
     })
   ],
+  css: {
+    postcss: './postcss.config.cjs'
+  },
   // Добавляем WebP в список ассетов для обработки
   assetsInclude: ['**/*.webp'],
   build: {
@@ -70,12 +73,15 @@ export default defineConfig({
     minify: 'terser',
     cssMinify: true,
     rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        server: path.resolve(__dirname, 'src/entry-server.tsx')
+      },
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
           ui: ['@mui/material', '@emotion/react'],
         },
-        // Настройки для ассетов (включая изображения)
         assetFileNames: (assetInfo) => {
           const name = assetInfo.name || '';
           const info = name.split('.');
@@ -84,10 +90,11 @@ export default defineConfig({
             return `assets/[name]-[hash][extname]`;
           }
           return `assets/[name]-[hash][extname]`;
-        },
-      },
+        }
+      }
     },
     chunkSizeWarningLimit: 1000,
+    sourcemap: true,
   },
   server: {
     host: '0.0.0.0',
@@ -110,7 +117,15 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, 'src'),
     },
+  },
+  ssr: {
+    noExternal: ['react-helmet-async'],
+    target: 'node',
+    format: 'esm',
+    optimizeDeps: {
+      include: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async']
+    }
   },
 })

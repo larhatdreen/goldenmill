@@ -60,7 +60,6 @@ function GMFeaturesSVG() {
     <svg
       viewBox={`0 0 800 ${svgHeight}`}
       className='w-[100%] tablet:w-[40%]'
-      height="auto"
       style={{ display: 'block' }}
     >
       {/* Вертикальный бар */}

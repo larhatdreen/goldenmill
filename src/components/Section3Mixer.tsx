@@ -84,7 +84,7 @@ function Section3() {
 
             {/* SVG-блок */}
 
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 976 515" fill="none" style={{transform: isLGS ? 'translate(60px, 160px)' : '', width: isLGS ? '700' : '100%', height: isLGS ? '515' : 'auto', paddingTop: isLGS ? '' : '40px'}}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 976 515" fill="none" style={{transform: isLGS ? 'translate(60px, 160px)' : '', width: isLGS ? '700' : '100%', height: isLGS ? '515' : '615', paddingTop: isLGS ? '' : '40px'}}>
 <path d="M858.5 147.5C858.5 147.5 886.49 150.162 898.5 147.5C924.594 141.714 950.5 118.5 950.5 111.499C950.5 16.9981 521 23.0009 450.5 22.9997C224.08 22.9958 178.47 72.0461 175.604 92.9994C174.59 100.416 175 110.499 175 110.499" stroke={strokeColor} stroke-opacity="0.5" stroke-width="4" stroke-dasharray="8 8"/>
 <path d="M859 172C859 172 887.491 174.663 899.501 172C925.595 166.215 973.501 137.229 973.501 110.501C973.501 -15.4999 494.501 3.5097 424.001 3.5096C168.811 3.50926 150 73.5 149.5 97C149.381 102.589 150 111 150 111" stroke={strokeColor} stroke-opacity="0.5" stroke-width="4" stroke-dasharray="8 8"/>
 <path d="M485.5 191.999C485.5 191.999 482 259.999 482 298.999C482 404.999 627.5 404.999 627.5 298.999C627.5 247.586 580.992 184.282 627.5 177.5C651.5 174 652 173.999 676.5 174" stroke={strokeColor} stroke-opacity="0.5" stroke-width="4" stroke-dasharray="8 8"/>

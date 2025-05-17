@@ -21,7 +21,7 @@ function Section4() {
 
 
     return (
-        <section id='section4' className='flex justify-center mt-[15%] w-full h-auto px-[5%]'>
+        <section id='section4' className='flex justify-center mt-[15%] w-full px-[5%]'>
             <svg width='1439' viewBox='0 0 1439 607' fill='none' xmlns='http://www.w3.org/2000/svg'>
                 <g filter='url(#filter0_b_113_613)'>
                     <circle cx='1000' cy='280' r='135.5' fill={theme.colors.decorative}  />

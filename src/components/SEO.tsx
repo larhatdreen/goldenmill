@@ -8,18 +8,19 @@ interface SEOProps {
   description?: string;
   keywords?: string;
   image?: string;
+  type?: 'website' | 'article' | 'product';
   article?: boolean;
   product?: {
-    name: string;
-    description: string;
-    image: string;
+    name?: string;
+    description?: string;
+    image?: string;
     price?: string;
+    brand?: string;
+    model?: string;
+    category?: string;
     availability?: string;
     technicalSpecification?: string;
     manufacturingDetails?: string;
-    category?: string;
-    brand?: string;
-    model?: string;
   };
 }
 
@@ -42,6 +43,7 @@ interface SchemaOrg {
       streetAddress: string;
       addressLocality: string;
       addressCountry: string;
+      postalCode: string;
     };
     contactPoint: {
       '@type': string;
@@ -85,8 +87,8 @@ const SEO: React.FC<SEOProps> = ({
   title,
   description,
   keywords,
-  image,
-  article = false,
+  image = '/icon.svg',
+  type = 'website',
   product
 }) => {
   const { t, i18n } = useTranslation();
@@ -94,52 +96,54 @@ const SEO: React.FC<SEOProps> = ({
   const currentLanguage = i18n.language;
 
   const site = {
-    name: 'GoldenMill - LKE Group GmbH',
+    name: 'GoldenMill',
     url: 'https://goldenmill.de',
-    logo: 'https://goldenmill.de/logo.svg',
+    logo: 'https://goldenmill.de/icon.svg',
     email: 'info@goldenmill.de',
-    phone: '+49...',
-    companyName: 'LKE Group GmbH',
+    phone: '+49 123 456 789',
     address: {
-      street: 'Hauptstraße 1',
+      street: 'Musterstraße 123',
       city: 'Berlin',
-      country: 'Germany'
+      country: 'Germany',
+      postalCode: '12345'
     }
   };
 
   const seo = {
-    title: title ? `${title} | ${site.companyName}` : t('seo.defaultTitle'),
+    title: title ? `${title} | ${site.name}` : t('seo.defaultTitle'),
     description: description || t('seo.defaultDescription'),
-    keywords: keywords ? `${keywords}, LKE Group GmbH, GoldenMill` : t('seo.defaultKeywords'),
-    image: image || `${site.url}/default-og-image.jpg`,
+    keywords: keywords || t('seo.defaultKeywords'),
+    image: image.startsWith('http') ? image : `${site.url}${image}`,
     url: `${site.url}${location.pathname}`
   };
 
   const schemaOrg: SchemaOrg = {
     '@context': 'https://schema.org',
-    '@type': article ? 'Article' : 'WebPage',
-    '@id': seo.url,
-    url: seo.url,
+    '@type': type === 'product' ? 'Product' : 'WebSite',
+    '@id': `${site.url}#${type}`,
     name: seo.title,
     description: seo.description,
+    url: seo.url,
+    image: seo.image,
     publisher: {
       '@type': 'Organization',
-      name: site.companyName,
+      name: site.name,
       logo: {
         '@type': 'ImageObject',
         url: site.logo
-      },
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: site.address.street,
-        addressLocality: site.address.city,
-        addressCountry: site.address.country
       },
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: site.phone,
         email: site.email,
         contactType: 'customer service'
+      },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: site.address.street,
+        addressLocality: site.address.city,
+        postalCode: site.address.postalCode,
+        addressCountry: site.address.country
       }
     },
     breadcrumb: {
@@ -157,95 +161,81 @@ const SEO: React.FC<SEOProps> = ({
     }
   };
 
-  if (product) {
-    schemaOrg['@type'] = 'Product';
-    schemaOrg.name = product.name;
-    schemaOrg.description = product.description;
-    schemaOrg.image = product.image;
-    schemaOrg.brand = {
-      '@type': 'Brand',
-      name: product.brand || 'GoldenMill'
-    };
-    schemaOrg.model = product.model;
-    schemaOrg.category = product.category;
-    schemaOrg.offers = {
-      '@type': 'Offer',
-      price: product.price || '',
-      priceCurrency: 'EUR',
-      availability: product.availability || 'https://schema.org/InStock'
-    };
-    if (product.technicalSpecification) {
-      schemaOrg.additionalProperty = [
+  if (type === 'product' && product) {
+    Object.assign(schemaOrg, {
+      '@type': 'Product',
+      name: product.name,
+      description: product.description,
+      image: product.image,
+      brand: {
+        '@type': 'Brand',
+        name: product.brand || site.name
+      },
+      model: product.model,
+      category: product.category,
+      offers: {
+        '@type': 'Offer',
+        price: product.price,
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/InStock',
+        seller: {
+          '@type': 'Organization',
+          name: site.name
+        }
+      },
+      additionalProperty: [
         {
           '@type': 'PropertyValue',
           name: 'Technical Specification',
           value: product.technicalSpecification
+        },
+        {
+          '@type': 'PropertyValue',
+          name: 'Manufacturing Details',
+          value: product.manufacturingDetails
         }
-      ];
-    }
-    if (product.manufacturingDetails) {
-      if (!schemaOrg.additionalProperty) {
-        schemaOrg.additionalProperty = [];
-      }
-      schemaOrg.additionalProperty.push({
-        '@type': 'PropertyValue',
-        name: 'Manufacturing Details',
-        value: product.manufacturingDetails
-      });
-    }
+      ].filter(prop => prop.value)
+    });
   }
 
   return (
     <Helmet>
       {/* Основные мета-теги */}
-      <html lang={currentLanguage} />
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
       <meta name="keywords" content={seo.keywords} />
-      <link rel="canonical" href={seo.url} />
-      <meta name="author" content={site.companyName} />
-      <meta name="robots" content="index, follow" />
-      <meta name="googlebot" content="index, follow" />
-      <meta name="revisit-after" content="7 days" />
 
-      {/* Viewport и совместимость */}
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="format-detection" content="telephone=no" />
-
-      {/* Open Graph */}
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content={type} />
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
       <meta property="og:url" content={seo.url} />
-      <meta property="og:type" content={article ? 'article' : 'website'} />
       <meta property="og:site_name" content={site.name} />
       <meta property="og:locale" content={currentLanguage} />
-      <meta property="business:contact_data:street_address" content={site.address.street} />
-      <meta property="business:contact_data:locality" content={site.address.city} />
-      <meta property="business:contact_data:country_name" content={site.address.country} />
-      <meta property="business:contact_data:email" content={site.email} />
 
-      {/* Twitter Card */}
+      {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
 
-      {/* Alternate Language Links */}
-      <link rel="alternate" hrefLang="de" href={`${site.url}/de${location.pathname}`} />
-      <link rel="alternate" hrefLang="en" href={`${site.url}/en${location.pathname}`} />
+      {/* Дополнительные мета-теги */}
+      <meta name="robots" content="index, follow" />
+      <meta name="language" content={currentLanguage} />
+      <meta name="revisit-after" content="7 days" />
+      <meta name="author" content={site.name} />
+
+      {/* Альтернативные языковые версии */}
+      <link rel="alternate" hrefLang="x-default" href={site.url} />
       <link rel="alternate" hrefLang="ru" href={`${site.url}/ru${location.pathname}`} />
-      <link rel="alternate" hrefLang="x-default" href={`${site.url}${location.pathname}`} />
+      <link rel="alternate" hrefLang="en" href={`${site.url}/en${location.pathname}`} />
+      <link rel="alternate" hrefLang="de" href={`${site.url}/de${location.pathname}`} />
 
-      {/* Favicons */}
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <link rel="manifest" href="/site.webmanifest" />
-      <meta name="theme-color" content="#ffffff" />
+      {/* Канонический URL */}
+      <link rel="canonical" href={seo.url} />
 
-      {/* Schema.org */}
+      {/* Структурированные данные */}
       <script type="application/ld+json">
         {JSON.stringify(schemaOrg)}
       </script>

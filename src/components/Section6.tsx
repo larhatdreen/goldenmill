@@ -20,7 +20,7 @@ function Section4() {
     // const textColor = getLocalThemeColor(isDark, '#', '#')
 
     return (
-        <section id='section6' className='flex justify-center mt-[15%] w-full h-auto px-[5%]'>
+        <section id='section6' className='flex justify-center mt-[15%] w-full px-[5%]'>
             <svg width='1439' viewBox='0 0 1439 800' fill='none' xmlns='http://www.w3.org/2000/svg'>
                 <g filter='url(#filter0_b_113_613)'>
                     <circle cx='1000' cy='220' r='135.5' fill={getColor(theme, 'decorative')} />
