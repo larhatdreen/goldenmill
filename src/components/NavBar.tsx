@@ -38,11 +38,16 @@ export default function NavBar() {
     onClickLanguage()
   }, [mobileLanguage])
 
+  const getCurrentPath = () => {
+    if (typeof window === 'undefined') return '';
+    return window.location.pathname;
+  }
+
   const onClickLanguage = () => {
     if (lang !== mobileLanguage) {
       i18n.changeLanguage(mobileLanguage)
       
-      const currentPath = window.location.pathname
+      const currentPath = getCurrentPath()
       const newPath = currentPath.replace(`/${lang}`, `/${mobileLanguage}`)
       navigate(newPath, { replace: true })
     }

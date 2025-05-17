@@ -64,6 +64,11 @@ const getStoredLanguage = (): LanguagesEnum | null => {
   return null
 }
 
+const getOrigin = () => {
+  if (typeof window === 'undefined') return '';
+  return window.location.origin;
+}
+
 const SpareParts = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -94,7 +99,7 @@ const SpareParts = () => {
   const productSchemaData = {
     name: t('seo.spare-parts.title').replace(' | LKE Group GmbH', ''),
     description: seoData.description,
-    image: `${window.location.origin}/images/spare-parts.jpg`,
+    image: `${getOrigin()}/images/spare-parts.jpg`,
     brand: 'LKE Group GmbH',
     category: 'Industrial Equipment > Pellet Mill Parts',
     availability: 'https://schema.org/InStock'
@@ -285,7 +290,7 @@ const SpareParts = () => {
         keywords={seoData.keywords}
         article={false}
         product={productSchemaData}
-        image={`${window.location.origin}/images/spare-parts-og.jpg`}
+        image={`${getOrigin()}/images/spare-parts-og.jpg`}
       />
       <div className="w-full max-w-[2560px] mx-auto flex flex-col items-center relative">
         <div className="w-full flex flex-col items-center justify-center py-8">

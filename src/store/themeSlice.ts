@@ -15,12 +15,18 @@ const setStoredData = (key: string, value: string): void => {
   }
 }
 
+// Безопасная проверка предпочтений темы
+const getSystemTheme = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
 const getInitialTheme = () => {
   const savedTheme = getStoredData('theme');
   if (savedTheme) {
     return savedTheme === 'dark';
   }
-  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return getSystemTheme();
 };
 
 const initialState = {

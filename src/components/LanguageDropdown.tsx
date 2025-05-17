@@ -23,6 +23,11 @@ const setStoredLanguage = (language: LanguagesEnum): void => {
   }
 }
 
+const getCurrentPath = () => {
+  if (typeof window === 'undefined') return '';
+  return window.location.pathname;
+}
+
 const LanguageDropdown = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { lang } = useParams<{ lang: string }>()
@@ -73,8 +78,9 @@ const LanguageDropdown = () => {
       setStoredLanguage(language)
       
       // Обновляем URL
-      const currentPath = window.location.pathname
-      const newPath = currentPath.replace(`/${lang}`, `/${language}`)
+      const currentPath = getCurrentPath()
+      const pathParts = currentPath.split('/')
+      const newPath = currentPath.replace(`/${pathParts[1]}`, `/${language}`)
       navigate(newPath, { replace: true })
       
       // Закрываем дропдаун
@@ -82,6 +88,14 @@ const LanguageDropdown = () => {
       setSelectedLanguage(language)
     }
   }
+
+  useEffect(() => {
+    const currentPath = getCurrentPath();
+    const pathParts = currentPath.split('/');
+    if (pathParts[1] && Object.values(LanguagesEnum).includes(pathParts[1] as LanguagesEnum)) {
+      setSelectedLanguage(pathParts[1] as LanguagesEnum);
+    }
+  }, []);
 
   return (
     <div 

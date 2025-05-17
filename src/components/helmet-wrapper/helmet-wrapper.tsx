@@ -1,10 +1,53 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+const getWindowHref = () => {
+  if (typeof window === 'undefined') return '';
+  return window.location.href;
+}
+
+const getDocument = () => {
+  if (typeof document === 'undefined') return null;
+  return document;
+}
+
+const updateMetaTag = (name: string, content: string) => {
+  const doc = getDocument();
+  if (!doc) return;
+
+  let meta = doc.querySelector(`meta[name="${name}"]`);
+  if (meta) {
+    meta.setAttribute('content', content);
+  } else {
+    meta = doc.createElement('meta');
+    meta.setAttribute('name', name);
+    meta.setAttribute('content', content);
+    doc.head.appendChild(meta);
+  }
+}
+
+const updateOgMetaTag = (property: string, content: string) => {
+  const doc = getDocument();
+  if (!doc) return;
+
+  let meta = doc.querySelector(`meta[property="${property}"]`);
+  if (meta) {
+    meta.setAttribute('content', content);
+  } else {
+    meta = doc.createElement('meta');
+    meta.setAttribute('property', property);
+    meta.setAttribute('content', content);
+    doc.head.appendChild(meta);
+  }
+}
+
 export const HelmetWrapper = () => {
   const location = useLocation();
   
   useEffect(() => {
+    const doc = getDocument();
+    if (!doc) return;
+
     const path = location.pathname;
     let title = 'Golden Mill';
     let description = 'Default description';
@@ -23,35 +66,19 @@ export const HelmetWrapper = () => {
     // и т.д. для других путей
 
     // Обновляем мета-теги
-    document.title = title;
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', description);
-    } else {
-      const meta = document.createElement('meta');
-      meta.name = 'description';
-      meta.content = description;
-      document.head.appendChild(meta);
-    }
+    doc.title = title;
+    updateMetaTag('description', description);
 
     // Другие мета-теги
     const metaTags = {
       'og:title': title,
       'og:description': description,
       'og:type': 'website',
-      'og:url': window.location.href,
+      'og:url': getWindowHref(),
     };
 
     Object.entries(metaTags).forEach(([property, content]) => {
-      let meta = document.querySelector(`meta[property="${property}"]`);
-      if (meta) {
-        meta.setAttribute('content', content);
-      } else {
-        meta = document.createElement('meta');
-        meta.setAttribute('property', property);
-        meta.setAttribute('content', content);
-        document.head.appendChild(meta);
-      }
+      updateOgMetaTag(property, content);
     });
   }, [location]);
 
