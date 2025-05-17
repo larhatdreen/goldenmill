@@ -1,10 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from 'path'
-import viteCompression from 'vite-plugin-compression'
-import { VitePWA } from 'vite-plugin-pwa'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import viteCompression from 'vite-plugin-compression';
+import { VitePWA } from 'vite-plugin-pwa';
 
-export default defineConfig({
+export default defineConfig(({ mode, ssrBuild }) => ({
   plugins: [
     react(),
     viteCompression({
@@ -27,7 +27,7 @@ export default defineConfig({
         'masked-icon.svg',
         'robots.txt',
         'sitemap.xml',
-        'site.webmanifest'
+        'site.webmanifest',
       ],
       manifest: {
         name: 'GoldenMill',
@@ -38,14 +38,14 @@ export default defineConfig({
           {
             src: 'pwa-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'pwa-512x512.png',
             sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
+            type: 'image/png',
+          },
+        ],
       },
       workbox: {
         maximumFileSizeToCacheInBytes: 7 * 1024 * 1024,
@@ -59,13 +59,13 @@ export default defineConfig({
           {
             urlPattern: /^\/sitemap\.xml$/,
             handler: 'NetworkOnly',
-          }
-        ]
-      }
-    })
+          },
+        ],
+      },
+    }),
   ],
   css: {
-    postcss: './postcss.config.cjs'
+    postcss: './postcss.config.cjs',
   },
   assetsInclude: ['**/*.webp'],
   build: {
@@ -76,7 +76,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        server: path.resolve(__dirname, 'src/entry-server.tsx')
+        server: path.resolve(__dirname, 'src/entry-server.tsx'),
       },
       output: {
         assetFileNames: (assetInfo) => {
@@ -86,14 +86,15 @@ export default defineConfig({
           }
           return `assets/[name]-[hash][extname]`;
         },
-        ...(process.env.NODE_ENV === 'production' && {
+        // Условно применяем manualChunks только для клиентской сборки
+        ...(mode === 'production' && !ssrBuild && {
           manualChunks: {
             vendor: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
             ui: ['@mui/material', '@emotion/react'],
             i18n: ['i18next', 'react-i18next'],
-          }
-        })
-      }
+          },
+        }),
+      },
     },
   },
   server: {
@@ -125,7 +126,7 @@ export default defineConfig({
     target: 'node',
     format: 'esm',
     optimizeDeps: {
-      include: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async']
-    }
+      include: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
+    },
   },
-})
+}));
