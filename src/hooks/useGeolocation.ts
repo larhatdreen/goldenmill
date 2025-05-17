@@ -9,6 +9,44 @@ interface GeolocationState {
   error: string | null;
 }
 
+export const getLanguageFromCoordinates = (latitude: number, longitude: number): string => {
+  // Примерные границы России
+  const russiaBounds = {
+    north: 77.7,
+    south: 41.2,
+    east: 190.0,
+    west: 19.9
+  };
+
+  // Примерные границы Германии
+  const germanyBounds = {
+    north: 55.1,
+    south: 47.3,
+    east: 15.0,
+    west: 5.9
+  };
+
+  if (
+    latitude >= russiaBounds.south &&
+    latitude <= russiaBounds.north &&
+    longitude >= russiaBounds.west &&
+    longitude <= russiaBounds.east
+  ) {
+    return 'ru';
+  }
+
+  if (
+    latitude >= germanyBounds.south &&
+    latitude <= germanyBounds.north &&
+    longitude >= germanyBounds.west &&
+    longitude <= germanyBounds.east
+  ) {
+    return 'de';
+  }
+
+  return 'en';
+};
+
 export const useGeolocation = () => {
   const [state, setState] = useState<GeolocationState>({
     latitude: null,

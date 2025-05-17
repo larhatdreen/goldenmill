@@ -4,10 +4,17 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useTheme } from '../hooks/useTheme'
 
+const LANGUAGE_STORAGE_KEY = 'preferred_language'
+
 const LanguageDropdown = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { lang } = useParams<{ lang: string }>()
-  const [selectedLanguage, setSelectedLanguage] = useState(lang || 'de')
+  const [selectedLanguage, setSelectedLanguage] = useState(() => {
+    // Сначала проверяем localStorage
+    const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY)
+    // Если есть сохраненный язык, используем его, иначе используем язык из URL или дефолтный
+    return savedLanguage || lang || 'de'
+  })
   const dropdownRef = useRef<HTMLDivElement>(null)
   const theme = useTheme()
   const isDark = theme.name === 'dark'
@@ -21,6 +28,7 @@ const LanguageDropdown = () => {
   useEffect(() => {
     if (lang && lang !== selectedLanguage) {
       setSelectedLanguage(lang)
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, lang)
     }
   }, [lang])
 
@@ -43,6 +51,9 @@ const LanguageDropdown = () => {
     if (lang !== language) {
       // Меняем язык в i18n
       i18n.changeLanguage(language)
+      
+      // Сохраняем выбранный язык в localStorage
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
       
       // Обновляем URL
       const currentPath = window.location.pathname

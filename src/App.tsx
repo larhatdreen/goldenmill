@@ -27,10 +27,13 @@ import { isStaticFile } from './staticFileHandler'
 import SEO from './components/SEO'
 import ThemeBodySync from './components/ThemeBodySync'
 import { useSEO } from './hooks/useSEO'
+import { useGeolocation, getLanguageFromCoordinates } from './hooks/useGeolocation'
+
+const LANGUAGE_STORAGE_KEY = 'preferred_language'
 
 function App() {
   const location = useLocation();
-  const defaultLanguage = 'de';
+  const { latitude, longitude } = useGeolocation();
   const seoData = useSEO('home');
 
   // Проверяем, является ли текущий URL статическим файлом
@@ -38,20 +41,32 @@ function App() {
     return null; // Не рендерим приложение для статических файлов
   }
 
-  // Функция для определения языка из URL
+  // Функция для определения языка из URL, localStorage или геолокации
   const getLanguageFromPath = () => {
     const pathParts = location.pathname.split('/');
     if (pathParts[1] && ['en', 'de', 'ru'].includes(pathParts[1])) {
       return pathParts[1];
     }
-    return defaultLanguage;
+    
+    // Проверяем сохраненный язык в localStorage
+    const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (savedLanguage && ['en', 'de', 'ru'].includes(savedLanguage)) {
+      return savedLanguage;
+    }
+    
+    // Если есть координаты, используем их для определения языка
+    if (latitude && longitude) {
+      return getLanguageFromCoordinates(latitude, longitude);
+    }
+    
+    return 'en'; // Дефолтный язык
   };
 
   // Функция для перенаправления на правильный языковой маршрут
   const getRedirectPath = () => {
     const currentLang = getLanguageFromPath();
     // Если язык не определен, используем дефолтный язык
-    const lang = currentLang || defaultLanguage;
+    const lang = currentLang || 'en';
     return `/${lang}/granulator`;
   };
 

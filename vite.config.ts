@@ -4,22 +4,26 @@ import path from 'path'
 import viteCompression from 'vite-plugin-compression'
 import { VitePWA } from 'vite-plugin-pwa'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     viteCompression({
       verbose: true,
-      disable: false,
       threshold: 10240,
       algorithm: 'gzip',
       ext: '.gz',
     }),
+    viteCompression({
+      verbose: true,
+      threshold: 10240,
+      algorithm: 'brotliCompress',
+      ext: '.br',
+    }),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: [
-        'favicon.ico', 
-        'apple-touch-icon.png', 
+        'favicon.ico',
+        'apple-touch-icon.png',
         'masked-icon.svg',
         'robots.txt',
         'sitemap.xml',
@@ -44,12 +48,9 @@ export default defineConfig({
         ]
       },
       workbox: {
-        maximumFileSizeToCacheInBytes: 7 * 1024 * 1024, // 7MB
-        // Исключаем robots.txt и sitemap.xml из кэширования Service Worker
+        maximumFileSizeToCacheInBytes: 7 * 1024 * 1024,
+        navigateFallback: 'index.html',
         navigateFallbackDenylist: [/^\/robots\.txt$/, /^\/sitemap\.xml$/],
-        // Не перехватываем запросы к статическим файлам
-        navigateFallback: null,
-        // Дополнительные настройки для статических файлов
         runtimeCaching: [
           {
             urlPattern: /^\/robots\.txt$/,
@@ -66,35 +67,34 @@ export default defineConfig({
   css: {
     postcss: './postcss.config.cjs'
   },
-  // Добавляем WebP в список ассетов для обработки
   assetsInclude: ['**/*.webp'],
   build: {
     target: 'esnext',
     minify: 'terser',
-    cssMinify: true,
+    sourcemap: true,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
         server: path.resolve(__dirname, 'src/entry-server.tsx')
       },
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          ui: ['@mui/material', '@emotion/react'],
-        },
         assetFileNames: (assetInfo) => {
           const name = assetInfo.name || '';
-          const info = name.split('.');
-          const ext = info[info.length - 1];
           if (/\.(png|jpe?g|gif|svg|webp)$/i.test(name)) {
             return `assets/[name]-[hash][extname]`;
           }
           return `assets/[name]-[hash][extname]`;
-        }
+        },
+        ...(process.env.NODE_ENV === 'production' && {
+          manualChunks: {
+            vendor: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
+            ui: ['@mui/material', '@emotion/react'],
+            i18n: ['i18next', 'react-i18next'],
+          }
+        })
       }
     },
-    chunkSizeWarningLimit: 1000,
-    sourcemap: true,
   },
   server: {
     host: '0.0.0.0',
