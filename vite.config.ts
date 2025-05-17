@@ -4,7 +4,7 @@ import path from 'path';
 import viteCompression from 'vite-plugin-compression';
 import { VitePWA } from 'vite-plugin-pwa';
 
-export default defineConfig(({ mode, ssrBuild }) => ({
+export default defineConfig(({ mode, command, ssrBuild }) => ({
   plugins: [
     react(),
     viteCompression({
@@ -76,24 +76,26 @@ export default defineConfig(({ mode, ssrBuild }) => ({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        server: path.resolve(__dirname, 'src/entry-server.tsx'),
+        ...(ssrBuild && {
+          server: path.resolve(__dirname, 'src/entry-server.tsx'),
+        }),
       },
       output: {
         assetFileNames: (assetInfo) => {
-          const name = assetInfo.name || '';
+          const name =assetInfo.name || '';
           if (/\.(png|jpe?g|gif|svg|webp)$/i.test(name)) {
             return `assets/[name]-[hash][extname]`;
           }
           return `assets/[name]-[hash][extname]`;
         },
-        // Условно применяем manualChunks только для клиентской сборки
-        ...(mode === 'production' && !ssrBuild && {
-          manualChunks: {
-            vendor: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
-            ui: ['@mui/material', '@emotion/react'],
-            i18n: ['i18next', 'react-i18next'],
-          },
-        }),
+        // Применяем manualChunks только для клиентской сборки
+        manualChunks: ssrBuild
+          ? undefined
+          : {
+              vendor: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
+              ui: ['@mui/material', '@emotion/react'],
+              i18n: ['i18next', 'react-i18next'],
+            },
       },
     },
   },
