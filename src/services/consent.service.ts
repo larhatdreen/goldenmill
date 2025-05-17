@@ -1,6 +1,27 @@
 import { CookieSettings } from '../types/cookie.types';
 import { API_URL } from '../config';
 
+interface DeviceInfo {
+  type: string;
+  os: string;
+  browser: string;
+}
+
+interface LocationInfo {
+  city: string;
+  country: string;
+}
+
+interface ConsentData {
+  action: 'accept' | 'reject';
+  preferences: CookieSettings['consents'];
+  user: string;
+  device: DeviceInfo;
+  location: LocationInfo;
+  publicIP: string;
+  timestamp: string;
+}
+
 // Функция для получения публичного IP адреса
 async function getPublicIP(): Promise<string> {
   try {
@@ -14,7 +35,11 @@ async function getPublicIP(): Promise<string> {
 }
 
 // Функция для определения типа устройства и браузера
-function getDeviceInfo() {
+function getDeviceInfo(): DeviceInfo {
+  if (typeof window === 'undefined') {
+    return { type: 'Неизвестно', os: 'Неизвестно', browser: 'Неизвестно' };
+  }
+
   const ua = navigator.userAgent;
   let type = 'Компьютер';
   let os = 'Неизвестно';
@@ -57,7 +82,7 @@ function getDeviceInfo() {
 }
 
 // Функция для получения геолокации
-async function getLocationInfo(): Promise<{ city: string; country: string }> {
+async function getLocationInfo(): Promise<LocationInfo> {
   try {
     const response = await fetch('https://ipapi.co/json/');
     const data = await response.json();
@@ -74,37 +99,42 @@ async function getLocationInfo(): Promise<{ city: string; country: string }> {
   }
 }
 
-const getUserAgent = () => {
-  if (typeof window === 'undefined') return '';
-  return navigator.userAgent;
-}
+// const getUserAgent = () => {
+//   if (typeof window === 'undefined') return '';
+//   return navigator.userAgent;
+// }
 
 export const sendConsentToBackend = async (consent: CookieSettings): Promise<void> => {
   try {
-    const ua = getUserAgent();
-    const device = getDeviceInfo();
-    const location = await getLocationInfo();
-    const publicIP = await getPublicIP();
+    const [device, location, publicIP] = await Promise.all([
+      getDeviceInfo(),
+      getLocationInfo(),
+      getPublicIP()
+    ]);
+
+    const consentData: ConsentData = {
+      action: consent.accepted ? 'accept' : 'reject',
+      preferences: consent.consents,
+      user: 'anonymous',
+      device,
+      location,
+      publicIP,
+      timestamp: new Date().toISOString()
+    };
 
     const response = await fetch(`${API_URL}/logs/cookie`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        action: consent.accepted ? 'accept' : 'reject',
-        preferences: consent.consents,
-        user: 'anonymous',
-        device,
-        location,
-        publicIP
-      })
+      body: JSON.stringify(consentData)
     });
 
     if (!response.ok) {
-      throw new Error('Failed to send consent to backend');
+      throw new Error(`Failed to send consent to backend: ${response.statusText}`);
     }
   } catch (error) {
     console.error('Failed to send consent to backend:', error);
+    throw error; // Пробрасываем ошибку дальше для обработки
   }
 }; 

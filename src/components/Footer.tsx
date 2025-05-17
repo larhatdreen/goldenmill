@@ -31,7 +31,7 @@ function Footer() {
     }
   }
 
-  const requestAnimationFrame = (callback: () => void) => {
+  const requestAnimationFrame = (callback: FrameRequestCallback) => {
     if (typeof window === 'undefined') return;
     window.requestAnimationFrame(callback);
   }

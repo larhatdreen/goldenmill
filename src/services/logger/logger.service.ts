@@ -54,11 +54,15 @@ class Logger {
     }
   }
 
-  private getSessionId(): string {
+  private generateSessionId = (): string => {
+    return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  }
+
+  private getSessionId = (): string => {
     if (typeof window === 'undefined') return '';
     let sessionId = sessionStorage.getItem('sessionId');
     if (!sessionId) {
-      sessionId = generateSessionId();
+      sessionId = this.generateSessionId();
       sessionStorage.setItem('sessionId', sessionId);
     }
     return sessionId;

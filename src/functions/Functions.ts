@@ -1,103 +1,103 @@
-const path = document.location.pathname
+// const path = document.location.pathname
 
-const getDocumentElement = (id: string) => {
-  if (typeof document === 'undefined') return null;
-  return document.getElementById(id);
-}
+// const getDocumentElement = (id: string) => {
+//   if (typeof document === 'undefined') return null;
+//   return document.getElementById(id);
+// }
 
-const getDocumentElements = (className: string) => {
-  if (typeof document === 'undefined') return null;
-  return document.getElementsByClassName(className);
-}
+// const getDocumentElements = (className: string) => {
+//   if (typeof document === 'undefined') return null;
+//   return document.getElementsByClassName(className);
+// }
 
-const getDocumentQuerySelector = (selector: string) => {
-  if (typeof document === 'undefined') return null;
-  return document.querySelector(selector);
-}
+// const getDocumentQuerySelector = (selector: string) => {
+//   if (typeof document === 'undefined') return null;
+//   return document.querySelector(selector);
+// }
 
-const getWindowScroll = () => {
-  if (typeof window === 'undefined') return;
-  window.scrollTo(0, 0);
-}
+// const getWindowScroll = () => {
+//   if (typeof window === 'undefined') return;
+//   window.scrollTo(0, 0);
+// }
 
-export function onPointerEnterCircle(circleId: string) {
-  const elements = document.getElementsByClassName(circleId) as HTMLCollectionOf<HTMLElement>
-  const circle = document.getElementById(circleId) as HTMLElement
-  const textElement = document.getElementById(`${circleId}text`) as HTMLElement
+// export function onPointerEnterCircle(circleId: string) {
+//   const elements = document.getElementsByClassName(circleId) as HTMLCollectionOf<HTMLElement>
+//   const circle = document.getElementById(circleId) as HTMLElement
+//   const textElement = document.getElementById(`${circleId}text`) as HTMLElement
 
-  for (let i = 0; i < elements.length; i++) {
-    const childElement = elements[i] as HTMLElement
-    if (childElement) {
-      // if (childElement.style.fill) {
-      //     childElement.style.fill = "white";
-      // } else {
-      //     childElement.style.stroke = "white";
-      // }
-      childElement.style.fill = 'white'
-      childElement.style.stroke = 'white'
-    }
-  }
-  circle.style.width = '70px'
-  circle.style.height = '70px'
-  circle.style.backgroundColor = '#544B3C'
-  circle.style.color = 'white'
+//   for (let i = 0; i < elements.length; i++) {
+//     const childElement = elements[i] as HTMLElement
+//     if (childElement) {
+//       // if (childElement.style.fill) {
+//       //     childElement.style.fill = "white";
+//       // } else {
+//       //     childElement.style.stroke = "white";
+//       // }
+//       childElement.style.fill = 'white'
+//       childElement.style.stroke = 'white'
+//     }
+//   }
+//   circle.style.width = '70px'
+//   circle.style.height = '70px'
+//   circle.style.backgroundColor = '#544B3C'
+//   circle.style.color = 'white'
 
-  if (circleId === 'circle3' && path === '/shell') {
-    textElement.style.fill = 'white'
-    textElement.style.color = 'white'
-  } else {
-    textElement.style.fill = 'white'
-    textElement.style.color = 'white'
-  }
-}
+//   if (circleId === 'circle3' && path === '/shell') {
+//     textElement.style.fill = 'white'
+//     textElement.style.color = 'white'
+//   } else {
+//     textElement.style.fill = 'white'
+//     textElement.style.color = 'white'
+//   }
+// }
 
-export function onPointerLeaveCircle(circleId: string) {
-  const elements = document.getElementsByClassName(circleId) as HTMLCollectionOf<HTMLElement>
-  const circle = document.getElementById(circleId) as HTMLElement
-  const textElement = document.getElementById(`${circleId}text`) as HTMLElement
+// export function onPointerLeaveCircle(circleId: string) {
+//   const elements = document.getElementsByClassName(circleId) as HTMLCollectionOf<HTMLElement>
+//   const circle = document.getElementById(circleId) as HTMLElement
+//   const textElement = document.getElementById(`${circleId}text`) as HTMLElement
 
-  for (let i = 0; i < elements.length; i++) {
-    const childElement = elements[i] as HTMLElement
+//   for (let i = 0; i < elements.length; i++) {
+//     const childElement = elements[i] as HTMLElement
 
-    if (childElement) {
-      // if (childElement.style.fill) {
-      //     childElement.style.fill = "#605C53";
-      // } else {
-      //     childElement.style.stroke = "#605C53";
-      // }
-      if (circleId === 'circle3' && path === '/shell') {
-        childElement.style.fill = 'black'
-        childElement.style.stroke = 'black'
-      } else {
-        childElement.style.fill = '#605C53'
-        childElement.style.stroke = '#605C53'
-      }
-    }
-  }
-  circle.style.width = '54px'
-  circle.style.height = '54px'
-  circle.style.backgroundColor = '#292929'
-  circle.style.color = '#767676'
+//     if (childElement) {
+//       // if (childElement.style.fill) {
+//       //     childElement.style.fill = "#605C53";
+//       // } else {
+//       //     childElement.style.stroke = "#605C53";
+//       // }
+//       if (circleId === 'circle3' && path === '/shell') {
+//         childElement.style.fill = 'black'
+//         childElement.style.stroke = 'black'
+//       } else {
+//         childElement.style.fill = '#605C53'
+//         childElement.style.stroke = '#605C53'
+//       }
+//     }
+//   }
+//   circle.style.width = '54px'
+//   circle.style.height = '54px'
+//   circle.style.backgroundColor = '#292929'
+//   circle.style.color = '#767676'
 
-  if (circleId === 'circle3' && path === '/shell') {
-    textElement.style.fill = 'black'
-    textElement.style.color = 'black'
-  } else {
-    textElement.style.fill = '#605C53'
-    textElement.style.color = '#605C53'
-  }
-}
+//   if (circleId === 'circle3' && path === '/shell') {
+//     textElement.style.fill = 'black'
+//     textElement.style.color = 'black'
+//   } else {
+//     textElement.style.fill = '#605C53'
+//     textElement.style.color = '#605C53'
+//   }
+// }
 
-export function onInputFocus(inputId: string) {
-  const input = document.getElementById(inputId) as HTMLElement
-  if (input) {
-    input.focus()
-  }
-}
+// export function onInputFocus(inputId: string) {
+//   const input = document.getElementById(inputId) as HTMLElement
+//   if (input) {
+//     input.focus()
+//   }
+// }
 
-window.onbeforeunload = function () {
-  getWindowScroll()
-}
+// window.onbeforeunload = function () {
+//   getWindowScroll()
+// }
 
 // window.addEventListener('load', function () {
 //     const section1 = document.getElementById('section1') as HTMLElement;
@@ -348,13 +348,3 @@ window.onbeforeunload = function () {
 // };
 //
 // window.onload = observeUrlChange;
-
-export const handleScroll = () => {
-  if (typeof document === 'undefined' || typeof window === 'undefined') return;
-  
-  const elements = getDocumentElements(circleId) as HTMLCollectionOf<HTMLElement>;
-  const circle = getDocumentElement(circleId) as HTMLElement;
-  const textElement = getDocumentElement(`${circleId}text`) as HTMLElement;
-  
-  // ... rest of the code ...
-};

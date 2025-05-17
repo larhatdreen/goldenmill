@@ -40,14 +40,14 @@ interface ModalProps {
   productInfo?: ProductInfo;
 }
 
-const addDocumentListener = (event: string, handler: (e: MouseEvent) => void) => {
+const addDocumentListener = (event: 'mousedown', handler: (e: MouseEvent) => void) => {
   if (typeof document === 'undefined') return;
-  document.addEventListener(event, handler);
+  document.addEventListener(event, handler as EventListener);
 }
 
-const removeDocumentListener = (event: string, handler: (e: MouseEvent) => void) => {
+const removeDocumentListener = (event: 'mousedown', handler: (e: MouseEvent) => void) => {
   if (typeof document === 'undefined') return;
-  document.removeEventListener(event, handler);
+  document.removeEventListener(event, handler as EventListener);
 }
 
 export default function BasicModal({ open, handleClose, productInfo }: ModalProps) {

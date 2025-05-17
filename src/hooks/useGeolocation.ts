@@ -4,12 +4,6 @@ import { logger } from '../services/logger/logger.service';
 import { api } from '../utils/api.utils';
 import { LanguagesEnum } from '../components/translation/i18n';
 
-interface GeolocationState {
-  latitude: number | null;
-  longitude: number | null;
-  error: string | null;
-}
-
 interface Coordinates {
   latitude: number;
   longitude: number;
