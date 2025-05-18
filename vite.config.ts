@@ -48,9 +48,10 @@ export default defineConfig(({ mode, command }) => ({
         ],
       },
       workbox: {
-        maximumFileSizeToCacheInBytes: 7 * 1024 * 1024,
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
         navigateFallback: 'index.html',
         navigateFallbackDenylist: [/^\/robots\.txt$/, /^\/sitemap\.xml$/],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
         runtimeCaching: [
           {
             urlPattern: /^\/robots\.txt$/,
@@ -60,6 +61,20 @@ export default defineConfig(({ mode, command }) => ({
             urlPattern: /^\/sitemap\.xml$/,
             handler: 'NetworkOnly',
           },
+          {
+            urlPattern: /^https:\/\/api\./i,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'api-cache',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 24 * 60 * 60 // 24 hours
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          }
         ],
       },
     }),
@@ -106,11 +121,11 @@ export default defineConfig(({ mode, command }) => ({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:3002',
+        target: process.env.NODE_ENV === 'production' ? 'https://goldenmill.de' : 'http://localhost:3002',
         changeOrigin: true,
       },
       '/img': {
-        target: 'http://localhost:3002',
+        target: process.env.NODE_ENV === 'production' ? 'https://goldenmill.de' : 'http://localhost:3002',
         changeOrigin: true,
       },
     },

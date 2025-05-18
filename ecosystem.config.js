@@ -2,9 +2,9 @@ module.exports = {
   apps: [
     {
       name: 'goldenmill-server',
-      script: 'index.js',
+      script: './server/index.js',
       instances: 'max',
-      exec_mode: 'cluster',
+      exec_mode: 'fork',
       env: {
         NODE_ENV: 'production',
         PORT: 3002
@@ -20,7 +20,7 @@ module.exports = {
       min_uptime: '60s',
       max_restarts: 10,
       restart_delay: 4000,
-      node_args: '--max-old-space-size=4096',
+      node_args: '--max-old-space-size=1024',
       env_production: {
         NODE_ENV: 'production',
         PORT: 3002
@@ -33,9 +33,9 @@ module.exports = {
     },
     {
       name: 'goldenmill-ssr',
-      script: 'server.js',
+      script: './src/entry-server.js',
       instances: 'max',
-      exec_mode: 'cluster',
+      exec_mode: 'fork',
       env: {
         NODE_ENV: 'production',
         PORT: 3005
@@ -51,7 +51,7 @@ module.exports = {
       min_uptime: '60s',
       max_restarts: 10,
       restart_delay: 4000,
-      node_args: '--max-old-space-size=4096',
+      node_args: '--max-old-space-size=1024',
       env_production: {
         NODE_ENV: 'production',
         PORT: 3005

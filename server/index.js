@@ -16,6 +16,7 @@ const { optimizeImage } = require('./staticFileMiddleware');
 const prisma = new PrismaClient();
 const app = express();
 const port = 3002;
+const host = '0.0.0.0';  // Добавляем явное указание хоста
 
 // Resolve paths relative to server directory
 const SERVER_DIR = __dirname;
@@ -918,8 +919,8 @@ app.post('/api/send-email', express.json(), emailUpload.single('upload'), async 
 // Initialize and start server
 async function start() {
   try {
-    app.listen(port, () => {
-      console.log(`Server running at http://localhost:${port}`);
+    app.listen(port, host, () => {
+      console.log(`Server is running on http://${host}:${port}`);
     });
   } catch (error) {
     console.error('Error starting server:', error);
