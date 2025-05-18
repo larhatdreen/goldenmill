@@ -133,26 +133,47 @@ jobs:
             # Устанавливаем обработчик для корректного завершения
             trap 'cleanup 1' ERR INT TERM
             
-            echo "Checking application availability..."
-            for i in {1..5}; do
-              echo "Attempt $i..."
-              if curl -f http://localhost:3002 && curl -f http://localhost:3005; then
-                echo "Both services are responding!"
-                cleanup 0
-              fi
+            # Функция для проверки доступности сервиса
+            check_service() {
+              local url=$1
+              local service_name=$2
+              local max_attempts=5
+              local attempt=1
               
-              if [ $i -eq 5 ]; then
-                echo "Services failed to respond after 5 attempts"
-                echo "API Server logs:"
-                pm2 logs goldenmill-server --lines 50
-                echo "SSR Server logs:"
-                pm2 logs goldenmill-ssr --lines 50
-                cleanup 1
-              fi
-              
-              echo "Waiting 7 seconds before next attempt..."
-              sleep 7
-            done
+              echo "Checking $service_name availability..."
+              while [ $attempt -le $max_attempts ]; do
+                echo "Attempt $attempt for $service_name..."
+                if curl -f "$url"; then
+                  echo "$service_name is responding!"
+                  return 0
+                fi
+                
+                if [ $attempt -eq $max_attempts ]; then
+                  echo "$service_name failed to respond after $max_attempts attempts"
+                  echo "$service_name logs:"
+                  if [ "$service_name" = "API Server" ]; then
+                    pm2 logs goldenmill-server --lines 50
+                  else
+                    pm2 logs goldenmill-ssr --lines 50
+                  fi
+                  return 1
+                fi
+                
+                echo "Waiting 7 seconds before next attempt..."
+                sleep 7
+                attempt=$((attempt + 1))
+              done
+            }
+            
+            # Проверяем API сервер
+            if ! check_service "http://localhost:3002/api/products" "API Server"; then
+              cleanup 1
+            fi
+            
+            # Проверяем SSR сервер
+            if ! check_service "http://localhost:3005" "SSR Server"; then
+              cleanup 1
+            fi
             
             echo "Deployment completed successfully!"
             echo "Deployed commit: $(git rev-parse HEAD)"

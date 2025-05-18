@@ -35,6 +35,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// Обработка корневого пути
+app.get('/', (req, res) => {
+  res.redirect('https://goldenmill.de');
+});
+
 // Применяем middleware для статических файлов
 app.use(staticFileMiddleware);
 

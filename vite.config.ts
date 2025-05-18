@@ -97,13 +97,12 @@ export default defineConfig(({ mode, command }) => ({
       },
       output: {
         assetFileNames: (assetInfo) => {
-          const name =assetInfo.name || '';
+          const name = assetInfo.name || '';
           if (/\.(png|jpe?g|gif|svg|webp)$/i.test(name)) {
             return `assets/[name]-[hash][extname]`;
           }
           return `assets/[name]-[hash][extname]`;
         },
-        // Применяем manualChunks только для клиентской сборки
         ...(!(command === 'build' && process.argv.includes('--ssr')) && {
           manualChunks: {
             vendor: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
@@ -120,13 +119,21 @@ export default defineConfig(({ mode, command }) => ({
     cors: true,
     port: 3000,
     proxy: {
+      '/': {
+        target: process.env.NODE_ENV === 'production' ? 'https://goldenmill.de' : 'http://localhost:3005',
+        changeOrigin: true,
+        secure: false
+      },
       '/api': {
         target: process.env.NODE_ENV === 'production' ? 'https://goldenmill.de' : 'http://localhost:3002',
         changeOrigin: true,
+        secure: false
       },
       '/img': {
         target: process.env.NODE_ENV === 'production' ? 'https://goldenmill.de' : 'http://localhost:3002',
         changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/img/, '/img/products')
       },
     },
     allowedHosts: ['goldenmill.de']
