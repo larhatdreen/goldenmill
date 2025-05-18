@@ -48,13 +48,58 @@ jobs:
           ssh root@77.73.39.210 << 'EOF'
             set -e
             cd /var/www/goldenmill/prod
+            
+            # Очистка и обновление кода
             git fetch origin master
             git reset --hard origin/master
+            
+            # Установка зависимостей
             yarn install --frozen-lockfile
+            cd server && yarn install --frozen-lockfile && cd ..
+            
+            # Очистка старых сборок
             rm -rf dist
+            rm -rf server/dist
+            
+            # Сборка приложения
+            echo "Building main application..."
             yarn build
             yarn build:ssr
             yarn generate-sitemap
-            pm2 restart goldenmill-ssr || pm2 start server.js --name goldenmill-ssr
+            
+            # Сборка API
+            echo "Building API server..."
+            cd server
+            yarn build
+            cd ..
+            
+            # Остановка старых процессов
+            echo "Stopping old processes..."
+            pm2 stop goldenmill-ssr || true
+            pm2 stop goldenmill-server || true
+            pm2 delete goldenmill-ssr || true
+            pm2 delete goldenmill-server || true
+            
+            # Запуск новых процессов
+            echo "Starting new processes..."
+            # Запуск API
+            cd server
+            pm2 start ecosystem.config.js --only goldenmill-server
+            cd ..
+            
+            # Запуск SSR
+            pm2 start ecosystem.config.js --only goldenmill-ssr
+            
+            # Проверка статуса
+            echo "Checking process status..."
+            sleep 5
+            pm2 list
+            
+            # Проверка доступности
+            echo "Checking application availability..."
+            curl -f http://localhost:3005 || exit 1
+            curl -f http://localhost:3002 || exit 1
+            
+            echo "Deployment completed successfully!"
             echo "Deployed commit: $(git rev-parse HEAD)"
           EOF

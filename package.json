@@ -6,16 +6,21 @@
   "scripts": {
     "dev": "vite",
     "dev:client": "vite",
-    "dev:server": "cd server && node index.js",
-    "dev:ssr": "NODE_ENV=development node server.js",
+    "dev:ssr": "node server.js",
+    
     "build": "tsc && vite build",
     "build:ssr": "vite build --ssr src/entry-server.tsx",
-    "build:server": "vite build --ssr src/entry-server.tsx --outDir server",
     "postbuild": "cd server && tsx scripts/generateProductSitemap.ts",
+    
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "generate-sitemap": "tsx scripts/generate-sitemap.ts",
-    "start:ssr": "node server.js"
+    
+    "start:ssr": "pm2 start ecosystem.config.js --only goldenmill-ssr",
+    "stop:ssr": "pm2 stop goldenmill-ssr",
+    "restart:ssr": "pm2 restart goldenmill-ssr",
+    "logs:ssr": "pm2 logs goldenmill-ssr",
+    "monit:ssr": "pm2 monit goldenmill-ssr"
   },
   "dependencies": {
     "@emailjs/browser": "^3.12.1",
@@ -79,6 +84,7 @@
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "pm2": "^5.3.1",
     "postcss": "^8.4.35",
     "prisma": "^6.3.1",
     "tailwindcss": "^3.4.1",

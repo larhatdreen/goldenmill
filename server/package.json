@@ -5,12 +5,17 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node index.js",
     "dev": "nodemon src/index.ts",
     "build": "prisma generate && tsc && npm run generate-sitemap",
     "generate-sitemap": "node scripts/generateProductSitemap.js",
     "generate-sitemaps": "ts-node scripts/generateSitemaps.ts",
-    "optimize-svg": "ts-node scripts/optimizeSVG.ts"
+    "optimize-svg": "ts-node scripts/optimizeSVG.ts",
+    
+    "start": "pm2 start ecosystem.config.js --only goldenmill-server",
+    "stop": "pm2 stop goldenmill-server",
+    "restart": "pm2 restart goldenmill-server",
+    "logs": "pm2 logs goldenmill-server",
+    "monit": "pm2 monit goldenmill-server"
   },
   "dependencies": {
     "@prisma/client": "^6.3.1",
@@ -30,6 +35,7 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.3",
+    "pm2": "^5.3.1",
     "prisma": "^6.3.1"
   },
   "nodemonConfig": {
