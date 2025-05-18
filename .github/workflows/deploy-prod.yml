@@ -98,7 +98,7 @@ jobs:
               pm2 reload goldenmill-server
             else
               echo "goldenmill-server is closed... Begin script"
-              pm2 start ecosystem.config.cjs --only goldenmill-server
+              pm2 start /var/www/goldenmill/prod/ecosystem.config.cjs --only goldenmill-server
             fi
             
             # Перезапускаем SSR сервер
@@ -109,7 +109,7 @@ jobs:
               pm2 reload goldenmill-ssr
             else
               echo "goldenmill-ssr is closed... Begin script"
-              pm2 start ecosystem.config.cjs --only goldenmill-ssr
+              pm2 start /var/www/goldenmill/prod/ecosystem.config.cjs --only goldenmill-ssr
             fi
             
             echo "Services restarted"
