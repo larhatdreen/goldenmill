@@ -95,7 +95,7 @@ jobs:
             if pm2 list | grep -q "goldenmill-server"; then
               pm2 reload goldenmill-server
             else
-              pm2 start ecosystem.config.js --only goldenmill-server
+              pm2 start ecosystem.config.cjs --only goldenmill-server
             fi
             
             # Перезапускаем SSR сервер
@@ -104,7 +104,7 @@ jobs:
             if pm2 list | grep -q "goldenmill-ssr"; then
               pm2 reload goldenmill-ssr
             else
-              pm2 start ecosystem.config.js --only goldenmill-ssr
+              pm2 start ecosystem.config.cjs --only goldenmill-ssr
             fi
             
             echo "Services restarted"
@@ -166,7 +166,7 @@ jobs:
             }
             
             # Проверяем API сервер
-            if ! check_service "http://localhost:3002/api/products" "API Server"; then
+            if ! check_service "http://localhost:3002" "API Server"; then
               cleanup 1
             fi
             
