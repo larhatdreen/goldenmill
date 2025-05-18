@@ -1,5 +1,5 @@
 import ReactDOMServer from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom/server';
+import { StaticRouter } from 'react-router-dom/server.js';
 import { HelmetProvider, HelmetServerState } from 'react-helmet-async';
 import { Provider } from 'react-redux';
 import store from './store';
