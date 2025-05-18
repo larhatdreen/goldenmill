@@ -4,7 +4,7 @@ import { HelmetProvider, HelmetServerState } from 'react-helmet-async';
 import { Provider } from 'react-redux';
 import store from './store';
 import App from './App';
-import './components/translation/i18n.ts';
+import './components/translation/i18n';
 
 interface HelmetContext {
   helmet: HelmetServerState;

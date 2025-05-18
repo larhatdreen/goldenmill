@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Modal from '@mui/material/Modal';
 import { ChangeEvent, Fragment, useState } from 'react';
-import CloseIcon from './customIcons/CloseIcon.tsx';
+import CloseIcon from './customIcons/CloseIcon';
 import {
   Button,
   Checkbox,
@@ -15,16 +15,16 @@ import {
   ThemeProvider,
 } from '@mui/material';
 
-import CountButton from './CountButton.tsx';
-import ButtonBigIcon from './customIcons/ButtonBigIcon.tsx';
-import PlaneIcon from './customIcons/PlaneIcon.tsx';
-import UploadIcon from './customIcons/UploadIcon.tsx';
-import UploadDecorSvg from './customIcons/UploadDecorSvg.tsx';
-import { IMainData } from './MainSection.tsx';
+import CountButton from './CountButton';
+import ButtonBigIcon from './customIcons/ButtonBigIcon';
+import PlaneIcon from './customIcons/PlaneIcon';
+import UploadIcon from './customIcons/UploadIcon';
+import UploadDecorSvg from './customIcons/UploadDecorSvg';
+import { IMainData } from './MainSection';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
-import { getURLWithLang } from '../functions/get-url-with-lang.ts';
-import { ParamsType } from './NavigateProvider.tsx';
+import { getURLWithLang } from '../functions/get-url-with-lang';
+import { ParamsType } from './NavigateProvider';
 import { useTheme } from '../hooks/useTheme';
 import { createMuiTheme } from '../theme/muiTheme';
 // import { LanguagesEnum } from './translation/i18n';

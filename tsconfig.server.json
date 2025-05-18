@@ -8,10 +8,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "types": ["vite/client", "node"],
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "moduleResolution": "node",
     "isolatedModules": true,
-    "noEmit": false
+    "noEmit": false,
+    "allowImportingTsExtensions": false
   },
   "include": ["src/entry-server.tsx"],
   "exclude": ["node_modules"]

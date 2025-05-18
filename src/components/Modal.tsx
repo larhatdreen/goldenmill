@@ -11,18 +11,18 @@ import {
   TextField,
   ThemeProvider,
 } from '@mui/material';
-import CountButton from './CountButton.tsx';
-import ButtonIcon from './customIcons/ButtonIcon.tsx';
-import CloseIcon from './customIcons/CloseIcon.tsx';
+import CountButton from './CountButton';
+import ButtonIcon from './customIcons/ButtonIcon';
+import CloseIcon from './customIcons/CloseIcon';
 import React, { ChangeEvent, useState, useRef, useEffect } from 'react';
-import PlaneIcon from './customIcons/PlaneIcon.tsx';
+import PlaneIcon from './customIcons/PlaneIcon';
 import type { ICountryData } from 'countries-list';
 import { getCountryDataList } from 'countries-list';
 import ReactPhoneInput from 'react-phone-input-material-ui';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
-import { getURLWithLang } from '../functions/get-url-with-lang.ts';
-import { ParamsType } from './NavigateProvider.tsx';
+import { getURLWithLang } from '../functions/get-url-with-lang';
+import { ParamsType } from './NavigateProvider';
 import { useTheme } from '../hooks/useTheme';
 import { createMuiTheme } from '../theme/muiTheme';
 
