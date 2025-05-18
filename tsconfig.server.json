@@ -10,7 +10,8 @@
     "types": ["vite/client", "node"],
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "noEmit": false
   },
   "include": ["src/entry-server.tsx"],
   "exclude": ["node_modules"]
