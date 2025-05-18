@@ -93,8 +93,10 @@ jobs:
             echo "Restarting API server..."
             cd /var/www/goldenmill/prod/server
             if pm2 list | grep -q "goldenmill-server"; then
+              echo "goldenmill-server is started... Begin reload"
               pm2 reload goldenmill-server
             else
+              echo "goldenmill-server is closed... Begin script"
               pm2 start ecosystem.config.cjs --only goldenmill-server
             fi
             
@@ -102,8 +104,10 @@ jobs:
             echo "Restarting SSR server..."
             cd /var/www/goldenmill/prod
             if pm2 list | grep -q "goldenmill-ssr"; then
+              echo "goldenmill-ssr is started... Begin reload"
               pm2 reload goldenmill-ssr
             else
+              echo "goldenmill-ssr is closed... Begin script"
               pm2 start ecosystem.config.cjs --only goldenmill-ssr
             fi
             
