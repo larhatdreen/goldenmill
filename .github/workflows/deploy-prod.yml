@@ -17,9 +17,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'yarn'
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache yarn dependencies
+        uses: actions/cache@v4
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       - name: Create .env
         run: |
@@ -75,18 +87,21 @@ jobs:
         run: |
           ssh root@77.73.39.210 << 'EOF'
             set -e
-            cd /var/www/goldenmill/prod
             
-            # Перезапускаем сервисы
-            echo "Restarting services..."
+            # Перезапускаем API сервер
+            echo "Restarting API server..."
+            cd /var/www/goldenmill/prod/server
             if pm2 list | grep -q "goldenmill-server"; then
-              pm2 restart goldenmill-server
+              pm2 reload goldenmill-server
             else
               pm2 start ecosystem.config.js --only goldenmill-server
             fi
             
+            # Перезапускаем SSR сервер
+            echo "Restarting SSR server..."
+            cd /var/www/goldenmill/prod
             if pm2 list | grep -q "goldenmill-ssr"; then
-              pm2 restart goldenmill-ssr
+              pm2 reload goldenmill-ssr
             else
               pm2 start ecosystem.config.js --only goldenmill-ssr
             fi

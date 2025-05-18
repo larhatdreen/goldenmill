@@ -7,15 +7,12 @@
     "dev": "vite",
     "dev:client": "vite",
     "dev:ssr": "node server.js",
-    
     "build": "tsc && vite build",
     "build:ssr": "vite build --ssr src/entry-server.tsx",
     "postbuild": "cd server && tsx scripts/generateProductSitemap.ts",
-    
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "generate-sitemap": "tsx scripts/generate-sitemap.ts",
-    
     "start:ssr": "pm2 start ecosystem.config.js --only goldenmill-ssr",
     "stop:ssr": "pm2 stop goldenmill-ssr",
     "restart:ssr": "pm2 restart goldenmill-ssr",
@@ -64,6 +61,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^6.22.1",
     "recharts": "^2.12.2",
+    "sharp": "0.32.6",
     "svgo": "^3.3.2",
     "tailwindcss-animated": "^1.0.1",
     "yup": "^1.6.1"
