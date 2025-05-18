@@ -123,28 +123,38 @@ jobs:
             pm2 monit > /dev/null 2>&1 &
             MONIT_PID=$!
             
+            # Функция для очистки и выхода
+            cleanup() {
+              echo "Cleaning up..."
+              kill $MONIT_PID 2>/dev/null || true
+              exit $1
+            }
+            
+            # Устанавливаем обработчик для корректного завершения
+            trap 'cleanup 1' ERR INT TERM
+            
             echo "Checking application availability..."
-            for i in {1..3}; do
+            for i in {1..5}; do
               echo "Attempt $i..."
               if curl -f http://localhost:3002 && curl -f http://localhost:3005; then
                 echo "Both services are responding!"
-                # Останавливаем мониторинг после успешной проверки
-                kill $MONIT_PID 2>/dev/null || true
-                break
+                cleanup 0
               fi
-              if [ $i -eq 3 ]; then
-                echo "Services failed to respond after 3 attempts"
+              
+              if [ $i -eq 5 ]; then
+                echo "Services failed to respond after 5 attempts"
                 echo "API Server logs:"
                 pm2 logs goldenmill-server --lines 50
                 echo "SSR Server logs:"
                 pm2 logs goldenmill-ssr --lines 50
-                # Останавливаем мониторинг при ошибке
-                kill $MONIT_PID 2>/dev/null || true
-                exit 1
+                cleanup 1
               fi
-              sleep 2
+              
+              echo "Waiting 7 seconds before next attempt..."
+              sleep 7
             done
             
             echo "Deployment completed successfully!"
             echo "Deployed commit: $(git rev-parse HEAD)"
+            cleanup 0
           EOF
