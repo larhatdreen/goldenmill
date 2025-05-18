@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "prisma generate && tsc && npm run generate-sitemap",
+    "build": "prisma generate && npx tsc && npm run generate-sitemap",
     "generate-sitemap": "node scripts/generateProductSitemap.js",
     "generate-sitemaps": "ts-node scripts/generateSitemaps.ts",
     "optimize-svg": "ts-node scripts/optimizeSVG.ts",
@@ -36,7 +36,8 @@
   "devDependencies": {
     "nodemon": "^3.0.3",
     "pm2": "^5.3.1",
-    "prisma": "^6.3.1"
+    "prisma": "^6.3.1",
+    "typescript": "^5.2.2"
   },
   "nodemonConfig": {
     "watch": [

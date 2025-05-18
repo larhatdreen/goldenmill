@@ -12,12 +12,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Clean up npm lock
-        run: rm -f package-lock.json
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'yarn'
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
@@ -26,16 +26,6 @@ jobs:
           echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env
           echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > server/.env
 
-      - name: Cache yarn for speedest install
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.yarn
-            yarn.lock
-          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
@@ -43,91 +33,65 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H 77.73.39.210 >> ~/.ssh/known_hosts
 
-      - name: Update code on server
+      - name: Update code and prepare server
         run: |
           ssh root@77.73.39.210 << 'EOF'
             set -e
             cd /var/www/goldenmill/prod
+            
+            # Обновляем код
             git fetch origin master
             git reset --hard origin/master
-            echo "Code updated successfully"
-          EOF
-
-      - name: Install dependencies
-        run: |
-          ssh root@77.73.39.210 << 'EOF'
-            set -e
-            cd /var/www/goldenmill/prod
-            echo "Installing main dependencies..."
-            yarn install
-            echo "Installing server dependencies..."
-            cd server && yarn install && cd ..
+            
+            # Очищаем старые сборки
+            rm -rf dist server/dist
+            
+            # Устанавливаем зависимости параллельно
+            echo "Installing dependencies..."
+            yarn install --frozen-lockfile --prefer-offline &
+            cd server && yarn install --frozen-lockfile --prefer-offline &
+            wait
+            
             echo "Dependencies installed successfully"
           EOF
 
-      - name: Clean old builds
+      - name: Build applications
         run: |
           ssh root@77.73.39.210 << 'EOF'
             set -e
             cd /var/www/goldenmill/prod
-            echo "Cleaning old builds..."
-            rm -rf dist
-            rm -rf server/dist
-            echo "Cleanup completed"
+            
+            # Собираем приложения параллельно
+            echo "Building applications..."
+            yarn build & 
+            yarn build:ssr &
+            cd server && yarn build &
+            wait
+            
+            echo "Applications built successfully"
           EOF
 
-      - name: Build main application
+      - name: Restart services
         run: |
           ssh root@77.73.39.210 << 'EOF'
             set -e
             cd /var/www/goldenmill/prod
-            echo "Building main application..."
-            yarn build
-            yarn build:ssr
-            yarn generate-sitemap
-            echo "Main application built successfully"
-          EOF
-
-      - name: Build API server
-        run: |
-          ssh root@77.73.39.210 << 'EOF'
-            set -e
-            cd /var/www/goldenmill/prod/server
-            echo "Building API server..."
-            yarn build
-            echo "API server built successfully"
-          EOF
-
-      - name: Stop old processes
-        run: |
-          ssh root@77.73.39.210 << 'EOF'
-            set -e
-            echo "Stopping old processes..."
-            pm2 stop goldenmill-ssr || true
-            pm2 stop goldenmill-server || true
-            pm2 delete goldenmill-ssr || true
-            pm2 delete goldenmill-server || true
-            echo "Old processes stopped"
-          EOF
-
-      - name: Start API server
-        run: |
-          ssh root@77.73.39.210 << 'EOF'
-            set -e
-            cd /var/www/goldenmill/prod/server
-            echo "Starting API server..."
-            pm2 start ecosystem.config.js --only goldenmill-server
-            echo "API server started"
-          EOF
-
-      - name: Start SSR server
-        run: |
-          ssh root@77.73.39.210 << 'EOF'
-            set -e
-            cd /var/www/goldenmill/prod
-            echo "Starting SSR server..."
-            pm2 start ecosystem.config.js --only goldenmill-ssr
-            echo "SSR server started"
+            
+            # Перезапускаем сервисы
+            echo "Restarting services..."
+            if pm2 list | grep -q "goldenmill-server"; then
+              pm2 restart goldenmill-server
+            else
+              pm2 start ecosystem.config.js --only goldenmill-server
+            fi
+            
+            if pm2 list | grep -q "goldenmill-ssr"; then
+              pm2 restart goldenmill-ssr
+            else
+              pm2 start ecosystem.config.js --only goldenmill-ssr
+            fi
+            
+            echo "Services restarted"
           EOF
 
       - name: Verify deployment
