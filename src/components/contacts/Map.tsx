@@ -1,14 +1,13 @@
 import { useTheme } from '../../hooks/useTheme';
-import { getLocalThemeColor } from '../../theme/utils';
 
 function Map() {
   const theme = useTheme();
   const isDark = theme.name === 'dark';
 
   // Определяем для стилизации локально
-  const titleColor = getLocalThemeColor(isDark, '#82653E', '#7D9AC1');
-  const outlineColor = getLocalThemeColor(isDark, '', '#292828');
-  const invertMap = getLocalThemeColor(isDark, '0', '1');
+  const titleColor = isDark ? '#82653E' : '#7D9AC1';
+  const outlineColor = isDark ? '' : '#292828';
+  const invertMap = isDark ? '0' : '1';
 
   return (
     <svg

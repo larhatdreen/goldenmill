@@ -1,5 +1,4 @@
 import { useTheme } from '../../hooks/useTheme'; 
-import { getLocalThemeColor } from '../../theme/utils';
 
 interface UploadDecorSvgProps {
   className?: string;
@@ -8,7 +7,7 @@ interface UploadDecorSvgProps {
 function UploadDecorSvg({ className }: UploadDecorSvgProps) {
   const theme = useTheme();
   const isDark = theme.name === 'dark';
-  const strokeColor = getLocalThemeColor(isDark, '#666666', '#B5B5B5');
+  const strokeColor = isDark ? '#666666' : '#B5B5B5';
 
   return (
     <svg 

@@ -6,7 +6,6 @@ import ToggleOval from '../assets/tumbler/ToggleOval';
 import ToggleEllipse from '../assets/tumbler/ToggleEllipse';
 import { toggleTheme } from '../store/themeSlice';
 import { RootState } from '../store';
-import { getLocalThemeColor } from '../theme/utils';
 
 // interface ThemeToggleProps {
 //   onToggle?: () => void;
@@ -23,12 +22,12 @@ const ThemeToggle = () => { // deleted { onToggle }: ThemeToggleProps)
 
   const { ovalColor, ellipseColor, icon, ellipsePosition, ellipseShadow } = useMemo(
     () => ({
-      ovalColor: getLocalThemeColor(isDark, '#666666', '#F0F0F0'),
-      ellipseColor: getLocalThemeColor(isDark, '#F0F0F0', '#FFFFFF'),
+      ovalColor: isDark ? '#666666' : '#F0F0F0',
+      ellipseColor: isDark ? '#F0F0F0' : '#FFFFFF',
       icon: isDark ? (
-        <SunIcon width={15} height={15} fill={getLocalThemeColor(isDark, '#767676', '#666666')} />
+        <SunIcon width={15} height={15} fill={isDark ? '#767676' : '#666666'} />
       ) : (
-        <MoonIcon width={16} height={17} fill={getLocalThemeColor(isDark, '#767676', '#666666')} />
+        <MoonIcon width={16} height={17} fill={isDark ? '#767676' : '#666666'} />
       ),
       ellipsePosition: isDark ? 'translateX(23px)' : 'translateX(3px)',
       ellipseShadow: '0 2px 8px 0 rgba(0,0,0,0.10), 0 1.5px 4px 0 rgba(0,0,0,0.10)',

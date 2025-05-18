@@ -1,5 +1,4 @@
 import { useTheme } from '../../hooks/useTheme';
-import { getLocalThemeColor } from '../../theme/utils';
 
 interface YouTubeIconProps {
   className?: string
@@ -8,7 +7,7 @@ interface YouTubeIconProps {
 function YouTubeIcon({ className }: YouTubeIconProps) {
   const theme = useTheme();
   const isDark = theme.name === 'dark';
-  const fillColor = getLocalThemeColor(isDark, '#82653E', '#7D9BC1');
+  const fillColor = isDark ? '#82653E' : '#7D9BC1';
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

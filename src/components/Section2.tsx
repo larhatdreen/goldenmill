@@ -1,23 +1,23 @@
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../hooks/useTheme';
 import LogoIcon from './customIcons/LogoIcon';
-import { getColor, getLocalThemeColor } from '../theme/utils';
+import { getColor } from '../theme/utils';
 function Section2() {
   const { t } = useTranslation()
   const theme = useTheme();
   const isDark = theme.name === 'dark';
   // Определяем для стилизации локально
-  const workingTemperatureColor = getLocalThemeColor(isDark, '#605C54', '#696D7B');
-  const mainColor = getLocalThemeColor(isDark, '#725C4F', '#8DA3B0');
-  const secondColor = getLocalThemeColor(isDark , '#212325', '#E9E9E9')
-  const thirdColor = getLocalThemeColor(isDark, '#2E3032', '#E9E9E9')
-  const circleColor = getLocalThemeColor(isDark, '#82643F', '#ABB4C3')
-  const circleFillColor = getLocalThemeColor(isDark, '#2E3032', '#F9F7F3')
-  const dotColor = getLocalThemeColor(isDark, '#424446', '#BDBBB9')
-  const tipStrokeColor = getLocalThemeColor(isDark, '#B6B6B6', '#494949')
-  const tipFillColor = getLocalThemeColor(isDark, '#A8A8A8', '#575757')
-  const decorColumnColor = getLocalThemeColor(isDark, '#363636', '#E9E9E9')
-  const specialСolor = getLocalThemeColor(isDark, '#363636', '#C9C9C9')
+  const workingTemperatureColor = isDark ? '#605C54' : '#696D7B';
+  const mainColor = isDark ? '#725C4F' : '#8DA3B0';
+  const secondColor = isDark ? '#212325' : '#E9E9E9'
+  const thirdColor = isDark ? '#2E3032' : '#E9E9E9'
+  const circleColor = isDark ? '#82643F' : '#ABB4C3'
+  const circleFillColor = isDark ? '#2E3032' : '#F9F7F3'
+  const dotColor = isDark ? '#424446' : '#BDBBB9'
+  const tipStrokeColor = isDark ? '#B6B6B6' : '#494949'
+  const tipFillColor = isDark ? '#A8A8A8' : '#575757'
+  const decorColumnColor = isDark ? '#363636' : '#E9E9E9'
+  const specialСolor = isDark ? '#363636' : '#C9C9C9'
 
  
   return (
@@ -26,12 +26,7 @@ function Section2() {
         <g filter='url(#filter0_b_113_613)'>
           <circle cx='1000' cy='370' r='135.5' fill={getColor(theme, 'decorative')} />
           <foreignObject x="940" y="320" width="136" height="103">
-            <LogoIcon
-              className="w-[136px] h-[103px]"
-              mainColor={getColor(theme, 'svg.darkColor')}
-              secondaryColor={getColor(theme, 'svg.lightColor')}
-              crossColor={getColor(theme, 'svg.crossColor')}
-            />
+            <LogoIcon className="w-[136px] h-[103px]"/>
           </foreignObject>
         </g>
         <path d='M856 350L856 585' style={{ transform: 'translateX(10px)' }} stroke={getColor(theme, 'svg.fill')} strokeWidth='0.5' />

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import CountButton from './CountButton';
 import button from '../assets/UI/Btn.svg';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '../hooks/useTheme';
 
 interface LocalizedText {
   ru: string;
@@ -94,6 +95,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language as 'ru' | 'en' | 'de';
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isDark = theme.name === 'dark';
   
   const {
     id,
@@ -176,7 +179,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           minWidth: '308px',
           maxWidth: '308px',
           height: '450px',
-          bgcolor: '#202020',
+          bgcolor: isDark ? '#373739' : '#F2F1F0',
           backgroundImage: 'none',
           borderRadius: '10px',
           border: '1px solid rgba(213, 205, 189, 0.1)',
@@ -257,7 +260,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   variant="subtitle1" 
                   sx={{
                     margin: 0,
-                    color: '#A19F9B',
+                    color: isDark ? '#D5CDBD' : '#2A3242',
                     fontFamily: 'AdventProRegular',
                     fontSize: '18px',
                     lineHeight: 1.2,
@@ -383,7 +386,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               >
                 <Typography 
                   sx={{ 
-                    color: '#A19F9B',
+                    color: isDark ? '#D5CDBD' : '#2A3242',
                     fontFamily: 'LabGrotesque',
                     fontSize: '15px',
                     opacity: 0.5,

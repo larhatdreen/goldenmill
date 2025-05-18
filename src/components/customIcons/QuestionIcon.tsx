@@ -1,5 +1,4 @@
 import { useTheme } from '../../hooks/useTheme';
-import { getLocalThemeColor } from '../../theme/utils';
 interface QuestionIconProps {
   className?: string
 }
@@ -7,7 +6,7 @@ interface QuestionIconProps {
 function QuestionIcon({ className }: QuestionIconProps) {;
   const theme = useTheme(); 
   const isDark = theme.name === 'dark';
-  const fill = getLocalThemeColor(isDark, '#82653E', '#2A3242')
+  const fill = isDark ? '#82653E' : '#2A3242'
   
   return (
     <svg

@@ -60,7 +60,8 @@
     "surfaceType": "Surface type"
   },
   "titleBlock": {
-    "needHelp": "Need help with measurements?",
+    "needHelp": "Need help selecting equipment?",
+    "needHelpWithSize": "Need help with sizes?",
     "granulatorProductDescription": "For granulation of biomass, RDF, \ncompound feed, and food products",
     "mixerProductDescription": "For continuous mixing and\nmoistening of materials",
     "countPrice": "GET QUOTE"

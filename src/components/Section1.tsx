@@ -3,7 +3,7 @@ import { useMediaQuery } from '@mui/material'
 import { useTheme } from '../hooks/useTheme';
 import { useState } from 'react'
 import LogoIcon from './customIcons/LogoIcon';
-import { getColor, getLocalThemeColor } from '../theme/utils';
+import { getColor } from '../theme/utils';
 const items = [
   {
     number: '01',
@@ -34,11 +34,11 @@ function GMFeaturesSVG() {
   const isDark = theme.name === 'dark';
 
   // Определяем для стилизации локально
-  const numberColor = getLocalThemeColor(isDark, '#5B5B5B', '#A4A4A4');
-  const numberActiveColor = getLocalThemeColor(isDark, '#82643F', '#ABB4C3');
-  const textColor = getLocalThemeColor(isDark, '#5B5B5B', '#A4A4A4');
-  const textActiveColor = getLocalThemeColor(isDark, '#D5CDBD', '#2A3242');
-  const sliderColor = getLocalThemeColor(isDark, '#82643F', '#7D9BC1');
+  const numberColor = isDark ? '#5B5B5B' : '#A4A4A4';
+  const numberActiveColor = isDark ? '#82643F' : '#ABB4C3';
+  const textColor = isDark ? '#5B5B5B' : '#A4A4A4';
+  const textActiveColor = isDark ? '#D5CDBD' : '#2A3242';
+  const sliderColor = isDark ? '#82643F' : '#7D9BC1';
 
   // Параметры для динамического расчета
   const topPadding = 100;
@@ -138,12 +138,7 @@ function Section1() {
           <g filter='url(#filter0_b_20_1296)'>
             <circle cx='122' cy='350' r='121' fill={getColor(theme, 'decorative')} />
             <foreignObject x="54" y="300" width="136" height="103">
-              <LogoIcon
-                className="w-[136px] h-[103px]"
-                mainColor={getColor(theme, 'svg.darkColor')}
-                secondaryColor={getColor(theme, 'svg.lightColor')}
-                crossColor={getColor(theme, 'svg.crossColor')}
-              />
+              <LogoIcon className="w-[136px] h-[103px]"/>
             </foreignObject>
           </g>
           <path d='M242 330L242 631' stroke={getColor(theme, 'svg.fill')} strokeWidth='0.5' />

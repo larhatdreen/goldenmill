@@ -1,5 +1,4 @@
 import { useTheme } from '../../hooks/useTheme';
-import { getLocalThemeColor } from '../../theme/utils';
 interface InstagramIconProps {
   className?: string
 }
@@ -7,7 +6,7 @@ interface InstagramIconProps {
 function InstagramIcon({ className }: InstagramIconProps) {
   const theme = useTheme();
   const isDark = theme.name === 'dark';
-  const fillColor = getLocalThemeColor(isDark, '#82643E', '#7D9BC1');
+  const fillColor = isDark ? '#82643E' : '#7D9BC1';
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import LogoIcon from './customIcons/LogoIcon'
-import { getColor, getLocalThemeColor } from '../theme/utils'
+import { getColor } from '../theme/utils'
 import { useTheme } from '../hooks/useTheme';
 
 
@@ -11,13 +11,9 @@ function Section4() {
     const isDark = theme.name === 'dark';
 
     // Определяем для стилизации локально
-    const textColor = getLocalThemeColor(isDark, '#969284', '#696D7B')
-    const titleColor = getLocalThemeColor(isDark, '#82643F', '#2A3242')
-    const linesColor = getLocalThemeColor(isDark, '#464646', '#B9B9B9')
-    // const textColor = getLocalThemeColor(isDark, '#', '#')
-    // const textColor = getLocalThemeColor(isDark, '#', '#')
-    // const textColor = getLocalThemeColor(isDark, '#', '#')
-    // const textColor = getLocalThemeColor(isDark, '#', '#')
+    const textColor = isDark ? '#969284' : '#696D7B'
+    const titleColor = isDark ? '#82643F' : '#2A3242'
+    const linesColor = isDark ? '#464646' : '#B9B9B9'
 
     return (
         <section id='section6' className='flex justify-center mt-[15%] w-full h-auto px-[5%]'>
@@ -25,12 +21,7 @@ function Section4() {
                 <g filter='url(#filter0_b_113_613)'>
                     <circle cx='1000' cy='220' r='135.5' fill={getColor(theme, 'decorative')} />
                     <foreignObject x="940" y="170" width="136" height="103">
-                      <LogoIcon
-                        className="w-[136px] h-[103px]"
-                        mainColor={getColor(theme, 'svg.darkColor')}
-                        secondaryColor={getColor(theme, 'svg.lightColor')}
-                        crossColor={getColor(theme, 'svg.crossColor')}
-                      /> 
+                      <LogoIcon className="w-[136px] h-[103px]"/> 
                     </foreignObject>
                 </g>
                 <path d='M856 200L856 535' style={{ transform: 'translateX(10px)' }} stroke={getColor(theme, 'svg.fill')} strokeWidth='0.5' />
@@ -66,16 +57,16 @@ function Section4() {
                 {/* SVG-блок */}
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="846" height="910" viewBox="0 0 846 1400" fill="none">
-                    <rect x="0.5" y="28.5" width="845" height="881" rx="9.5" stroke={getLocalThemeColor(isDark, "#424242", "#BDBDBD")} />
-                    <rect x="12.5" y="37.5" width="823" height="858" fill={getLocalThemeColor(isDark, "#2E3032", '#BEAE9')} stroke={getLocalThemeColor(isDark, "#5F5F5F", '#A0A0A0')} />
-                    <rect x="13" y="38" width="822" height="71" fill={getLocalThemeColor(isDark, "#212325", '#DEDCDA')} />
-                    <rect x="14" y="201" width="821" height="89" fill={getLocalThemeColor(isDark, "#353638", '#EFEEED')} />  
-                    <rect x="14" y="383" width="821" height="89" fill={getLocalThemeColor(isDark, "#353638", '#EFEEED')} />
-                    <rect x="14" y="565" width="821" height="242" fill={getLocalThemeColor(isDark, "#353638", '#EFEEED')} />
+                    <rect x="0.5" y="28.5" width="845" height="881" rx="9.5" stroke={isDark ? "#424242" : "#BDBDBD"} />
+                    <rect x="12.5" y="37.5" width="823" height="858" fill={isDark ? "#2E3032" : '#BEAE9'} stroke={isDark ? "#5F5F5F" : '#A0A0A0'} />
+                    <rect x="13" y="38" width="822" height="71" fill={isDark ? "#212325" : '#DEDCDA'} />
+                    <rect x="14" y="201" width="821" height="89" fill={isDark ? "#353638" : '#EFEEED'} />  
+                    <rect x="14" y="383" width="821" height="89" fill={isDark ? "#353638" : '#EFEEED'} />
+                    <rect x="14" y="565" width="821" height="242" fill={isDark ? "#353638" : '#EFEEED'} />
                       <foreignObject width={300} height={70} x={320} y={0}>
                       <div
                         className='font-["Bebas_Neue"] text-[17px] uppercase'
-                        style={{ color: getLocalThemeColor(isDark, '#767676', '#898989'), lineHeight: '100%', letterSpacing: '3px' }}
+                        style={{ color: isDark ? '#767676' : '#898989', lineHeight: '100%', letterSpacing: '3px' }}
                        >
                         {t('diagrams.millGranulator.specificationBlock.characteristics.title')}
                     </div>

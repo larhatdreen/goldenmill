@@ -21,10 +21,3 @@ export const getColor = (
   }
   return theme.colors[path as keyof Omit<Theme['colors'], 'svg' | 'mui' | 'mainSection' | 'footer'>];
 };
-export const getLocalThemeColor = (
-  isDark: boolean,
-  darkColor: string,
-  lightColor: string
-): string => {
-  return isDark ? darkColor : lightColor;
-};

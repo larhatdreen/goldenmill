@@ -61,7 +61,8 @@
     "surfaceType": "Oberflächentyp"
   },
   "titleBlock": {
-    "needHelp": "Benötigen Sie Hilfe bei den Maßen?",
+    "needHelp": "Benötigen sie hilfe bei der auswahl von ausrüstung?",
+    "needHelpWithSize": "Benötigen sie hilfe bei der größe?",
     "granulatorProductDescription": "Für die Granulierung von Biomasse, RDF, \nMischfutter und Lebensmittelprodukten",
     "mixerProductDescription": "Für die Granulierung von Biomasse, RDF, \nMischfutter und Lebensmittelprodukten",
     "countPrice": "Preis anfragen"

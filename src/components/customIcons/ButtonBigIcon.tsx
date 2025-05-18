@@ -1,5 +1,4 @@
 import { useTheme } from '../../hooks/useTheme';
-import { getLocalThemeColor } from '../../theme/utils';
 
 interface ButtonBigIconProps {
   className?: string;
@@ -8,7 +7,7 @@ interface ButtonBigIconProps {
 function ButtonBigIcon({ className }: ButtonBigIconProps) {
   const theme = useTheme();
   const isDark = theme.name === 'dark';
-  const strokeColor = getLocalThemeColor(isDark, '#969284', '#696D7B');
+  const strokeColor = isDark ? '#969284' : '#696D7B';
 
   return (
     <svg

@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../hooks/useTheme';
-import { getLocalThemeColor } from '../../theme/utils';
 
 function TimeLine() {
   const { t } = useTranslation();
@@ -9,16 +8,16 @@ function TimeLine() {
 
   // Определяем для стилизации локально
   const colors = {
-    smallCircle: getLocalThemeColor(isDark, '#82643F', '#7D9BC0'),
-    bigCircle: getLocalThemeColor(isDark, '#2E3032', '#D1CFCD'),
-    wand: getLocalThemeColor(isDark, '#82643F', '#7D9BC0'),
-    mainDirectFill: getLocalThemeColor(isDark, '#212325', '#DEDCDA'),
-    mainSides: getLocalThemeColor(isDark, '#383838', '#C7C7C7'),
-    mainArrowOnLine: getLocalThemeColor(isDark, '#82643F', ''),
-    textYear: getLocalThemeColor(isDark, '#82643F', '#7D9BC0'),
-    textOnLine: getLocalThemeColor(isDark, '#737373', ''),
-    textUnderLogo: getLocalThemeColor(isDark, '#969284', '#696D7B'),
-    logosDecorativeUpArrow: getLocalThemeColor(isDark, '#4390BD', '#4391BB'),
+    smallCircle: isDark ? '#82643F' : '#7D9BC0',
+    bigCircle: isDark ? '#2E3032' : '#D1CFCD',
+    wand: isDark ? '#82643F' : '#7D9BC0',
+    mainDirectFill: isDark ? '#212325' : '#DEDCDA',
+    mainSides: isDark ? '#383838' : '#C7C7C7',
+    mainArrowOnLine: isDark ? '#82643F' : '',
+    textYear: isDark ? '#82643F' : '#7D9BC0',
+    textOnLine: isDark ? '#737373' : '',
+    textUnderLogo: isDark ? '#969284' : '#696D7B',
+    logosDecorativeUpArrow: isDark ? '#4390BD' : '#4391BB',
     logosDecorativeDownArrow: '#1D5781',
     lkt: '#235C82',
     die: '#605C54',

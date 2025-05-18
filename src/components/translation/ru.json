@@ -62,6 +62,7 @@
   },
   "titleBlock": {
     "needHelp": "Нужна помощь с подбором оборудования?",
+    "needHelpWithSize": "Нужна помощь с размерами?",
     "granulatorProductDescription": "Для гранулирования биомассы, rdf, \nкомбикормов и пищевой продукции",
     "mixerProductDescription": "Для непрерывного смешивания и\nувлажнения МАТЕРИАЛОВ",
     "countPrice": "Запросить стоимость"

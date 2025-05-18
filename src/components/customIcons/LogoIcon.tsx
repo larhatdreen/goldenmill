@@ -1,11 +1,15 @@
+import { useTheme } from '../../hooks/useTheme';
+import { getColor } from '../../theme/utils';
 interface LogoIconProps {
   className?: string;
-  mainColor?: string;
-  secondaryColor?: string;
-  crossColor?: string;
 }
 
-function LogoIcon({ className, mainColor, secondaryColor, crossColor}: LogoIconProps) {
+function LogoIcon({ className }: LogoIconProps) {
+  const theme = useTheme();
+  const isDark = theme.name === 'dark';
+  const mainColor = getColor(theme, 'svg.darkColor');
+  const secondaryColor = getColor(theme, 'svg.lightColor');
+  const crossColor = isDark ? '#343637' : '#E8E8E8';
   return (
     <svg 
       width="136" 

@@ -6,11 +6,13 @@ import button from '../assets/UI/Btn.svg';
 import CountButton from './CountButton';
 import Modal from './Modal';
 import QuestionIcon from './customIcons/QuestionIcon';
-import circle_topic_mobile from '../assets/producs/circle_topic_mobile.svg';
 import { API_URL } from '../config';
 import SEO from './SEO';
 import { useSEO } from '../hooks/useSEO';
 import MobileProductLanding from './MobileProductLanding';
+import { useTheme } from '../hooks/useTheme';
+import { getColor } from '../theme/utils';
+import CircleTopicMobileIcon from './customIcons/CircleTopicMobileIcon';
 
 interface ProductInfo {
   id: string;
@@ -110,6 +112,8 @@ interface ProductLandingProps {
 const TooltipWrapper: React.FC<{ text: string; maxLines: number; customStyles?: React.CSSProperties }> = ({ text, maxLines, customStyles }) => {
   const textRef = React.useRef<HTMLDivElement>(null);
   const [isOverflowing, setIsOverflowing] = React.useState(false);
+  const theme = useTheme();
+
 
   React.useEffect(() => {
     const element = textRef.current;
@@ -128,7 +132,7 @@ const TooltipWrapper: React.FC<{ text: string; maxLines: number; customStyles?: 
         fontSize: '32px',
         lineHeight: 1.2,
         letterSpacing: '0.00938em',
-        color: '#D5CDBD',
+        color: getColor(theme, 'subtitle'),
         width: '100%',
         textAlign: 'left',
         wordBreak: 'break-word',
@@ -167,6 +171,7 @@ const TooltipWrapper: React.FC<{ text: string; maxLines: number; customStyles?: 
 
 const SectionTitle: React.FC<{ text: string }> = ({ text }) => {
   const MAX_CHARS_PER_LINE = 20;
+  const theme = useTheme();
   const words = text.split(' ')
     .filter(word => word.trim())
     .slice(0, 3)
@@ -203,7 +208,7 @@ const SectionTitle: React.FC<{ text: string }> = ({ text }) => {
               sx={{
                 width: '24px',
                 height: '63px',
-                background: '#544B3C',
+                background: getColor(theme, 'particle'),
                 position: 'absolute',
                 left: '-35px',
                 top: '12px',
@@ -214,7 +219,7 @@ const SectionTitle: React.FC<{ text: string }> = ({ text }) => {
           <Typography 
             variant="h2" 
             sx={{
-              color: '#554F45',
+              color: getColor(theme, 'title'),
               fontFamily: 'Bebas Neue',
               fontSize: '90px',
               letterSpacing: '0',
@@ -236,23 +241,27 @@ const SectionTitle: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 
-// Компонент для прямоугольника
-const RectangleDecorations = () => (
-  <Box sx={{
-    width: '24px',
-    height: '63px',
-    background: '#544B3C',
-    position: 'absolute',
-    left: '-35px',
+const RectangleDecorations = () => {
+  const theme = useTheme();
+
+  return (
+    <Box sx={{
+      width: '24px',
+      height: '63px',
+      background: getColor(theme, 'particle'),
+      position: 'absolute',
+      left: '-35px',
     top: '12px',
     zIndex: 2
   }} />
 );
+}
 
 const ProductLanding: React.FC = () => {
   const { i18n, t } = useTranslation();
   const { id } = useParams();
   const location = useLocation();
+  const theme = useTheme();
   const currentLanguage = i18n.language as 'ru' | 'en' | 'de';
   const [product, setProduct] = useState<ProductLandingProps | null>(null);
   const [loading, setLoading] = useState(true);
@@ -267,6 +276,7 @@ const ProductLanding: React.FC = () => {
   const isMediumDesktop = useMediaQuery('(min-width:1281px) and (max-width:1920px)');
   const isLargeDesktop = useMediaQuery('(min-width:1921px) and (max-width:2560px)');
   const isXLargeDesktop = useMediaQuery('(min-width:2561px)');
+  const isDark = theme.name === 'dark';
 
   // Добавляем функцию форматирования цены
   const formatPrice = (price: string): string => {
@@ -574,12 +584,13 @@ const ProductLanding: React.FC = () => {
                 }}
               >
                 <button
-                  className='font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px] text-navSelect flex flex-row items-center hover:text-blue_ whitespace-nowrap'
+                  className={`font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px] flex flex-row items-center ${isDark ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#2A3242]'
+                  }`}
                   onClick={handleOpenHelpModal}
                   aria-label="Need Help"
                 >
                   <QuestionIcon className='w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] laptop:w-[40px] laptop:h-[40px] mt-[8px] mr-2' aria-hidden="true" />
-                  <span>{t('titleBlock.needHelp')}</span>
+                  <span>{t('titleBlock.needHelpWithSize')}</span>
                 </button>
               </Box>
 
@@ -626,7 +637,7 @@ const ProductLanding: React.FC = () => {
                         key={index}
                         variant="h1" 
                         sx={{ 
-                          color: '#554F45',
+                          color: getColor(theme, 'title'),
                           fontFamily: 'Bebas Neue',
                           fontSize: isTablet 
                             ? '70px' 
@@ -689,7 +700,7 @@ const ProductLanding: React.FC = () => {
                 }}
               >
                 <CountButton
-                  className="relative z-[1] w-[282px] aspect-[282/58] font-bebas text-white text-[22px] flex items-center justify-center bg-contain bg-no-repeat"
+                  className="relative z-[1] w-[282px] aspect-[282/58] font-bebas text-[22px] flex items-center justify-center bg-contain bg-no-repeat"
                   src={<img src={button} alt="btn" />}
                   defaultValue={price ? formatPrice(price) : t('products.onRequest')}
                   onClick={handleOpenHelpModal}
@@ -723,7 +734,7 @@ const ProductLanding: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'center',
             position: 'relative',
-            backgroundColor: '#1A1A1A',
+            backgroundColor: getColor(theme, 'decorative'),
             borderRadius: '50%',
             overflow: 'visible'
           }}>
@@ -765,7 +776,7 @@ const ProductLanding: React.FC = () => {
                 />
               </div>
             ) : (
-              <Typography sx={{ color: '#605C54', fontSize: '16px', textAlign: 'center', p: 1 }}>
+              <Typography sx={{ color: getColor(theme, 'text') , fontSize: '16px', textAlign: 'center', p: 1 }}>
                 No logo
               </Typography>
             )}
@@ -806,7 +817,7 @@ const ProductLanding: React.FC = () => {
               WebkitLineClamp: '4',
               WebkitBoxOrient: 'vertical',
               overflow: 'hidden',
-              color: '#969284'
+              color: getColor(theme, 'text')
             }}
           />
         </Box>
@@ -849,114 +860,98 @@ const ProductLanding: React.FC = () => {
                       width: '700px',  // Фиксированный размер
                       height: '700px',  // Фиксированный размер
                       objectFit: 'contain',
-                      left: isSmallDesktop ? '120px' : '-31px',  // Увеличиваем отступ для small desktop
-                      top: '244px',
-                      zIndex: 0,
-                      transform: 'none',
                       userSelect: 'none',
-                      pointerEvents: 'none'
+                      pointerEvents: 'none',
+                      top: '200px ',
+                      zIndex: 2
                     }}
                     draggable="false"
                     onContextMenu={(e) => e.preventDefault()}
                   />
                 )}
 
-                {/* Technical Drawings */}
+                {/* Группа: SVG + particle + title + subtitle */}
                 <Box
                   sx={{
                     position: 'absolute',
-                    top: '76px',
-                    right: isSmallDesktop ? '20px' : '-39px',  // Корректируем позицию справа
+                    top: '',
+                    right: isSmallDesktop ? '20px' : '-39px',
                     width: '584px',
                     height: '513px',
-                    zIndex: 0,
-                    transform: 'none'
+                    zIndex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    justifyContent: 'flex-start',
                   }}
                 >
-                  <img
-                    src={circle_topic_mobile}
-                    alt="Technical precision scheme"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'contain',
-                      transform: 'none'
-                    }}
-                  />
-                </Box>
-
-                {/* Section Title */}
-                {section.title && (
-                  <Box 
-                    sx={{
-                      position: 'absolute',
-                      left: isSmallDesktop ? '700px' : '800px',  // Корректируем позицию для small desktop
-                      top: '64px',
-                      zIndex: 1,
-                      maxWidth: '400px',
-                      transform: 'none'
-                    }}
-                  >
+                  {/* SVG */}
+                  <CircleTopicMobileIcon className='w-[100%] h-[100%] object-contain transform' />
+                  {/* Группа: particle, title, subtitle */}
+                  <Box sx={{
+                    position: 'absolute',
+                    top: '',
+                    left: '195px',
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                  }}>
                     <RectangleDecorations />
                     <SectionTitle text={section.title[currentLanguage]} />
+                    {(() => {
+                      const words = section.description?.[currentLanguage]?.split(' ').filter(word => word.trim()) || [];
+                      const displayWords = words.slice(0, 6);
+                      const formattedText = displayWords
+                        .reduce((acc, word, i) => {
+                          if (i % 2 === 0) {
+                            acc.push([word]);
+                          } else {
+                            acc[acc.length - 1].push(word);
+                          }
+                          return acc;
+                        }, [] as string[][])
+                        .map(pair => pair.join(' '))
+                        .join('\n');
+
+                      const content = (
+                        <Typography sx={{
+                          margin: 0,
+                          fontFamily: 'AdventProRegular',
+                          fontWeight: 400,
+                          fontSize: '32px',
+                          lineHeight: 1.2,
+                          letterSpacing: '0.00938em',
+                          color: getColor(theme, 'subtitle'),
+                          maxWidth: '800px',
+                          width: '100%',
+                          textAlign: 'left',
+                          zIndex: 1,
+                          wordBreak: 'break-word',
+                          whiteSpace: 'pre-line',
+                          overflowWrap: 'break-word',
+                          hyphens: 'auto',
+                          cursor: words.length > 6 ? 'help' : 'default',
+                          display: '-webkit-box',
+                          WebkitLineClamp: '3',
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
+                          opacity: 1,
+                          transform: 'none',
+                          userSelect: 'none'
+                        }}>
+                          {formattedText}
+                        </Typography>
+                      );
+
+                      return words.length > 6 ? (
+                        <Tooltip title={section.description?.[currentLanguage]} placement="top" arrow>
+                          {content}
+                        </Tooltip>
+                      ) : content;
+                    })()}
                   </Box>
-                )}
-
-                {/* Section Description */}
-                {(() => {
-                  const words = section.description?.[currentLanguage]?.split(' ').filter(word => word.trim()) || [];
-                  const displayWords = words.slice(0, 6);
-                  const formattedText = displayWords
-                    .reduce((acc, word, i) => {
-                      if (i % 2 === 0) {
-                        acc.push([word]);
-                      } else {
-                        acc[acc.length - 1].push(word);
-                      }
-                      return acc;
-                    }, [] as string[][])
-                    .map(pair => pair.join(' '))
-                    .join('\n');
-
-                  const content = (
-                    <Typography sx={{
-                      margin: 0,
-                      fontFamily: 'AdventProRegular',
-                      fontWeight: 400,
-                      fontSize: '32px',
-                      lineHeight: 1.2,
-                      letterSpacing: '0.00938em',
-                      color: '#D5CDBD',
-                      maxWidth: '800px',
-                      position: 'absolute',
-                      left: isSmallDesktop ? '704px' : '804px',  // Корректируем позицию для small desktop
-                      top: '355px',
-                      width: '100%',
-                      textAlign: 'left',
-                      zIndex: 1,
-                      wordBreak: 'break-word',
-                      whiteSpace: 'pre-line',
-                      overflowWrap: 'break-word',
-                      hyphens: 'auto',
-                      cursor: words.length > 6 ? 'help' : 'default',
-                      display: '-webkit-box',
-                      WebkitLineClamp: '3',
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
-                      opacity: 1,
-                      transform: 'none',
-                      userSelect: 'none'
-                    }}>
-                      {formattedText}
-                    </Typography>
-                  );
-
-                  return words.length > 6 ? (
-                    <Tooltip title={section.description?.[currentLanguage]} placement="top" arrow>
-                      {content}
-                    </Tooltip>
-                  ) : content;
-                })()}
+                </Box>
 
                 {/* Section Word */}
                 <Typography sx={{
@@ -975,7 +970,7 @@ const ProductLanding: React.FC = () => {
                   width: '100%',
                   zIndex: 1,
                   transform: 'none',
-                  color: '#2C2D2F'
+                  color: getColor(theme, 'svg.fill')
                 }}>
                   {currentLanguage === 'ru' && <span style={{ fontFamily: 'Bebas Neue' }}>КАТАЛОГ</span>}
                   {currentLanguage === 'en' && 'CATALOG'}
@@ -991,7 +986,7 @@ const ProductLanding: React.FC = () => {
                     fontSize: '20px',
                     lineHeight: 1.2,
                     letterSpacing: '0.00938em',
-                    color: '#969284',
+                    color: getColor(theme, 'textOnSvg'),
                     position: 'absolute',
                     left: isSmallDesktop ? '28px' : '-8px',
                     top: '1030px',
@@ -1045,16 +1040,7 @@ const ProductLanding: React.FC = () => {
               transform: 'none'
             }}
           >
-            <img
-              src={circle_topic_mobile}
-              alt="Technical precision scheme"
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'contain',
-                transform: 'none'
-              }}
-            />
+            <CircleTopicMobileIcon className='w-[100%] h-[100%] object-contain transform' />
           </Box>
 
           {/* Technical Title */}
@@ -1073,7 +1059,7 @@ const ProductLanding: React.FC = () => {
               <Box sx={{
                 width: '24px',
                 height: '63px',
-                background: '#544B3C',
+                background: getColor(theme, 'particle'),
                 position: 'absolute',
                 left: '-35px',
                 top: '12px',
@@ -1082,7 +1068,7 @@ const ProductLanding: React.FC = () => {
               <Typography 
                 variant="h2" 
                 sx={{
-                  color: '#554F45',
+                  color: getColor(theme, 'title'),
                   fontFamily: 'Bebas Neue',
                   fontSize: '90px',
                   letterSpacing: '0',
@@ -1118,7 +1104,7 @@ const ProductLanding: React.FC = () => {
               <Box sx={{
                 width: '24px',
                 height: '63px',
-                background: '#544B3C',
+                background: getColor(theme, 'particle'),
                 position: 'absolute',
                 left: '-35px',
                 top: '12px',
@@ -1127,7 +1113,7 @@ const ProductLanding: React.FC = () => {
               <Typography 
                 variant="h2" 
                 sx={{
-                  color: '#554F45',
+                  color: getColor(theme, 'title'),
                   fontFamily: 'Bebas Neue',
                   fontSize: '90px',
                   letterSpacing: '0',
@@ -1171,7 +1157,7 @@ const ProductLanding: React.FC = () => {
                 fontSize: '32px',
                 lineHeight: 1.2,
                 letterSpacing: '0.00938em',
-                color: '#D5CDBD',
+                color: getColor(theme, 'subtitle'),
                 maxWidth: '800px',
                 position: 'absolute',
                 left: isSmallDesktop ? '102px' : '2px',  // Корректируем позицию для small desktop
@@ -1206,7 +1192,7 @@ const ProductLanding: React.FC = () => {
           {/* Technical Word */}
           <Typography 
             sx={{
-              color: '#2C2D2F',
+              color: getColor(theme, 'svg.fill'),
               fontFamily: 'AdventProRegular',
               fontSize: '17px',
               fontWeight: 400,
@@ -1244,7 +1230,7 @@ const ProductLanding: React.FC = () => {
               fontSize: '20px',
               lineHeight: 1.2,
               letterSpacing: '0.00938em',
-              color: '#969284',
+              color: getColor(theme, 'textOnSvg'),
               position: 'absolute',
               left: isSmallDesktop ? '386px' : '286px',  // Корректируем позицию для small desktop
               top: '1629px',

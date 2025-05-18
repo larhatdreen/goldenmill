@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../hooks/useTheme.js'
-import { getLocalThemeColor } from '../theme/utils.js'
 
 interface MenuButtonProps {
   className: string
@@ -15,7 +14,7 @@ export default function MenuButton({ className, onToggle, state }: MenuButtonPro
   const theme = useTheme()
   const isDark = theme.name === 'dark'
   
-  const textColor = getLocalThemeColor(isDark, '#FFFFFF', '#2A3242')
+  const textColor = isDark ? '#FFFFFF' : '#2A3242'
   
   const genericHamburgerLine = `h-[4px] w-[24px] my-[3px] transition ease transform duration-300
   ${isDark ? 'bg-white' : 'bg-[#2A3242]'}`

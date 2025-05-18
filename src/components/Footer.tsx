@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { getURLWithLang } from '../functions/get-url-with-lang'
 import { LanguagesEnum } from './translation/i18n'
 import { useTheme } from '../hooks/useTheme'
-import { getColor, getLocalThemeColor } from '../theme/utils';
+import { getColor } from '../theme/utils';
 import { scrollToTop } from '../utils/scrollToTop';
 
 
@@ -33,7 +33,7 @@ function Footer() {
         <div className='w-auto flex flex-col justify-between'>
           <div className='font-labgrotesquebold font-bold text-[28px]'
             style={{
-              color: getLocalThemeColor(isDark, '#5A5A5B', '#A5A5A4')
+              color: isDark ? '#5A5A5B' : '#A5A5A4'
             }}
             >
             {t('footer.requisites.title')}
@@ -54,7 +54,7 @@ function Footer() {
           >
           <div className='font-labgrotesquebold font-bold text-[28px]'
             style={{
-              color: getLocalThemeColor(isDark, '#5A5A5B', '#A5A5A4')
+              color: isDark ? '#5A5A5B' : '#A5A5A4'
             }}>
               {t('footer.contacts.title')}
           </div>
@@ -104,7 +104,7 @@ function Footer() {
         <div className='w-auto flex flex-col'>
           <div className='font-labgrotesquebold font-bold text-[28px]'
           style={{
-            color: getLocalThemeColor(isDark, '#5A5A5B', '#A5A5A4')
+            color: isDark ? '#5A5A5B' : '#A5A5A4'
           }}
           >
             {t('footer.social.title')}

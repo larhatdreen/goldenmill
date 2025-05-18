@@ -528,7 +528,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
             </div>
 
             <ThemeProvider theme={muiTheme}>
-              <div className='w-full px-[10%] pt-6 pb-6 flex flex-col gap-y-6 justify-between'>
+              <div className='w-full px-[10%] pt-6 pb-6 flex flex-col gap-y-10 justify-between'>
                 <div className='flex flex-row justify-between gap-x-6'>
                   <FormControl className='z-10 flex-1' error={errorText.name !== ''}>
                     <InputLabel htmlFor='name'>{t('inputHelpBlock.name')}</InputLabel>

@@ -9,7 +9,11 @@ import QuestionIcon from './customIcons/QuestionIcon';
 import { API_URL } from '../config';
 import SEO from './SEO';
 import { useSEO } from '../hooks/useSEO';
-import circleTopicMobile from '../assets/producs/circle_topic_mobile.svg';
+import { useTheme } from '../hooks/useTheme';
+import { getColor } from '../theme/utils';
+import CircleTopicMobileIcon from './customIcons/CircleTopicMobileIcon';
+
+
 
 interface ProductInfo {
   id: string;
@@ -86,6 +90,7 @@ interface MobileProductLandingProps {
 const TooltipWrapper: React.FC<{ text: string; maxLines: number; customStyles?: React.CSSProperties }> = ({ text, maxLines, customStyles }) => {
   const textRef = React.useRef<HTMLDivElement>(null);
   const [isOverflowing, setIsOverflowing] = React.useState(false);
+  const theme = useTheme();
 
   React.useEffect(() => {
     const element = textRef.current;
@@ -102,7 +107,7 @@ const TooltipWrapper: React.FC<{ text: string; maxLines: number; customStyles?: 
         fontFamily: 'AdventProRegular',
         fontSize: '24px',
         lineHeight: 1.2,
-        color: '#D5CDBD',
+        color: getColor(theme, 'subtitle'),
         width: '100%',
         textAlign: 'left',
         wordBreak: 'break-word',
@@ -133,6 +138,7 @@ const TooltipWrapper: React.FC<{ text: string; maxLines: number; customStyles?: 
 };
 
 const SectionTitle: React.FC<{ text: string }> = ({ text }) => {
+  const theme = useTheme();
   const words = text.split(' ')
     .filter(word => word.trim())
     .map(word => word.length > 15 ? word.substring(0, 15) + '...' : word);
@@ -159,14 +165,14 @@ const SectionTitle: React.FC<{ text: string }> = ({ text }) => {
             style={{
               width: '15px',
               height: '42px',
-              backgroundColor: '#544B3C',
+              backgroundColor: getColor(theme, 'particle'),
               flexShrink: 0
             }}
           />
           <Typography 
             variant="h2" 
             sx={{
-              color: '#969284',
+              color: getColor(theme, 'title'),
               fontFamily: 'Bebas Neue',
               fontSize: '52px',
               letterSpacing: '0',
@@ -192,7 +198,7 @@ const SectionTitle: React.FC<{ text: string }> = ({ text }) => {
 const TechnicalTitle: React.FC<{ title: string; subtitle?: string }> = ({ title, subtitle }) => {
   const titleWords = title?.split(' ').filter(word => word.trim()) || [];
   const subtitleWords = subtitle?.split(' ').filter(word => word.trim()) || [];
-
+  const theme = useTheme();
   // Get first word from each line
   const firstLine = titleWords[0] || '';
   const secondLine = subtitleWords[0] || '';
@@ -213,14 +219,14 @@ const TechnicalTitle: React.FC<{ title: string; subtitle?: string }> = ({ title,
           style={{
             width: '15px',
             height: '42px',
-            backgroundColor: '#544B3C',
+            backgroundColor: getColor(theme, 'particle'),
             flexShrink: 0
           }}
         />
         <Typography 
           variant="h2" 
           sx={{
-            color: '#969284',
+            color: getColor(theme, 'title'),
             fontFamily: 'Bebas Neue',
             fontSize: '52px',
             letterSpacing: '0',
@@ -254,14 +260,14 @@ const TechnicalTitle: React.FC<{ title: string; subtitle?: string }> = ({ title,
             style={{
               width: '15px',
               height: '42px',
-              backgroundColor: '#544B3C',
+              backgroundColor: getColor(theme, 'particle'),
               flexShrink: 0
             }}
           />
           <Typography 
             variant="h2" 
             sx={{
-              color: '#969284',
+              color: getColor(theme, 'title'),
               fontFamily: 'Bebas Neue',
               fontSize: '52px',
               letterSpacing: '0',
@@ -287,6 +293,8 @@ const TechnicalTitle: React.FC<{ title: string; subtitle?: string }> = ({ title,
 const MobileProductLanding: React.FC = () => {
   const { i18n, t } = useTranslation();
   const { id } = useParams();
+  const theme = useTheme();
+  const isDark = theme.name === 'dark';
   const location = useLocation();
   const currentLanguage = i18n.language as 'ru' | 'en' | 'de';
   const [product, setProduct] = useState<MobileProductLandingProps | null>(null);
@@ -452,11 +460,12 @@ const MobileProductLanding: React.FC = () => {
             }}
           >
             <button
-              className='font-labgrotesque text-[16px] text-navSelect flex flex-row items-center hover:text-blue_'
+              className={`font-labgrotesque text-[16px] flex flex-row items-center ${isDark ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#2A3242]'
+              }`}
               onClick={handleOpenHelpModal}
             >
               <QuestionIcon className='w-[24px] h-[24px] mr-1' />
-              <span>{t('titleBlock.needHelp')}</span>
+              <span>{t('titleBlock.needHelpWithSize')}</span>
             </button>
           </Box>
 
@@ -506,7 +515,7 @@ const MobileProductLanding: React.FC = () => {
                       key={index}
                       variant="h1" 
                       sx={{ 
-                        color: '#554F45',
+                        color: getColor(theme, 'title'),  
                         fontFamily: 'Bebas Neue',
                         fontSize: { xs: '42px', sm: '48px' },
                         letterSpacing: '0',
@@ -536,7 +545,7 @@ const MobileProductLanding: React.FC = () => {
 
               {/* Price Button */}
               <CountButton
-                className="w-[282px] max-w-full aspect-[282/58] font-bebas text-white text-[24px] flex items-center justify-center bg-contain bg-no-repeat mt-4"
+                className="w-[282px] max-w-full aspect-[282/58] font-bebas text-[24px] flex items-center justify-center bg-contain bg-no-repeat mt-4"
                 src={<img src={button} alt="pricebtn" />}
                 defaultValue={product.price ? formatPrice(product.price) : t('products.onRequest')}
                 onClick={handleOpenHelpModal}
@@ -602,7 +611,7 @@ const MobileProductLanding: React.FC = () => {
                   />
                 </div>
               ) : (
-                <Typography sx={{ color: '#605C54', fontSize: '12px', textAlign: 'center', p: 1 }}>
+                <Typography sx={{ color: getColor(theme, 'text'), fontSize: '12px', textAlign: 'center', p: 1 }}>
                   No logo
                 </Typography>
               )}
@@ -623,7 +632,7 @@ const MobileProductLanding: React.FC = () => {
                 WebkitLineClamp: '4',
                 WebkitBoxOrient: 'vertical',
                 overflow: 'hidden',
-                color: '#969284'
+                color: getColor(theme, 'text')
               }}
             />
           </Box>
@@ -709,21 +718,7 @@ const MobileProductLanding: React.FC = () => {
                       justifyContent: 'center'
                     }}
                   >
-                    <img
-                      src={circleTopicMobile}
-                      alt="Technical precision scheme"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'contain',
-                        transform: 'scale(1.2)',
-                        opacity: 0.7,
-                        userSelect: 'none',
-                        pointerEvents: 'none'
-                      }}
-                      draggable="false"
-                      onContextMenu={(e) => e.preventDefault()}
-                    />
+                    <CircleTopicMobileIcon className='w-[100%] h-[100%] object-contain transform scale-125 opacity-70' />
                   </Box>
 
                   {/* Content Container */}
@@ -760,7 +755,7 @@ const MobileProductLanding: React.FC = () => {
                         fontSize: '32px',
                         lineHeight: 1.2,
                         letterSpacing: '0.00938em',
-                        color: '#D5CDBD',
+                        color: getColor(theme, 'subtitle'),
                         maxWidth: '280px',
                         width: '100%',
                         textAlign: 'left',
@@ -794,7 +789,7 @@ const MobileProductLanding: React.FC = () => {
                         position: 'absolute',
                         bottom: '295px',
                         left: '70px',
-                        color: '#2C2D2F',
+                        color: getColor(theme, 'svg.fill'),
                         fontFamily: 'AdventProRegular',
                         fontSize: '24px',
                         fontWeight: 400,
@@ -844,21 +839,7 @@ const MobileProductLanding: React.FC = () => {
                   justifyContent: 'center'
                 }}
               >
-                <img
-                  src={circleTopicMobile}
-                  alt="Technical precision scheme"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'contain',
-                    transform: 'scale(1.2)',
-                    opacity: 0.7,
-                    userSelect: 'none',
-                    pointerEvents: 'none'
-                  }}
-                  draggable="false"
-                  onContextMenu={(e) => e.preventDefault()}
-                />
+                <CircleTopicMobileIcon className='w-[100%] h-[100%] object-contain transform scale-125 opacity-70' />
               </Box>
 
               {/* Content Container */}
@@ -895,7 +876,7 @@ const MobileProductLanding: React.FC = () => {
                     fontSize: '32px',
                     lineHeight: 1.2,
                     letterSpacing: '0.00938em',
-                    color: '#D5CDBD',
+                    color: getColor(theme, 'subtitle'),
                     maxWidth: '280px',
                     width: '100%',
                     textAlign: 'left',
@@ -949,7 +930,7 @@ const MobileProductLanding: React.FC = () => {
                       fontSize: '16px',
                       lineHeight: 1.2,
                       letterSpacing: '0.00938em',
-                      color: '#969284',
+                      color: getColor(theme, 'textOnSvg'),
                       maxWidth: '280px',
                       opacity: 0.4,
                       mb: 2,
@@ -977,7 +958,7 @@ const MobileProductLanding: React.FC = () => {
                     bottom: '295px',
                     left: '70px',
                     transform: 'none',
-                    color: '#2C2D2F',
+                    color: getColor(theme, 'svg.fill'),
                     fontFamily: 'AdventProRegular',
                     fontSize: '24px',
                     fontWeight: 400,

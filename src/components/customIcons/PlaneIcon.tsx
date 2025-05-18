@@ -1,13 +1,12 @@
 import { useTheme } from '../../hooks/useTheme'; 
-import { getLocalThemeColor } from '../../theme/utils';
 interface PlaneIconProps {
   className?: string
 }
 function PlaneIcon({ className }: PlaneIconProps) {
     const theme = useTheme(); 
     const isDark = theme.name === 'dark';
-    const planeColor = getLocalThemeColor(isDark, '#38393E', '#C7C6C1')
-    const sparksColor = getLocalThemeColor(isDark, '#82653E', '#7D9AC1')
+    const planeColor = isDark ? '#38393E' : '#C7C6C1'
+    const sparksColor = isDark ? '#82653E' : '#7D9AC1'
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

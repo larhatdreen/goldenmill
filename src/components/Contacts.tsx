@@ -26,11 +26,7 @@ export default function Contacts() {
             className='absolute left-[200px] top-[225px] w-[271px] h-[271px] rounded-full flex justify-center items-center'
             style={{ backgroundColor: getColor(theme, 'decorative') }}
           >
-            <LogoIcon
-              mainColor={getColor(theme, 'svg.darkColor')}
-              secondaryColor={getColor(theme, 'svg.lightColor')}
-              crossColor={getColor(theme, 'svg.crossColor')}
-            />
+            <LogoIcon/>
           </div>
           <span
             className="absolute w-[258px] left-[208px] top-[116px] font-['Bebas_Neue'] text-[17px] tracking-widest text-center"

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useMediaQuery } from '@mui/material'
 import LogoIcon from './customIcons/LogoIcon'
-import { getColor, getLocalThemeColor } from '../theme/utils'
+import { getColor } from '../theme/utils'
 import { useTheme } from '../hooks/useTheme';
 
 function Section3() {
@@ -12,12 +12,12 @@ function Section3() {
 
     // Определяем для стилизации локально
 
-    const firstSensorColor = getLocalThemeColor(isDark, '#82643F', '#ABB4C3')
-    const secondSensorColor = getLocalThemeColor(isDark, '#D5CDBD', '#82653F')
-    const externalLinesColor = getLocalThemeColor(isDark, '#CACBC9', '#353436')
-    const gridColor = getLocalThemeColor(isDark, '#BFBFBF', '#404040')
-    const diagramColor = getLocalThemeColor(isDark, '#82643F', '#ABB4C3')
-    const loupeColor = getLocalThemeColor(isDark, '#D5CDBD', '#2A3242')
+    const firstSensorColor = isDark ? '#82643F' : '#ABB4C3'
+    const secondSensorColor = isDark ? '#D5CDBD' : '#82653F'
+    const externalLinesColor = isDark ? '#CACBC9' : '#353436'
+    const gridColor = isDark ? '#BFBFBF' : '#404040'
+    const diagramColor = isDark ? '#82643F' : '#ABB4C3'
+    const loupeColor = isDark ? '#D5CDBD' : '#2A3242'
 
 
     return (
@@ -34,12 +34,7 @@ function Section3() {
                     <g filter='url(#filter0_b_20_1296)'>
                         <circle cx='122' cy='350' r='121' fill={theme.colors.decorative} />
                         <foreignObject x="54" y="300" width="136" height="103">
-                        <LogoIcon
-                            className="w-[136px] h-[103px]"
-                            mainColor={getColor(theme, 'svg.darkColor')}
-                            secondaryColor={getColor(theme, 'svg.lightColor')}
-                            crossColor={getColor(theme, 'svg.crossColor')}
-                          />
+                          <LogoIcon className="w-[136px] h-[103px]"/> 
                         </foreignObject>
                     </g>
                     <path d='M242 330L242 631' stroke={getColor(theme, 'svg.fill')} strokeWidth='0.5' />
