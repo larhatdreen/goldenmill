@@ -11,7 +11,6 @@
     "generate-sitemap": "ts-node scripts/generateProductSitemap.ts",
     "generate-sitemaps": "ts-node scripts/generateSitemaps.ts",
     "optimize-svg": "ts-node scripts/optimizeSVG.ts",
-    
     "start": "pm2 start ecosystem.config.js --only goldenmill-server",
     "stop": "pm2 stop goldenmill-server",
     "restart": "pm2 restart goldenmill-server",
@@ -23,7 +22,7 @@
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2",
+    "express": "4.18.2",
     "i18next-browser-languagedetector": "^8.0.2",
     "i18next-http-backend": "^3.0.2",
     "multer": "^1.4.5-lts.1",

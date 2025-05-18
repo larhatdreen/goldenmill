@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 });
 
 // Применяем middleware для статических файлов
-app.use('/', staticFileMiddleware);
+app.use(staticFileMiddleware);
 
 // Добавляем middleware для оптимизации изображений
 app.use('/img', optimizeImage);
