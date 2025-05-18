@@ -75,6 +75,7 @@ jobs:
             
             # Собираем приложения параллельно
             echo "Building applications..."
+            export NODE_ENV=production
             yarn build & 
             yarn build:ssr &
             cd server && yarn build &
@@ -114,12 +115,28 @@ jobs:
           ssh root@77.73.39.210 << 'EOF'
             set -e
             echo "Checking process status..."
-            sleep 5
+            sleep 10
             pm2 list
             
+            echo "Checking PM2 logs..."
+            echo "API Server logs:"
+            pm2 logs goldenmill-server --lines 20
+            echo "SSR Server logs:"
+            pm2 logs goldenmill-ssr --lines 20
+            
             echo "Checking application availability..."
-            curl -f http://localhost:3005 || exit 1
-            curl -f http://localhost:3002 || exit 1
+            for i in {1..5}; do
+              echo "Attempt $i..."
+              if curl -f http://localhost:3002 && curl -f http://localhost:3005; then
+                echo "Both services are responding!"
+                break
+              fi
+              if [ $i -eq 5 ]; then
+                echo "Services failed to respond after 5 attempts"
+                exit 1
+              fi
+              sleep 5
+            done
             
             echo "Deployment completed successfully!"
             echo "Deployed commit: $(git rev-parse HEAD)"
