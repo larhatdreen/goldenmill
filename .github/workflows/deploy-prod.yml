@@ -134,8 +134,11 @@ jobs:
               fi
               if [ $i -eq 3 ]; then
                 echo "Services failed to respond after 3 attempts"
+                echo "API Server logs:"
+                pm2 logs goldenmill-server --lines 50
+                echo "SSR Server logs:"
+                pm2 logs goldenmill-ssr --lines 50
                 # Останавливаем мониторинг при ошибке
-                pm2 logs goldenmill-server --lines 40
                 kill $MONIT_PID 2>/dev/null || true
                 exit 1
               fi

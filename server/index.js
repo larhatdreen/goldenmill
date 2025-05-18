@@ -10,13 +10,12 @@ const fs = require('fs');
 require('dotenv').config();
 
 // Импортируем middleware для статических файлов
-const staticFileMiddleware = require('./staticFileMiddleware');
-const { optimizeImage } = require('./staticFileMiddleware');
+const { staticFileMiddleware, optimizeImage } = require('./staticFileMiddleware');
 
 const prisma = new PrismaClient();
 const app = express();
 const port = 3002;
-const host = '0.0.0.0';  // Добавляем явное указание хоста
+const host = '0.0.0.0';
 
 // Resolve paths relative to server directory
 const SERVER_DIR = __dirname;
@@ -36,15 +35,14 @@ app.use((req, res, next) => {
   next();
 });
 
-// Применяем middleware для статических файлов перед другими middleware
-app.use(staticFileMiddleware);
+// Применяем middleware для статических файлов
+app.use('/', staticFileMiddleware);
 
-// Добавляем middleware для оптимизации изображений перед статическими файлами
+// Добавляем middleware для оптимизации изображений
 app.use('/img', optimizeImage);
 
 // Обслуживаем статические файлы из директории public
 app.use(express.static(PUBLIC_DIR));
-
 app.use('/img/products', express.static(PRODUCTS_DIR));
 
 // Configure multer for file uploads
@@ -919,11 +917,23 @@ app.post('/api/send-email', express.json(), emailUpload.single('upload'), async 
 // Initialize and start server
 async function start() {
   try {
+    // Проверяем наличие необходимых директорий
+    if (!fs.existsSync(PUBLIC_DIR)) {
+      fs.mkdirSync(PUBLIC_DIR, { recursive: true });
+      console.log(`Created directory: ${PUBLIC_DIR}`);
+    }
+    if (!fs.existsSync(PRODUCTS_DIR)) {
+      fs.mkdirSync(PRODUCTS_DIR, { recursive: true });
+      console.log(`Created directory: ${PRODUCTS_DIR}`);
+    }
+
     app.listen(port, host, () => {
       console.log(`Server is running on http://${host}:${port}`);
+      console.log(`Public directory: ${PUBLIC_DIR}`);
+      console.log(`Products directory: ${PRODUCTS_DIR}`);
     });
   } catch (error) {
-    console.error('Error starting server:', error);
+    console.error('Failed to start server:', error);
     process.exit(1);
   }
 }
