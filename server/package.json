@@ -11,7 +11,7 @@
     "generate-sitemap": "ts-node scripts/generateProductSitemap.ts",
     "generate-sitemaps": "ts-node scripts/generateSitemaps.ts",
     "optimize-svg": "ts-node scripts/optimizeSVG.ts",
-    "start": "pm2 start ecosystem.config.js --only goldenmill-server",
+    "start": "pm2 start ecosystem.config.cjs --only goldenmill-server",
     "stop": "pm2 stop goldenmill-server",
     "restart": "pm2 restart goldenmill-server",
     "logs": "pm2 logs goldenmill-server",
