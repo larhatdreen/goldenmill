@@ -43,59 +43,101 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H 77.73.39.210 >> ~/.ssh/known_hosts
 
-      - name: Deploy via SSH
+      - name: Update code on server
         run: |
           ssh root@77.73.39.210 << 'EOF'
             set -e
             cd /var/www/goldenmill/prod
-            
-            # Очистка и обновление кода
             git fetch origin master
             git reset --hard origin/master
-            
-            # Установка зависимостей
-            yarn install --frozen-lockfile
-            cd server && yarn install --frozen-lockfile && cd ..
-            
-            # Очистка старых сборок
+            echo "Code updated successfully"
+          EOF
+
+      - name: Install dependencies
+        run: |
+          ssh root@77.73.39.210 << 'EOF'
+            set -e
+            cd /var/www/goldenmill/prod
+            echo "Installing main dependencies..."
+            yarn install
+            echo "Installing server dependencies..."
+            cd server && yarn install && cd ..
+            echo "Dependencies installed successfully"
+          EOF
+
+      - name: Clean old builds
+        run: |
+          ssh root@77.73.39.210 << 'EOF'
+            set -e
+            cd /var/www/goldenmill/prod
+            echo "Cleaning old builds..."
             rm -rf dist
             rm -rf server/dist
-            
-            # Сборка приложения
+            echo "Cleanup completed"
+          EOF
+
+      - name: Build main application
+        run: |
+          ssh root@77.73.39.210 << 'EOF'
+            set -e
+            cd /var/www/goldenmill/prod
             echo "Building main application..."
             yarn build
             yarn build:ssr
             yarn generate-sitemap
-            
-            # Сборка API
+            echo "Main application built successfully"
+          EOF
+
+      - name: Build API server
+        run: |
+          ssh root@77.73.39.210 << 'EOF'
+            set -e
+            cd /var/www/goldenmill/prod/server
             echo "Building API server..."
-            cd server
             yarn build
-            cd ..
-            
-            # Остановка старых процессов
+            echo "API server built successfully"
+          EOF
+
+      - name: Stop old processes
+        run: |
+          ssh root@77.73.39.210 << 'EOF'
+            set -e
             echo "Stopping old processes..."
             pm2 stop goldenmill-ssr || true
             pm2 stop goldenmill-server || true
             pm2 delete goldenmill-ssr || true
             pm2 delete goldenmill-server || true
-            
-            # Запуск новых процессов
-            echo "Starting new processes..."
-            # Запуск API
-            cd server
+            echo "Old processes stopped"
+          EOF
+
+      - name: Start API server
+        run: |
+          ssh root@77.73.39.210 << 'EOF'
+            set -e
+            cd /var/www/goldenmill/prod/server
+            echo "Starting API server..."
             pm2 start ecosystem.config.js --only goldenmill-server
-            cd ..
-            
-            # Запуск SSR
+            echo "API server started"
+          EOF
+
+      - name: Start SSR server
+        run: |
+          ssh root@77.73.39.210 << 'EOF'
+            set -e
+            cd /var/www/goldenmill/prod
+            echo "Starting SSR server..."
             pm2 start ecosystem.config.js --only goldenmill-ssr
-            
-            # Проверка статуса
+            echo "SSR server started"
+          EOF
+
+      - name: Verify deployment
+        run: |
+          ssh root@77.73.39.210 << 'EOF'
+            set -e
             echo "Checking process status..."
             sleep 5
             pm2 list
             
-            # Проверка доступности
             echo "Checking application availability..."
             curl -f http://localhost:3005 || exit 1
             curl -f http://localhost:3002 || exit 1
