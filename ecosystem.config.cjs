@@ -17,8 +17,7 @@ module.exports = {
     },
     {
       name: 'goldenmill-ssr',
-      script: './src/entry-server.tsx',
-      interpreter: 'tsx',
+      script: './dist/entry-server.js',
       env: {
         NODE_ENV: 'production',
         PORT: 3005
