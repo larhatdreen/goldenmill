@@ -1,5 +1,6 @@
+import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom/server';
+import { StaticRouter } from 'react-router-dom/server.js';
 import { HelmetProvider, HelmetServerState } from 'react-helmet-async';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -10,17 +11,19 @@ interface HelmetContext {
   helmet: HelmetServerState;
 }
 
-export async function render(url: string) {
+export function render(url: string) {
   const helmetContext: HelmetContext = {} as HelmetContext;
   const appHtml = ReactDOMServer.renderToString(
-    <Provider store={store}>
-      <HelmetProvider context={helmetContext}>
-        <StaticRouter location={url}>
-          <App />
-        </StaticRouter>
-      </HelmetProvider>
-    </Provider>
+    <React.StrictMode>
+      <Provider store={store}>
+        <HelmetProvider context={helmetContext}>
+          <StaticRouter location={url}>
+            <App />
+          </StaticRouter>
+        </HelmetProvider>
+      </Provider>
+    </React.StrictMode>
   );
 
-  return { appHtml: appHtml, helmet: helmetContext.helmet };
+  return { appHtml, helmet: helmetContext.helmet };
 }
