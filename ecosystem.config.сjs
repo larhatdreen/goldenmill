@@ -33,7 +33,7 @@ module.exports = {
     },
     {
       name: 'goldenmill-ssr',
-      script: './src/entry-server.js',
+      script: './src/entry-server.tsx',
       instances: 'max',
       exec_mode: 'fork',
       env: {
