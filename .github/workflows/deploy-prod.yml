@@ -73,14 +73,30 @@ jobs:
             set -e
             cd /var/www/goldenmill/prod
             
-            # Собираем приложения параллельно
+            # Собираем приложения последовательно
             echo "Building applications..."
             export NODE_ENV=production
-            yarn build & 
-            yarn build:ssr &
-            yarn build:ssr:tsc &
-            cd server && yarn build &
-            wait
+            
+            echo "Building client..."
+            yarn build
+            
+            echo "Building SSR..."
+            yarn build:ssr
+            
+            echo "Building server..."
+            cd server && yarn build && cd ..
+            
+            # Проверяем, что файлы появились
+            echo "Checking build results..."
+            if [ ! -f "dist/entry-server.js" ]; then
+              echo "Error: entry-server.js not found in dist/"
+              exit 1
+            fi
+            
+            if [ ! -d "server/dist" ]; then
+              echo "Error: server/dist directory not found"
+              exit 1
+            fi
             
             echo "Applications built successfully"
           EOF
