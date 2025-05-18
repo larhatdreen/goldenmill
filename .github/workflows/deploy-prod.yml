@@ -78,6 +78,7 @@ jobs:
             export NODE_ENV=production
             yarn build & 
             yarn build:ssr &
+            yarn build:ssr:tsc &
             cd server && yarn build &
             wait
             
