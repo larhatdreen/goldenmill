@@ -41,7 +41,8 @@ async function createServer() {
           path.resolve(__dirname, 'dist/index.html'),
           'utf-8'
         );
-        render = (await import('./dist/entry-server.js')).render;
+        const { render: renderFn } = await import('./dist/entry-server.js');
+        render = renderFn;
       }
 
       const { appHtml, helmet } = await render(url);
