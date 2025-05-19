@@ -35,6 +35,16 @@ jobs:
           exit 1
         fi
     
+    - name: Generate Prisma Client
+      run: |
+        cd server
+        yarn prisma generate
+    
+    - name: Generate sitemap
+      run: |
+        cd server
+        yarn ts-node scripts/generateProductSitemap.ts
+    
     - name: Deploy to server
       uses: appleboy/scp-action@v0.1.7
       with:
@@ -52,4 +62,4 @@ jobs:
         username: root
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          systemctl reload nginx
+          sudo systemctl restart nginx
