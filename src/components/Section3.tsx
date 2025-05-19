@@ -84,7 +84,13 @@ function Section3() {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox={`0 0 ${isLG ? '1300' : '1100'} ${isLG ? '1200' : '1100'}`}
                 fill="none"
-                className='w-[100%] tablet:w-[70%]'
+                className={isLG ? 'w-[100%] tablet:w-[70%]' : 'w-[80%]'}
+
+                style={
+                  isLG
+                    ? { position: 'relative', left: '15vw', top: '10vh' }
+                    : { position: 'relative', left: '5vw', top: '' }
+                }
             >
                 <g transform="translate(100, 200)">
                 <foreignObject x={0} y={0} width={280} height={80}>

@@ -13,6 +13,7 @@ import {
   InputLabel,
   styled,
   ThemeProvider,
+  useMediaQuery
 } from '@mui/material';
 
 import CountButton from './CountButton.tsx';
@@ -69,6 +70,7 @@ export default function ModalInfo({
   const { t, i18n } = useTranslation();
   const theme = useTheme();
   const muiTheme = createMuiTheme(theme);
+  const isMobile = useMediaQuery('(max-width: 600px)');
 
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -504,7 +506,7 @@ export default function ModalInfo({
           <div
             className="absolute w-[90%] max-w-[1300px] h-auto top-1/2 left-1/2
                         -translate-x-1/2 -translate-y-1/2 outline-0 rounded-xl flex flex-col items-end
-                        pt-[53px] pb-[3%] px-[20px] sm:px-[30px] md:px-[40px] lg:px-[58px] xl:px-[76px] justify-end min-h-[120px] duration-300"
+                        pt-[53px] pb-[3%] px-[20px] sm:px-[30px] md:px-[40px] lg:px-[58px] xl:px-[76px] justify-end min-h-[120px] max-h-[95vh] overflow-y-auto"
             style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)', backgroundColor: theme.colors.mui.form.background.fill}}
           >
             <ThemeProvider theme={muiTheme}>
@@ -772,8 +774,12 @@ export default function ModalInfo({
                                   </>
                                 )}
                                 {lang === 'de' && (
-                                  <>
+                                  <> 
+                                  {!isMobile && (
+                                    <div>
                                     Ich habe die
+                                    </div>
+                                    )}
                                     <Link to={getURLWithLang('privacypolicy', lang)}>
                                       <u>Datenschutzerklärung</u>
                                     </Link>

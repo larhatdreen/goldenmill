@@ -57,20 +57,22 @@ function Section4() {
                 {/* SVG-блок */}
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="846" height="910" viewBox="0 0 846 1400" fill="none">
+                      <foreignObject width={300} height={70} x={320} y={8}>
+                        <div
+                          className='font-["Bebas_Neue"] text-[22px] uppercase' 
+                          style={{ color: isDark ? '#767676' : '#898989', lineHeight: '100%', letterSpacing: '3px' }}
+                        >
+                          {t('diagrams.millGranulator.specificationBlock.characteristics.title')}
+                        </div>
+                      </foreignObject>
+                    
                     <rect x="0.5" y="28.5" width="845" height="881" rx="9.5" stroke={isDark ? "#424242" : "#BDBDBD"} />
                     <rect x="12.5" y="37.5" width="823" height="858" fill={isDark ? "#2E3032" : '#BEAE9'} stroke={isDark ? "#5F5F5F" : '#A0A0A0'} />
                     <rect x="13" y="38" width="822" height="71" fill={isDark ? "#212325" : '#DEDCDA'} />
                     <rect x="14" y="201" width="821" height="89" fill={isDark ? "#353638" : '#EFEEED'} />  
                     <rect x="14" y="383" width="821" height="89" fill={isDark ? "#353638" : '#EFEEED'} />
                     <rect x="14" y="565" width="821" height="242" fill={isDark ? "#353638" : '#EFEEED'} />
-                      <foreignObject width={300} height={70} x={320} y={0}>
-                      <div
-                        className='font-["Bebas_Neue"] text-[17px] uppercase'
-                        style={{ color: isDark ? '#767676' : '#898989', lineHeight: '100%', letterSpacing: '3px' }}
-                       >
-                        {t('diagrams.millGranulator.specificationBlock.characteristics.title')}
-                    </div>
-                      </foreignObject>
+                      
                     <path d="M281 37V896" stroke={linesColor} />
                     <path d="M410 37V896" stroke={linesColor} />
                     <path d="M539 37V896" stroke={linesColor} />

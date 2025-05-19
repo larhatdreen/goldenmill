@@ -10,6 +10,7 @@ import {
   InputLabel,
   TextField,
   ThemeProvider,
+  useMediaQuery
 } from '@mui/material';
 import CountButton from './CountButton.tsx';
 import ButtonIcon from './customIcons/ButtonIcon.tsx';
@@ -45,6 +46,7 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
   const { lang } = useParams<ParamsType>();
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language as 'ru' | 'en' | 'de';
+  const isMobile = useMediaQuery('(max-width: 600px)');
   const [inputText, setInputText] = useState({
     name: '',
     helpEmail: '',
@@ -740,7 +742,11 @@ export default function BasicModal({ open, handleClose, productInfo }: ModalProp
                           )}
                           {lang === 'de' && (
                             <>
-                              Ich habe die
+                              {!isMobile && (
+                                <div>
+                                  Ich habe die
+                                </div>
+                              )}
                               <Link to={getURLWithLang('privacypolicy', lang)}>
                                 <u>Datenschutzerklärung</u>
                               </Link>
