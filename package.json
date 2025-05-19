@@ -8,7 +8,6 @@
     "dev:server": "cd server && node index.js",
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "build": "tsc && vite build",
-    "postbuild": "cd server && ts-node scripts/generateProductSitemap.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "generate-sitemap": "cd server && ts-node scripts/generateProductSitemap.ts"
