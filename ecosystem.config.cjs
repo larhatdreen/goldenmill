@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'goldenmill-server',
-      script: './server/dist/server.js',
+      script: './server/index.js',
       env: {
         NODE_ENV: 'production',
         PORT: 3002,
