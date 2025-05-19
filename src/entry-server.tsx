@@ -9,11 +9,11 @@ import App from './App.js';
 import './components/translation/i18n.js';
 
 interface HelmetContext {
-  helmet: HelmetServerState;
+  helmet?: HelmetServerState;
 }
 
 export function render(url: string) {
-  const helmetContext: HelmetContext = {} as HelmetContext;
+  const helmetContext: HelmetContext = {};
   const appHtml = ReactDOMServer.renderToString(
     <React.StrictMode>
       <Provider store={store}>
@@ -26,5 +26,5 @@ export function render(url: string) {
     </React.StrictMode>
   );
 
-  return { appHtml, helmet: helmetContext.helmet };
+  return { appHtml, helmet: helmetContext.helmet ?? {} };
 }

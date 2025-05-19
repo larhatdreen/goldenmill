@@ -160,6 +160,7 @@ jobs:
               local service_name=$2
               local max_attempts=5
               local attempt=1
+              local failed_attempts=0
               
               echo "Checking $service_name availability..."
               while [ $attempt -le $max_attempts ]; do
@@ -169,8 +170,9 @@ jobs:
                   return 0
                 fi
                 
-                if [ $attempt -eq $max_attempts ]; then
-                  echo "$service_name failed to respond after $max_attempts attempts"
+                failed_attempts=$((failed_attempts + 1))
+                if [ $failed_attempts -ge 3 ]; then
+                  echo "Error: $service_name failed to respond after 3 consecutive attempts"
                   echo "$service_name logs:"
                   if [ "$service_name" = "API Server" ]; then
                     pm2 logs goldenmill-server --lines 50
@@ -184,15 +186,20 @@ jobs:
                 sleep 7
                 attempt=$((attempt + 1))
               done
+              
+              echo "Error: $service_name failed to respond after $max_attempts attempts"
+              return 1
             }
             
             # Проверяем API сервер
             if ! check_service "http://localhost:3002" "API Server"; then
+              echo "Error: API Server verification failed"
               cleanup 1
             fi
             
             # Проверяем SSR сервер
             if ! check_service "http://localhost:3005" "SSR Server"; then
+              echo "Error: SSR Server verification failed"
               cleanup 1
             fi
             
