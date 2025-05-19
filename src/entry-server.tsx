@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom/server.js';
+// @ts-expect-error
+import { StaticRouter } from 'react-router-dom/server.mjs';
 import { HelmetProvider, HelmetServerState } from 'react-helmet-async';
 import { Provider } from 'react-redux';
 import store from './store/index.js';
-import App from './App';
+import App from './App.js';
 import './components/translation/i18n';
 
 interface HelmetContext {
