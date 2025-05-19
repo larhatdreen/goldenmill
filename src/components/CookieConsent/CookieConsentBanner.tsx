@@ -8,22 +8,19 @@ import { sendConsentToBackend } from '../../services/consent.service';
 import { logConsent } from '../../services/consent.logger';
 import { getURLWithLang } from '../../functions/get-url-with-lang';
 import { LanguagesEnum } from '../translation/i18n';
-import { useTheme } from '../../hooks/useTheme';
 import { scrollToTop } from '../../utils/scrollToTop';
 
 const COOKIE_VERSION = '1.0';
 
 export const CookieConsentBanner = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const { t, i18n } = useTranslation();
-  const [showBanner, setShowBanner] = useState(false);
   const currentLang = i18n.language as LanguagesEnum;
-  const theme = useTheme();
-  const isDark = theme.name === 'dark';
 
   useEffect(() => {
     const existingConsent = getCookieConsent();
     if (!existingConsent || existingConsent.version !== COOKIE_VERSION) {
-      setTimeout(() => setShowBanner(true), 1000);
+      setTimeout(() => setIsVisible(true), 1000);
     }
   }, []);
 
@@ -50,10 +47,10 @@ export const CookieConsentBanner = () => {
     sendConsentToBackend(settings);
     logConsent(settings);
     
-    setShowBanner(false);
+    setIsVisible(false);
   };
 
-  if (!showBanner) return null;
+  if (!isVisible) return null;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 animate-slideUp z-50">
@@ -65,7 +62,7 @@ export const CookieConsentBanner = () => {
           backdrop-blur-sm border-t relative`}
       > */}
         <button
-          onClick={() => setShowBanner(false)}
+          onClick={() => setIsVisible(false)}
           className="absolute top-3 right-3 text-[#605C54] hover:text-gray-400 transition-colors duration-300 p-1 opacity-50 hover:opacity-100 z-10"
           // className={`absolute top-3 right-3 transition-colors duration-300 p-1 opacity-50 hover:opacity-100 z-10 ${
           //   isDark 
