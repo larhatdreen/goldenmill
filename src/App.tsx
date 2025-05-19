@@ -28,10 +28,10 @@ import SEO from './components/SEO'
 import ThemeBodySync from './components/ThemeBodySync'
 import PreloadComponents from './components/PreloadComponents'
 import { useSEO } from './hooks/useSEO'
+import { DEFAULT_LANGUAGE } from './config'
 
 function App() {
   const location = useLocation();
-  const defaultLanguage = 'de';
   const seoData = useSEO('home');
 
   // Проверяем, является ли текущий URL статическим файлом
@@ -45,15 +45,13 @@ function App() {
     if (pathParts[1] && ['en', 'de', 'ru'].includes(pathParts[1])) {
       return pathParts[1];
     }
-    return defaultLanguage;
+    return DEFAULT_LANGUAGE;
   };
 
   // Функция для перенаправления на правильный языковой маршрут
   const getRedirectPath = () => {
     const currentLang = getLanguageFromPath();
-    // Если язык не определен, используем дефолтный язык
-    const lang = currentLang || defaultLanguage;
-    return `/${lang}/granulator`;
+    return `/${currentLang}/granulator`;
   };
 
   return (

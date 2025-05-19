@@ -1,55 +1,55 @@
-name: Golden Mill
+name: Deploy to Production
 
 on:
   push:
-    branches:
-      - master
+    branches: dev
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-    #   - name: Setup Node.js
-    #     uses: actions/setup-node@v4
-    #     with:
-    #       node-version: '20' 
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      - name: Create .env
-        run: |
-          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env
-          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > server/.env
-      - name: Cache yarn for speedest install
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.yarn
-            yarn.lock
-          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H 77.73.39.210 >> ~/.ssh/known_hosts
-
-      - name: Deploy via SSH
-        run: |
-          ssh root@77.73.39.210 << 'EOF'
-            set -e
-            cd /var/www/goldenmill/prod
-            git fetch origin master
-            git reset --hard origin/master
-            yarn install --frozen-lockfile
-            rm -rf dist
-            yarn build
-            yarn generate-sitemap
-            echo "Deployed commit: $(git rev-parse HEAD)"
-          EOF
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'yarn'
+    
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+    
+    - name: Build frontend
+      run: yarn build
+    
+    - name: Verify build output
+      run: |
+        if [ ! -d "dist" ]; then
+          echo "Error: dist directory not found"
+          exit 1
+        fi
+        if [ ! -f "dist/index.html" ]; then
+          echo "Error: index.html not found in dist"
+          exit 1
+        fi
+    
+    - name: Deploy to server
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: 77.73.39.210
+        username: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: "dist/*"
+        target: "/var/www/goldenmill/prod/dist"
+        strip_components: 1
+    
+    - name: Restart Nginx
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: 77.73.39.210
+        username: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          systemctl reload nginx
