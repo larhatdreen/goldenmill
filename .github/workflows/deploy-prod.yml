@@ -175,9 +175,11 @@ jobs:
                   echo "Error: $service_name failed to respond after 3 consecutive attempts"
                   echo "$service_name logs:"
                   if [ "$service_name" = "API Server" ]; then
-                    pm2 logs goldenmill-server --lines 50
+                    pm2 logs goldenmill-server --lines 120
+                    exit 1
                   else
-                    pm2 logs goldenmill-ssr --lines 50
+                    pm2 logs goldenmill-ssr --lines 120
+                    exit 1
                   fi
                   return 1
                 fi

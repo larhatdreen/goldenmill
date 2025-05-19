@@ -27,7 +27,7 @@ import { isStaticFile } from './staticFileHandler'
 import SEO from './components/SEO'
 import ThemeBodySync from './components/ThemeBodySync'
 import { useSEO } from './hooks/useSEO'
-import { useGeolocation, getLanguageFromCoordinates } from './hooks/useGeolocation'
+import { useIPLanguage } from './hooks/useIPLanguage'
 import { LOCAL_STORAGE_LANGUAGE_KEY, LanguagesEnum } from './components/translation/i18n'
 
 // Безопасное получение языка из localStorage
@@ -50,7 +50,7 @@ const setStoredLanguage = (language: LanguagesEnum): void => {
 
 function App() {
   const location = useLocation();
-  const { coordinates } = useGeolocation();
+  const { language: ipLanguage } = useIPLanguage();
   const seoData = useSEO('home');
 
   // Проверяем, является ли текущий URL статическим файлом
@@ -58,7 +58,7 @@ function App() {
     return null; // Не рендерим приложение для статических файлов
   }
 
-  // Функция для определения языка из URL, localStorage или геолокации
+  // Функция для определения языка из URL, localStorage или IP
   const getLanguageFromPath = (): LanguagesEnum => {
     const pathParts = location.pathname.split('/');
     if (pathParts[1] && Object.values(LanguagesEnum).includes(pathParts[1] as LanguagesEnum)) {
@@ -71,15 +71,9 @@ function App() {
       return savedLanguage;
     }
     
-    // Если есть координаты, используем их для определения языка
-    if (coordinates?.latitude && coordinates?.longitude) {
-      const geoLanguage = getLanguageFromCoordinates(coordinates.latitude, coordinates.longitude);
-      // Сохраняем определенный по геолокации язык
-      setStoredLanguage(geoLanguage);
-      return geoLanguage;
-    }
-    
-    return LanguagesEnum.ENGLISH; // Дефолтный язык
+    // Если нет сохраненного языка, используем определенный по IP
+    setStoredLanguage(ipLanguage);
+    return ipLanguage;
   };
 
   // Функция для перенаправления на правильный языковой маршрут
