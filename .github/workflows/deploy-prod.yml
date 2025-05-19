@@ -24,6 +24,9 @@ jobs:
     - name: Build frontend
       run: yarn build
     
+    - name: Generate sitemap
+      run: node server/scripts/generateSitemap.js
+    
     - name: Verify build output
       run: |
         if [ ! -d "dist" ]; then
@@ -34,16 +37,10 @@ jobs:
           echo "Error: index.html not found in dist"
           exit 1
         fi
-    
-    - name: Generate Prisma Client
-      run: |
-        cd server
-        yarn prisma generate
-    
-    - name: Generate sitemap
-      run: |
-        cd server
-        yarn ts-node scripts/generateProductSitemap.ts
+        if [ ! -f "dist/sitemap.xml" ]; then
+          echo "Error: sitemap.xml not found in dist"
+          exit 1
+        fi
     
     - name: Deploy to server
       uses: appleboy/scp-action@v0.1.7
