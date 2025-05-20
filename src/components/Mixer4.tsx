@@ -1,5 +1,7 @@
-
+import { useTheme } from '../hooks/useTheme';
 function Mixer4() {
+  const theme = useTheme();
+  const isDark = theme.name === 'dark';
 
   return (
     <div className='relative tablet:w-full tablet:left-0 aspect-[100/80] z-0 desktopMd:mt-0 overflow-x-clip w-full h-full'>
@@ -7,7 +9,7 @@ function Mixer4() {
         <g filter="url(#filter0_f_75_6211)">
           <rect width="552.417" height="552.417" transform="matrix(0.537367 -0.843348 -0.843348 -0.537367 480.881 873.73)" fill="url(#pattern0_75_6211)" fill-opacity="0.06" />
         </g>
-        <g filter="url(#filter1_d_75_6211)">
+        <g filter={isDark ? undefined : "url(#filter1_d_75_6211)"}>
           <rect x="2.00098" width="725" height="725" fill="url(#pattern1_75_6211)" shape-rendering="crispEdges" />
         </g>
         <defs>

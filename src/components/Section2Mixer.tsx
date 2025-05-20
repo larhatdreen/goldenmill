@@ -103,7 +103,7 @@ function Section2() {
           <rect x="208.979" y="61.7598" width="12.4632" height="1.55789" fill={boltsColor} />
           <rect x="208.979" y="99.1465" width="12.4632" height="1.55789" fill="#767676" />
           <rect x="208.979" y="85.127" width="12.4632" height="1.55789" fill="#767676" />
-          <rect x="208.979" y="99.1465" width="12.4632" height="1.55789" fill="#8B97AC" />
+          <rect x="208.979" y="99.1465" width="12.4632" height="1.55789" fill={isDark ? "#4A4A4A" : "#8B97AC"} />
           <rect x="208.979" y="78.8945" width="12.4632" height="1.55789" fill="#767676" />
           <rect x="208.979" y="75.7773" width="12.4632" height="1.55789" fill="#767676" />
           <rect x="208.979" y="72.6621" width="12.4632" height="1.55789" fill="#767676" />
@@ -132,13 +132,13 @@ function Section2() {
           <rect x="212.094" y="100.707" width="6.23158" height="1.55789" fill="#4D4D4D" />
           <rect x="212.094" y="100.707" width="6.23158" height="1.55789" fill="#596271" />
           <path d="M208.979 86.6855L221.442 86.6855L215.211 91.3592L208.979 86.6855Z" fill="#4D4D4D" />
-          <rect x="212.095" y="102.264" width="6.23158" height="1.55789" fill="#596271" />
+          <rect x="212.095" y="102.264" width="6.23158" height="1.55789" fill={isDark ? '#4A4A4A' : "#596271"}/>
           <path d="M152.037 185.69V193.321H131.943V185.69H152.037Z" fill={particleColor} stroke={mainColor} stroke-width="1.716" />
           <path d="M298.478 185.69V193.321H278.385V185.69H298.478Z" fill={particleColor} stroke={mainColor} stroke-width="1.716" />
           <path d="M181.636 268.259V275.89H161.542V268.259H181.636Z" fill={particleColor} stroke={mainColor} stroke-width="1.716" />
           <path d="M270.437 268.259V275.89H250.343V268.259H270.437Z" fill={particleColor} stroke={mainColor} stroke-width="1.716" />
           <path d="M6.45215 409.169V378.011H137.315V369.442H170.031L184.831 351.527V325.821L190.284 322.706H201.968V291.548L206.642 286.874V275.969H225.336V286.874L229.231 289.99V322.706H242.473L247.926 325.821L249.484 351.527L261.947 366.327L251.821 379.569L249.484 390.474H180.936L167.694 417.737L137.315 416.179V409.169H6.45215Z" fill={secondColor} stroke={decorColor} stroke-width="1.1" />
-          <path d="M1 388.678C1 388.678 1.32685 398.536 5.67415 398.804C10.157 399.08 10.9904 393.167 11.1265 388.678C11.2707 383.919 10.4276 377.493 5.67449 377.772C1.04893 378.044 1 388.678 1 388.678Z" fill={particleColor} stroke={isDark ? '#544B3C' : "#B7B7B7"} stroke-width="1.716" />
+          <path d="M1 388.678C1 388.678 1.32685 398.536 5.67415 398.804C10.157 399.08 10.9904 393.167 11.1265 388.678C11.2707 383.919 10.4276 377.493 5.67449 377.772C1.04893 378.044 1 388.678 1 388.678Z" fill={isDark ? '#212325' : '#D9D9D9'} stroke={isDark ? '#544B3C' : "#B7B7B7"} stroke-width="1.716" />
           <path d="M251.821 400.598L255.926 393.866L289.688 414.801L265.063 414.801L251.821 400.598Z" fill={decorColor} stroke={decorColor} stroke-width="1.716" />
           <path d="M117.842 362.432V376.453H138.094V369.442H166.137L184.052 346.853V332.053H170.81V328.158H164.579V343.737H175.484V348.411L162.242 362.432H138.094L133.421 357.758H121.737L117.842 362.432Z" fill={mainColor} stroke={decorColor} stroke-width="1.716" />
           <path d="M117.842 423.969V410.727H138.095V416.959H166.137L181.716 391.254H209.758V399.043H184.832L173.926 416.959V427.864L180.937 434.875H192.621V447.338H181.716L162.242 423.969H138.095L133.421 428.643H121.737L117.842 423.969Z" fill={mainColor} stroke={decorColor} stroke-width="1.716" />
@@ -193,60 +193,60 @@ function Section2() {
           <path d="M286.874 360.873H277.526V343.736C277.526 337.504 286.095 325.82 297.779 325.82H308.684C311.816 325.82 311.8 318.81 311.8 318.81C311.8 318.81 311.816 311.799 308.684 311.799H292.326V304.01H308.684C316.474 304.01 319.59 311.63 319.59 318.81C319.59 325.989 315.864 333.61 308.684 333.61H302.453C292.326 333.61 286.874 339.062 286.874 347.631V360.873Z" fill={decorColor} />
           <path d="M277.526 360.873H286.874C286.874 360.873 286.874 356.199 286.874 347.631C286.874 339.062 292.326 333.61 302.453 333.61C307.624 333.61 304.011 333.61 308.684 333.61C315.864 333.61 319.59 325.989 319.59 318.81C319.59 311.63 316.474 304.01 308.684 304.01C302.296 304.01 292.326 304.01 292.326 304.01V311.799C292.326 311.799 302.453 311.799 308.684 311.799C311.816 311.799 311.8 318.81 311.8 318.81C311.8 318.81 311.816 325.82 308.684 325.82C303.232 325.82 303.232 325.82 297.779 325.82C286.095 325.82 277.526 337.504 277.526 343.736C277.526 352.304 277.526 361.652 277.526 361.652" stroke={decorColor} stroke-width="1.716" />
           <path d="M160.684 213.654H268.178C268.178 213.654 262.202 223.106 256.494 226.117C251.007 229.012 240.915 229.233 240.915 229.233V221.444H196.515H187.947V229.233C187.947 229.233 177.194 228.126 171.589 224.56C163.02 219.107 160.684 213.654 160.684 213.654Z" fill={decorColor} stroke={decorColor} stroke-width="1.716" />
-          <path d="M422.41 388.678C422.41 388.678 422.737 398.536 427.084 398.804C431.567 399.08 432.401 393.167 432.537 388.678C432.681 383.919 431.838 377.493 427.085 377.772C422.459 378.044 422.41 388.678 422.41 388.678Z" fill={particleColor} stroke={isDark ? '#544B3C': "#B7B7B7"} stroke-width="1.716" />
+          <path d="M422.41 388.678C422.41 388.678 422.737 398.536 427.084 398.804C431.567 399.08 432.401 393.167 432.537 388.678C432.681 383.919 431.838 377.493 427.085 377.772C422.459 378.044 422.41 388.678 422.41 388.678Z" fill={isDark ? '#212325' : '#D9D9D9'} stroke={isDark ? '#544B3C': "#B7B7B7"} stroke-width="1.716" />
           <rect x="297.779" y="215.988" width="10.9053" height="12.4632" fill={particleColor} />
           <path d="M289.989 216.77H297.779V228.454H289.989L283.758 226.117H268.179H253.379L262.726 213.654H268.179V219.107H283.758L289.989 216.77Z" fill={decorColor} stroke={decorColor} stroke-width="1.716" />
-          <path d="M194.958 237.803H205.864V278.308H200.411C200.411 278.308 194.958 277.529 194.958 286.876C194.958 294.666 194.958 310.245 194.958 310.245H184.832H170.032V311.803H154.453V310.245V301.676H170.032V303.234H186.39C186.39 303.234 186.39 295.445 186.39 285.319C186.39 273.634 194.958 272.855 194.958 272.855V237.803Z" fill={particleColor} fill-opacity="0.55" stroke={isDark ?'#544B3C' : "#B7B7B7"} stroke-width="1.716" />
+          <path d="M194.958 237.803H205.864V278.308H200.411C200.411 278.308 194.958 277.529 194.958 286.876C194.958 294.666 194.958 310.245 194.958 310.245H184.832H170.032V311.803H154.453V310.245V301.676H170.032V303.234H186.39C186.39 303.234 186.39 295.445 186.39 285.319C186.39 273.634 194.958 272.855 194.958 272.855V237.803Z" fill={particleColor} fill-opacity="0.55" stroke={isDark ? '#82643F' : "#B7B7B7"} stroke-width="1.716" />
           <path d="M237.021 237.803H226.116V278.308H231.568C231.568 278.308 237.021 277.529 237.021 286.876C237.021 294.666 237.021 310.245 237.021 310.245H247.147H261.947V311.803H277.526V310.245V301.676H261.947V303.234H245.59C245.59 303.234 245.59 295.445 245.59 285.319C245.59 273.634 237.021 272.855 237.021 272.855V237.803Z" fill={decorColor} stroke={decorColor} stroke-width="1.716" />
           <rect x="277.526" y="300.115" width="14.0211" height="12.4632" fill={particleColor} />
           <rect x="154.453" y="300.115" width="15.5789" height="12.4632" fill={particleColor} />
-          <rect x="86.7628" y="486.364" width="6.07347" height="10.7472" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="136.616" y="486.364" width="6.07347" height="10.7472" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="94.5518" y="486.364" width="13.8629" height="10.7472" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="110.131" y="486.364" width="4.51558" height="10.7472" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="116.363" y="486.364" width="4.51558" height="10.7472" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="122.594" y="486.364" width="12.3051" height="10.7472" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="87.4624" y="483.949" width="54.5263" height="1.55789" fill={mainColor} />
-          <rect x="292.405" y="486.364" width="6.07347" height="10.7472" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="342.258" y="486.364" width="6.07347" height="10.7472" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="300.194" y="486.364" width="13.8629" height="10.7472" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="315.773" y="486.364" width="4.51558" height="10.7472" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="322.005" y="486.364" width="4.51558" height="10.7472" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="328.236" y="486.364" width="12.3051" height="10.7472" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="293.105" y="483.949" width="54.5263" height="1.55789" fill={mainColor} />
-          <rect x="0.858" y="-0.858" width="6.07347" height="10.7472" transform="matrix(1 0 0 -1 85.9048 550.778)" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="0.858" y="-0.858" width="6.07347" height="10.7472" transform="matrix(1 0 0 -1 135.758 550.778)" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="0.858" y="-0.858" width="13.8629" height="10.7472" transform="matrix(1 0 0 -1 93.6938 550.778)" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="0.858" y="-0.858" width="4.51558" height="10.7472" transform="matrix(1 0 0 -1 109.273 550.778)" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="0.858" y="-0.858" width="4.51558" height="10.7472" transform="matrix(1 0 0 -1 115.505 550.778)" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="0.858" y="-0.858" width="12.3051" height="10.7472" transform="matrix(1 0 0 -1 121.736 550.778)" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect width="54.5263" height="1.55789" transform="matrix(1 0 0 -1 87.4624 554.051)" fill={mainColor} />
-          <rect x="0.858" y="-0.858" width="2.49453" height="10.7472" transform="matrix(1 0 0 -1 318.031 550.778)" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="0.858" y="-0.858" width="2.49453" height="10.7472" transform="matrix(1 0 0 -1 344.979 550.778)" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="0.858" y="-0.858" width="6.70505" height="10.7472" transform="matrix(1 0 0 -1 322.242 550.778)" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect x="0.842105" y="-0.842105" width="1.68421" height="10.7789" transform="matrix(1 0 0 -1 330.662 550.81)" fill="#8E8E8E" stroke={mainColor} stroke-width="1.68421" />
-          <rect x="0.842105" y="-0.842105" width="1.68421" height="10.7789" transform="matrix(1 0 0 -1 334.031 550.81)" fill="#8E8E8E" stroke={mainColor} stroke-width="1.68421" />
-          <rect x="0.858" y="-0.858" width="5.86295" height="10.7472" transform="matrix(1 0 0 -1 337.4 550.778)" fill="#8E8E8E" stroke={mainColor} stroke-width="1.716" />
-          <rect width="29.4737" height="1.55789" transform="matrix(1 0 0 -1 318.873 554.051)" fill={mainColor} />
-          <rect x="194.258" y="385.1" width="43.4629" height="2.95768" fill={mainColor} stroke="#C3C3C3" stroke-width="1.716" />
-          <rect x="194.258" y="385.1" width="43.4629" height="2.95768" fill="#A8A8A8" stroke="#C3C3C3" stroke-width="1.716" />
-          <rect x="194.958" y="378.01" width="40.5053" height="4.67368" fill="#A8A8A8" />
-          <rect x="198.073" y="373.338" width="35.8316" height="4.67368" fill="#838383" />
-          <rect x="198.073" y="365.549" width="35.8316" height="4.67368" fill="#707070" />
-          <rect x="198.073" y="359.316" width="35.8316" height="4.67368" fill="#707070" />
-          <rect x="196.516" y="353.082" width="4.67368" height="4.67368" fill="#888888" />
-          <rect x="229.231" y="353.082" width="4.67368" height="4.67368" fill="#888888" />
-          <rect x="196.516" y="346.854" width="4.67368" height="4.67368" fill="#888888" />
-          <rect x="229.231" y="346.854" width="4.67368" height="4.67368" fill="#888888" />
-          <rect x="196.516" y="340.621" width="4.67368" height="4.67368" fill="#888888" />
-          <rect x="229.231" y="340.621" width="4.67368" height="4.67368" fill="#888888" />
-          <circle cx="216.768" cy="301.674" r="4.67368" fill="#6E6E6E" />
+          <rect x="86.7628" y="486.364" width="6.07347" height="10.7472" fill={isDark ? '#2E3032' : "#8E8E8E"} stroke={isDark ? '#82643F' : '#D4D4D4'} stroke-width="1.716" />
+          <rect x="136.616" y="486.364" width="6.07347" height="10.7472" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="94.5518" y="486.364" width="13.8629" height="10.7472" fill={isDark ? '#2E3032' : "#8E8E8E"} stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="110.131" y="486.364" width="4.51558" height="10.7472" fill={isDark ? '#2E3032' : "#8E8E8E"} stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="116.363" y="486.364" width="4.51558" height="10.7472" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="122.594" y="486.364" width="12.3051" height="10.7472" fill={isDark ? '#2E3032' : "#8E8E8E"} stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="87.4624" y="483.949" width="54.5263" height="1.55789" fill={isDark ? '#82643F' : '#D4D4D4'}  />
+          <rect x="292.405" y="486.364" width="6.07347" height="10.7472" fill={isDark ? '#2E3032' : "#8E8E8E"} stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="342.258" y="486.364" width="6.07347" height="10.7472" fill={isDark ? '#2E3032' : "#8E8E8E"} stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="300.194" y="486.364" width="13.8629" height="10.7472" fill={isDark ? '#2E3032' : "#8E8E8E"} stroke={isDark ? '#82643F' : '#D4D4D4'} stroke-width="1.716" />
+          <rect x="315.773" y="486.364" width="4.51558" height="10.7472" fill={isDark ? '#2E3032' : "#8E8E8E"} stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="322.005" y="486.364" width="4.51558" height="10.7472" fill={isDark ? '#2E3032' : "#8E8E8E"} stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="328.236" y="486.364" width="12.3051" height="10.7472" fill={isDark ? '#2E3032' : "#8E8E8E"} stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="293.105" y="483.949" width="54.5263" height="1.55789" fill={isDark ? '#82643F' : '#D4D4D4'} />
+          <rect x="0.858" y="-0.858" width="6.07347" height="10.7472" transform="matrix(1 0 0 -1 85.9048 550.778)" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'} stroke-width="1.716" />
+          <rect x="0.858" y="-0.858" width="6.07347" height="10.7472" transform="matrix(1 0 0 -1 135.758 550.778)" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'} stroke-width="1.716" />
+          <rect x="0.858" y="-0.858" width="13.8629" height="10.7472" transform="matrix(1 0 0 -1 93.6938 550.778)" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="0.858" y="-0.858" width="4.51558" height="10.7472" transform="matrix(1 0 0 -1 109.273 550.778)" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="0.858" y="-0.858" width="4.51558" height="10.7472" transform="matrix(1 0 0 -1 115.505 550.778)" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="0.858" y="-0.858" width="12.3051" height="10.7472" transform="matrix(1 0 0 -1 121.736 550.778)" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect width="54.5263" height="1.55789" transform="matrix(1 0 0 -1 87.4624 554.051)" fill={isDark ? '#82643F' : '#D4D4D4'}  />
+          <rect x="0.858" y="-0.858" width="2.49453" height="10.7472" transform="matrix(1 0 0 -1 318.031 550.778)" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect x="0.858" y="-0.858" width="2.49453" height="10.7472" transform="matrix(1 0 0 -1 344.979 550.778)" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'} stroke-width="1.716" />
+          <rect x="0.858" y="-0.858" width="6.70505" height="10.7472" transform="matrix(1 0 0 -1 322.242 550.778)" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'} stroke-width="1.716" />
+          <rect x="0.842105" y="-0.842105" width="1.68421" height="10.7789" transform="matrix(1 0 0 -1 330.662 550.81)" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.68421" />
+          <rect x="0.842105" y="-0.842105" width="1.68421" height="10.7789" transform="matrix(1 0 0 -1 334.031 550.81)" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.68421" />
+          <rect x="0.858" y="-0.858" width="5.86295" height="10.7472" transform="matrix(1 0 0 -1 337.4 550.778)" fill={isDark ? '#2E3032' : "#8E8E8E"}  stroke={isDark ? '#82643F' : '#D4D4D4'}  stroke-width="1.716" />
+          <rect width="29.4737" height="1.55789" transform="matrix(1 0 0 -1 318.873 554.051)" fill={isDark ? '#82643F' : '#D4D4D4'}  />
+          <rect x="194.258" y="385.1" width="43.4629" height="2.95768" fill={isDark ? '#82643F' : '#D4D4D4'}  stroke={isDark ? '#3B3B3B' : "#C3C3C3"} stroke-width="1.716" />
+          <rect x="194.258" y="385.1" width="43.4629" height="2.95768" fill={isDark ? '#555555' : "#A8A8A8"} stroke={isDark ? '#3B3B3B' : "#C3C3C3"} stroke-width="1.716" />
+          <rect x="194.958" y="378.01" width="40.5053" height="4.67368" fill={isDark ? '#555555' : "#A8A8A8"} />
+          <rect x="198.073" y="373.338" width="35.8316" height="4.67368" fill={isDark ? '#575757' : "#A8A8A8"} />
+          <rect x="198.073" y="365.549" width="35.8316" height="4.67368" fill={isDark ? '#575757' : "#A8A8A8"} />
+          <rect x="198.073" y="359.316" width="35.8316" height="4.67368" fill={isDark ? '#575757' : "#A8A8A8"} />
+          <rect x="196.516" y="353.082" width="4.67368" height="4.67368" fill={isDark ? '#575757' :  "#888888"}/>
+          <rect x="229.231" y="353.082" width="4.67368" height="4.67368" fill={isDark ? '#575757' :  "#888888"}/>
+          <rect x="196.516" y="346.854" width="4.67368" height="4.67368" fill={isDark ? '#575757' :  "#888888"}/>
+          <rect x="229.231" y="346.854" width="4.67368" height="4.67368" fill={isDark ? '#575757' :  "#888888"}/>
+          <rect x="196.516" y="340.621" width="4.67368" height="4.67368" fill={isDark ? '#575757' :  "#888888"}/>
+          <rect x="229.231" y="340.621" width="4.67368" height="4.67368" fill={isDark ? '#575757' :  "#888888"}/>
+          <circle cx="216.768" cy="301.674" r="4.67368" fill={isDark ? '#D5CDBD' : "#6E6E6E"} />
           <rect x="190.284" y="328.158" width="54.5263" height="7.78947" fill={particleColor} />
-          <rect x="190.284" y="335.949" width="9.34737" height="3.11579" fill="#A9A9A9" />
-          <rect x="232.348" y="335.949" width="9.34737" height="3.11579" fill="#A9A9A9" />
-          <rect x="205.863" y="335.949" width="20.2526" height="3.11579" fill="#A9A9A9" />
-          <rect x="210.537" y="533.799" width="14.0211" height="3.11579" fill="#596271" />
-          <rect x="210.537" y="538.473" width="14.0211" height="3.11579" fill="#596271" />
+          <rect x="190.284" y="335.949" width="9.34737" height="3.11579" fill={isDark ? '#4A4A4A' :"#A9A9A9"} />
+          <rect x="232.348" y="335.949" width="9.34737" height="3.11579" fill={isDark ? '#4A4A4A' :"#A9A9A9"} />
+          <rect x="205.863" y="335.949" width="20.2526" height="3.11579" fill={isDark ? '#4A4A4A' :"#A9A9A9"} />
+          <rect x="210.537" y="533.799" width="14.0211" height="3.11579" fill={isDark ? '#656565' : "#596271"}/>
+          <rect x="210.537" y="538.473" width="14.0211" height="3.11579" fill={isDark ? '#656565' : "#596271"}/>
           <rect x="95.252" y="508.875" width="12.4632" height="1.55789" fill="#767676" />
           <rect x="95.252" y="522.896" width="12.4632" height="1.55789" fill={boltsColor} />
           <rect x="95.252" y="526.012" width="12.4632" height="1.55789" fill={boltsColor} />
@@ -298,7 +298,7 @@ function Section2() {
           <rect x="327.378" y="504.203" width="12.4632" height="1.55789" fill="#767676" />
           <rect x="327.378" y="501.086" width="12.4632" height="1.55789" fill="#767676" />
           <rect x="95.2527" y="499.527" width="12.4632" height="1.55789" fill="#767676" />
-          <rect x="117.063" y="378.012" width="21.8105" height="32.7158" fill="#CFCFCF" />
+          <rect x="117.063" y="378.012" width="21.8105" height="32.7158" fill={isDark ? '#2E3032' : "#CFCFCF"} />
           <path d="M117.843 382.686L119.401 378.791" stroke={decorColor} stroke-width="1.716" />
           <path d="M132.643 411.506L138.095 398.264" stroke={decorColor} stroke-width="1.716" />
           <path d="M117.843 388.138L121.738 378.791" stroke={decorColor} stroke-width="1.716" />
@@ -311,8 +311,8 @@ function Section2() {
           <path d="M118.621 409.949L131.863 378.791" stroke={decorColor} stroke-width="1.716" />
           <path d="M121.737 409.947L134.2 379.568" stroke={decorColor} stroke-width="1.716" />
           <path d="M124.853 409.949L137.316 378.791" stroke={decorColor} stroke-width="1.716" />
-          <rect x="117.921" y="378.87" width="20.0945" height="30.9998" stroke={mainColor} stroke-width="1.716" />
-          <rect width="21.8105" height="32.7158" transform="matrix(-1 0 0 1 314.916 378.012)" fill="#CFCFCF" />
+          <rect x="117.921" y="378.87" width="20.0945" height="30.9998" stroke={isDark ? '#82643F' : '#D4D4D4'} stroke-width="1.716" />
+          <rect width="21.8105" height="32.7158" transform="matrix(-1 0 0 1 314.916 378.012)" fill={isDark ? '#2E3032' : "#CFCFCF"}  />
           <path d="M314.137 382.686L312.579 378.791" stroke={decorColor} stroke-width="1.716" />
           <path d="M299.337 411.506L293.884 398.264" stroke={decorColor} stroke-width="1.716" />
           <path d="M314.137 388.138L310.242 378.791" stroke={decorColor} stroke-width="1.716" />
@@ -325,11 +325,11 @@ function Section2() {
           <path d="M313.358 409.949L300.116 378.791" stroke={decorColor} stroke-width="1.716" />
           <path d="M310.242 409.947L297.779 379.568" stroke={decorColor} stroke-width="1.716" />
           <path d="M307.126 409.949L294.663 378.791" stroke={decorColor} stroke-width="1.716" />
-          <rect x="-0.858" y="0.858" width="20.0945" height="30.9998" transform="matrix(-1 0 0 1 313.2 378.012)" stroke={mainColor} stroke-width="1.716" />
+          <rect x="-0.858" y="0.858" width="20.0945" height="30.9998" transform="matrix(-1 0 0 1 313.2 378.012)" stroke={isDark ? '#82643F' : '#D4D4D4'} stroke-width="1.716" />
           <rect x="397.464" y="316.572" width="10.9852" height="1.9973" fill={particleColor} />
-          <path d="M95.6729 401.365L95.6729 388.568L106.756 394.967L95.6729 401.365Z" fill={isDark ? '#82643F' : '#FFFFFF'} stroke={strokeColor} stroke-width="1.1" />
-          <rect x="65.4636" y="392.023" width="29.8582" height="5.89055" fill={isDark ? '#82643F' : '#FFFFFF'} stroke={strokeColor} stroke-width="1.1" />
-          <rect x="94.873" y="392.471" width="2.99595" height="4.99325" fill={isDark ? '#82643F' : '#FFFFFF'} />
+          <path d="M95.6729 401.365L95.6729 388.568L106.756 394.967L95.6729 401.365Z" fill={isDark ? '#000000' : '#FFFFFF'} stroke={strokeColor} stroke-width="1.1" />
+          <rect x="65.4636" y="392.023" width="29.8582" height="5.89055" fill={isDark ? '#000000' : '#FFFFFF'} stroke={strokeColor} stroke-width="1.1" />
+          <rect x="94.873" y="392.471" width="2.99595" height="4.99325" fill={isDark ? '#000000' : '#FFFFFF'} />
           <path d="M376.293 401.365L376.293 388.568L387.376 394.967L376.293 401.365Z" fill={isDark ? '#000000' : '#FFFFFF'} stroke={strokeColor} stroke-width="1.1" />
           <rect x="346.084" y="392.023" width="29.8582" height="5.89055" fill={isDark ? '#000000' : '#FFFFFF'} stroke={strokeColor} stroke-width="1.1" />
           <rect x="375.494" y="392.471" width="2.99595" height="4.99325" fill={isDark ? '#000000' : '#FFFFFF'} />
