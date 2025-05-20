@@ -170,6 +170,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return `${number.toFixed(1)} €`;
   };
 
+
   return (
     <>
       <Card 

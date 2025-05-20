@@ -274,7 +274,7 @@ const SpareParts = () => {
         keywords={seoData.keywords}
         article={false}
         product={productSchemaData}
-        image={`${window.location.origin}/images/spare-parts-og.jpg`}
+        image={`${API_URL.replace('/api', '')}/images/spare-parts.jpg`}
       />
       <div className="w-full max-w-[2560px] mx-auto flex flex-col items-center relative">
         <div className="w-full flex flex-col items-center justify-center py-8">

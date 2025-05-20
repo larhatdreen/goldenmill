@@ -963,7 +963,7 @@ const ProductsSection = () => {
                     >
                       <Box
                         component="img"
-                        src={product.imageUrl}
+                        src={product.imageUrl.startsWith('http') ? product.imageUrl : `${API_URL.replace('/api', '')}${product.imageUrl}`}
                         alt={t('admin.products.fields.mainImageAlt')}
                         sx={{
                           width: '60px',

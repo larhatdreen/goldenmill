@@ -95,13 +95,20 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:3002',
+        target: 'https://goldendie.de',
         changeOrigin: true,
+        secure: true,
       },
       '/img': {
-        target: 'http://localhost:3002',
+        target: 'https://goldendie.de',
         changeOrigin: true,
+        secure: true,
       },
+      '/images': {
+        target: 'https://goldendie.de',
+        changeOrigin: true,
+        secure: true,
+      }
     },
   },
   optimizeDeps: {

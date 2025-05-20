@@ -389,6 +389,13 @@ const ProductLanding: React.FC = () => {
     setIsHelpModalOpen(false);
   };
 
+  // Всегда передаем одинаковую структуру параметров
+  const seoData = useSEO('product', {
+    productName: product?.title?.[currentLanguage] ?? '',
+    productDescription: product?.description?.[currentLanguage] ?? '',
+    category: product?.category ? t(`products.categories.${product.category}`) : t('products.categories.default'),
+  });
+
   if (isMobile) {
     return <MobileProductLanding />;
   }
@@ -414,13 +421,6 @@ const ProductLanding: React.FC = () => {
   console.log('Active Image URL in render:', product.activeImageUrl);
 
   const { title, description, subtitle, imageUrl, price } = product;
-
-  // Get SEO data with dynamic product information
-  const seoData = useSEO('product', {
-    productName: product.title[currentLanguage],
-    productDescription: product.description[currentLanguage],
-    category: t(`products.categories.${product.category || 'default'}`),
-  });
 
   return (
     <>
