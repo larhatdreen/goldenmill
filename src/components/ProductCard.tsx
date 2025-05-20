@@ -5,6 +5,7 @@ import CountButton from './CountButton';
 import button from '../assets/UI/Btn.svg';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
+import { API_URL } from '../config.ts';
 
 interface LocalizedText {
   ru: string;
@@ -170,7 +171,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return `${number.toFixed(1)} €`;
   };
 
-
   return (
     <>
       <Card 
@@ -311,7 +311,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 }}
               >
                 <img 
-                  src={activeImageUrl}
+                  src={activeImageUrl.startsWith('http') ? activeImageUrl : `${API_URL.replace('/api', '')}${activeImageUrl}`}
                   alt="Company logo"
                   style={{
                     maxWidth: '40px',
@@ -354,7 +354,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           >
             <CardMedia
               component="img"
-              image={imageUrl}
+              image={imageUrl.startsWith('http') ? imageUrl : `${API_URL.replace('/api', '')}${imageUrl}`}
               alt={formattedTitle}
               draggable="false"
               onContextMenu={(e) => e.preventDefault()}

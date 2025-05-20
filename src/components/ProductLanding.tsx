@@ -428,12 +428,12 @@ const ProductLanding: React.FC = () => {
         title={seoData.title}
         description={seoData.description}
         keywords={seoData.keywords}
-        image={product.imageUrl}
+        image={product.imageUrl.startsWith('http') ? product.imageUrl : `${API_URL.replace('/api', '')}${product.imageUrl}`}
         article={true}
         product={{
           name: product.title[currentLanguage],
           description: product.description[currentLanguage],
-          image: product.imageUrl,
+          image: product.imageUrl.startsWith('http') ? product.imageUrl : `${API_URL.replace('/api', '')}${product.imageUrl}`,
           price: product.price || undefined,
           availability: 'https://schema.org/InStock',
           technicalSpecification: product.technicalDescription?.[currentLanguage],
@@ -538,7 +538,7 @@ const ProductLanding: React.FC = () => {
                 }}
               >
                 <img
-                  src={imageUrl}
+                  src={imageUrl.startsWith('http') ? imageUrl : `${API_URL.replace('/api', '')}${imageUrl}`}
                   alt={`Product ${title[currentLanguage]} detailed view`}
                   loading="lazy"
                   style={{
