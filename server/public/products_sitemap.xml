@@ -4,29 +4,36 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     
-    <!-- Products Main Page -->
+    <!-- Главная страница продуктов -->
     <url>
         <loc>https://goldenmill.de/products</loc>
-        <lastmod>2025-03-05</lastmod>
-        <changefreq>daily</changefreq>
+        <lastmod>2024-05-22</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/products"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/products"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/products"/>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/products"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/products"/>
+        <image:image>
+            <image:loc>https://goldenmill.de/images/products.jpg</image:loc>
+            <image:title>Products - LKE Group GmbH</image:title>
+            <image:caption>High-quality products for pellet mills</image:caption>
+        </image:image>
     </url>
 
     <url>
         <loc>https://goldenmill.de/product/cm795cs0v0000vpo4d6lfitks</loc>
-        <lastmod>2025-03-04</lastmod>
+        <lastmod>2024-05-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/product/cm795cs0v0000vpo4d6lfitks"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/product/cm795cs0v0000vpo4d6lfitks"/>
         <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/product/cm795cs0v0000vpo4d6lfitks"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/product/cm795cs0v0000vpo4d6lfitks"/>
         <image:image>
-            <image:loc>/img/products/1740837835086-237585554.png</image:loc>
-            <image:title></image:title>
-            <image:caption></image:caption>
+            <image:loc>https://goldenmill.de/img/products/1740837835086-237585554.png</image:loc>
+            <image:title>Industrial Equipment Part - LKE Group GmbH</image:title>
+            <image:caption>High-quality industrial equipment part with superior performance</image:caption>
         </image:image>
     </url>
 </urlset>

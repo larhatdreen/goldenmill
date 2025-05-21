@@ -1,6 +1,8 @@
-<?xml version="1.0" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <!-- Main Page -->
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://goldenmill.de/</loc>
     <lastmod>2025-05-22</lastmod>
@@ -17,7 +19,6 @@
     </image:image>
     <mobile:mobile/>
   </url>
-  <!-- Granulators -->
   <url>
     <loc>https://goldenmill.de/granulator</loc>
     <lastmod>2025-05-22</lastmod>
@@ -34,7 +35,6 @@
     </image:image>
     <mobile:mobile/>
   </url>
-  <!-- Mixers -->
   <url>
     <loc>https://goldenmill.de/mixer</loc>
     <lastmod>2025-05-22</lastmod>
@@ -51,7 +51,6 @@
     </image:image>
     <mobile:mobile/>
   </url>
-  <!-- Spare Parts -->
   <url>
     <loc>https://goldenmill.de/spare-parts</loc>
     <lastmod>2025-05-22</lastmod>
@@ -68,7 +67,6 @@
     </image:image>
     <mobile:mobile/>
   </url>
-  <!-- About Us -->
   <url>
     <loc>https://goldenmill.de/about</loc>
     <lastmod>2025-05-22</lastmod>
@@ -85,7 +83,6 @@
     </image:image>
     <mobile:mobile/>
   </url>
-  <!-- Contacts -->
   <url>
     <loc>https://goldenmill.de/contacts</loc>
     <lastmod>2025-05-22</lastmod>
@@ -102,7 +99,6 @@
     </image:image>
     <mobile:mobile/>
   </url>
-  <!-- Service Information -->
   <url>
     <loc>https://goldenmill.de/service-information</loc>
     <lastmod>2025-05-22</lastmod>
@@ -114,12 +110,11 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/service-information"/>
     <image:image>
       <image:loc>https://goldenmill.de/images/service.jpg</image:loc>
-      <image:title>Technical Support &amp; Service Information | LKE Group GmbH</image:title>
+      <image:title>Technical Support & Service Information | LKE Group GmbH</image:title>
       <image:caption>Comprehensive technical support, maintenance guides, and service information for our industrial equipment</image:caption>
     </image:image>
     <mobile:mobile/>
   </url>
-  <!-- Privacy Policy -->
   <url>
     <loc>https://goldenmill.de/privacy-policy</loc>
     <lastmod>2025-05-22</lastmod>
@@ -131,7 +126,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/privacy-policy"/>
     <mobile:mobile/>
   </url>
-  <!-- Product Template -->
   <url>
     <loc>https://goldenmill.de/product</loc>
     <lastmod>2025-05-22</lastmod>
@@ -143,4 +137,4 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/product"/>
     <mobile:mobile/>
   </url>
-</urlset>
+</urlset> 

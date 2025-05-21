@@ -1,0 +1,31 @@
+Starting metadata check...
+----------------------------------------
+Checking robots.txt...
+✓ File exists
+Content preview:
+# robots.txt for GoldenMill - LKE Group GmbH
+# Website: https://goldenmill.de
+# Manufacturer of high-quality dies, roller shells, and spare parts for pellet mills
+# Contact: info@goldenmill.de
+
+----------------------------------------
+Checking site.webmanifest...
+✓ File exists
+✓ Valid JSON
+----------------------------------------
+Checking icons...
+✓ icon.svg exists
+✓ Valid SVG
+✓ logo.svg exists
+✓ Valid SVG
+✓ logo_mini.svg exists
+✓ Valid SVG
+----------------------------------------
+Checking meta tags in main page...
+✓ Main page accessible
+✓ Has title meta tag
+✓ Has description meta tag
+✓ Has keywords meta tag
+✓ Has viewport meta tag
+✓ Has robots meta tag
+✗ Missing canonical meta tag

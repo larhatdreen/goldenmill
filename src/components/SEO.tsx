@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
@@ -42,6 +42,7 @@ interface SchemaOrg {
       streetAddress: string;
       addressLocality: string;
       addressCountry: string;
+      postalCode: string;
     };
     contactPoint: {
       '@type': string;
@@ -103,7 +104,8 @@ const SEO: React.FC<SEOProps> = ({
     address: {
       street: 'Hauptstraße 1',
       city: 'Berlin',
-      country: 'Germany'
+      country: 'Germany',
+      postalCode: '12345'
     }
   };
 
@@ -133,7 +135,8 @@ const SEO: React.FC<SEOProps> = ({
         '@type': 'PostalAddress',
         streetAddress: site.address.street,
         addressLocality: site.address.city,
-        addressCountry: site.address.country
+        addressCountry: site.address.country,
+        postalCode: site.address.postalCode
       },
       contactPoint: {
         '@type': 'ContactPoint',
@@ -194,6 +197,56 @@ const SEO: React.FC<SEOProps> = ({
       });
     }
   }
+
+  // Обновляем мета-теги при изменении маршрута
+  useEffect(() => {
+    // Обновляем title
+    document.title = seo.title;
+    
+    // Обновляем meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', seo.description);
+    }
+
+    // Обновляем canonical URL
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', seo.url);
+    }
+
+    // Обновляем Open Graph теги
+    const ogTags = {
+      'og:title': seo.title,
+      'og:description': seo.description,
+      'og:image': seo.image,
+      'og:url': seo.url,
+      'og:type': article ? 'article' : 'website',
+      'og:site_name': site.name,
+      'og:locale': currentLanguage
+    };
+
+    Object.entries(ogTags).forEach(([property, content]) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (meta) {
+        meta.setAttribute('content', content);
+      }
+    });
+
+    // Обновляем Twitter Card теги
+    const twitterTags = {
+      'twitter:title': seo.title,
+      'twitter:description': seo.description,
+      'twitter:image': seo.image
+    };
+
+    Object.entries(twitterTags).forEach(([name, content]) => {
+      let meta = document.querySelector(`meta[name="${name}"]`);
+      if (meta) {
+        meta.setAttribute('content', content);
+      }
+    });
+  }, [location.pathname, currentLanguage, seo]);
 
   return (
     <Helmet>

@@ -1,14 +1,14 @@
 {
   "name": {
-    "en": "GoldenMill - LKE Group GmbH | Dies and Roller Shells for Pellet Mills",
-    "de": "GoldenMill - LKE Group GmbH | Matrizen und Presswalzen für Pelletpressen",
+    "en": "GoldenMill - LKE Group GmbH | Granulators, Mixers, and Spare Parts",
+    "de": "GoldenMill - LKE Group GmbH | Granulatoren, Mischer und Ersatzteile",
     "ru": "GoldenMill - LKE Group GmbH | Грануляторы, миксеры и запчасти"
   },
   "short_name": "GoldenMill",
   "description": {
-    "en": "GoldenMill - LKE Group GmbH - manufacturer of high-quality dies, roller shells, and spare parts for pellet mills. Custom manufacturing according to customer specifications.",
-    "de": "GoldenMill - LKE Group GmbH - Hersteller von hochwertigen Matrizen, Presswalzen und Ersatzteilen für Pelletpressen. Kundenspezifische Fertigung nach Kundenvorgaben.",
-    "ru": "GoldenMill - LKE Group GmbH - производитель высококачественных матриц, роликов и запчастей для грануляторов. Индивидуальное производство по спецификациям заказчика."
+    "en": "GoldenMill - LKE Group GmbH - manufacturer of high-quality granulators, mixers, and spare parts for pellet mills. Custom manufacturing according to customer specifications.",
+    "de": "GoldenMill - LKE Group GmbH - Hersteller von hochwertigen Granulatoren, Mischern und Ersatzteilen für Pelletpressen. Kundenspezifische Fertigung nach Vorgaben.",
+    "ru": "GoldenMill - LKE Group GmbH - производитель высококачественных грануляторов, миксеров и запчастей для грануляторов. Индивидуальное производство по спецификациям заказчика."
   },
   "icons": [
     {
@@ -50,17 +50,17 @@
   "lang": ["en", "de", "ru"],
   "dir": "ltr",
   "orientation": "portrait-primary",
-  "categories": ["business", "manufacturing", "industrial", "machinery", "equipment", "spare parts", "dies", "mixers"],
+  "categories": ["business", "manufacturing", "industrial", "machinery", "equipment", "spare parts", "granulator", "mixer"],
   "product_categories": {
-    "matrix": {
-      "en": "Dies and Matrices",
-      "de": "Matrizen",
-      "ru": "Матрицы"
+    "granulator": {
+      "en": "Granulators",
+      "de": "Granulatoren",
+      "ru": "Грануляторы"
     },
-    "shell": {
-      "en": "Roller Shells",
-      "de": "Presswalzen",
-      "ru": "Ролики"
+    "mixer": {
+      "en": "Mixers",
+      "de": "Mischer",
+      "ru": "Миксеры"
     },
     "spare_parts": {
       "en": "Spare Parts",
@@ -88,9 +88,9 @@
     },
     {
       "name": {
-        "en": "Dies/Granulator",
-        "de": "Matrizen",
-        "ru": "Матрицы"
+        "en": "Granulators",
+        "de": "Granulatoren",
+        "ru": "Грануляторы"
       },
       "url": {
         "en": "/en/granulator",
@@ -98,15 +98,15 @@
         "ru": "/ru/granulator"
       },
       "description": {
-        "en": "High-quality dies for pellet mills from LKE Group GmbH",
-        "de": "Hochwertige Matrizen für Pelletpressen von LKE Group GmbH",
-        "ru": "Высококачественные матрицы для грануляторов от LKE Group GmbH"
+        "en": "High-quality granulators for pellet mills from LKE Group GmbH",
+        "de": "Hochwertige Granulatoren für Pelletpressen von LKE Group GmbH",
+        "ru": "Высококачественные грануляторы для грануляторов от LKE Group GmbH"
       }
     },
     {
       "name": {
         "en": "Mixers",
-        "de": "Presswalzen",
+        "de": "Mischer",
         "ru": "Миксеры"
       },
       "url": {
@@ -115,9 +115,9 @@
         "ru": "/ru/mixer"
       },
       "description": {
-        "en": "Premium roller shells for pellet mills from LKE Group GmbH",
-        "de": "Premium-Presswalzen für Pelletpressen von LKE Group GmbH",
-        "ru": "Премиум-ролики для грануляторов от LKE Group GmbH"
+        "en": "Premium mixers for pellet mills from LKE Group GmbH",
+        "de": "Premium-Mischer für Pelletpressen von LKE Group GmbH",
+        "ru": "Премиум-миксеры для грануляторов от LKE Group GmbH"
       }
     },
     {
@@ -158,9 +158,7 @@
   "keywords": [
     "goldenmill",
     "LKE Group GmbH",
-    "dies",
-    "granulators",
-    "roller shells",
+    "granulator",
     "mixers",
     "spare parts",
     "pellet mills",
@@ -169,9 +167,6 @@
     "manufacturing",
     "high quality",
     "custom manufacturing",
-    "flat die",
-    "ring die",
-    "twin-track die",
     "pellet production",
     "granulation",
     "extrusion",
@@ -187,14 +182,13 @@
     "feed mill equipment",
     "biomass equipment",
     "industrial solutions",
-    "custom dies",
-    "custom roller shells",
+    "custom granulators",
+    "custom mixers",
     "pellet mill parts",
     "hammer mill parts",
     "industrial spare parts",
     "manufacturing solutions",
     "engineering solutions",
-    "industrial automation",
     "process optimization",
     "equipment maintenance"
   ],

@@ -1,0 +1,162 @@
+Starting language version check...
+----------------------------------------
+Checking http://localhost:3000/
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/granulator
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/mixer
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/spare-parts
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/about
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/contacts
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/service-information
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/privacy-policy
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/de/
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/de/granulator
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/de/mixer
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/de/spare-parts
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/de/about
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/de/contacts
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/de/service-information
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/de/privacy-policy
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/en/
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/en/granulator
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/en/mixer
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/en/spare-parts
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/en/about
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/en/contacts
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/en/service-information
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/en/privacy-policy
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/ru/
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/ru/granulator
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/ru/mixer
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/ru/spare-parts
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/ru/about
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/ru/contacts
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/ru/service-information
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
+Checking http://localhost:3000/ru/privacy-policy
+✓ Page exists
+✓ Correct language tag
+✓ Has hreflang tag
+----------------------------------------
