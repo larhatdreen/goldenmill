@@ -8,11 +8,11 @@ function Mixer1() {
       <svg
         xmlns='http://www.w3.org/2000/svg'
         xmlnsXlink='http://www.w3.org/1999/xlink'
-        viewBox='0 0 840 640'
+        viewBox='0 0 800 640'
         fill='none'
         className='w-full h-full'
       >
-        <g filter='url(#filter0_f_75_2898)'>
+        {/* <g filter='url(#filter0_f_75_2898)'>
           <rect
             width='552.417'
             height='552.417'
@@ -20,7 +20,7 @@ function Mixer1() {
             fill='url(#pattern0_75_2898)'
             fill-opacity='0.06'
           />
-        </g>
+        </g> */}
         <g filter={isDark ? undefined : 'url(#filter1_d_75_2898)'}>
           <rect
             x='2'

@@ -390,7 +390,7 @@ const SpareParts = () => {
                     left: '450px',
                     top: '34px',
                     width: isXSmallScreen 
-                      ? '308px'
+                      ? '0'
                       : isSmallScreen 
                       ? '308px'
                       : isMediumScreen 

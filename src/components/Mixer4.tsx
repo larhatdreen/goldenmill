@@ -5,10 +5,10 @@ function Mixer4() {
 
   return (
     <div className='relative tablet:w-full tablet:left-0 aspect-[100/80] z-0 desktopMd:mt-0 overflow-x-clip w-full h-full'>
-      <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"  viewBox="0 0 840 740" fill="none" className="w-full h-full">
-        <g filter="url(#filter0_f_75_6211)">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"  viewBox="0 0 800 740" fill="none" className="w-full h-full">
+        {/* <g filter="url(#filter0_f_75_6211)">
           <rect width="552.417" height="552.417" transform="matrix(0.537367 -0.843348 -0.843348 -0.537367 480.881 873.73)" fill="url(#pattern0_75_6211)" fill-opacity="0.06" />
-        </g>
+        </g> */}
         <g filter={isDark ? undefined : "url(#filter1_d_75_6211)"}>
           <rect x="2.00098" width="725" height="725" fill="url(#pattern1_75_6211)" shape-rendering="crispEdges" />
         </g>

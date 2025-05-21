@@ -24,8 +24,12 @@ export const useImageOptimization = ({ src, width, height, quality = 80 }: UseIm
           return;
         }
 
+        // Добавляем домен goldendie.de к относительным путям
+        const baseUrl = src.startsWith('/') ? 'https://goldendie.de' : '';
+        const fullSrc = `${baseUrl}${src}`;
+
         // Создаем URL с параметрами оптимизации
-        const url = new URL(src, window.location.origin);
+        const url = new URL(fullSrc);
         if (width) url.searchParams.set('w', width.toString());
         if (height) url.searchParams.set('h', height.toString());
         url.searchParams.set('q', quality.toString());

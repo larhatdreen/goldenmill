@@ -123,7 +123,7 @@ const TooltipWrapper: React.FC<{ text: string; maxLines: number; customStyles?: 
   }, [text]);
 
   const content = (
-    <Typography 
+    <Typography
       ref={textRef}
       sx={{
         margin: 0,
@@ -156,7 +156,7 @@ const TooltipWrapper: React.FC<{ text: string; maxLines: number; customStyles?: 
 
   if (isOverflowing) {
     return (
-      <Tooltip 
+      <Tooltip
         title={text}
         placement="top"
         arrow
@@ -183,11 +183,11 @@ const SectionTitle: React.FC<{ text: string }> = ({ text }) => {
     });
 
   return (
-    <div style={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      alignItems: 'flex-start', 
-      width: '100%', 
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      width: '100%',
       position: 'relative',
       minWidth: '600px'
     }}>
@@ -216,8 +216,8 @@ const SectionTitle: React.FC<{ text: string }> = ({ text }) => {
               }}
             />
           )}
-          <Typography 
-            variant="h2" 
+          <Typography
+            variant="h2"
             sx={{
               color: getColor(theme, 'title'),
               fontFamily: 'Bebas Neue',
@@ -251,10 +251,10 @@ const RectangleDecorations = () => {
       background: getColor(theme, 'particle'),
       position: 'absolute',
       left: '-35px',
-    top: '12px',
-    zIndex: 2
-  }} />
-);
+      top: '12px',
+      zIndex: 2
+    }} />
+  );
 }
 
 const ProductLanding: React.FC = () => {
@@ -268,7 +268,7 @@ const ProductLanding: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
   const [productInfo, setProductInfo] = useState<ProductInfo | undefined>(undefined);
-  
+
   // Расширенные брейкпоинты для лучшей адаптивности
   const isMobile = useMediaQuery('(max-width:768px)');
   const isTablet = useMediaQuery('(min-width:769px) and (max-width:1024px)');
@@ -283,7 +283,7 @@ const ProductLanding: React.FC = () => {
     // Удаляем все нечисловые символы, кроме точки
     const cleanPrice = price.replace(/[^\d.]/g, '');
     const number = parseFloat(cleanPrice);
-    
+
     if (isNaN(number)) return price;
 
     // Форматируем большие числа
@@ -296,7 +296,7 @@ const ProductLanding: React.FC = () => {
       // Для тысяч используем сокращение K
       return `${Math.floor(number / 1000)}K €`;
     }
-    
+
     // Для чисел меньше 1000
     if (number % 1 === 0) {
       // Если целое число, не показываем десятичные
@@ -315,7 +315,7 @@ const ProductLanding: React.FC = () => {
           console.log('Using data from route state:', location.state);
           console.log('Active Image URL from state:', (location.state as ProductLandingProps).activeImageUrl);
           setProduct(location.state as ProductLandingProps);
-          
+
           // Дополнительно проверяем данные через API
           console.log('Double checking with API for id:', id);
           const response = await fetch(`${API_URL}/products/${id}`);
@@ -326,7 +326,7 @@ const ProductLanding: React.FC = () => {
           const apiData = await response.json();
           console.log('API Data:', apiData);
           console.log('API Active Image URL:', apiData.activeImageUrl);
-          
+
           // Если данные из API отличаются, используем их
           if (apiData.activeImageUrl !== (location.state as ProductLandingProps).activeImageUrl) {
             console.log('Data mismatch detected, using API data');
@@ -389,13 +389,20 @@ const ProductLanding: React.FC = () => {
     setIsHelpModalOpen(false);
   };
 
+  // Всегда передаем одинаковую структуру параметров
+  const seoData = useSEO('product', {
+    productName: product?.title?.[currentLanguage] ?? '',
+    productDescription: product?.description?.[currentLanguage] ?? '',
+    category: product?.category ? t(`products.categories.${product.category}`) : t('products.categories.default'),
+  });
+
   if (isMobile) {
     return <MobileProductLanding />;
   }
 
   if (loading) {
     return (
-      <Container sx={{ 
+      <Container sx={{
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
@@ -415,12 +422,6 @@ const ProductLanding: React.FC = () => {
 
   const { title, description, subtitle, imageUrl, price } = product;
 
-  // Get SEO data with dynamic product information
-  const seoData = useSEO('product', {
-    productName: product.title[currentLanguage],
-    productDescription: product.description[currentLanguage],
-    category: t(`products.categories.${product.category || 'default'}`),
-  });
 
   return (
     <>
@@ -428,12 +429,12 @@ const ProductLanding: React.FC = () => {
         title={seoData.title}
         description={seoData.description}
         keywords={seoData.keywords}
-        image={product.imageUrl}
+        image={product.imageUrl.startsWith('http') ? product.imageUrl : `${API_URL.replace('/api', '')}${product.imageUrl}`}
         article={true}
         product={{
           name: product.title[currentLanguage],
           description: product.description[currentLanguage],
-          image: product.imageUrl,
+          image: product.imageUrl.startsWith('http') ? product.imageUrl : `${API_URL.replace('/api', '')}${product.imageUrl}`,
           price: product.price || undefined,
           availability: 'https://schema.org/InStock',
           technicalSpecification: product.technicalDescription?.[currentLanguage],
@@ -443,38 +444,38 @@ const ProductLanding: React.FC = () => {
           model: product.subtitle?.[currentLanguage],
         }}
       />
-      <Container 
-        maxWidth={false} 
+      <Container
+        maxWidth={false}
         component="main"
         role="main"
-        sx={{ 
+        sx={{
           minHeight: '100vh',
           color: '#fff',
           pt: 4,
           pb: 30,
-          maxWidth: isXLargeDesktop 
-            ? '2560px !important' 
-            : isLargeDesktop 
-            ? '1920px !important' 
-            : isMediumDesktop 
-            ? '1440px !important' 
-            : isSmallDesktop 
-            ? '1280px !important' 
-            : isTablet 
-            ? '1024px !important' 
-            : '100% !important',
+          maxWidth: isXLargeDesktop
+            ? '2560px !important'
+            : isLargeDesktop
+              ? '1920px !important'
+              : isMediumDesktop
+                ? '1440px !important'
+                : isSmallDesktop
+                  ? '1280px !important'
+                  : isTablet
+                    ? '1024px !important'
+                    : '100% !important',
           margin: '0 auto',
           overflow: 'hidden',
           position: 'relative',
-          px: isTablet 
-            ? 2 
-            : isSmallDesktop 
-            ? 3 
-            : isMediumDesktop 
-            ? 4 
-            : isLargeDesktop 
-            ? 5 
-            : 6,
+          px: isTablet
+            ? 2
+            : isSmallDesktop
+              ? 3
+              : isMediumDesktop
+                ? 4
+                : isLargeDesktop
+                  ? 5
+                  : 6,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center'
@@ -482,9 +483,9 @@ const ProductLanding: React.FC = () => {
       >
         {/* Main product section */}
         <article style={{ width: '100%', maxWidth: '1440px', margin: '0 auto' }}>
-          <Box 
+          <Box
             component="section"
-            sx={{ 
+            sx={{
               display: 'flex',
               flexDirection: 'row',
               gap: isTablet ? 2 : isSmallDesktop ? 3 : 4,
@@ -498,39 +499,39 @@ const ProductLanding: React.FC = () => {
             }}
           >
             {/* Left column with image */}
-            <Box 
+            <Box
               component="figure"
-              sx={{ 
+              sx={{
                 flex: '0 0 auto',
                 display: 'flex',
                 flexDirection: 'column',
                 position: 'relative',
                 margin: 0,
-                width: isTablet 
-                  ? '400px' 
-                  : isSmallDesktop 
-                  ? '450px' 
-                  : isMediumDesktop 
-                  ? '500px' 
-                  : '521.67px'
+                width: isTablet
+                  ? '400px'
+                  : isSmallDesktop
+                    ? '450px'
+                    : isMediumDesktop
+                      ? '500px'
+                      : '521.67px'
               }}
             >
-              <Box 
-                sx={{ 
-                  width: isTablet 
-                    ? '400px' 
-                    : isSmallDesktop 
-                    ? '450px' 
-                    : isMediumDesktop 
-                    ? '500px' 
-                    : '521.67px',
-                  height: isTablet 
-                    ? '400px' 
-                    : isSmallDesktop 
-                    ? '450px' 
-                    : isMediumDesktop 
-                    ? '500px' 
-                    : '521.67px',
+              <Box
+                sx={{
+                  width: isTablet
+                    ? '400px'
+                    : isSmallDesktop
+                      ? '450px'
+                      : isMediumDesktop
+                        ? '500px'
+                        : '521.67px',
+                  height: isTablet
+                    ? '400px'
+                    : isSmallDesktop
+                      ? '450px'
+                      : isMediumDesktop
+                        ? '500px'
+                        : '521.67px',
                   position: 'relative',
                   borderRadius: '0',
                   overflow: 'hidden',
@@ -538,7 +539,7 @@ const ProductLanding: React.FC = () => {
                 }}
               >
                 <img
-                  src={imageUrl}
+                  src={imageUrl.startsWith('http') ? imageUrl : `${API_URL.replace('/api', '')}${imageUrl}`}
                   alt={`Product ${title[currentLanguage]} detailed view`}
                   loading="lazy"
                   style={{
@@ -556,19 +557,19 @@ const ProductLanding: React.FC = () => {
             </Box>
 
             {/* Right column with information */}
-            <Box 
+            <Box
               component="section"
               aria-label="Product Information"
-              sx={{ 
+              sx={{
                 flex: '0 0 auto',
                 display: 'flex',
                 flexDirection: 'column',
                 position: 'relative',
-                maxWidth: isTablet 
-                  ? '300px' 
-                  : isSmallDesktop 
-                  ? '350px' 
-                  : '400px'
+                maxWidth: isTablet
+                  ? '300px'
+                  : isSmallDesktop
+                    ? '350px'
+                    : '400px'
               }}
             >
               {/* Help button */}
@@ -585,7 +586,7 @@ const ProductLanding: React.FC = () => {
               >
                 <button
                   className={`font-labgrotesque text-[16px] sm:text-[18px] laptop:text-[20px] flex flex-row items-center ${isDark ? 'text-[#D5CDBD] hover:text-[#82653E]' : 'text-[#2A3242] hover:text-[#2A3242]'
-                  }`}
+                    }`}
                   onClick={handleOpenHelpModal}
                   aria-label="Need Help"
                 >
@@ -596,21 +597,21 @@ const ProductLanding: React.FC = () => {
 
               {/* Title and subtitle */}
               <Box component="header" sx={{ display: 'flex', flexDirection: 'column', mt: isTablet ? 8 : isSmallDesktop ? 10 : 12 }}>
-                <Box sx={{ 
+                <Box sx={{
                   display: 'flex',
                   flexDirection: 'column',
                   mb: isTablet ? 4 : isSmallDesktop ? 5 : 6,
-                  maxWidth: isTablet 
-                    ? '300px' 
-                    : isSmallDesktop 
-                    ? '350px' 
-                    : '400px'
+                  maxWidth: isTablet
+                    ? '300px'
+                    : isSmallDesktop
+                      ? '350px'
+                      : '400px'
                 }}>
                   {(() => {
                     const words = title[currentLanguage].split(' ');
                     const lines: string[] = [];
                     let currentLine = '';
-                    
+
                     // Process words to create lines with max 14 characters
                     for (let i = 0; i < words.length && lines.length < 3; i++) {
                       const word = words[i];
@@ -626,24 +627,24 @@ const ProductLanding: React.FC = () => {
                         }
                       }
                     }
-                    
+
                     // Add the last line if we have space
                     if (currentLine && lines.length < 3) {
                       lines.push(currentLine);
                     }
 
                     return lines.map((line, index) => (
-                      <Typography 
+                      <Typography
                         key={index}
-                        variant="h1" 
-                        sx={{ 
+                        variant="h1"
+                        sx={{
                           color: getColor(theme, 'title'),
                           fontFamily: 'Bebas Neue',
-                          fontSize: isTablet 
-                            ? '70px' 
-                            : isSmallDesktop 
-                            ? '80px' 
-                            : '90px',
+                          fontSize: isTablet
+                            ? '70px'
+                            : isSmallDesktop
+                              ? '80px'
+                              : '90px',
                           letterSpacing: '0',
                           lineHeight: 0.9,
                           textTransform: 'uppercase',
@@ -668,11 +669,11 @@ const ProductLanding: React.FC = () => {
                         text={subtitle[currentLanguage]}
                         maxLines={3}
                         customStyles={{
-                          fontSize: isTablet 
-                            ? '28px' 
-                            : isSmallDesktop 
-                            ? '30px' 
-                            : '32px'
+                          fontSize: isTablet
+                            ? '28px'
+                            : isSmallDesktop
+                              ? '30px'
+                              : '32px'
                         }}
                       />
                     ) : (
@@ -681,11 +682,11 @@ const ProductLanding: React.FC = () => {
                         text={subtitle[currentLanguage]}
                         maxLines={2}
                         customStyles={{
-                          fontSize: isTablet 
-                            ? '28px' 
-                            : isSmallDesktop 
-                            ? '30px' 
-                            : '32px'
+                          fontSize: isTablet
+                            ? '28px'
+                            : isSmallDesktop
+                              ? '30px'
+                              : '32px'
                         }}
                       />
                     )}
@@ -694,8 +695,8 @@ const ProductLanding: React.FC = () => {
               </Box>
 
               {/* Price button */}
-              <Box 
-                sx={{ 
+              <Box
+                sx={{
                   mt: '-24px'
                 }}
               >
@@ -711,14 +712,14 @@ const ProductLanding: React.FC = () => {
         </article>
 
         {/* Main description */}
-        <Box sx={{ 
-          maxWidth: isTablet 
-            ? '900px' 
-            : isSmallDesktop 
-            ? '1000px' 
-            : isMediumDesktop 
-            ? '1100px' 
-            : '1200px',
+        <Box sx={{
+          maxWidth: isTablet
+            ? '900px'
+            : isSmallDesktop
+              ? '1000px'
+              : isMediumDesktop
+                ? '1100px'
+                : '1200px',
           margin: '0 auto',
           px: isTablet ? 2 : 3,
           mt: isTablet ? 4 : isSmallDesktop ? 5 : 6,
@@ -726,8 +727,8 @@ const ProductLanding: React.FC = () => {
           gap: isTablet ? 2 : isSmallDesktop ? 3 : 4,
           alignItems: 'flex-start'
         }}>
-          <Box sx={{ 
-            width: isTablet ? '100px' : isSmallDesktop ? '120px' : '132px', 
+          <Box sx={{
+            width: isTablet ? '100px' : isSmallDesktop ? '120px' : '132px',
             height: isTablet ? '100px' : isSmallDesktop ? '120px' : '132px',
             flexShrink: 0,
             display: 'flex',
@@ -776,7 +777,7 @@ const ProductLanding: React.FC = () => {
                 />
               </div>
             ) : (
-              <Typography sx={{ color: getColor(theme, 'text') , fontSize: '16px', textAlign: 'center', p: 1 }}>
+              <Typography sx={{ color: getColor(theme, 'text'), fontSize: '16px', textAlign: 'center', p: 1 }}>
                 No logo
               </Typography>
             )}
@@ -785,34 +786,34 @@ const ProductLanding: React.FC = () => {
             text={description[currentLanguage]}
             maxLines={4}
             customStyles={{
-              width: isTablet 
-                ? '700px' 
-                : isSmallDesktop 
-                ? '800px' 
-                : '906px',
-              height: isTablet 
-                ? '110px' 
-                : isSmallDesktop 
-                ? '120px' 
-                : '131px',
+              width: isTablet
+                ? '700px'
+                : isSmallDesktop
+                  ? '800px'
+                  : '906px',
+              height: isTablet
+                ? '110px'
+                : isSmallDesktop
+                  ? '120px'
+                  : '131px',
               fontFamily: 'Bebas Neue',
               fontWeight: 400,
-              fontSize: isTablet 
-                ? '18px' 
-                : isSmallDesktop 
-                ? '19px' 
-                : '20px',
-              lineHeight: isTablet 
-                ? '26px' 
-                : isSmallDesktop 
-                ? '28px' 
-                : '29.9px',
+              fontSize: isTablet
+                ? '18px'
+                : isSmallDesktop
+                  ? '19px'
+                  : '20px',
+              lineHeight: isTablet
+                ? '26px'
+                : isSmallDesktop
+                  ? '28px'
+                  : '29.9px',
               letterSpacing: '0%',
-              maxHeight: isTablet 
-                ? '100px' 
-                : isSmallDesktop 
-                ? '110px' 
-                : '120px',
+              maxHeight: isTablet
+                ? '100px'
+                : isSmallDesktop
+                  ? '110px'
+                  : '120px',
               display: '-webkit-box',
               WebkitLineClamp: '4',
               WebkitBoxOrient: 'vertical',
@@ -823,7 +824,7 @@ const ProductLanding: React.FC = () => {
         </Box>
 
         {/* Manufacturing Sections */}
-        <Box sx={{ 
+        <Box sx={{
           maxWidth: '1200px',
           margin: '0 auto',
           px: 3,
@@ -837,10 +838,10 @@ const ProductLanding: React.FC = () => {
         }}>
           {product.manufacturingSections && product.manufacturingSections.map((section, index) => {
             const imagePath = product.sectionImages?.[index];
-            const fullImageUrl = imagePath?.startsWith('http') 
-              ? imagePath 
+            const fullImageUrl = imagePath?.startsWith('http')
+              ? imagePath
               : `${API_URL.replace('/api', '')}${imagePath}`;
-            
+
             return (
               <Box key={index} sx={{
                 width: '100%',
@@ -857,8 +858,11 @@ const ProductLanding: React.FC = () => {
                     alt="Background shape"
                     style={{
                       position: 'absolute',
-                      width: '700px',  // Фиксированный размер
-                      height: '700px',  // Фиксированный размер
+                      width: isMobile ? '40vw' : isTablet ? '40vw' : isSmallDesktop ? '30vw' : '50vw',
+                      height: isMobile ? '40vw' : isTablet ? '40vw' : isSmallDesktop ? '30vw' : '50vw',
+
+                      maxWidth: '700px',
+                      maxHeight: '700px',
                       objectFit: 'contain',
                       userSelect: 'none',
                       pointerEvents: 'none',
@@ -875,7 +879,7 @@ const ProductLanding: React.FC = () => {
                   sx={{
                     position: 'absolute',
                     top: '',
-                    right: isSmallDesktop ? '20px' : '-39px',
+                    right: isSmallDesktop ? '20px' : '-10px',
                     width: '584px',
                     height: '513px',
                     zIndex: 1,
@@ -923,7 +927,6 @@ const ProductLanding: React.FC = () => {
                           lineHeight: 1.2,
                           letterSpacing: '0.00938em',
                           color: getColor(theme, 'subtitle'),
-                          maxWidth: '800px',
                           width: '100%',
                           textAlign: 'left',
                           zIndex: 1,
@@ -961,12 +964,10 @@ const ProductLanding: React.FC = () => {
                   fontSize: '17px',
                   letterSpacing: '0.00938em',
                   lineHeight: 1.2,
-                  maxWidth: '800px',
-                  opacity: 0.5,
                   position: 'absolute',
-                  left: isSmallDesktop ? '775px' : '875px',  // Корректируем позицию для small desktop
+                  left: isSmallDesktop ? '775px' : '850px',  // Корректируем позицию для small desktop
                   textAlign: 'left',
-                  top: '543px',
+                  top: '465px',
                   width: '100%',
                   zIndex: 1,
                   transform: 'none',
@@ -1013,7 +1014,7 @@ const ProductLanding: React.FC = () => {
         </Box>
 
         {/* Technical Section */}
-        <Box sx={{ 
+        <Box sx={{
           maxWidth: '1200px',
           margin: '0 auto',
           px: 3,
@@ -1033,7 +1034,7 @@ const ProductLanding: React.FC = () => {
             sx={{
               position: 'absolute',
               top: '1366px',
-              left: isSmallDesktop ? '-100px' : '-200px',  // Корректируем позицию для small desktop
+              left: isSmallDesktop ? '-100px' : '-160px',  // Корректируем позицию для small desktop
               width: '584px',
               height: '513px',
               zIndex: 0,
@@ -1045,10 +1046,10 @@ const ProductLanding: React.FC = () => {
 
           {/* Technical Title */}
           {product.technicalTitle && (
-            <Box 
+            <Box
               sx={{
                 position: 'absolute',
-                left: isSmallDesktop ? '96px' : '-4px',  // Корректируем позицию для small desktop
+                left: isSmallDesktop ? '96px' : '30px',  // Корректируем позицию для small desktop
                 top: '1354px',
                 zIndex: 1,
                 cursor: 'pointer',
@@ -1062,11 +1063,11 @@ const ProductLanding: React.FC = () => {
                 background: getColor(theme, 'particle'),
                 position: 'absolute',
                 left: '-35px',
-                top: '12px',
+                top: '4px',
                 zIndex: 2
               }} />
-              <Typography 
-                variant="h2" 
+              <Typography
+                variant="h2"
                 sx={{
                   color: getColor(theme, 'title'),
                   fontFamily: 'Bebas Neue',
@@ -1090,10 +1091,10 @@ const ProductLanding: React.FC = () => {
 
           {/* Technical Subtitle */}
           {product.technicalSubtitle && product.technicalSubtitle[currentLanguage]?.split(' ')[0] && (
-            <Box 
+            <Box
               sx={{
                 position: 'absolute',
-                left: isSmallDesktop ? '96px' : '-4px',  // Корректируем позицию для small desktop
+                left: isSmallDesktop ? '96px' : '30px',  // Корректируем позицию для small desktop
                 top: '1445px',
                 zIndex: 1,
                 cursor: 'pointer',
@@ -1107,11 +1108,11 @@ const ProductLanding: React.FC = () => {
                 background: getColor(theme, 'particle'),
                 position: 'absolute',
                 left: '-35px',
-                top: '12px',
+                top: '4px',
                 zIndex: 2
               }} />
-              <Typography 
-                variant="h2" 
+              <Typography
+                variant="h2"
                 sx={{
                   color: getColor(theme, 'title'),
                   fontFamily: 'Bebas Neue',
@@ -1121,7 +1122,6 @@ const ProductLanding: React.FC = () => {
                   lineHeight: 1,
                   textTransform: 'uppercase',
                   whiteSpace: 'nowrap',
-                  overflow: 'hidden',
                   textOverflow: 'ellipsis',
                   width: '100%',
                   textAlign: 'left',
@@ -1158,7 +1158,6 @@ const ProductLanding: React.FC = () => {
                 lineHeight: 1.2,
                 letterSpacing: '0.00938em',
                 color: getColor(theme, 'subtitle'),
-                maxWidth: '800px',
                 position: 'absolute',
                 left: isSmallDesktop ? '102px' : '2px',  // Корректируем позицию для small desktop
                 top: '1529px',
@@ -1190,7 +1189,7 @@ const ProductLanding: React.FC = () => {
           })()}
 
           {/* Technical Word */}
-          <Typography 
+          <Typography
             sx={{
               color: getColor(theme, 'svg.fill'),
               fontFamily: 'AdventProRegular',
@@ -1199,10 +1198,9 @@ const ProductLanding: React.FC = () => {
               letterSpacing: '0.00938em',
               lineHeight: 1.2,
               maxWidth: '800px',
-              opacity: 0.5,
               position: 'absolute',
-              left: isSmallDesktop ? '167px' : '67px',  // Корректируем позицию для small desktop
-              top: '1835px',
+              left: isSmallDesktop ? '167px' : '110px',  // Корректируем позицию для small desktop
+              top: '1830px',
               width: '100%',
               zIndex: 1,
               transform: 'none',

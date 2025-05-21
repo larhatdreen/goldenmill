@@ -15,7 +15,6 @@ export const useSEO = (page: string, params?: { [key: string]: string }) => {
     let description = t(`${basePath}.description`);
     let keywords = t(`${basePath}.keywords`);
 
-    // Replace dynamic parameters if they exist
     if (params) {
       Object.entries(params).forEach(([key, value]) => {
         const placeholder = `{{${key}}}`;
@@ -23,19 +22,21 @@ export const useSEO = (page: string, params?: { [key: string]: string }) => {
         description = description.replace(placeholder, value);
         keywords = keywords.replace(placeholder, value);
       });
+
+      if (params.categoryKey) {
+        const categoryLabel = t(`products.categories.${params.categoryKey}`);
+        title = title.replace('{{category}}', categoryLabel);
+        description = description.replace('{{category}}', categoryLabel);
+        keywords = keywords.replace('{{category}}', categoryLabel);
+      }
     }
 
-    // Добавляем LKE Group GmbH в ключевые слова, если их еще нет
     if (!keywords.includes('LKE Group GmbH')) {
       keywords = `${keywords}, LKE Group GmbH, GoldenMill`;
     }
 
-    return {
-      title,
-      description,
-      keywords
-    };
+    return { title, description, keywords };
   };
 
   return getSEOData();
-}; 
+};
