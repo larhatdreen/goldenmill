@@ -46,9 +46,9 @@
   "mixerSubtitle": "GM-520",
   
   "navBar": {
-    "main": "Главная страница",
-    "products": "Продукция",
-    "about": "О компании",
+    "main": "Главная",
+    "products": "Продукты",
+    "about": "О нас",
     "contacts": "Контакты",
     "menu": "Меню"
   },

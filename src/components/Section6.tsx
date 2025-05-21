@@ -57,9 +57,9 @@ function Section4() {
                 {/* SVG-блок */}
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="846" height="910" viewBox="0 0 846 1400" fill="none">
-                      <foreignObject width={300} height={70} x={320} y={8}>
+                      <foreignObject width={340} height={70} x={280} y={0}>
                         <div
-                          className='font-["Bebas_Neue"] text-[22px] uppercase' 
+                          className='font-["Bebas_Neue"] text-[32px] uppercase' 
                           style={{ color: isDark ? '#767676' : '#898989', lineHeight: '100%', letterSpacing: '3px' }}
                         >
                           {t('diagrams.millGranulator.specificationBlock.characteristics.title')}

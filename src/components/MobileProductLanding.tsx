@@ -589,7 +589,7 @@ const MobileProductLanding: React.FC = () => {
                   }}
                 >
                   <img
-                    src={product.activeImageUrl?.startsWith('http') ? product.activeImageUrl : `${API_URL.replace('/api', '')}${product.activeImageUrl}`}
+                    src={product.activeImageUrl?.startsWith('http') ? product.activeImageUrl : `https://goldendie.de${product.activeImageUrl}`}
                     alt="Product logo"
                     style={{
                       width: 'auto',
@@ -668,10 +668,10 @@ const MobileProductLanding: React.FC = () => {
                   {imagePath && (
                     <Box sx={{
                       position: 'absolute',
-                      width: '276px',
+                      width: '100%',
                       height: '350px',
                       left: '49px',
-                      top: '311px',
+                      top: '320px',
                       zIndex: 2,
                       transform: 'none',
                       opacity: 0.7,
@@ -687,8 +687,7 @@ const MobileProductLanding: React.FC = () => {
                           width: '100%',
                           height: '100%',
                           objectFit: 'contain',
-                          transform: 'scale(1.2)',
-                          opacity: 0.7,
+                          transform: 'scale(1)',
                           position: 'relative',
                           userSelect: 'none',
                           pointerEvents: 'none'
