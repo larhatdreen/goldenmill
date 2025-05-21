@@ -117,7 +117,6 @@ const TooltipWrapper: React.FC<{ text: string; maxLines: number; customStyles?: 
         WebkitBoxOrient: 'vertical',
         overflow: 'hidden',
         mb: 2,
-        opacity: 0.8,
         ...customStyles
       }}
     >
@@ -674,7 +673,6 @@ const MobileProductLanding: React.FC = () => {
                       top: '320px',
                       zIndex: 2,
                       transform: 'none',
-                      opacity: 0.7,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -717,7 +715,7 @@ const MobileProductLanding: React.FC = () => {
                       justifyContent: 'center'
                     }}
                   >
-                    <CircleTopicMobileIcon className='w-[100%] h-[100%] object-contain transform scale-125 opacity-70' />
+                    <CircleTopicMobileIcon className='w-[100%] h-[100%] object-contain transform scale-125 ' />
                   </Box>
 
                   {/* Content Container */}
@@ -786,8 +784,8 @@ const MobileProductLanding: React.FC = () => {
                       {/* Section Word */}
                       <Typography sx={{
                         position: 'absolute',
-                        bottom: '295px',
-                        left: '70px',
+                        bottom: '290px',
+                        left: '72px',
                         color: getColor(theme, 'svg.fill'),
                         fontFamily: 'AdventProRegular',
                         fontSize: '24px',
@@ -795,13 +793,12 @@ const MobileProductLanding: React.FC = () => {
                         letterSpacing: '0.00938em',
                         lineHeight: 1.2,
                         margin: '0px',
-                        maxWidth: '200px',
-                        opacity: 0.26,
-                        width: '100%',
                         transform: 'none',
                         userSelect: 'none'
                       }}>
                         {currentLanguage === 'ru' && <span style={{ fontFamily: 'Bebas Neue' }}>КАТАЛОГ</span>}
+                  {currentLanguage === 'en' && <span style={{ fontFamily: 'Bebas Neue' }}>СATALOG</span>}
+                  {currentLanguage === 'de' && <span style={{ fontFamily: 'Bebas Neue' }}>KATALOG</span>}
                       </Typography>
                     </Box>
                   </Box>
@@ -838,7 +835,7 @@ const MobileProductLanding: React.FC = () => {
                   justifyContent: 'center'
                 }}
               >
-                <CircleTopicMobileIcon className='w-[100%] h-[100%] object-contain transform scale-125 opacity-70' />
+                <CircleTopicMobileIcon className='w-[100%] h-[100%] object-contain transform scale-125' />
               </Box>
 
               {/* Content Container */}
@@ -931,7 +928,6 @@ const MobileProductLanding: React.FC = () => {
                       letterSpacing: '0.00938em',
                       color: getColor(theme, 'textOnSvg'),
                       maxWidth: '280px',
-                      opacity: 0.4,
                       mb: 2,
                       wordBreak: 'break-word',
                       whiteSpace: 'pre-line',
@@ -964,13 +960,12 @@ const MobileProductLanding: React.FC = () => {
                     letterSpacing: '0.00938em',
                     lineHeight: 1.2,
                     margin: '0px',
-                    maxWidth: '200px',
-                    opacity: 0.26,
-                    width: '100%',
                     textAlign: 'left',
                     userSelect: 'none'
                   }}>
                     {currentLanguage === 'ru' && <span style={{ fontFamily: 'Bebas Neue' }}>КАТАЛОГ</span>}
+                  {currentLanguage === 'en' && <span style={{ fontFamily: 'Bebas Neue' }}>СATALOG</span>}
+                  {currentLanguage === 'de' && <span style={{ fontFamily: 'Bebas Neue' }}>KATALOG</span>}
                   </Typography>
                 </Box>
               </Box>

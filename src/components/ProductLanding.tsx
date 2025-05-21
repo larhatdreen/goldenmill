@@ -965,17 +965,16 @@ const ProductLanding: React.FC = () => {
                   letterSpacing: '0.00938em',
                   lineHeight: 1.2,
                   position: 'absolute',
-                  left: isSmallDesktop ? '775px' : '850px',  // Корректируем позицию для small desktop
+                  right: isSmallDesktop ? '290px' : isTablet ? '255px' : '-850px',
                   textAlign: 'left',
                   top: '465px',
-                  width: '100%',
                   zIndex: 1,
                   transform: 'none',
                   color: getColor(theme, 'svg.fill')
                 }}>
                   {currentLanguage === 'ru' && <span style={{ fontFamily: 'Bebas Neue' }}>КАТАЛОГ</span>}
-                  {currentLanguage === 'en' && 'CATALOG'}
-                  {currentLanguage === 'de' && 'KATALOG'}
+                  {currentLanguage === 'en' && <span style={{ fontFamily: 'Bebas Neue' }}>СATALOG</span>}
+                  {currentLanguage === 'de' && <span style={{ fontFamily: 'Bebas Neue' }}>KATALOG</span>}
                 </Typography>
 
                 {/* Section Hint */}
@@ -1215,8 +1214,8 @@ const ProductLanding: React.FC = () => {
             }}
           >
             {currentLanguage === 'ru' && <span style={{ fontFamily: 'Bebas Neue' }}>КАТАЛОГ</span>}
-            {currentLanguage === 'en' && 'CATALOG'}
-            {currentLanguage === 'de' && 'KATALOG'}
+                  {currentLanguage === 'en' && <span style={{ fontFamily: 'Bebas Neue' }}>СATALOG</span>}
+                  {currentLanguage === 'de' && <span style={{ fontFamily: 'Bebas Neue' }}>KATALOG</span>}
           </Typography>
 
           {/* Technical Description Hint */}
