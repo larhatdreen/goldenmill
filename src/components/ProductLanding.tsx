@@ -277,6 +277,7 @@ const ProductLanding: React.FC = () => {
   const isLargeDesktop = useMediaQuery('(min-width:1921px) and (max-width:2560px)');
   const isXLargeDesktop = useMediaQuery('(min-width:2561px)');
   const isDark = theme.name === 'dark';
+  const isMediumDesktopStatic = useMediaQuery('(min-width:1281px)')
 
   // Добавляем функцию форматирования цены
   const formatPrice = (price: string): string => {
@@ -879,7 +880,7 @@ const ProductLanding: React.FC = () => {
                   sx={{
                     position: 'absolute',
                     top: '',
-                    right: isSmallDesktop ? '20px' : '-10px',
+                    right: isSmallDesktop ? '100px' : '-10px',
                     width: '584px',
                     height: '513px',
                     zIndex: 1,
@@ -954,8 +955,6 @@ const ProductLanding: React.FC = () => {
                       ) : content;
                     })()}
                   </Box>
-                </Box>
-
                 {/* Section Word */}
                 <Typography sx={{
                   margin: 0,
@@ -965,7 +964,7 @@ const ProductLanding: React.FC = () => {
                   letterSpacing: '0.00938em',
                   lineHeight: 1.2,
                   position: 'absolute',
-                  right: isSmallDesktop ? '290px' : isTablet ? '255px' : '-850px',
+                  right: '266px',
                   textAlign: 'left',
                   top: '465px',
                   zIndex: 1,
@@ -976,6 +975,8 @@ const ProductLanding: React.FC = () => {
                   {currentLanguage === 'en' && <span style={{ fontFamily: 'Bebas Neue' }}>СATALOG</span>}
                   {currentLanguage === 'de' && <span style={{ fontFamily: 'Bebas Neue' }}>KATALOG</span>}
                 </Typography>
+                </Box>
+
 
                 {/* Section Hint */}
                 {section.hint?.[currentLanguage] && (
@@ -989,7 +990,7 @@ const ProductLanding: React.FC = () => {
                     color: getColor(theme, 'textOnSvg'),
                     position: 'absolute',
                     left: isSmallDesktop ? '28px' : '-8px',
-                    top: '1030px',
+                    top: isMobile ? '200px' : isTablet ? '700px' : isSmallDesktop ? '700px' : '1030px',
                     maxWidth: '800px',
                     opacity: 1,
                     zIndex: 1,
@@ -1019,7 +1020,7 @@ const ProductLanding: React.FC = () => {
           px: 3,
           mt: '-600px',
           position: 'relative',
-          height: '1900px',
+          height: isMediumDesktopStatic ? '1600px' : '1400px',
           transform: 'none',
           transformOrigin: 'top left',
           width: '100%',
@@ -1032,7 +1033,7 @@ const ProductLanding: React.FC = () => {
           <Box
             sx={{
               position: 'absolute',
-              top: '1366px',
+              top: isMediumDesktopStatic ? '1200px' : '1000px',
               left: isSmallDesktop ? '-100px' : '-160px',  // Корректируем позицию для small desktop
               width: '584px',
               height: '513px',
@@ -1049,7 +1050,7 @@ const ProductLanding: React.FC = () => {
               sx={{
                 position: 'absolute',
                 left: isSmallDesktop ? '96px' : '30px',  // Корректируем позицию для small desktop
-                top: '1354px',
+                top: isMediumDesktopStatic ? '1200px' : '1000px',
                 zIndex: 1,
                 cursor: 'pointer',
                 maxWidth: '400px',
@@ -1094,7 +1095,7 @@ const ProductLanding: React.FC = () => {
               sx={{
                 position: 'absolute',
                 left: isSmallDesktop ? '96px' : '30px',  // Корректируем позицию для small desktop
-                top: '1445px',
+                top: isMediumDesktopStatic ? '1300px' : '1100px',
                 zIndex: 1,
                 cursor: 'pointer',
                 maxWidth: '400px',
@@ -1159,7 +1160,7 @@ const ProductLanding: React.FC = () => {
                 color: getColor(theme, 'subtitle'),
                 position: 'absolute',
                 left: isSmallDesktop ? '102px' : '2px',  // Корректируем позицию для small desktop
-                top: '1529px',
+                top: isMediumDesktopStatic ? '1400px' : '1200px',
                 width: '100%',
                 textAlign: 'left',
                 zIndex: 1,
@@ -1199,7 +1200,7 @@ const ProductLanding: React.FC = () => {
               maxWidth: '800px',
               position: 'absolute',
               left: isSmallDesktop ? '167px' : '110px',  // Корректируем позицию для small desktop
-              top: '1830px',
+              top: isMediumDesktopStatic ? '1666px' : '1465px',
               width: '100%',
               zIndex: 1,
               transform: 'none',
@@ -1230,7 +1231,7 @@ const ProductLanding: React.FC = () => {
               color: getColor(theme, 'textOnSvg'),
               position: 'absolute',
               left: isSmallDesktop ? '386px' : '286px',  // Корректируем позицию для small desktop
-              top: '1629px',
+              top: isMediumDesktopStatic ? '1500px' :'1300px',
               maxWidth: '800px',
               opacity: 1,
               zIndex: 1,
