@@ -1,15 +1,7 @@
 {
-  "name": {
-    "en": "GoldenMill - LKE Group GmbH | Granulators, Mixers, and Spare Parts",
-    "de": "GoldenMill - LKE Group GmbH | Granulatoren, Mischer und Ersatzteile",
-    "ru": "GoldenMill - LKE Group GmbH | Грануляторы, миксеры и запчасти"
-  },
+  "name": "GoldenMill - LKE Group GmbH | Dies and Roller Shells for Pellet Mills",
   "short_name": "GoldenMill",
-  "description": {
-    "en": "GoldenMill - LKE Group GmbH - manufacturer of high-quality granulators, mixers, and spare parts for pellet mills. Custom manufacturing according to customer specifications.",
-    "de": "GoldenMill - LKE Group GmbH - Hersteller von hochwertigen Granulatoren, Mischern und Ersatzteilen für Pelletpressen. Kundenspezifische Fertigung nach Vorgaben.",
-    "ru": "GoldenMill - LKE Group GmbH - производитель высококачественных грануляторов, миксеров и запчастей для грануляторов. Индивидуальное производство по спецификациям заказчика."
-  },
+  "description": "GoldenMill - LKE Group GmbH - manufacturer of high-quality dies, roller shells, and spare parts for pellet mills. Custom manufacturing according to customer specifications.",
   "icons": [
     {
       "src": "/favicon-16x16.png",
@@ -41,101 +33,32 @@
   "theme_color": "#ffffff",
   "background_color": "#202020",
   "display": "standalone",
-  "start_url": {
-    "en": "/en/granulator",
-    "de": "/de/granulator",
-    "ru": "/ru/granulator"
-  },
+  "start_url": "/en/granulator",
   "scope": "/",
-  "lang": ["en", "de", "ru"],
+  "lang": "en",
   "dir": "ltr",
   "orientation": "portrait-primary",
-  "categories": ["business", "manufacturing", "industrial", "machinery", "equipment", "spare parts", "granulator", "mixer"],
-  "product_categories": {
-    "granulator": {
-      "en": "Granulators",
-      "de": "Granulatoren",
-      "ru": "Грануляторы"
-    },
-    "mixer": {
-      "en": "Mixers",
-      "de": "Mischer",
-      "ru": "Миксеры"
-    },
-    "spare_parts": {
-      "en": "Spare Parts",
-      "de": "Ersatzteile",
-      "ru": "Запчасти"
-    }
-  },
+  "categories": ["business", "manufacturing", "industrial", "machinery", "equipment", "spare parts", "dies", "mixers"],
   "shortcuts": [
     {
-      "name": {
-        "en": "Products",
-        "de": "Produkte",
-        "ru": "Продукты"
-      },
-      "url": {
-        "en": "/en/products",
-        "de": "/de/products",
-        "ru": "/ru/products"
-      },
-      "description": {
-        "en": "View all products",
-        "de": "Alle Produkte anzeigen",
-        "ru": "Просмотр всех продуктов"
-      }
+      "name": "Products",
+      "url": "/en/products",
+      "description": "View all products"
     },
     {
-      "name": {
-        "en": "Granulators",
-        "de": "Granulatoren",
-        "ru": "Грануляторы"
-      },
-      "url": {
-        "en": "/en/granulator",
-        "de": "/de/granulator",
-        "ru": "/ru/granulator"
-      },
-      "description": {
-        "en": "High-quality granulators for pellet mills from LKE Group GmbH",
-        "de": "Hochwertige Granulatoren für Pelletpressen von LKE Group GmbH",
-        "ru": "Высококачественные грануляторы для грануляторов от LKE Group GmbH"
-      }
+      "name": "Dies/Granulator",
+      "url": "/en/granulator",
+      "description": "High-quality dies for pellet mills from LKE Group GmbH"
     },
     {
-      "name": {
-        "en": "Mixers",
-        "de": "Mischer",
-        "ru": "Миксеры"
-      },
-      "url": {
-        "en": "/en/mixer",
-        "de": "/de/mixer",
-        "ru": "/ru/mixer"
-      },
-      "description": {
-        "en": "Premium mixers for pellet mills from LKE Group GmbH",
-        "de": "Premium-Mischer für Pelletpressen von LKE Group GmbH",
-        "ru": "Премиум-миксеры для грануляторов от LKE Group GmbH"
-      }
+      "name": "Mixers",
+      "url": "/en/mixer",
+      "description": "Premium roller shells for pellet mills from LKE Group GmbH"
     },
     {
-      "name": {
-        "en": "Spare Parts",
-        "de": "Ersatzteile",
-        "ru": "Запчасти"
-      },
-      "url": {
-        "en": "/en/spare-parts",
-        "de": "/de/spare-parts",
-        "ru": "/ru/spare-parts"
-      },
-      "description": {
-        "en": "Spare parts for pellet mills and hammer mills from LKE Group GmbH",
-        "de": "Ersatzteile für Pelletpressen und Hammermühlen von LKE Group GmbH",
-        "ru": "Запчасти для грануляторов и молотковых дробилок от LKE Group GmbH"
-      }
+      "name": "Spare Parts",
+      "url": "/en/spare-parts",
+      "description": "Spare parts for pellet mills and hammer mills from LKE Group GmbH"
     }
   ],
   "iarc_rating_id": "",
@@ -158,7 +81,9 @@
   "keywords": [
     "goldenmill",
     "LKE Group GmbH",
-    "granulator",
+    "dies",
+    "granulators",
+    "roller shells",
     "mixers",
     "spare parts",
     "pellet mills",
@@ -167,6 +92,9 @@
     "manufacturing",
     "high quality",
     "custom manufacturing",
+    "flat die",
+    "ring die",
+    "twin-track die",
     "pellet production",
     "granulation",
     "extrusion",
@@ -182,13 +110,14 @@
     "feed mill equipment",
     "biomass equipment",
     "industrial solutions",
-    "custom granulators",
-    "custom mixers",
+    "custom dies",
+    "custom roller shells",
     "pellet mill parts",
     "hammer mill parts",
     "industrial spare parts",
     "manufacturing solutions",
     "engineering solutions",
+    "industrial automation",
     "process optimization",
     "equipment maintenance"
   ],
@@ -208,5 +137,84 @@
     "site": "@goldenmill",
     "creator": "@goldenmill",
     "image": "https://goldenmill.de/twitter-image.jpg"
+  },
+  "_translations": {
+    "name": {
+      "en": "GoldenMill - LKE Group GmbH | Dies and Roller Shells for Pellet Mills",
+      "de": "GoldenMill - LKE Group GmbH | Matrizen und Presswalzen für Pelletpressen",
+      "ru": "GoldenMill - LKE Group GmbH | Грануляторы, миксеры и запчасти"
+    },
+    "description": {
+      "en": "GoldenMill - LKE Group GmbH - manufacturer of high-quality dies, roller shells, and spare parts for pellet mills. Custom manufacturing according to customer specifications.",
+      "de": "GoldenMill - LKE Group GmbH - Hersteller von hochwertigen Matrizen, Presswalzen und Ersatzteilen für Pelletpressen. Kundenspezifische Fertigung nach Kundenvorgaben.",
+      "ru": "GoldenMill - LKE Group GmbH - производитель высококачественных матриц, роликов и запчастей для грануляторов. Индивидуальное производство по спецификациям заказчика."
+    },
+    "product_categories": {
+      "matrix": {
+        "en": "Dies and Matrices",
+        "de": "Matrizen",
+        "ru": "Матрицы"
+      },
+      "shell": {
+        "en": "Roller Shells",
+        "de": "Presswalzen",
+        "ru": "Ролики"
+      },
+      "spare_parts": {
+        "en": "Spare Parts",
+        "de": "Ersatzteile",
+        "ru": "Запчасти"
+      }
+    },
+    "shortcuts": {
+      "products": {
+        "name": {
+          "en": "Products",
+          "de": "Produkte",
+          "ru": "Продукты"
+        },
+        "description": {
+          "en": "View all products",
+          "de": "Alle Produkte anzeigen",
+          "ru": "Просмотр всех продуктов"
+        }
+      },
+      "granulator": {
+        "name": {
+          "en": "Dies/Granulator",
+          "de": "Matrizen",
+          "ru": "Матрицы"
+        },
+        "description": {
+          "en": "High-quality dies for pellet mills from LKE Group GmbH",
+          "de": "Hochwertige Matrizen für Pelletpressen von LKE Group GmbH",
+          "ru": "Высококачественные матрицы для грануляторов от LKE Group GmbH"
+        }
+      },
+      "mixers": {
+        "name": {
+          "en": "Mixers",
+          "de": "Presswalzen",
+          "ru": "Миксеры"
+        },
+        "description": {
+          "en": "Premium roller shells for pellet mills from LKE Group GmbH",
+          "de": "Premium-Presswalzen für Pelletpressen von LKE Group GmbH",
+          "ru": "Премиум-ролики для грануляторов от LKE Group GmbH"
+        }
+      },
+      "spare_parts": {
+        "name": {
+          "en": "Spare Parts",
+          "de": "Ersatzteile",
+          "ru": "Запчасти"
+        },
+        "description": {
+          "en": "Spare parts for pellet mills and hammer mills from LKE Group GmbH",
+          "de": "Ersatzteile für Pelletpressen und Hammermühlen von LKE Group GmbH",
+          "ru": "Запчасти для грануляторов и молотковых дробилок от LKE Group GmbH"
+        }
+      }
+    }
   }
 } 

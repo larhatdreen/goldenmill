@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
-  Sitemap for GoldenMill and LKE Group GmbH
-  Manufacturer of granulators, mixers, and spare parts for pellet mills
-  High-quality spare parts for industrial equipment
-  Contact: info@goldenmill.de
--->
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
@@ -12,40 +7,36 @@
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     
-    <!-- Главная страница -->
+    <!-- Main Page -->
     <url>
         <loc>https://goldenmill.de/</loc>
-        <lastmod>2024-05-22</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de"/>
-        <image:image>
-            <image:loc>https://goldenmill.de/logo.svg</image:loc>
-            <image:title>GoldenMill - LKE Group GmbH</image:title>
-            <image:caption>High-quality granulators, mixers and spare parts for pellet mills</image:caption>
-        </image:image>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru"/>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
         <mobile:mobile/>
+        <image:image>
+            <image:loc>https://goldenmill.de/images/main-page.jpg</image:loc>
+            <image:title>GoldenMill - LKE Group GmbH</image:title>
+            <image:caption>High-quality dies and shells for pellet mills</image:caption>
+        </image:image>
     </url>
 
-    <!-- Грануляторы -->
+    <!-- Granulator -->
     <url>
         <loc>https://goldenmill.de/granulator</loc>
-        <lastmod>2024-05-22</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/granulator"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/granulator"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/granulator"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/granulator"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/granulator"/>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <mobile:mobile/>
         <image:image>
             <image:loc>https://goldenmill.de/images/granulator.jpg</image:loc>
-            <image:title>Granulators - LKE Group GmbH</image:title>
-            <image:caption>High-quality granulators for pellet mills with superior hardness and wear resistance</image:caption>
+            <image:title>Granulator - LKE Group GmbH</image:title>
+            <image:caption>High-quality dies for pellet mills with superior hardness and wear resistance</image:caption>
         </image:image>
-        <mobile:mobile/>
         <news:news>
             <news:publication>
                 <news:name>GoldenMill Blog</news:name>
@@ -56,22 +47,20 @@
         </news:news>
     </url>
 
-    <!-- Миксеры -->
+    <!-- Mixer -->
     <url>
         <loc>https://goldenmill.de/mixer</loc>
-        <lastmod>2024-05-22</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/mixer"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/mixer"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/mixer"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/mixer"/>
-        <image:image>
-            <image:loc>https://goldenmill.de/images/mixer.jpg</image:loc>
-            <image:title>Mixers - LKE Group GmbH</image:title>
-            <image:caption>Premium mixers with various surface types for optimal performance</image:caption>
-        </image:image>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/mixer"/>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
         <mobile:mobile/>
+        <image:image>
+            <image:loc>https://goldenmill.de/images/shell.jpg</image:loc>
+            <image:title>Mixer - LKE Group GmbH</image:title>
+            <image:caption>Premium roller shells with various surface types for optimal performance</image:caption>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>GoldenMill Blog</news:name>
@@ -82,22 +71,20 @@
         </news:news>
     </url>
 
-    <!-- Запасные части -->
+    <!-- Spare Parts -->
     <url>
         <loc>https://goldenmill.de/spare-parts</loc>
-        <lastmod>2024-05-22</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/spare-parts"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/spare-parts"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/spare-parts"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/spare-parts"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/spare-parts"/>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <mobile:mobile/>
         <image:image>
             <image:loc>https://goldenmill.de/images/spare-parts.jpg</image:loc>
             <image:title>Spare Parts for Pellet Mills - LKE Group GmbH</image:title>
             <image:caption>High-quality spare parts for pellet mills and hammer mills</image:caption>
         </image:image>
-        <mobile:mobile/>
         <news:news>
             <news:publication>
                 <news:name>GoldenMill Blog</news:name>
@@ -108,34 +95,30 @@
         </news:news>
     </url>
 
-    <!-- О нас -->
+    <!-- About Us -->
     <url>
         <loc>https://goldenmill.de/about</loc>
-        <lastmod>2024-05-22</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/about"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/about"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/about"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/about"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/about"/>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
         <mobile:mobile/>
         <image:image>
             <image:loc>https://goldenmill.de/images/about-company.jpg</image:loc>
             <image:title>About LKE Group GmbH</image:title>
-            <image:caption>LKE Group GmbH - manufacturer of high-quality granulators, mixers, and spare parts</image:caption>
+            <image:caption>LKE Group GmbH - manufacturer of high-quality dies, roller shells, and spare parts</image:caption>
         </image:image>
     </url>
 
-    <!-- Контакты -->
+    <!-- Contacts -->
     <url>
         <loc>https://goldenmill.de/contacts</loc>
-        <lastmod>2024-05-22</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/contacts"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/contacts"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/contacts"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/contacts"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/contacts"/>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
         <mobile:mobile/>
         <image:image>
             <image:loc>https://goldenmill.de/images/contacts.jpg</image:loc>
@@ -144,34 +127,25 @@
         </image:image>
     </url>
 
-    <!-- Сервисная информация -->
+    <!-- Service Information -->
     <url>
         <loc>https://goldenmill.de/service-information</loc>
-        <lastmod>2024-05-22</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/service-information"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/service-information"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/service-information"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/service-information"/>
-        <image:image>
-            <image:loc>https://goldenmill.de/images/service.jpg</image:loc>
-            <image:title>Service Information</image:title>
-            <image:caption>Technical support and service information</image:caption>
-        </image:image>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/service-information"/>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
         <mobile:mobile/>
     </url>
 
-    <!-- Политика конфиденциальности -->
+    <!-- Privacy Policy -->
     <url>
         <loc>https://goldenmill.de/privacy-policy</loc>
-        <lastmod>2024-05-22</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/privacy-policy"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/privacy-policy"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/privacy-policy"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://goldenmill.de/privacy-policy"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/privacy-policy"/>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
         <mobile:mobile/>
     </url>
 
@@ -197,7 +171,7 @@
     <!-- Product Landing Pages -->
     <url>
         <loc>https://goldenmill.de/product/landing</loc>
-        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/product/productlanding"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://goldenmill.de/de/product/productlanding  "/>
         <xhtml:link rel="alternate" hreflang="en" href="https://goldenmill.de/en/product/productlanding"/>
         <xhtml:link rel="alternate" hreflang="ru" href="https://goldenmill.de/ru/product/productlanding"/>
         <changefreq>weekly</changefreq>

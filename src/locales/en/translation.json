@@ -71,8 +71,8 @@
       "granulation": "Granulation",
       "type": "Type",
       "productType": "Product Type",
-      "granulators": "Matrices",
-      "mixers": "Shells",
+      "granulators": "Granulators",
+      "mixers": "Mixers",
       "spare-parts": "Spare Parts",
       "applicationsTitle": "Applications",
       "select": "Select",
@@ -108,8 +108,8 @@
     "learnMore": "Learn More",
     "contact": "Contact",
     "all": "All",
-    "matrices": "Matrices",
-    "shells": "Shells",
+    "matrices": "Granulators",
+    "shells": "Mixers",
     "spareParts": "Spare Parts",
     "noResults": "No results found for your search",
     "manufacturingHint": "Manufacturing Hint",
@@ -213,7 +213,8 @@
     },
     "buttons": {
       "details": "DETAILS"
-    }
+    },
+    "note1": "* Calculation based on test values with a granulator die ⌀ 6/8 mm. Performance may vary depending on the type of raw material, material preparation, and technical characteristics of the die."
   },
   "admin": {
     "loginTitle": "ADMIN PANEL LOGIN",

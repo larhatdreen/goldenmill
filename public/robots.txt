@@ -2,62 +2,24 @@
 # Website: https://goldenmill.de
 # Contact: info@goldenmill.de
 
-# Allow all crawlers
+# Global rules for all bots
 User-agent: *
-Allow: /
-
-# Sitemap location
-Sitemap: https://goldenmill.de/sitemap.xml
-Sitemap: https://goldenmill.de/sitemap_de.xml
-Sitemap: https://goldenmill.de/sitemap_en.xml
-Sitemap: https://goldenmill.de/sitemap_ru.xml
-
-# Prevent crawling of admin and private areas
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
-
-# Prevent indexing of search results and temporary pages
 Disallow: /*?q=*
 Disallow: /tmp/
 Disallow: /temp/
-
-# Allow static assets
-Allow: /images/
-Allow: /img/
-Allow: /pdf/
-Allow: /fonts/
-Allow: /assets/
-Allow: /*.js$
-Allow: /*.css$
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.gif$
-Allow: /*.svg$
-Allow: /*.ico$
-Allow: /*.webp$
-
-# Crawl-delay for better server performance
-Crawl-delay: 5
-
-# Host directive for preferred domain version
-Host: https://goldenmill.de
-
-# Additional rules for specific bots
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 2
-
-User-agent: Yandex
-Allow: /
-Crawl-delay: 2
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 2
-
-# Clean parameters
-Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&ref&source&lang&page&sort&filter
+Disallow: /*.json$
+Disallow: /*.map$
+Disallow: /*.txt$
+Disallow: /*.xml$
+Disallow: /*.ico$
+Disallow: /*.svg$
+Disallow: /*.woff$
+Disallow: /*.woff2$
+Disallow: /*.ttf$
+Disallow: /*.eot$
 
 # Product pages and categories
 Allow: /product/
@@ -86,5 +48,74 @@ Allow: /*/privacy-policy/
 Allow: /cookie-policy/
 Allow: /*/cookie-policy/
 
-# Block access to system files and endpoints
-Disallow: /*.json$ 
+# Specific rules for Googlebot
+User-agent: Googlebot
+Allow: /images/
+Allow: /img/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+Crawl-delay: 1
+
+# Specific rules for Googlebot-Image
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /img/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+Crawl-delay: 1
+
+# Specific rules for Bingbot
+User-agent: Bingbot
+Allow: /images/
+Allow: /img/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+Crawl-delay: 1
+
+# Specific rules for Yandex
+User-agent: Yandex
+Allow: /images/
+Allow: /img/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+Crawl-delay: 1
+
+# Specific rules for mobile bots
+User-agent: Googlebot-Mobile
+Allow: /
+Crawl-delay: 1
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+Crawl-delay: 1
+
+# Main sitemap index
+Sitemap: https://goldenmill.de/sitemap_index.xml
+# Language specific sitemaps
+Sitemap: https://goldenmill.de/sitemap_de.xml
+Sitemap: https://goldenmill.de/sitemap_en.xml
+Sitemap: https://goldenmill.de/sitemap_ru.xml
+# Products sitemap
+Sitemap: https://goldenmill.de/products_sitemap.xml
+
+# Host directive for preferred domain version
+Host: https://goldenmill.de
+
+# Clean parameters
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&ref&source&lang&page&sort&filter 
