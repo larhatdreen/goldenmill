@@ -15,7 +15,6 @@ Disallow: /*.map$
 Disallow: /*.txt$
 Disallow: /*.xml$
 Disallow: /*.ico$
-Disallow: /*.svg$
 Disallow: /*.woff$
 Disallow: /*.woff2$
 Disallow: /*.ttf$
@@ -27,14 +26,15 @@ Allow: /*/product/
 Allow: /de/product/
 Allow: /en/product/
 Allow: /ru/product/
+Allow: /products/
+Allow: /*/products/
 Allow: /granulator/
 Allow: /mixer/
 Allow: /spare-parts/
 Allow: /*/granulator/
 Allow: /*/mixer/
 Allow: /*/spare-parts/
-Allow: /images/products/
-Allow: /img/products/
+Allow: /assets/
 
 # Important pages
 Allow: /about/
@@ -43,57 +43,49 @@ Allow: /contacts/
 Allow: /*/contacts/
 Allow: /service-information/
 Allow: /*/service-information/
-Allow: /privacy-policy/
-Allow: /*/privacy-policy/
-Allow: /cookie-policy/
-Allow: /*/cookie-policy/
 
 # Specific rules for Googlebot
 User-agent: Googlebot
-Allow: /images/
-Allow: /img/
 Allow: /*.jpg$
 Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.gif$
 Allow: /*.webp$
 Allow: /*.svg$
+Allow: /assets/
 Crawl-delay: 1
 
 # Specific rules for Googlebot-Image
 User-agent: Googlebot-Image
-Allow: /images/
-Allow: /img/
 Allow: /*.jpg$
 Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.gif$
 Allow: /*.webp$
 Allow: /*.svg$
+Allow: /assets/
 Crawl-delay: 1
 
 # Specific rules for Bingbot
 User-agent: Bingbot
-Allow: /images/
-Allow: /img/
 Allow: /*.jpg$
 Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.gif$
 Allow: /*.webp$
 Allow: /*.svg$
+Allow: /assets/
 Crawl-delay: 1
 
 # Specific rules for Yandex
 User-agent: Yandex
-Allow: /images/
-Allow: /img/
 Allow: /*.jpg$
 Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.gif$
 Allow: /*.webp$
 Allow: /*.svg$
+Allow: /assets/
 Crawl-delay: 1
 
 # Specific rules for mobile bots

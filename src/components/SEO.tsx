@@ -41,6 +41,7 @@ interface SchemaOrg {
       '@type': string;
       streetAddress: string;
       addressLocality: string;
+      addressRegion: string;
       addressCountry: string;
       postalCode: string;
     };
@@ -49,6 +50,7 @@ interface SchemaOrg {
       telephone: string;
       email: string;
       contactType: string;
+      availableLanguage: string[];
     };
   };
   breadcrumb: {
@@ -95,25 +97,26 @@ const SEO: React.FC<SEOProps> = ({
   const currentLanguage = i18n.language;
 
   const site = {
-    name: 'GoldenMill - LKE Group GmbH',
+    name: 'GoldenMill - LKT Group GmbH',
     url: 'https://goldenmill.de',
     logo: 'https://goldenmill.de/logo.svg',
     email: 'info@goldenmill.de',
-    phone: '+49...',
-    companyName: 'LKE Group GmbH',
+    phone: '+49 (0) 211 9891272',
+    companyName: 'LKT Group GmbH',
     address: {
-      street: 'Hauptstraße 1',
-      city: 'Berlin',
+      street: 'Lindenstraße 48-52',
+      city: 'Düsseldorf',
       country: 'Germany',
-      postalCode: '12345'
+      postalCode: '40233',
+      region: 'North Rhine-Westphalia'
     }
   };
 
   const seo = {
     title: title ? `${title} | ${site.companyName}` : t('seo.defaultTitle'),
     description: description || t('seo.defaultDescription'),
-    keywords: keywords ? `${keywords}, LKE Group GmbH, GoldenMill` : t('seo.defaultKeywords'),
-    image: image || `${site.url}/default-og-image.jpg`,
+    keywords: keywords ? `${keywords}, LKT Group GmbH, GoldenMill` : t('seo.defaultKeywords'),
+    image: image || `${site.url}/logo.svg`,
     url: `${site.url}${location.pathname}`
   };
 
@@ -135,6 +138,7 @@ const SEO: React.FC<SEOProps> = ({
         '@type': 'PostalAddress',
         streetAddress: site.address.street,
         addressLocality: site.address.city,
+        addressRegion: site.address.region,
         addressCountry: site.address.country,
         postalCode: site.address.postalCode
       },
@@ -142,7 +146,8 @@ const SEO: React.FC<SEOProps> = ({
         '@type': 'ContactPoint',
         telephone: site.phone,
         email: site.email,
-        contactType: 'customer service'
+        contactType: 'customer service',
+        availableLanguage: ['German', 'English', 'Russian']
       }
     },
     breadcrumb: {

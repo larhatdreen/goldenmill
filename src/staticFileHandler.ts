@@ -6,9 +6,10 @@ export const isStaticFile = (url: string): boolean => {
     '/sitemap.xml',
     '/site.webmanifest',
     '/favicon.ico',
+    '/favicon.png',
+    '/favicon.svg',
     '/logo.svg',
     '/logo_mini.svg',
-    '/icon.svg'
   ];
   
   return staticFiles.some(file => url.endsWith(file));
