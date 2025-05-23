@@ -55,6 +55,148 @@ jobs:
         target: "/var/www/goldenmill/prod/dist"
         strip_components: 1
     
+    - name: Deploy public files
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: 77.73.39.210
+        username: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: "public/*"
+        target: "/var/www/goldenmill/prod/dist"
+        strip_components: 1
+    
+    - name: Deploy server files
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: 77.73.39.210
+        username: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: "server/*"
+        target: "/var/www/goldenmill/prod/server"
+        strip_components: 1
+    
+    - name: Backup existing SEO files
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: 77.73.39.210
+        username: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          echo "Creating backup of existing SEO files..."
+          BACKUP_DIR="/var/www/goldenmill/prod/seo-backup-$(date +%Y%m%d-%H%M%S)"
+          mkdir -p "$BACKUP_DIR/dist" "$BACKUP_DIR/server"
+          
+          # Бэкап статических файлов
+          cp -r /var/www/goldenmill/prod/dist/{robots.txt,sitemap*.xml,site.webmanifest,favicon.*} "$BACKUP_DIR/dist/" 2>/dev/null || true
+          
+          # Бэкап серверных файлов
+          cp -r /var/www/goldenmill/prod/server/public/{robots.txt,sitemap*.xml,site.webmanifest} "$BACKUP_DIR/server/" 2>/dev/null || true
+          
+          echo "Backup created in $BACKUP_DIR"
+
+    - name: Deploy static SEO files
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: 77.73.39.210
+        username: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: "public/{robots.txt,sitemap*.xml,site.webmanifest,favicon.*}"
+        target: "/var/www/goldenmill/prod/dist"
+        strip_components: 1
+
+    - name: Deploy server files
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: 77.73.39.210
+        username: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: "server/*"
+        target: "/var/www/goldenmill/prod/server"
+        strip_components: 1
+
+    - name: Verify SEO files
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: 77.73.39.210
+        username: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          echo "Starting SEO files verification..."
+          
+          # Временная проверка статических файлов
+          # TODO: Оставить только критические проверки после отладки
+          echo "Checking static SEO files in /dist..."
+          for file in "/var/www/goldenmill/prod/dist/robots.txt" \
+                      "/var/www/goldenmill/prod/dist/sitemap_index.xml" \
+                      "/var/www/goldenmill/prod/dist/site.webmanifest" \
+                      "/var/www/goldenmill/prod/dist/favicon.ico" \
+                      "/var/www/goldenmill/prod/dist/favicon.png" \
+                      "/var/www/goldenmill/prod/dist/favicon.svg"; do
+            if [ -f "$file" ]; then
+              size=$(stat -f%z "$file")
+              echo "File $file size: $size bytes"
+              if [ $size -eq 0 ]; then
+                echo "Warning: $file is empty"
+              fi
+            else
+              echo "Error: $file not found"
+              exit 1
+            fi
+          done
+          
+          # Временная проверка серверных файлов
+          # TODO: Оставить только критические проверки после отладки
+          echo "Checking server-generated SEO files..."
+          for file in "/var/www/goldenmill/prod/server/public/robots.txt" \
+                      "/var/www/goldenmill/prod/server/public/sitemap_index.xml" \
+                      "/var/www/goldenmill/prod/server/public/sitemap_ru.xml" \
+                      "/var/www/goldenmill/prod/server/public/sitemap_de.xml" \
+                      "/var/www/goldenmill/prod/server/public/sitemap_en.xml" \
+                      "/var/www/goldenmill/prod/server/public/products_sitemap.xml" \
+                      "/var/www/goldenmill/prod/server/public/site.webmanifest"; do
+            if [ -f "$file" ]; then
+              size=$(stat -f%z "$file")
+              echo "File $file size: $size bytes"
+              if [ $size -eq 0 ]; then
+                echo "Warning: $file is empty"
+              fi
+            else
+              echo "Error: $file not found"
+              exit 1
+            fi
+          done
+          
+          # Временная проверка доступности через Nginx
+          # TODO: Оставить только критические проверки после отладки
+          echo "Testing Nginx access..."
+          for file in "robots.txt" "sitemap_index.xml" "site.webmanifest"; do
+            if curl -s -f "https://goldenmill.de/$file" > /dev/null; then
+              echo "Nginx serves $file"
+            else
+              echo "Nginx doesn't serve $file"
+            fi
+          done
+          
+          # Временная проверка логов
+          # TODO: Удалить после отладки
+          echo "Checking Nginx logs for SEO-related errors..."
+          sudo tail -n 50 /var/log/nginx/seo_debug.log || true
+          
+          echo "SEO files verification completed"
+    
+    - name: Check Nginx logs
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: 77.73.39.210
+        username: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          # Временная проверка логов
+          # TODO: Удалить после отладки
+          echo "Checking Nginx logs after deployment..."
+          sudo tail -n 100 /var/log/nginx/seo_debug.log || true
+          sudo tail -n 100 /var/log/nginx/error.log | grep -i "robots\|sitemap\|favicon" || true
+    
     - name: Restart Nginx
       uses: appleboy/ssh-action@v1.0.3
       with:
@@ -62,4 +204,8 @@ jobs:
         username: root
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
+          cd /var/www/goldenmill/prod/server
+          yarn install
+          yarn prisma generate
+          pm2 restart goldenmill || pm2 start index.js --name goldenmill
           sudo systemctl restart nginx

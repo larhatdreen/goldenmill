@@ -7,7 +7,7 @@
     "dev:client": "vite",
     "dev:server": "cd server && node index.js",
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && npm run seo:check",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "seo:check": "chmod +x ./seo-tests/seo-check.sh && ./seo-tests/seo-check.sh"
@@ -61,7 +61,6 @@
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^22.15.21",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@types/react-helmet": "^6.1.11",

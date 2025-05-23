@@ -111,3 +111,10 @@ Host: https://goldenmill.de
 
 # Clean parameters
 Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&ref&source&lang&page&sort&filter 
+
+# Keywords for search engines
+# GoldenMill, LKE Group GmbH, granulator, mixer, spare parts, pellet mills, 
+# hammer mills, industrial equipment, manufacturing, high quality, custom manufacturing,
+# flat die, ring die, twin-track die, pellet production, granulation, extrusion,
+# industrial machinery, feed production, biomass processing, wood pellets, animal feed,
+# industrial automation, custom solutions, German engineering, quality manufacturing 

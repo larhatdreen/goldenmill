@@ -2,14 +2,18 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://goldenmill.de/sitemap_de.xml</loc>
+    <lastmod>2024-05-23</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://goldenmill.de/sitemap_en.xml</loc>
+    <lastmod>2024-05-23</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://goldenmill.de/sitemap_ru.xml</loc>
+    <lastmod>2024-05-23</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://goldenmill.de/products_sitemap.xml</loc>
+    <lastmod>2024-05-23</lastmod>
   </sitemap>
 </sitemapindex>
